@@ -57,7 +57,7 @@ You can now use the SDK.
 
 ### Setting up environment variables
 
-To configure the client using environment variables, you must create a **.env** file using [.env.example](./pinterest/.env.example)
+To configure the client using environment variables, you must create a **.env** file using [.env.example](https://github.com/pinterest/pinterest-python-sdk/blob/main/.env.example)
 as a template. For basic configuration and usage you need to set the following environment variables in the **.env** file:
 
 ```
@@ -147,9 +147,9 @@ campaign.set_lifetime_budget(
 
 ## Documentation For Models
 
-* [pinterest client](./docs/markdown/pinterest.ads.md)
+* [pinterest client](https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/markdown/pinterest.ads.md)
 
-* [pinterest ads](./docs/markdown/pinterest.client.md)
+* [pinterest ads](https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/markdown/pinterest.client.md)
 
 ## Exceptions
 
