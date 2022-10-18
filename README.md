@@ -1,4 +1,5 @@
 # Pinterest SDK for Python [Beta]
+[![build](https://github.com/pinterest/pinterest-python-sdk/actions/workflows/build.yml/badge.svg)](https://github.com/pinterest/pinterest-python-sdk/actions/workflows/build.yml)
 
 ### Introduction
 
