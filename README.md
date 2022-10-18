@@ -147,9 +147,9 @@ campaign.set_lifetime_budget(
 
 ## Documentation For Models
 
-* [pinterest client](https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/markdown/pinterest.ads.md)
+* [pinterest ads](https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/markdown/pinterest.ads.md)
 
-* [pinterest ads](https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/markdown/pinterest.client.md)
+* [pinterest client](https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/markdown/pinterest.client.md)
 
 ## Exceptions
 
