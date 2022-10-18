@@ -1,6 +1,7 @@
 """
 Pinterest Client Package Setup
 """
+from pathlib import Path
 from setuptools import setup, find_namespace_packages
 
 REQUIRES = [
@@ -8,16 +9,18 @@ REQUIRES = [
   "python-dateutil",
   "python-dotenv==0.20.0",
   "six==1.16.0",
-  "Pinterest-Generated-Client @ git+https://github.com/pinterest/pinterest-python-generated-api-client.git"
+  "Pinterest-Generated-Client==0.1.2"
 ]
+
+long_description = (Path(__file__).parent / "README.md").read_text()
 
 setup(
     name="pinterest-sdk",
     description="Pinterest SDK",
-    version="0.1.0-wip",
+    version="0.1.0",
     author="pinterest, inc.",
     author_email="pinterest-api@pinterest.com",
-    url="https://github.com/pinternal/pinterest-python-sdk",
+    url="https://github.com/pinterest/pinterest-python-sdk",
     install_requires=REQUIRES,
     include_package_data=True,
     packages=find_namespace_packages(
@@ -27,13 +30,10 @@ setup(
             'sample.*',
             'tests',
             'tests.*',
-            'integration_tests',
-            'integration_tests.*',
             '.github',
         ]
     ),
     license="MIT",
-    long_description="""
-    Pinterest &#39;s SDK
-   """
+    long_description=long_description,
+    long_description_content_type='text/markdown',
 )
