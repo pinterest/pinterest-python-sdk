@@ -1,0 +1,6 @@
+Pinterest-Generated-Client @ git+https://github.com/pinterest/pinterest-python-generated-api-client.git
+python-dateutil==2.8.2
+six==1.16.0
+urllib3==1.26.12
+python-dotenv==0.20.0
+pytest==7.1.3
