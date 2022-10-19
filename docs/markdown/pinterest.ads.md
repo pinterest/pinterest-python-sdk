@@ -414,7 +414,7 @@ Bases: `PinterestBaseModel`
 Ad model used to view, create, update its attributes
 
 
-#### _classmethod_ create(ad_account_id: str, ad_group_id, creative_type: str, pin_id: str, is_pin_deleted: bool = False, is_removable: bool = True, status: str = 'ACTIVE', android_deep_link: ~typing.Optional[str] = None, carousel_android_deep_links: ~typing.Optional[list[str]] = None, carousel_destination_urls: ~typing.Optional[list[str]] = None, carousel_ios_deep_links: ~typing.Optional[list[str]] = None, click_tracking_url: ~typing.Optional[str] = None, destination_url: ~typing.Optional[str] = None, ios_deep_link: ~typing.Optional[str] = None, name: ~typing.Optional[str] = None, tracking_urls: ~typing.Optional[dict] = None, view_tracking_url: ~typing.Optional[str] = None, client: ~pinterest.client.PinterestSDKClient = <pinterest.client.PinterestSDKClient object>, \*\*kwargs)
+#### _classmethod_ create(ad_account_id: str, ad_group_id: str, creative_type: str, pin_id: str, is_pin_deleted: bool = False, is_removable: bool = True, status: str = 'ACTIVE', android_deep_link: ~typing.Optional[str] = None, carousel_android_deep_links: ~typing.Optional[list[str]] = None, carousel_destination_urls: ~typing.Optional[list[str]] = None, carousel_ios_deep_links: ~typing.Optional[list[str]] = None, click_tracking_url: ~typing.Optional[str] = None, destination_url: ~typing.Optional[str] = None, ios_deep_link: ~typing.Optional[str] = None, name: ~typing.Optional[str] = None, tracking_urls: ~typing.Optional[dict] = None, view_tracking_url: ~typing.Optional[str] = None, client: ~pinterest.client.PinterestSDKClient = <pinterest.client.PinterestSDKClient object>, \*\*kwargs)
 Create a new ad. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
 
 
@@ -424,7 +424,7 @@ Create a new ad. Request must contain ad_group_id, creative_type, and the source
     * **ad_account_id** (*str*) – Campaign’s Ad Account ID.
 
 
-    * **ad_group_id** (*_type_*) – ID of the ad group that contains the ad.
+    * **ad_group_id** (*str*) – ID of the ad group that contains the ad.
 
 
     * **creative_type** (*str*) – Ad creative type enum. Enum: “REGULAR” “VIDEO” “SHOPPING”
