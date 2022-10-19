@@ -207,12 +207,21 @@ In order to create an object of the [**PinterestSDKClient**](./pinterest/client/
 ```python
 from pinterest.client import PinterestSDKClient
 
-pinterest_access_token = <access token>
+# Access Token for Client 1
+pinterest_access_token_1 = <access token 1>
 
-client = PinterestSDKClient(configuration=Configuration(
-    access_token=pinterest_access_token,
-    host='https://api.pinterest.com/v5/',
-))
+# Access Token for Client 2
+pinterest_access_token_2 = <access token 2>
+
+client_1 = PinterestSDKClient(
+    access_token=pinterest_access_token_1,
+    host='https://api.pinterest.com/v5',
+)
+
+client_2 = PinterestSDKClient(
+    access_token=pinterest_access_token_2,
+    host='https://api.pinterest.com/v5',
+)
 ```
 
 ## License
