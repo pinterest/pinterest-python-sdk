@@ -6,9 +6,9 @@ labels: enhancement
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
+**What is your feature request? Please describe.**
 
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+A clear and concise description of what the problem is or what new feature you would like us to add. Ex. I'm always frustrated when [...] or I would like to be able to [...]
 
 **Describe the solution you'd like**
 
