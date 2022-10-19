@@ -51,7 +51,7 @@ class Ad(PinterestBaseModel):
     @classmethod
     def create(cls,
                ad_account_id:str,
-               ad_group_id,
+               ad_group_id:str,
                creative_type:str,
                pin_id:str,
                is_pin_deleted:bool = False,
@@ -76,7 +76,7 @@ class Ad(PinterestBaseModel):
 
         Args:
             ad_account_id (str): Campaign's Ad Account ID.
-            ad_group_id (_type_): ID of the ad group that contains the ad.
+            ad_group_id (str): ID of the ad group that contains the ad.
             creative_type (str): Ad creative type enum. Enum: `"REGULAR"` `"VIDEO"` `"SHOPPING"`
                         `"CAROUSEL"` `"MAX_VIDEO"` `"SHOP_THE_PIN"` `"IDEA"`
             pin_id (str): ID of the pin used to make the ad.
@@ -111,7 +111,7 @@ class Ad(PinterestBaseModel):
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Defaults to default_api_client.
 
         Returns:
-            Ad: _description_
+            Ad: Ad Object.
         """
         # pylint: disable=too-many-arguments
 
@@ -121,10 +121,10 @@ class Ad(PinterestBaseModel):
         api_response = AdsApi(client).ads_create(
             ad_account_id=str(ad_account_id),
             ad_create_request=[AdCreateRequest(
-                ad_account_id=ad_account_id,
-                ad_group_id=ad_group_id,
+                ad_account_id=str(ad_account_id),
+                ad_group_id=str(ad_group_id),
                 creative_type=creative_type,
-                pin_id=pin_id,
+                pin_id=str(pin_id),
                 status=status,
                 is_pin_deleted=is_pin_deleted,
                 is_removable=is_removable,
