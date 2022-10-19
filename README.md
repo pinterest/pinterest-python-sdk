@@ -188,42 +188,6 @@ Additional information about campaigns and campaign management can be found in:
   * The [campaign objectives](https://help.pinterest.com/en/business/article/campaign-objectives) help article
   * The [campaign budgets](https://help.pinterest.com/en/business/article/set-up-campaign-budgets) help article
 
-## Advanced Options
-
-### Importing the default client
-
-In order to access or use the client you can import the *default_sdk_client* :
-
-```python
-from pinterest.client import default_sdk_client
-```
-
-This will allow you to use the SDK Models without passing a **PinterestSDKClient** Object.
-
-### Creating Pinterest SDK Client
-
-In order to create an object of the [**PinterestSDKClient**](./pinterest/client/__init__.py) you need to pass the access token inside the python code every time you wish to create a client. This option is more useful if you wish to work with multiple accounts or clients at the same time.
-
-```python
-from pinterest.client import PinterestSDKClient
-
-# Access Token for Client 1
-pinterest_access_token_1 = <access token 1>
-
-# Access Token for Client 2
-pinterest_access_token_2 = <access token 2>
-
-client_1 = PinterestSDKClient(
-    access_token=pinterest_access_token_1,
-    host='https://api.pinterest.com/v5',
-)
-
-client_2 = PinterestSDKClient(
-    access_token=pinterest_access_token_2,
-    host='https://api.pinterest.com/v5',
-)
-```
-
 ## License
 
 Pinterest Python SDK is licensed under the [LICENSE](https://github.com/pinterest/pinterest-python-sdk/blob/main/LICENSE) file in the root directory of this source tree.
