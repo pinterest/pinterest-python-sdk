@@ -6,7 +6,7 @@ from dotenv import load_dotenv as _load
 
 _load()
 
-PINTEREST_DEBUG = _os.environ.get('PINTEREST_DEBUG', "True").lower() == "true"
+PINTEREST_DEBUG = _os.environ.get('PINTEREST_DEBUG', "False").lower() == "true"
 PINTEREST_PORT = _os.environ.get('PINTEREST_PORT', 0)
 PINTEREST_APP_ID = _os.environ.get('PINTEREST_APP_ID', 1479625)
 PINTEREST_APP_SECRET = _os.environ.get('PINTEREST_APP_SECRET', '')

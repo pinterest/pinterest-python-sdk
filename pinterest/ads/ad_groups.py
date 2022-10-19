@@ -67,25 +67,54 @@ class AdGroup(PinterestBaseModel):
         **kwargs
     ) -> AdGroup:
         """
-        Create multiple new ad groups. All ads in a given ad group will\
-         have the same budget, bid, run dates, targeting, and placement (search,\
-         browse, other). For more information, <a href=\"https://help.pinterest.com/\
-            en/business/article/campaign-structure\"\
-         target=\"_blank\"> click here</a>.</p>\n<strong>Note:</strong>\n- 'bid_in_micro_currency'\
-         and 'budget_in_micro_currency' should be expressed in microcurrency amounts\
-         based on the currency field set in the advertiser's profile.<p/>\n<p>Microcurrency\
-         is used to track very small transactions, based on the currency set in the\
-         advertiser\u2019s profile.</p>\n<p>A microcurrency unit is 10^(-6) of the\
-         standard unit of currency selected in the advertiser\u2019s profile.</p>\n\
-        <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>\n\
-        <ul>\n  <li>$1 = 1,000,000 microdollars</li>\n  <li>1 microdollar = $0.000001\
-         </li>\n</ul>\n<p><strong>To convert between currency and microcurrency</strong>,\
-         using dollars as an example currency:</p>\n<ul>\n  <li>To convert dollars\
-         to microdollars, mutiply dollars by 1,000,000</li>\n  <li>To convert microdollars\
-         to dollars, divide microdollars by 1,000,000</li>\n</ul>\n- Ad groups belong\
-         to ad campaigns. Some types of campaigns (e.g. budget optimization) have\
-         limits on the number of ad groups they can hold. If you exceed those limits,\
-         you will get an error message.
+        Create a new ad group. All ads in a given ad group will
+        have the same budget, bid, run dates, targeting, and placement (search,
+        browse, other). For more information, <a href=\"https://help.pinterest.com/
+        en/business/article/campaign-structure\"
+        target=\"_blank\"> click here</a>.</p><strong>Note:</strong>
+
+        - 'bid_in_micro_currency'
+
+        and 'budget_in_micro_currency' should be expressed in microcurrency amounts
+        based on the currency field set in the advertiser's profile.<p/>
+
+        <p>Microcurrency
+        is used to track very small transactions, based on the currency set in the
+        advertiser\u2019s profile.</p>
+
+        <p>A microcurrency unit is 10^(-6) of the
+        standard unit of currency selected in the advertiser\u2019s profile.</p>
+
+
+        <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+
+
+        <ul>
+
+        <li>$1 = 1,000,000 microdollars</li>
+
+        <li>1 microdollar = $0.000001</li>
+
+        </ul>
+
+        <p><strong>To convert between currency and microcurrency</strong>,
+        using dollars as an example currency:</p>
+
+        <ul>
+
+        <li>To convert dollars
+        to microdollars, mutiply dollars by 1,000,000</li>
+
+        <li>To convert microdollars
+        to dollars, divide microdollars by 1,000,000</li>
+
+        </ul>
+
+        - Ad groups belong
+
+        to ad campaigns. Some types of campaigns (e.g. budget optimization) have
+        limits on the number of ad groups they can hold. If you exceed those limits,
+        you will get an error message.
 
         Args:
             ad_account_id (str): Campaign's Ad Account ID.

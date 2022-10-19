@@ -74,20 +74,46 @@ class Campaign(PinterestBaseModel):
         # pylint: disable=too-many-locals,too-many-arguments
         """
         Create a new campaign. Every campaign has its own campaign_id\
-         and houses one or more ad groups, which contain one or more ads.\nFor more,\
-         see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\"\
-        >Set up your campaign</a>. <p/>\n<strong>Note:</strong>\n- The values for\
-         'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based\
-         on the currency field set in the advertiser's profile. (e.g. USD) <p/>\n\
+        and houses one or more ad groups, which contain one or more ads.
+
+        For more,\
+        see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">
+        Set up your campaign</a>. <p/>
+
+        <strong>Note:</strong>
+
+        - The values for\
+        'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based\
+        on the currency field set in the advertiser's profile. (e.g. USD) <p/>
+
         <p>Microcurrency is used to track very small transactions, based on the currency\
-         set in the advertiser\u2019s profile.</p>\n<p>A microcurrency unit is 10^(-6)\
-         of the standard unit of currency selected in the advertiser\u2019s profile.</p>\n\
-        <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>\n\
-        <ul>\n  <li>$1 = 1,000,000 microdollars</li>\n  <li>1 microdollar = $0.000001\
-         </li>\n</ul>\n<p><strong>To convert between currency and microcurrency</strong>,\
-         using dollars as an example currency:</p>\n<ul>\n  <li>To convert dollars\
-         to microdollars, mutiply dollars by 1,000,000</li>\n  <li>To convert microdollars\
-         to dollars, divide microdollars by 1,000,000</li>\n</ul>
+         set in the advertiser\u2019s profile.</p>
+
+        <p>A microcurrency unit is 10^(-6)\
+         of the standard unit of currency selected in the advertiser\u2019s profile.</p>
+
+        <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+
+        <ul>
+
+        <li>$1 = 1,000,000 microdollars</li>
+
+        <li>1 microdollar = $0.000001</li>
+
+        </ul>
+
+        <p><strong>To convert between currency and microcurrency</strong>,\
+        using dollars as an example currency:</p>
+
+        <ul>
+
+        <li>To convert dollars\
+        to microdollars, mutiply dollars by 1,000,000</li>
+
+        <li>To convert microdollars\
+        to dollars, divide microdollars by 1,000,000</li>
+
+        </ul>
 
         Args:
             ad_account_id (str): Campaign's Ad Account ID.

@@ -10,7 +10,7 @@ def main(_):
     function to get config variables
     """
     try:
-        from pinterest import config as module
+        from pinterest.client import config as module
     except ImportError as exc:
         raise exc
 
