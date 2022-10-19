@@ -15,11 +15,11 @@ REQUIRES = [
 long_description = (Path(__file__).parent / "README.md").read_text()
 
 setup(
-    name="pinterest-sdk",
+    name="pinterest-api-sdk",
     description="Pinterest SDK",
     version="0.1.0",
     author="pinterest, inc.",
-    author_email="pinterest-api@pinterest.com",
+    author_email="sdk@pinterest.com",
     url="https://github.com/pinterest/pinterest-python-sdk",
     install_requires=REQUIRES,
     include_package_data=True,
