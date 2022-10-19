@@ -2,7 +2,7 @@
 
 from pinterest.ads.audiences import Audience
 
-AD_ACCOUNT_ID = "549764334122"
+AD_ACCOUNT_ID = "12345"
 
 audience = Audience.create(
   ad_account_id=AD_ACCOUNT_ID,
