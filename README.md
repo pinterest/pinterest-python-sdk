@@ -169,7 +169,9 @@ When `PINTEREST_DEBUG` is enabled, all the API raw requests and responses will b
 
 ## Issues
 
-For any issues or questions related to the SDK you are welcome to submit them through [GitHub Issues](https://github.com/pinterest/pinterest-python-sdk/issues).
+For any issues or questions related to the SDK you are welcome to submit them through [GitHub Issues](https://github.com/pinterest/pinterest-python-sdk/issues) using the following templates:
+  * [Bug Report Template](https://github.com/pinterest/pinterest-python-sdk/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)
+  * [Feature Request Template](https://github.com/pinterest/pinterest-python-sdk/blob/main/.github/ISSUE_TEMPLATE/feature_request.md)
 
 **Note**: There is currently no guaranteed SLA for responding to or resolving issues while the SDK is in beta.
 
