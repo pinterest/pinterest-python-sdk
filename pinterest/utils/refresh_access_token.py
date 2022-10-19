@@ -6,6 +6,8 @@ from base64 import b64encode
 import json
 import urllib3
 
+from pinterest.utils.sdk_exceptions import SdkException
+
 
 def get_new_access_token(
     app_id: str,
@@ -41,7 +43,11 @@ def get_new_access_token(
         body=data,
         timeout=5
     )
-    assert response.status == 200
+    if not response.status == 200:
+        raise SdkException(reason="Authentication error. \
+            Kindly check if the following variables are correct: [PINTEREST_ACCESS_TOKEN] or \
+            [PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]")
+
     data = json.loads(response.data)
 
     if not data.get('access_token'):
