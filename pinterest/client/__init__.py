@@ -32,9 +32,9 @@ class PinterestSDKClient(ApiClient):
 
 
 if not PINTEREST_ACCESS_TOKEN and not PINTEREST_REFRESH_ACCESS_TOKEN:
-    raise SdkException(reason="Environment variables not present. \
-        Kindly initialize required variables: [PINTEREST_ACCESS_TOKEN] or \
-            [PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]")
+    raise SdkException(reason="Environment variables not present. " +
+        "Kindly initialize required variables: [PINTEREST_ACCESS_TOKEN] or " +
+        "[PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]")
 
 if not PINTEREST_ACCESS_TOKEN:
     PINTEREST_ACCESS_TOKEN = get_new_access_token(
