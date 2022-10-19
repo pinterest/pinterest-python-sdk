@@ -49,7 +49,7 @@ class Audience(PinterestBaseModel):
         description : str = None,
         client: PinterestSDKClient = default_sdk_client,
         **kwargs
-    ):
+    ) -> Audience:
         # pylint: disable=too-many-arguments
         # pylint: disable=line-too-long
         """
@@ -64,7 +64,7 @@ class Audience(PinterestBaseModel):
             ad_account_id (str): Audience's Advertiser or Ad Account ID.
             name (str): Audience name.
             rule (dict): python <dict> defining targeted audience users. The keys and value formats:
-                rule_example_format = {
+                    rule_example_format = {
                     country (str): Valid countries include: "US", "CA", and "GB"
                     customer_list_id (str): Customer list ID. For CUSTOMER_LIST `audience_type`
                     engagement_domain (list[str]): The audience account's verified domain. **Required** for ENGAGEMENT `audience_type`
@@ -90,6 +90,8 @@ class Audience(PinterestBaseModel):
         Keyword Args:
             Any valid keyword arguments or query parameters for endpoint.
 
+        Returns:
+            Audience: Audience Object
         """
 
         AudienceType(audience_type)
