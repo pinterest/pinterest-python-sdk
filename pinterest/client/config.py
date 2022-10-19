@@ -22,3 +22,4 @@ PINTEREST_API_URI = _os.environ.get('PINTEREST_API_URI', 'https://api.pinterest.
 PINTEREST_LOG_FILE = _os.environ.get('PINTEREST_LOG_FILE', None)
 PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS = _os.environ.get('PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS', None)
 PINTEREST_LOGGER_FORMAT = _os.environ.get('PINTEREST_LOGGER_FORMAT', '%(asctime)s %(levelname)s %(message)s')
+PINTEREST_USER_AGENT = 'pins-sdk/python/v0.1.0'
