@@ -3,15 +3,16 @@ Pinterest Client
 """
 from pinterest.generated.client.configuration import Configuration
 from pinterest.generated.client.api_client import ApiClient
-from pinterest.config import PINTEREST_ACCESS_TOKEN
-from pinterest.config import PINTEREST_REFRESH_ACCESS_TOKEN
-from pinterest.config import PINTEREST_APP_ID
-from pinterest.config import PINTEREST_APP_SECRET
-from pinterest.config import PINTEREST_API_URI
-from pinterest.config import PINTEREST_DEBUG
-from pinterest.config import PINTEREST_LOG_FILE
-from pinterest.config import PINTEREST_LOGGER_FORMAT
+from pinterest.client.config import PINTEREST_ACCESS_TOKEN
+from pinterest.client.config import PINTEREST_REFRESH_ACCESS_TOKEN
+from pinterest.client.config import PINTEREST_APP_ID
+from pinterest.client.config import PINTEREST_APP_SECRET
+from pinterest.client.config import PINTEREST_API_URI
+from pinterest.client.config import PINTEREST_DEBUG
+from pinterest.client.config import PINTEREST_LOG_FILE
+from pinterest.client.config import PINTEREST_LOGGER_FORMAT
 from pinterest.utils.refresh_access_token import get_new_access_token
+from pinterest.utils.sdk_exceptions import SdkException
 
 __all__ = ['default_sdk_client', 'PinterestSDKClient']
 
@@ -24,6 +25,10 @@ class PinterestSDKClient(ApiClient):
     Ref: https://openapi-generator.tech
     """
 
+if not PINTEREST_ACCESS_TOKEN and not PINTEREST_REFRESH_ACCESS_TOKEN:
+    raise SdkException(reason="Environment variables not present. \
+        Kindly initialize required variables: [PINTEREST_ACCESS_TOKEN] or \
+            [PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]")
 
 if not PINTEREST_ACCESS_TOKEN:
     PINTEREST_ACCESS_TOKEN = get_new_access_token(
