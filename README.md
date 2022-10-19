@@ -61,12 +61,13 @@ To configure the client using environment variables, you must create a **.env** 
 as a template. For basic configuration and usage you need to set the following environment variables in the **.env** file:
 
 ```
+PINTEREST_ACCESS_TOKEN='<access token>'
+```
+_or_
+```
 PINTEREST_APP_ID=<app id>
 PINTEREST_APP_SECRET=<app secret>
-
 PINTEREST_REFRESH_ACCESS_TOKEN='<refresh token>'
-**or**
-PINTEREST_ACCESS_TOKEN='<access token>'
 ```
 
 Once you have established the environment variables, the client will be instantiated for you automatically. 
