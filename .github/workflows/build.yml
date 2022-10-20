@@ -21,4 +21,5 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install -r tests/test-requirements.txt
           python -m pytest ./tests/src
