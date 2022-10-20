@@ -17,7 +17,7 @@ long_description = (Path(__file__).parent / "README.md").read_text()
 setup(
     name="pinterest-api-sdk",
     description="Pinterest SDK",
-    version="0.1.0",
+    version="0.1.1",
     author="pinterest, inc.",
     author_email="sdk@pinterest.com",
     url="https://github.com/pinterest/pinterest-python-sdk",
