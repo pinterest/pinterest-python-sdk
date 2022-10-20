@@ -42,7 +42,7 @@ $ source .venv/bin/activate
 Install SDK:
 
 ```bash
-$ pip install pinterest-python-sdk
+$ pip install pinterest-api-sdk
 ```
 
 Alternatively, you can check out the repository from GitHub. Once the package is downloaded and unzipped, install it:
