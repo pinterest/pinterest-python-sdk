@@ -48,6 +48,7 @@ class Campaign(PinterestBaseModel):
             model_attribute_types = CampaignResponse.openapi_types,
             client=client,
             )
+        raise TypeError("Rushabh raised error for testing")
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
 
