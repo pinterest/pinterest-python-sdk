@@ -11,7 +11,6 @@ from pinterest.generated.client.model.creative_type import CreativeType
 from pinterest.generated.client.model.entity_status import EntityStatus
 from pinterest.generated.client.model.ad_update_request import AdUpdateRequest
 
-from pinterest.client import default_sdk_client
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.base_model import PinterestBaseModel
@@ -67,7 +66,7 @@ class Ad(PinterestBaseModel):
                name:str = None,
                tracking_urls:dict = None,
                view_tracking_url:str = None,
-               client:PinterestSDKClient = default_sdk_client,
+               client:PinterestSDKClient = None,
                **kwargs
                ) -> Ad:
         # pylint: disable=too-many-locals,too-many-arguments
@@ -111,12 +110,15 @@ class Ad(PinterestBaseModel):
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Defaults to default_api_client.
 
         Returns:
-            Ad: Ad Object.
+            Ad: The newly created Ad.
         """
         # pylint: disable=too-many-arguments
 
         creative_type=CreativeType(creative_type)
         status=EntityStatus(status)
+
+        if not client:
+            client = cls._get_client()
 
         api_response = AdsApi(client).ads_create(
             ad_account_id=str(ad_account_id),
@@ -156,7 +158,7 @@ class Ad(PinterestBaseModel):
         page_size : int = None,
         order : str = "ASCENDING",
         bookmark : str = None,
-        client : PinterestSDKClient = default_sdk_client,
+        client : PinterestSDKClient = None,
         **kwargs
     ) -> tuple[list[Ad], str]:
         # pylint: disable=too-many-arguments,too-many-locals
@@ -209,6 +211,9 @@ class Ad(PinterestBaseModel):
 
         raw_ad_list = []
         return_bookmark = None
+
+        if not client:
+            client = cls._get_client()
 
         ads_api = AdsApi(api_client=client)
         api_response = ads_api.ads_list(

@@ -11,11 +11,11 @@ from pinterest.generated.client.model.ad_group_response import AdGroupResponse
 from pinterest.generated.client.model.ad_group_create_request import AdGroupCreateRequest
 from pinterest.generated.client.model.ad_group_update_request import AdGroupUpdateRequest
 
-from pinterest.client import default_sdk_client
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.utils.error_handling import verify_api_response
 from pinterest.ads.ads import Ad
+
 
 class AdGroup(PinterestBaseModel):
     # pylint: disable=too-few-public-methods,too-many-locals,too-many-arguments,duplicate-code
@@ -63,7 +63,7 @@ class AdGroup(PinterestBaseModel):
         end_time:int = None,
         tracking_url:str = None,
         auto_targeting_enabled:bool = None,
-        client:PinterestSDKClient = default_sdk_client,
+        client:PinterestSDKClient = None,
         **kwargs
     ) -> AdGroup:
         """
@@ -153,6 +153,8 @@ class AdGroup(PinterestBaseModel):
             AdGroup: AdGroup Object
         """
         billable_event = ActionType(billable_event)
+        if not client:
+            client = cls._get_client()
 
         api_response = AdGroupsApi(client).ad_groups_create(
             ad_account_id=str(ad_account_id),
@@ -217,7 +219,7 @@ class AdGroup(PinterestBaseModel):
         page_size : int = None,
         order : str = "ASCENDING",
         bookmark : str = None,
-        client : PinterestSDKClient = default_sdk_client,
+        client : PinterestSDKClient = None,
         **kwargs
     ) -> tuple[list[AdGroup], str]:
         """
@@ -253,6 +255,8 @@ class AdGroup(PinterestBaseModel):
 
         raw_ad_group_list = []
         return_bookmark = None
+        if not client:
+            client = cls._get_client()
 
         ad_groups_api = AdGroupsApi(api_client=client)
         api_response = ad_groups_api.ad_groups_list(
@@ -326,3 +330,23 @@ class AdGroup(PinterestBaseModel):
             client=self._client,
             **kwargs
         )
+
+    def enable_auto_targeting(self):
+        """
+        Enable auto-targeting for ad group. Also known as <a
+        href='https://help.pinterest.com/en/business/article/expanded-targeting'>"expanded targeting"</a>.
+
+        Returns:
+            bool: true if ad group enable auto_targeting_enabled
+        """
+        return self.update_fields(auto_targeting_enabled=True)
+
+    def disable_auto_targeting(self):
+        """
+        Disable auto-targeting for ad group. Also known as <a
+        href='https://help.pinterest.com/en/business/article/expanded-targeting'>"expanded targeting"</a>.
+
+        Returns:
+            bool: true if ad group disable auto_targeting_enabled
+        """
+        return self.update_fields(auto_targeting_enabled=False)

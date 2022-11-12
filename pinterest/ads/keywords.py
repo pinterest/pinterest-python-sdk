@@ -12,7 +12,6 @@ from pinterest.generated.client.model.match_type_response import MatchTypeRespon
 from pinterest.generated.client.model.keyword_update_body import KeywordUpdateBody
 from pinterest.generated.client.model.keyword_update import KeywordUpdate
 
-from pinterest.client import default_sdk_client
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.sdk_exceptions import SdkException
@@ -45,7 +44,7 @@ class Keyword(PinterestBaseModel):
         value : str,
         bid: int = None,
         match_type : str = None,
-        client: PinterestSDKClient = default_sdk_client,
+        client: PinterestSDKClient = None,
         **kwargs
     ) -> Keyword:
         # pylint: disable=too-many-locals,too-many-arguments
@@ -75,6 +74,9 @@ class Keyword(PinterestBaseModel):
             **kwargs
         )
 
+        if not client:
+            client = cls._get_client()
+
         api_response = KeywordsApi(client).keywords_create(
             ad_account_id=str(ad_account_id),
             keywords_request=KeywordsRequest(
@@ -102,7 +104,7 @@ class Keyword(PinterestBaseModel):
         ad_account_id: str,
         page_size: int = None,
         bookmark : str = None,
-        client: PinterestSDKClient = default_sdk_client,
+        client: PinterestSDKClient = None,
         **kwargs
     ) -> tuple[list[Keyword], str]:
         """
@@ -118,7 +120,7 @@ class Keyword(PinterestBaseModel):
                                     See documentation on Pagination for more information. Defaults to None which will
                                     return all campaigns.
             bookmark (str, optional): Cursor used to fetch the next page of items. Defaults to None.
-            client (PinterestSDKClient, optional): _description_. Defaults to default_api_client.
+            client (PinterestSDKClient, optional): Defaults to the default api client.
 
         Returns:
             list[Keyword]: List of Keyword Objects
@@ -133,6 +135,8 @@ class Keyword(PinterestBaseModel):
 
         raw_keywords = []
         return_bookmark = None
+        if not client:
+            client = cls._get_client()
 
         keywords_api = KeywordsApi(api_client=client)
         api_response = keywords_api.keywords_get(
