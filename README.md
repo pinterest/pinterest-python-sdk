@@ -66,9 +66,10 @@ as a template. For basic configuration and usage you need to set the following e
 ```
 PINTEREST_APP_ID=<app id>
 PINTEREST_APP_SECRET=<app secret>
-
 PINTEREST_REFRESH_ACCESS_TOKEN='<refresh token>'
+
 **or**
+
 PINTEREST_ACCESS_TOKEN='<access token>'
 ```
 
