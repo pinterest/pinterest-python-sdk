@@ -66,9 +66,10 @@ as a template. For basic configuration and usage you need to set the following e
 ```
 PINTEREST_APP_ID=<app id>
 PINTEREST_APP_SECRET=<app secret>
-
 PINTEREST_REFRESH_ACCESS_TOKEN='<refresh token>'
+
 **or**
+
 PINTEREST_ACCESS_TOKEN='<access token>'
 ```
 
@@ -102,6 +103,7 @@ as a template. For basic configuration and usage you need to set the following k
 Once you have established the keys, the client will be instantiated for you automatically. 
 
 **NOTE**: 
+ * Setting up environment variables and config.json will result in the environment variables overriding the keys in config.json
  * Setting the `access_token` (which is valid for thirty days) will require the token value to be replaced when it expires. You will need to manually reinsantiate the client when the **access_token** expires. 
  * Setting the `refresh_access_token` (which is valid for a year) will allow the SDK to regenerate the new access token whenever it is required. 
 
@@ -216,6 +218,44 @@ Additional information about campaigns and campaign management can be found in:
   * The [create and edit a campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign) help article
   * The [campaign objectives](https://help.pinterest.com/en/business/article/campaign-objectives) help article
   * The [campaign budgets](https://help.pinterest.com/en/business/article/set-up-campaign-budgets) help article
+
+## Advanced Options
+
+### Importing the PinterestSDKClient
+
+In order to access or use the client you can import the *PinterestSDKClient* and call the `create_default_client()` classmethod:
+
+```python
+from pinterest.client import PinterestSDKClient
+default_client = PinterestSDKClient.create_default_client()
+```
+
+This will allow you to use the SDK Models without passing a **PinterestSDKClient** Object.
+
+### Creating custom Pinterest SDK Clients
+
+In order to create an object of the [**PinterestSDKClient**](./pinterest/client/__init__.py) you need to pass the access token inside the python code every time you wish to create a client or a combination of the refresh token, app id and app secret. This option is more useful if you wish to work with multiple accounts or clients at the same time.
+
+```python
+from pinterest.client import PinterestSDKClient
+
+# Access Token for Client 1
+pinterest_access_token_1 = <access token 1>
+
+# Refresh Token for Client 2
+pinterest_refresh_token_2 = <refresh token 2>
+pinterest_app_id_2 = <app id 2>
+pinterest_app_secret_2 = <app secret 2>
+
+client_1 = PinterestSDKClient.create_client_with_token(
+    access_token=pinterest_access_token_1,
+)
+client_2 = PinterestSDKClient.create_client_with_refresh_token(
+    refresh_token=pinterest_access_token_2,
+    app_id=pinterest_app_id_2,
+    app_secret=pinterest_app_secret_2,
+)
+```
 
 ## License
 
