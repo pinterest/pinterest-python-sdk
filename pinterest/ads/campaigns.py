@@ -12,7 +12,6 @@ from pinterest.generated.client.model.campaign_update_request import CampaignUpd
 from pinterest.generated.client.model.objective_type import ObjectiveType
 
 from pinterest.ads.ad_groups import AdGroup
-from pinterest.client import default_sdk_client
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.base_model import PinterestBaseModel
@@ -36,7 +35,7 @@ class Campaign(PinterestBaseModel):
         Args:
             ad_account_id (str): Campaign's Ad Account ID.
             campaign_id (str): Campaign ID, must be associated with the Ad Account ID provided in the path.
-            client (PinterestSDKClient, optional): PinterestSDKClient Object. Defaults to default_api_client.
+            client (PinterestSDKClient, optional): PinterestSDKClient Object. Uses the default client, if not provided.
         """
 
         PinterestBaseModel.__init__(
@@ -68,7 +67,7 @@ class Campaign(PinterestBaseModel):
         is_flexible_daily_budgets:bool = False,
         default_ad_group_budget_in_micro_currency:int = None,
         is_automated_campaign:bool = False,
-        client:PinterestSDKClient = default_sdk_client,
+        client:PinterestSDKClient = None,
         **kwargs
     ) -> Campaign:
         # pylint: disable=too-many-locals,too-many-arguments
@@ -152,7 +151,7 @@ class Campaign(PinterestBaseModel):
                                 of the associated advertiser account. Defaults to None.
             is_automated_campaign (bool, optional): Specifies whether the campaign was created
                                 in the automated campaign flow. Defaults to False.
-            client (PinterestSDKClient): PinterestSDKClient Object
+            client (PinterestSDKClient, optional): PinterestSDKClient Object, uses the default client, if not provided.
 
         Keyword Args:
             Any valid keyword arguments or query parameters for endpoint.
@@ -162,6 +161,9 @@ class Campaign(PinterestBaseModel):
         """
 
         objective_type = ObjectiveType(objective_type)
+
+        if not client:
+            client = cls._get_client()
 
         api_response = CampaignsApi(client).campaigns_create(
             ad_account_id=str(ad_account_id),
@@ -197,7 +199,7 @@ class Campaign(PinterestBaseModel):
         page_size:int = None,
         order:str = "ASCENDING",
         bookmark:str = None,
-        client:PinterestSDKClient = default_sdk_client,
+        client:PinterestSDKClient = None,
         **kwargs
     ) -> tuple[list[Campaign], str]:
         # pylint: disable=too-many-arguments
@@ -239,6 +241,9 @@ class Campaign(PinterestBaseModel):
 
         raw_campaign_list = []
         return_bookmark = None
+
+        if not client:
+            client = cls._get_client()
 
         campaigns_api = CampaignsApi(api_client=client)
         api_response = campaigns_api.campaigns_list(

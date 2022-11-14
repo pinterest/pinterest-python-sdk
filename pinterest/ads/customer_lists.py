@@ -11,7 +11,6 @@ from pinterest.generated.client.model.customer_list_request import CustomerListR
 from pinterest.generated.client.model.customer_list import CustomerList as GeneratedCustomerList
 from pinterest.generated.client.model.customer_list_update_request import CustomerListUpdateRequest
 
-from pinterest.client import default_sdk_client
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.utils.error_handling import verify_api_response
@@ -42,7 +41,7 @@ class CustomerList(PinterestBaseModel):
         name : str,
         records : str,
         list_type : str = "EMAIL",
-        client: PinterestSDKClient = default_sdk_client,
+        client: PinterestSDKClient = None,
         **kwargs
     ):
         # pylint: disable=too-many-arguments
@@ -79,6 +78,9 @@ class CustomerList(PinterestBaseModel):
         """# pylint: disable=line-too-long
 
         UserListType(list_type)
+
+        if not client:
+            client = cls._get_client()
 
         api_response = CustomerListsApi(client).customer_lists_create(
             ad_account_id=str(ad_account_id),
@@ -124,7 +126,7 @@ class CustomerList(PinterestBaseModel):
         page_size: int = None,
         order: str = None,
         bookmark: str = None,
-        client: PinterestSDKClient = default_sdk_client,
+        client: PinterestSDKClient = None,
         **kwargs
     ) -> tuple[list[CustomerList], str]:
         # pylint: disable=too-many-arguments
@@ -157,6 +159,9 @@ class CustomerList(PinterestBaseModel):
 
         raw_customer_lists = []
         return_bookmark = None
+
+        if not client:
+            client = cls._get_client()
 
         customer_list_api = CustomerListsApi(api_client=client)
         api_response = customer_list_api.customer_lists_list(

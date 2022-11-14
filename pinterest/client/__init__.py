@@ -3,19 +3,21 @@ Pinterest Client
 """
 from pinterest.generated.client.configuration import Configuration
 from pinterest.generated.client.api_client import ApiClient
-from pinterest.client.config import PINTEREST_ACCESS_TOKEN
-from pinterest.client.config import PINTEREST_REFRESH_ACCESS_TOKEN
-from pinterest.client.config import PINTEREST_APP_ID
-from pinterest.client.config import PINTEREST_APP_SECRET
-from pinterest.client.config import PINTEREST_API_URI
-from pinterest.client.config import PINTEREST_DEBUG
-from pinterest.client.config import PINTEREST_LOG_FILE
-from pinterest.client.config import PINTEREST_LOGGER_FORMAT
-from pinterest.client.config import PINTEREST_USER_AGENT
+from pinterest.config import PINTEREST_ACCESS_TOKEN
+from pinterest.config import PINTEREST_REFRESH_ACCESS_TOKEN
+from pinterest.config import PINTEREST_APP_ID
+from pinterest.config import PINTEREST_APP_SECRET
+from pinterest.config import PINTEREST_API_URI
+from pinterest.config import PINTEREST_DEBUG
+from pinterest.config import PINTEREST_LOG_FILE
+from pinterest.config import PINTEREST_LOGGER_FORMAT
+from pinterest.config import PINTEREST_USER_AGENT
 from pinterest.utils.refresh_access_token import get_new_access_token
 from pinterest.utils.sdk_exceptions import SdkException
 
 __all__ = ['default_sdk_client', 'PinterestSDKClient']
+
+default_sdk_client = None
 
 
 class PinterestSDKClient(ApiClient):
@@ -27,30 +29,98 @@ class PinterestSDKClient(ApiClient):
     Ref: https://openapi-generator.tech
     """
 
-    def __init__(self, configuration=None, header_name=None, header_value=None, cookie=None, pool_threads=1):
-        super().__init__(configuration, header_name, header_value, cookie, pool_threads, PINTEREST_USER_AGENT)
+    def __init__(self, access_token=None, refresh_token=None, app_id=None, app_secret=None, configuration=None,
+                 header_name=None, header_value=None, cookie=None, pool_threads=1):
+        _configuration = None
 
+        if access_token:
+            _configuration = PinterestSDKClient._get_config(access_token)
 
-if not PINTEREST_ACCESS_TOKEN and not PINTEREST_REFRESH_ACCESS_TOKEN:
-    raise SdkException(reason="Environment variables not present. " +
-        "Kindly initialize required variables: [PINTEREST_ACCESS_TOKEN] or " +
-        "[PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]")
+        if (refresh_token and app_id and app_secret) and not access_token:
+            _access_token = PinterestSDKClient._get_access_token(
+                refresh_token,
+                app_id,
+                app_secret
+            )
+            _configuration = PinterestSDKClient._get_config(_access_token)
 
-if not PINTEREST_ACCESS_TOKEN:
-    PINTEREST_ACCESS_TOKEN = get_new_access_token(
-        app_id=PINTEREST_APP_ID,
-        app_secret=PINTEREST_APP_SECRET,
-        refresh_access_token=PINTEREST_REFRESH_ACCESS_TOKEN,
-        host=PINTEREST_API_URI,
-    )
+        if configuration:
+            _configuration = configuration
 
-config = Configuration(
-    access_token=PINTEREST_ACCESS_TOKEN,
-    host=PINTEREST_API_URI,
-)
+        super().__init__(configuration=_configuration,
+                         header_name=header_name,
+                         header_value=header_value,
+                         cookie=cookie,
+                         pool_threads=pool_threads,
+                         user_agent=PINTEREST_USER_AGENT)
 
-config.debug = PINTEREST_DEBUG
-config.logger_file = PINTEREST_LOG_FILE
-config.logger_format = PINTEREST_LOGGER_FORMAT
+    @classmethod
+    def create_client_with_refresh_token(cls, refresh_token: str, app_id: str, app_secret: str):
+        """Get a new SDK client with the given refresh token, app id and app secret."""
+        access_token = cls._get_access_token(refresh_token, app_id, app_secret)
+        return PinterestSDKClient(cls._get_config(access_token))
 
-default_sdk_client = PinterestSDKClient(configuration=config)
+    @classmethod
+    def create_client_with_token(cls, access_token: str):
+        """Get a new SDK client with the given access token."""
+        return PinterestSDKClient(cls._get_config(access_token))
+
+    @classmethod
+    def set_default_client(cls, client):
+        """Replace the default client with the given client."""
+        global default_sdk_client  # pylint: disable=global-statement
+        default_sdk_client = client
+
+    @classmethod
+    def create_default_client(cls):
+        """
+        Returns the default SDK client.
+
+        If client is not explicitly initialized, a new client will be initialized from environment variables.
+        """
+        if not default_sdk_client:
+            cls._init_default_sdk_client_from_env()
+        return default_sdk_client
+
+    @classmethod
+    def _init_default_sdk_client_from_env(cls):
+        """Loads a new SDK client from environment variables."""
+        if not PINTEREST_ACCESS_TOKEN and not PINTEREST_REFRESH_ACCESS_TOKEN:
+            raise SdkException("Environment variables not present. \
+                Kindly initialize required environment variables: [PINTEREST_ACCESS_TOKEN] or \
+                    [PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]")
+
+        access_token = PINTEREST_ACCESS_TOKEN
+        if not access_token:
+            access_token = cls._get_access_token()
+
+        configuration = cls._get_config(access_token)
+
+        global default_sdk_client  # pylint: disable=global-statement
+        default_sdk_client = cls(configuration=configuration)
+
+    @classmethod
+    def _get_access_token(cls, app_id: str = PINTEREST_APP_ID, app_secret: str = PINTEREST_APP_SECRET,
+                          refresh_token: str = PINTEREST_REFRESH_ACCESS_TOKEN, api_uri: str = PINTEREST_API_URI):
+        return get_new_access_token(
+            app_id=app_id,
+            app_secret=app_secret,
+            refresh_access_token=refresh_token,
+            host=api_uri,
+        )
+
+    @classmethod
+    def _get_config(cls, access_token: str,
+                    api_uri: str = PINTEREST_API_URI,
+                    debug: str = PINTEREST_DEBUG,
+                    log_file: str = PINTEREST_LOG_FILE,
+                    logger_format: str = PINTEREST_LOGGER_FORMAT):
+        config = Configuration(
+            access_token=access_token,
+            host=api_uri,
+        )
+
+        config.debug = debug
+        config.logger_file = log_file
+        config.logger_format = logger_format
+        return config

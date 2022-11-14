@@ -55,26 +55,55 @@ You can now use the SDK.
 
 ## Getting Started
 
+For use the client you need set basic variables for that you have two option setup environment variables (using a 
+.env file or set in your OS) or create a config.json.
+
 ### Setting up environment variables
 
-To configure the client using environment variables, you must create a **.env** file using [.env.example](https://github.com/pinterest/pinterest-python-sdk/blob/main/.env.example)
+To configure the client using environment variables, you must create a **.env** file using [.env.example](./pinterest/.env.example)
 as a template. For basic configuration and usage you need to set the following environment variables in the **.env** file:
 
 ```
-PINTEREST_ACCESS_TOKEN='<access token>'
-```
-_or_
-```
 PINTEREST_APP_ID=<app id>
 PINTEREST_APP_SECRET=<app secret>
+
 PINTEREST_REFRESH_ACCESS_TOKEN='<refresh token>'
+**or**
+PINTEREST_ACCESS_TOKEN='<access token>'
 ```
 
-Once you have established the environment variables, the client will be instantiated for you automatically. 
+Once you have established the environment variables, the client will be instantiated for you automatically.
 
 **NOTE**: 
  * Setting the `PINTEREST_ACCESS_TOKEN` (which is valid for thirty days) will require the token value to be replaced when it expires. You will need to manually reinsantiate the client when the **access_token** expires. 
  * Setting the `PINTEREST_REFRESH_ACCESS_TOKEN` (which is valid for a year) will allow the SDK to regenerate the new access token whenever it is required. 
+
+### Setting up config.json
+
+To configure the client using config.json, you must create a **config.json** file using [config.json.example](./pinterest/config.json.example)
+as a template. For basic configuration and usage you need to set the following key in the **config.json** file:
+
+```json
+{
+  "app_id": "<app id>",
+  "app_secret": "<app secret>",
+  "refresh_access_token": "<refresh token>"
+}
+```
+
+**or**
+
+```json
+{
+  "access_token": "<access token>"
+}
+```
+
+Once you have established the keys, the client will be instantiated for you automatically. 
+
+**NOTE**: 
+ * Setting the `access_token` (which is valid for thirty days) will require the token value to be replaced when it expires. You will need to manually reinsantiate the client when the **access_token** expires. 
+ * Setting the `refresh_access_token` (which is valid for a year) will allow the SDK to regenerate the new access token whenever it is required. 
 
 For more information visit the [Authentication](https://developers.pinterest.com/docs/getting-started/authentication/#Refreshing%20an%20access%20token) page.
 

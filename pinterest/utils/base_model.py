@@ -1,8 +1,9 @@
 """
 Pinterest Base Model
 """
-from pinterest.client import default_sdk_client
+from pinterest.client import PinterestSDKClient
 from pinterest.generated.client.exceptions import ApiTypeError
+
 
 class PinterestBaseModel:
     """
@@ -22,7 +23,7 @@ class PinterestBaseModel:
         self._id = _id
         self._client = client
         if self._client is None:
-            self._client = default_sdk_client
+            self._client = PinterestBaseModel._get_client()
         self._generated_api = generated_api(self._client)
         self._generated_api_get_fn = generated_api_get_fn
         self._generated_api_get_fn_args = generated_api_get_fn_args
@@ -77,3 +78,7 @@ class PinterestBaseModel:
                 f"_{field}",
                 attribute_value
             )
+
+    @classmethod
+    def _get_client(cls):
+        return PinterestSDKClient.create_default_client()

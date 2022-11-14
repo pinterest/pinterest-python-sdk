@@ -9,7 +9,6 @@ from pinterest.generated.client.api.ad_accounts_api import AdAccountsApi
 from pinterest.generated.client.model.ad_account import AdAccount as GeneratedAdAccount
 from pinterest.generated.client.model.ad_account_create_request import AdAccountCreateRequest
 
-from pinterest.client import default_sdk_client
 from pinterest.client import PinterestSDKClient
 from pinterest.ads.campaigns import Campaign
 from pinterest.ads.audiences import Audience
@@ -52,7 +51,7 @@ class AdAccount(PinterestBaseModel):
             name:str,
             owner_user_id:str,
             country:str,
-            client:PinterestSDKClient = default_sdk_client,
+            client:PinterestSDKClient = None,
             **kwargs
     ) -> AdAccount:
         """
@@ -77,6 +76,9 @@ class AdAccount(PinterestBaseModel):
         Returns:
             AdAccount: AdAccount Object
         """
+        if not client:
+            client = cls._get_client()
+
         country = Country(country)
         api_response = AdAccountsApi(client).ad_accounts_create(
             ad_account_create_request=AdAccountCreateRequest(

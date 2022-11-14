@@ -15,7 +15,6 @@ from pinterest.generated.client.model.audience_type import AudienceType
 from pinterest.generated.client.model.audience_update_operation_type import AudienceUpdateOperationType
 from pinterest.generated.client.model.objective_type import ObjectiveType
 
-from pinterest.client import default_sdk_client
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.base_model import PinterestBaseModel
@@ -47,7 +46,7 @@ class Audience(PinterestBaseModel):
         rule : dict,
         audience_type : str,
         description : str = None,
-        client: PinterestSDKClient = default_sdk_client,
+        client: PinterestSDKClient = None,
         **kwargs
     ) -> Audience:
         # pylint: disable=too-many-arguments
@@ -102,6 +101,9 @@ class Audience(PinterestBaseModel):
             rule['objective_type'] = ObjectiveType(rule['objective_type'])
         rule = AudienceRule(**rule)
 
+        if not client:
+            client = cls._get_client()
+
         api_response = AudiencesApi(client).audiences_create(
             ad_account_id=str(ad_account_id),
             audience_create_request=AudienceCreateRequest(
@@ -128,7 +130,7 @@ class Audience(PinterestBaseModel):
         page_size: int = None,
         order: str = "ASCENDING",
         bookmark: str = None,
-        client: PinterestSDKClient = default_sdk_client,
+        client: PinterestSDKClient = None,
         **kwargs
     ) -> tuple[list[Audience], str]:
         # pylint: disable=too-many-arguments
@@ -167,6 +169,9 @@ class Audience(PinterestBaseModel):
 
         raw_audience_list = []
         return_bookmark = None
+
+        if not client:
+            client = cls._get_client()
 
         audiences_api = AudiencesApi(api_client=client)
         api_response = audiences_api.audiences_list(

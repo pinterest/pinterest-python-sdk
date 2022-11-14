@@ -1,0 +1,14 @@
+{
+  "debug": "true",
+  "port": "0",
+  "app_id": "<app id>",
+  "app_secret": "<app secret>",
+  "redirect_uri": "localhost",
+  "response_type": "code",
+  "scope": "<scopes>",
+  "state": "dev",
+  "access_token_json_path": "./",
+  "access_token": "<access token>",
+  "refresh_access_token": "<refresh token>",
+  "api_uri": "https://api.pinterest.com/v5"
+}
