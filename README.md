@@ -60,7 +60,7 @@ For use the client you need set basic variables for that you have two option set
 
 ### Setting up environment variables
 
-To configure the client using environment variables, you must create a **.env** file using [.env.example](./pinterest/.env.example)
+To configure the client using environment variables, you must create a **.env** file using [.env.example](.env.example)
 as a template. For basic configuration and usage you need to set the following environment variables in the **.env** file:
 
 ```
@@ -81,7 +81,7 @@ Once you have established the environment variables, the client will be instanti
 
 ### Setting up config.json
 
-To configure the client using config.json, you must create a **config.json** file using [config.json.example](./pinterest/config.json.example)
+To configure the client using config.json, you must create a **config.json** file using [config.json.example](config.json.example)
 as a template. For basic configuration and usage you need to set the following key in the **config.json** file:
 
 ```json
