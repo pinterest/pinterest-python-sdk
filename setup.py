@@ -29,7 +29,7 @@ setup(
     version=__version__,
     author="Pinterest, Inc.",
     author_email="sdk@pinterest.com",
-    url="https://github.com/pinternal/pinterest-python-sdk",
+    url="https://github.com/pinterest/pinterest-python-sdk",
     install_requires=REQUIRES,
     include_package_data=True,
     packages=find_namespace_packages(
