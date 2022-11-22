@@ -57,13 +57,25 @@ class PinterestSDKClient(ApiClient):
     @classmethod
     def create_client_with_refresh_token(cls, refresh_token: str, app_id: str, app_secret: str):
         """Get a new SDK client with the given refresh token, app id and app secret."""
-        access_token = cls._get_access_token(refresh_token, app_id, app_secret)
-        return PinterestSDKClient(configuration=cls._get_config(access_token))
+        access_token = cls._get_access_token(
+            refresh_token=refresh_token,
+            app_id=app_id,
+            app_secret=app_secret
+        )
+        return PinterestSDKClient(
+            configuration=cls._get_config(
+                access_token=access_token
+            )
+        )
 
     @classmethod
     def create_client_with_token(cls, access_token: str):
         """Get a new SDK client with the given access token."""
-        return PinterestSDKClient(configuration=cls._get_config(access_token))
+        return PinterestSDKClient(
+            configuration=cls._get_config(
+                access_token=access_token
+            )
+        )
 
     @classmethod
     def set_default_client(cls, client):
