@@ -3,7 +3,7 @@ install:
 	pip install -r requirements.txt
 
 install_dev:
-	@echo pip install
+	@echo pip install dev
 	pip install -r dev-requirements.txt
 
 unit_tests:
