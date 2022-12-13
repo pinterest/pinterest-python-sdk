@@ -10,7 +10,7 @@ The Pinterest SDK currently offers a Python library that supports campaign manag
   * a registered application (see below)
   * an access token (see below)
 
-### Register an App
+### Register an Ap
 
 In order to use the SDK, you must have registered an app on [developers.pinterest.com](https://developers.pinterest.com)
 
