@@ -1,3 +1,15 @@
+install:
+	@echo pip install
+	pip install -r requirements.txt
+
+install_dev:
+	@echo pip install dev
+	pip install -r dev-requirements.txt
+
+unit_tests:
+	@echo unit test...
+	python -m pytest ./tests/src
+
 clean: clean-build clean-pyc ## Clean
 
 clean-build:				## Clean python build

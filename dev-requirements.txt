@@ -1,0 +1,13 @@
+-r requirements.txt
+
+pytest==7.1.2
+requests-mock~=1.8.0
+black==22.3.0
+flake8==3.8.4
+isort==5.6.4
+pylint==2.15.0
+pytest-cov
+sphinx==5.2.3
+sphinx-rtd-theme==1.0.0
+sphinx_markdown_builder==0.5.5
+parameterized==0.8.1
