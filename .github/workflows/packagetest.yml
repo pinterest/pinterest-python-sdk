@@ -25,4 +25,4 @@ jobs:
           PINTEREST_DEFAULT_AD_ACCOUNT_ID: ${{ secrets.CI_DEFAULT_AD_ACCOUNT_ID }}
         run: |
           python -m pip install --upgrade pip
-          make test_package
+          make package_test
