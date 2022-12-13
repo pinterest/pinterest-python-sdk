@@ -5,7 +5,7 @@ on: [pull_request]
 jobs:
   build:
     environment: integ
-    runs-on: default
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.8"]
