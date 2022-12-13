@@ -3,6 +3,7 @@ High level module class for Audience object
 """
 from __future__ import annotations
 
+from pinterest.generated.client.model.audience_type import AudienceType
 
 from pinterest.generated.client.api.audiences_api import AudiencesApi
 
@@ -11,13 +12,12 @@ from pinterest.generated.client.model.audience_update_request import AudienceUpd
 
 from pinterest.generated.client.model.audience import Audience as GeneratedAudience
 from pinterest.generated.client.model.audience_rule import AudienceRule
-from pinterest.generated.client.model.audience_type import AudienceType
 from pinterest.generated.client.model.audience_update_operation_type import AudienceUpdateOperationType
 from pinterest.generated.client.model.objective_type import ObjectiveType
 
 from pinterest.client import PinterestSDKClient
-from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.base_model import PinterestBaseModel
+from pinterest.utils.bookmark import Bookmark
 
 
 class Audience(PinterestBaseModel):
@@ -26,6 +26,17 @@ class Audience(PinterestBaseModel):
     High level model class to manage audiences for an AdAccount
     """
     def __init__(self, ad_account_id, audience_id, client=None, **kwargs):
+        self._ad_account_id = None
+        self._id = None
+        self._name = None
+        self._audience_type = None
+        self._description = None
+        self._rule = None
+        self._size = None
+        self._status = None
+        self._type = None
+        self._created_timestamp = None
+        self._updated_timestamp = None
         PinterestBaseModel.__init__(
             self,
             _id=str(audience_id),
@@ -37,6 +48,61 @@ class Audience(PinterestBaseModel):
             )
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
+
+    @property
+    def ad_account_id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._ad_account_id
+
+    @property
+    def id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._id
+
+    @property
+    def name(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._name
+
+    @property
+    def audience_type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._audience_type
+
+    @property
+    def description(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._description
+
+    @property
+    def rule(self) -> AudienceRule:
+        # pylint: disable=missing-function-docstring
+        return self._rule
+
+    @property
+    def size(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._size
+
+    @property
+    def status(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._status
+
+    @property
+    def type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._type
+
+    @property
+    def created_timestamp(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._created_timestamp
+
+    @property
+    def updated_timestamp(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._updated_timestamp
 
     @classmethod
     def create(
@@ -92,35 +158,34 @@ class Audience(PinterestBaseModel):
         Returns:
             Audience: Audience Object
         """
-
         AudienceType(audience_type)
-
-        if not 'ad_account_id' in rule:
+        if 'ad_account_id' not in rule:
             rule['ad_account_id'] = ad_account_id
         if 'objective_type' in rule:
             rule['objective_type'] = ObjectiveType(rule['objective_type'])
         rule = AudienceRule(**rule)
 
-        if not client:
-            client = cls._get_client()
-
-        api_response = AudiencesApi(client).audiences_create(
-            ad_account_id=str(ad_account_id),
-            audience_create_request=AudienceCreateRequest(
-                ad_account_id = str(ad_account_id),
-                name = name,
-                rule = rule,
-                audience_type = audience_type,
-                description = description if description else '',
-                **kwargs
+        response = cls._create(
+            params={
+                "ad_account_id": str(ad_account_id),
+                "audience_create_request": AudienceCreateRequest(
+                    ad_account_id=str(ad_account_id),
+                    name=name,
+                    rule=rule,
+                    audience_type=audience_type,
+                    description=description if description else '',
+                    **kwargs
                 ),
-            )
+            },
+            api=AudiencesApi,
+            create_fn=AudiencesApi.audiences_create
+        )
 
-        return Audience(
-            ad_account_id=api_response.ad_account_id,
-            audience_id=api_response.id,
-            client=client
-            )
+        return cls(
+            ad_account_id=response.ad_account_id,
+            audience_id=response.id,
+            client=cls._get_client(client)
+        )
 
     @classmethod
     def get_all(
@@ -132,7 +197,7 @@ class Audience(PinterestBaseModel):
         bookmark: str = None,
         client: PinterestSDKClient = None,
         **kwargs
-    ) -> tuple[list[Audience], str]:
+    ) -> tuple[list[Audience], Bookmark]:
         # pylint: disable=too-many-arguments
         # pylint: disable=duplicate-code
         """
@@ -155,47 +220,34 @@ class Audience(PinterestBaseModel):
             Any valid keyword arguments or query parameters for endpoint.
 
         Returns:
-            campaign_list (list[Audience]): List of Audience Objects
-            bookmark (str): Bookmark for pagination if present, else None.
+            list[Audience]: List of Audience Objects
+            Bookmark: Bookmark for pagination if present, else None.
         """
+
+        params = {"ad_account_id": ad_account_id}
+
         if entity_statuses:
-            kwargs['entity_statuses'] = entity_statuses
-        if page_size:
-            kwargs['page_size'] = page_size
-        if order:
-            kwargs['order'] = order
-        if bookmark:
-            kwargs['bookmark'] = bookmark
+            kwargs["entity_statuses"] = entity_statuses
 
-        raw_audience_list = []
-        return_bookmark = None
-
-        if not client:
-            client = cls._get_client()
-
-        audiences_api = AudiencesApi(api_client=client)
-        api_response = audiences_api.audiences_list(
-            ad_account_id=ad_account_id,
-            **kwargs
-            )
-        verify_api_response(api_response)
-
-        raw_audience_list += api_response.get('items')
-        return_bookmark = api_response.get('bookmark')
-
-        if len(raw_audience_list) == 0:
-            return None, None
-
-        audience_list = [
-            Audience(
+        def _map_function(obj):
+            return Audience(
                 ad_account_id=ad_account_id,
-                audience_id=audience.get('id'),
+                audience_id=obj.get('id'),
                 client=client,
-                _model_data=audience
-                )
-            for audience in raw_audience_list
-            ]
-        return audience_list, return_bookmark
+                _model_data=obj
+            )
+
+        return cls._list(
+            params=params,
+            page_size=page_size,
+            order=order,
+            bookmark=bookmark,
+            api=AudiencesApi,
+            list_fn=AudiencesApi.audiences_list,
+            map_fn=_map_function,
+            client=client,
+            **kwargs
+        )
 
     def update_fields(self, **kwargs):
         """
@@ -204,23 +256,19 @@ class Audience(PinterestBaseModel):
         Keyword Args:
             Any valid audience fields with valid values
         """
-        UPDATE_OPERATION_TYPE = AudienceUpdateOperationType("UPDATE") # DO NOT EDIT
-        api_response = self._generated_api.audiences_update(
-            ad_account_id=self._ad_account_id,
-            audience_id=self._id,
-            audience_update_request=AudienceUpdateRequest(
-                ad_account_id=self._ad_account_id,
-                operation_type=UPDATE_OPERATION_TYPE,
-                **kwargs
-            )
+        # DO NOT EDIT
+        UPDATE_OPERATION_TYPE = AudienceUpdateOperationType("UPDATE")
+        return self._update(
+            params={
+                "ad_account_id": self._ad_account_id,
+                "audience_id": self._id,
+                "audience_update_request": AudienceUpdateRequest(
+                    ad_account_id=self._ad_account_id,
+                    operation_type=UPDATE_OPERATION_TYPE,
+                    **kwargs
+                )
+            },
+            api=AudiencesApi,
+            update_fn=AudiencesApi.audiences_update,
+            **kwargs
         )
-
-        assert isinstance(api_response, GeneratedAudience)
-        self._populate_fields()
-
-        for arg, value in kwargs.items():
-            if getattr(self, f'_{arg}') != value:
-                raise AssertionError(f"Expected {arg} is {value}"
-                + f" Actual value is {getattr(self, f'_{arg}')}")
-
-        return True

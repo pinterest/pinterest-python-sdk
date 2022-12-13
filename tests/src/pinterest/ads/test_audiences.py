@@ -54,6 +54,7 @@ class TestAudience(TestCase):
         """
         Test if a Audience model/object is created successfully with correct information
         """
+        audiences_create_mock.__name__ = "audiences_create"
         audiences_create_mock.return_value = GeneratedAudience(
             ad_account_id=self.test_ad_account_id,
             id=self.test_audience_id,
@@ -94,6 +95,8 @@ class TestAudience(TestCase):
         """
         Test if a given audience is updated successfully with passed in keyword arguments
         """
+        audiences_update_mock.__name__ = "audiences_update"
+
         old_name, new_name = "Test Old Audience Name", "Test New Audience Name"
         old_audience_type, new_audience_type = "VISITOR", "ENGAGEMENT"
 
@@ -145,6 +148,8 @@ class TestAudience(TestCase):
         """
         Test class method returns all Audiences in a given ad_account in a list
         """
+        audiences_list_mock.__name__ = "audiences_list"
+        audiences_get_mock.__name__ = "audiences_get"
         audiences_list_mock.return_value = {
             "items": [
                 {

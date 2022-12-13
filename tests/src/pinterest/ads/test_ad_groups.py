@@ -55,6 +55,7 @@ class TestAdGroup(TestCase):
         Test if a AdGroup model/object is created successfully with correct account_id and
         new campaign information
         """
+        ad_group_create_mock.__name__ = 'ad_groups_create'
         ad_group_create_mock.return_value = AdGroupArrayResponse(
             items=[
                 AdGroupArrayResponseElement(
@@ -97,7 +98,7 @@ class TestAdGroup(TestCase):
         """
         Test if AdGroup model can be updated successfully
         """
-
+        update_mock.__name__ = "ad_groups_update"
         new_name = "SDK_AD_GROUP_NEW_NAME"
         new_spec = {
                 "GENDER": ["MALE"]
@@ -144,6 +145,8 @@ class TestAdGroup(TestCase):
         """
         Test if AdGroup's function get_all can be used successfully
         """
+        list_mock.__name__ = "ad_groups_list"
+        get_mock.__name__ = "ad_groups_get"
         list_mock.return_value = {
             "items": [
                 {
@@ -214,7 +217,7 @@ class TestAdGroup(TestCase):
         get_mock.assert_not_called()
 
         assert ad_groups
-        assert bookmark == "test_book_mark"
+        assert bookmark.get_bookmark_token() == "test_book_mark"
         assert getattr(ad_groups[0], "_id") == "2680060704746"
 
     @patch('pinterest.ads.ads.AdsApi.ads_get')
@@ -224,6 +227,10 @@ class TestAdGroup(TestCase):
         """
         Test if Ad Group can return all Ads
         """
+        ad_group_get_mock.__name__ = "ads_get"
+        ad_list_mock.__name__ = "ads_list"
+        ad_get_mock.__name__ = "ad_groups_get"
+
         ad_group_get_mock.return_value = AdGroupResponse(
             id=self.test_ad_group_id,
             ad_account_id=self.test_ad_account_id,
@@ -313,6 +320,6 @@ class TestAdGroup(TestCase):
 
         assert ad_group
         assert ads
-        assert bookmark == "test_bookmark"
+        assert bookmark.get_bookmark_token() == "test_bookmark"
         assert isinstance(ads[0], Ad)
         assert getattr(ads[0], "_id") == "687195134316"

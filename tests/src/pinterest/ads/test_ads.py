@@ -48,6 +48,7 @@ class TestAd(TestCase):
         """
         Test if Ad model can be created
         """
+        ads_create_mock.__name__ = "ads_create"
         ads_create_mock.return_value = AdArrayResponse(
             items=[
                 AdArrayResponseElement(
@@ -89,6 +90,9 @@ class TestAd(TestCase):
         """
         Test if function get_all in Ad Model can be used successfully
         """
+        list_mock.__name__ = 'ads_list'
+        get_mock.__name__ = 'ads_get'
+
         list_mock.return_value = {
             "items": [
                 {
@@ -163,7 +167,8 @@ class TestAd(TestCase):
         get_mock.assert_not_called()
 
         assert ads
-        assert bookmark == "test_bookmark"
+        assert bookmark.get_bookmark_token() == "test_bookmark"
+        print(ads[0])
         assert getattr(ads[0], "_id") == "687195134316"
 
     @patch('pinterest.ads.ads.AdsApi.ads_update')
@@ -172,6 +177,7 @@ class TestAd(TestCase):
         """
         Test if Ad model can be updated successfully
         """
+        update_mock.__name__ = "ads_update"
 
         new_name = "NEW_AD_NAME"
         new_status = "PAUSED"

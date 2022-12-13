@@ -52,6 +52,7 @@ class TestCustomerList(TestCase):
         """
         Test if a CustomerList model/object is created successfully with correct information
         """
+        customer_lists_create_mock.__name__ = "customer_lists_create"
         customer_lists_create_mock.return_value = GeneratedCustomerList(
             ad_account_id=self.test_ad_account_id,
             id=self.test_customer_list_id,
@@ -81,6 +82,7 @@ class TestCustomerList(TestCase):
         """
         Test if a CustomerList model/object is created successfully with correct customer_list_id
         """
+        customer_lists_update_mock.__name__ = "customer_lists_get"
 
         old_batch, new_batch = 1.0, 2.0
         old_remove_counter, new_remove_counter = 0.0, 1.0
@@ -131,6 +133,8 @@ class TestCustomerList(TestCase):
         """
         Test if customer list is updated successfully with passed in kwargs
         """
+        get_mock.__name__ = "customer_lists_get"
+        list_mock.__name__ = "customer_lists_list"
         list_mock.return_value = {
             "items": [
                 {
@@ -158,15 +162,17 @@ class TestCustomerList(TestCase):
         get_mock.assert_not_called()
 
         assert customer_lists
-        assert bookmark == "test_bookmark"
+        assert bookmark.get_bookmark_token() == "test_bookmark"
         assert getattr(customer_lists[0], "_id") == "643"
 
-    @patch('pinterest.ads.customer_lists.CustomerListsApi.customer_lists_update')
     @patch('pinterest.ads.customer_lists.CustomerListsApi.customer_lists_get')
+    @patch('pinterest.ads.customer_lists.CustomerListsApi.customer_lists_update')
     def test_add_record_customer_list(self, customer_lists_get_mock, customer_lists_update_mock):
         """
         Test add record customer list
         """
+        customer_lists_update_mock.__name__ = "customer_lists_update"
+        customer_lists_get_mock.__name__ = "customer_lists_get"
 
         customer_lists_get_mock.return_value = GeneratedCustomerList(
             ad_account_id=self.test_ad_account_id,
@@ -205,6 +211,8 @@ class TestCustomerList(TestCase):
         """
         Test remove record customer list
         """
+        customer_lists_update_mock.__name__ = "customer_lists_update"
+        customer_lists_get_mock.__name__ = "customer_lists_get"
 
         customer_lists_get_mock.return_value = GeneratedCustomerList(
             ad_account_id=self.test_ad_account_id,

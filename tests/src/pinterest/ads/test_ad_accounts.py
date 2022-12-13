@@ -34,6 +34,7 @@ class TestAdAccount(TestCase):
         """
         Test if a AdAccount model/object is created successfully with correct account_id
         """
+        ad_accounts_get_mock.__name__ = "ad_accounts_get"
 
         ad_accounts_get_mock.return_value = GeneratedAdAccount(
             id=self.test_ad_account_id,
@@ -56,6 +57,9 @@ class TestAdAccount(TestCase):
         """
         Test if a Ad Account model/object is created successfully with correct information
         """
+        ad_accounts_get_mock.__name__ = "ad_accounts_create"
+        ad_accounts_create_mock.__name__ = "ad_accounts_get"
+
         ad_accounts_create_mock.return_value = GeneratedAdAccount(
             id=self.test_ad_account_id,
             name="Test Ad Account",
@@ -83,6 +87,10 @@ class TestAdAccount(TestCase):
         """
         Test if a given Ad Acocunt returns all its Campaigns in a list
         """
+        ad_accounts_get_mock.__name__ = "campaigns_get"
+        campaigns_list_mock.__name__ = "campaigns_list"
+        campaigns_get_mock.__name__ = "ad_accounts_get"
+
         ad_accounts_get_mock.return_value = GeneratedAdAccount(
             id=self.test_ad_account_id,
             name="Test Ad Account",
@@ -116,7 +124,7 @@ class TestAdAccount(TestCase):
 
         assert ad_account
         assert campaign_list
-        assert bookmark == "test_bookmark_string"
+        assert bookmark.get_bookmark_token() == "test_bookmark_string"
         assert isinstance(campaign_list[0], Campaign)
         assert campaign_list[0].get_daily_budget() == 100000
 
@@ -127,6 +135,11 @@ class TestAdAccount(TestCase):
         """
         Test if a given Ad Acocunt returns all its Audiences in a list
         """
+
+        ad_accounts_get_mock.__name__ = "audiences_get"
+        audiences_list_mock.__name__ = "audiences_list"
+        audiences_get_mock.__name__ = "ad_accounts_get"
+
         ad_accounts_get_mock.return_value = GeneratedAdAccount(
             id=self.test_ad_account_id,
             name="Test Ad Account",
@@ -167,6 +180,9 @@ class TestAdAccount(TestCase):
         """
         Test if given Ad Account can return its Customer List
         """
+
+        customer_list_list_mock.__name__ = "customer_lists_list"
+
         ad_account_get_mock.return_value = GeneratedAdAccount(
             id=self.test_ad_account_id,
             name="Test Ad Account",
@@ -206,10 +222,10 @@ class TestAdAccount(TestCase):
             )
 
         ad_account = AdAccount(ad_account_id=self.test_ad_account_id)
-        customer_lists, bookmark = ad_account.list_customer_lists()
+        customer_lists, bookmark = ad_account.list_customer_lists(page_size=1)
 
         assert ad_account
         assert customer_lists
-        assert bookmark == "test_bookmark"
+        assert bookmark.get_bookmark_token() == "test_bookmark"
         assert isinstance(customer_lists[0], CustomerList)
         assert getattr(customer_lists[0], "_name") == "Test Customer List"
