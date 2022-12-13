@@ -10,6 +10,9 @@ unit_tests:
 	@echo unit test...
 	python -m pytest ./tests/src
 
+package_test:
+	./package_test/run.sh
+
 clean: clean-build clean-pyc ## Clean
 
 clean-build:				## Clean python build
