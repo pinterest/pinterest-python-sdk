@@ -1,8 +1,8 @@
-pip:
+install:
 	@echo pip install
 	pip install -r requirements.txt
 
-pip_dev:
+install_dev:
 	@echo pip install
 	pip install -r dev-requirements.txt
 
