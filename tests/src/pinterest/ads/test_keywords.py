@@ -28,6 +28,7 @@ class TestKeyword(TestCase):
         '''
         Test if Keyword model/object is created successfully with correct account_id, keyword_id
         '''
+        keyword_get_mock.__name__ = "keywords_get"
         keyword_get_mock.return_value = Paginated(
                 items=[
                         {
@@ -63,6 +64,7 @@ class TestKeyword(TestCase):
         """
         Test if a Keyword model/object is created successfully with correct account_id and keyword
         """
+        keyword_create_mock.__name__ = "keywords_create"
         keyword_get_mock.return_value = Paginated(
                 items=[
                         {
@@ -114,6 +116,8 @@ class TestKeyword(TestCase):
         """
         Test if Keyword Model can be updated
         """
+        get_mock.__name__ = "keywords_get"
+        update_mock.__name__ = "keywords_update"
         new_bid = 10
 
         get_mock.return_value = Paginated(

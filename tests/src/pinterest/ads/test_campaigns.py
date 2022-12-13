@@ -57,6 +57,7 @@ class TestCampaign(TestCase):
         Test if a Campaign model/object is created successfully with correct account_id and
         new campaign information
         """
+        campaigns_create_mock.__name__ = "campaigns_create"
         campaigns_create_mock.return_value = CampaignCreateResponse(
             items=[
                 CampaignCreateResponseItem(
@@ -328,6 +329,8 @@ class TestCampaign(TestCase):
         """
         Test if a given Campaigns returns all Campaigns in a given ad_account in a list
         """
+        campaigns_list_mock.__name__ = "campaigns_list"
+        campaigns_get_mock.__name__ = "campaigns_get"
         campaigns_list_mock.return_value = {
             "items": [
                 {
@@ -350,6 +353,6 @@ class TestCampaign(TestCase):
         campaigns_get_mock.assert_not_called()
 
         assert campaign_list
-        assert bookmark == "test_bookmark_string"
+        assert bookmark.get_bookmark_token() == "test_bookmark_string"
         assert isinstance(campaign_list[0], Campaign)
         assert campaign_list[0].get_daily_budget() == 100000

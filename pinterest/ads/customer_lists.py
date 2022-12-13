@@ -3,17 +3,17 @@ High level module class for Customer List object
 """
 from __future__ import annotations
 
+from pinterest.generated.client.model.user_list_type import UserListType
 
 from pinterest.generated.client.api.customer_lists_api import CustomerListsApi
 
-from pinterest.generated.client.model.user_list_type import UserListType
 from pinterest.generated.client.model.customer_list_request import CustomerListRequest
 from pinterest.generated.client.model.customer_list import CustomerList as GeneratedCustomerList
 from pinterest.generated.client.model.customer_list_update_request import CustomerListUpdateRequest
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
-from pinterest.utils.error_handling import verify_api_response
+from pinterest.utils.bookmark import Bookmark
 
 
 class CustomerList(PinterestBaseModel):
@@ -22,6 +22,19 @@ class CustomerList(PinterestBaseModel):
     High level model class to manage customer_lists for an CustomerList
     """
     def __init__(self, ad_account_id, customer_list_id, client=None, **kwargs):
+
+        self._ad_account_id = None
+        self._created_time = None
+        self._id = None
+        self._name = None
+        self._num_batches = None
+        self._num_removed_user_records = None
+        self._num_uploaded_user_records = None
+        self._status = None
+        self._type = None
+        self._updated_time = None
+        self._exceptions = None
+
         PinterestBaseModel.__init__(
             self,
             _id=str(customer_list_id),
@@ -34,6 +47,62 @@ class CustomerList(PinterestBaseModel):
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
 
+    @property
+    def ad_account_id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._ad_account_id
+
+    @property
+    def created_time(self) -> float:
+        # pylint: disable=missing-function-docstring
+        return self._created_time
+
+    @property
+    def id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._id
+
+    @property
+    def name(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._name
+
+    @property
+    def num_batches(self) -> float:
+        # pylint: disable=missing-function-docstring
+        return self._num_batches
+
+    @property
+    def num_removed_user_records(self) -> float:
+        # pylint: disable=missing-function-docstring
+        return self._num_removed_user_records
+
+    @property
+    def num_uploaded_user_records(self) -> float:
+        # pylint: disable=missing-function-docstring
+        return self._num_uploaded_user_records
+
+    @property
+    def status(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._status
+
+    @property
+    def type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._type
+
+    @property
+    def updated_time(self) -> float:
+        # pylint: disable=missing-function-docstring
+        return self._updated_time
+
+    @property
+    def exceptions(self) -> dict:
+        # pylint: disable=missing-function-docstring
+        return self._exceptions
+
+
     @classmethod
     def create(
         cls,
@@ -44,7 +113,7 @@ class CustomerList(PinterestBaseModel):
         client: PinterestSDKClient = None,
         **kwargs
     ):
-        # pylint: disable=too-many-arguments
+        # pylint: disable=too-many-arguments,line-too-long,duplicate-code
         """
         Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).
 
@@ -75,29 +144,29 @@ class CustomerList(PinterestBaseModel):
 
         Returns:
             CustomerList: CustomerList object
-        """# pylint: disable=line-too-long
-
+        """
         UserListType(list_type)
 
-        if not client:
-            client = cls._get_client()
+        response = cls._create(
+            params={
+                "ad_account_id": str(ad_account_id),
+                "customer_list_request": CustomerListRequest(
+                    ad_account_id=str(ad_account_id),
+                    name=name,
+                    records=records,
+                    list_type=list_type,
+                    **kwargs
+                )
+            },
+            api=CustomerListsApi,
+            create_fn=CustomerListsApi.customer_lists_create,
+        )
 
-        api_response = CustomerListsApi(client).customer_lists_create(
-            ad_account_id=str(ad_account_id),
-            customer_list_request=CustomerListRequest(
-                ad_account_id = str(ad_account_id),
-                name = name,
-                records = records,
-                list_type = list_type,
-                **kwargs
-                ),
-            )
-
-        return CustomerList(
-            ad_account_id=api_response.ad_account_id,
-            customer_list_id=api_response.id,
-            client=client
-            )
+        return cls(
+            ad_account_id=response.ad_account_id,
+            customer_list_id=response.id,
+            client=cls._get_client(client)
+        )
 
     def update_fields(self, **kwargs):
         """
@@ -106,6 +175,7 @@ class CustomerList(PinterestBaseModel):
         Keywords Args:
             Any valid customer list field with valid value
         """
+        # TODO(dfana@): replace this method logic with PinterestBaseModel._update, right now is not supported this logic
         api_response = self._generated_api.customer_lists_update(
             ad_account_id=self._ad_account_id,
             customer_list_id=self._id,
@@ -128,8 +198,8 @@ class CustomerList(PinterestBaseModel):
         bookmark: str = None,
         client: PinterestSDKClient = None,
         **kwargs
-    ) -> tuple[list[CustomerList], str]:
-        # pylint: disable=too-many-arguments
+    ) -> tuple[list[CustomerList], Bookmark]:
+        # pylint: disable=too-many-arguments,duplicate-code
         # pylint: disable=fixme
         """
         Get a list of the customer lists in the AdAccount, filtered by the specified arguments
@@ -148,45 +218,29 @@ class CustomerList(PinterestBaseModel):
 
         Returns:
             list[CustomerList]: List of CustomerList Objects
-            str: Bookmark for pagination if present, else None.
+            Bookmark: Bookmark for pagination if present, else None.
         """
-        if page_size:
-            kwargs["page_size"] = page_size
-        if order:
-            kwargs["order"] = order
-        if bookmark:
-            kwargs["bookmark"] = bookmark
+        params = {"ad_account_id": ad_account_id}
 
-        raw_customer_lists = []
-        return_bookmark = None
+        def _map_function(obj):
+            return CustomerList(
+                ad_account_id=ad_account_id,
+                customer_list_id=obj.get("id"),
+                client=client,
+                _model_data=obj,
+            )
 
-        if not client:
-            client = cls._get_client()
-
-        customer_list_api = CustomerListsApi(api_client=client)
-        api_response = customer_list_api.customer_lists_list(
-            ad_account_id=ad_account_id,
+        return cls._list(
+            params=params,
+            page_size=page_size,
+            order=order,
+            bookmark=bookmark,
+            api=CustomerListsApi,
+            list_fn=CustomerListsApi.customer_lists_list,
+            map_fn=_map_function,
+            client=client,
             **kwargs
         )
-        verify_api_response(api_response)
-
-        raw_customer_lists += api_response.get("items")
-        return_bookmark = api_response.get("bookmark")
-
-        if len(raw_customer_lists) == 0:
-            return None, None
-
-        customer_lists = [
-            CustomerList(
-                ad_account_id=ad_account_id,
-                customer_list_id=customer_list.get("id"),
-                client=client,
-                _model_data=customer_list,
-            )
-            for customer_list in raw_customer_lists
-        ]
-
-        return customer_lists, return_bookmark
 
     def add_record(self, record):
         """

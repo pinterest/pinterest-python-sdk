@@ -4,6 +4,8 @@ AdAccount Class for Pinterest Python SDK
 from __future__ import annotations
 
 from pinterest.generated.client.model.country import Country
+from pinterest.generated.client.model.ad_account_owner import AdAccountOwner
+from pinterest.generated.client.model.currency import Currency
 
 from pinterest.generated.client.api.ad_accounts_api import AdAccountsApi
 from pinterest.generated.client.model.ad_account import AdAccount as GeneratedAdAccount
@@ -14,6 +16,7 @@ from pinterest.ads.campaigns import Campaign
 from pinterest.ads.audiences import Audience
 from pinterest.ads.customer_lists import CustomerList
 from pinterest.utils.base_model import PinterestBaseModel
+from pinterest.utils.bookmark import Bookmark
 
 
 class AdAccount(PinterestBaseModel):
@@ -34,6 +37,14 @@ class AdAccount(PinterestBaseModel):
             ad_account_id (str): Unique identifier of an ad account.
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Defaults to `default_api_client`.
         """
+
+        self._id = None
+        self._name = None
+        self._owner = None
+        self._country = None
+        self._currency = None
+        self._permissions = None
+
         PinterestBaseModel.__init__(
             self,
             _id=str(ad_account_id),
@@ -44,6 +55,36 @@ class AdAccount(PinterestBaseModel):
             client=client,
         )
         self._populate_fields(**kwargs)
+
+    @property
+    def id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._id
+
+    @property
+    def name(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._name
+
+    @property
+    def owner(self) -> AdAccountOwner:
+        # pylint: disable=missing-function-docstring
+        return self._owner
+
+    @property
+    def country(self) -> Country:
+        # pylint: disable=missing-function-docstring
+        return self._country
+
+    @property
+    def currency(self) -> Currency:
+        # pylint: disable=missing-function-docstring
+        return self._currency
+
+    @property
+    def permissions(self) -> list[str]:
+        # pylint: disable=missing-function-docstring
+        return self._permissions
 
     @classmethod
     def create(
@@ -76,19 +117,19 @@ class AdAccount(PinterestBaseModel):
         Returns:
             AdAccount: AdAccount Object
         """
-        if not client:
-            client = cls._get_client()
-
-        country = Country(country)
-        api_response = AdAccountsApi(client).ad_accounts_create(
-            ad_account_create_request=AdAccountCreateRequest(
-                country=country,
-                name=name,
-                owner_user_id=owner_user_id,
-                **kwargs
-            ))
-
-        return AdAccount(ad_account_id=api_response.id, client=client)
+        response = cls._create(
+            params={
+                "ad_account_create_request": AdAccountCreateRequest(
+                    country=Country(country),
+                    name=name,
+                    owner_user_id=owner_user_id,
+                    **kwargs
+                )
+            },
+            api=AdAccountsApi,
+            create_fn=AdAccountsApi.ad_accounts_create,
+        )
+        return cls(ad_account_id=response.id, client=cls._get_client(client))
 
     def list_campaigns(
             self,
@@ -98,7 +139,7 @@ class AdAccount(PinterestBaseModel):
             order:str = "ASCENDING",
             bookmark:str = None,
             **kwargs
-    ) -> tuple[list[Campaign], str]:
+    ) -> tuple[list[Campaign], Bookmark]:
         # pylint: disable=too-many-arguments
         """
         Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options.
@@ -124,7 +165,7 @@ class AdAccount(PinterestBaseModel):
 
         Returns:
             list[Campaign]: List of Campaign Objects
-            str: Bookmark for pagination if present, else None.
+            Bookmark: Bookmark for pagination if present, else None.
         """
         return Campaign.get_all(
             client=self._client,
@@ -144,7 +185,7 @@ class AdAccount(PinterestBaseModel):
         order:str = "ASCENDING",
         bookmark:str = None,
         **kwargs
-    ) -> tuple[list[Audience], str]:
+    ) -> tuple[list[Audience], Bookmark]:
         # pylint: disable=too-many-arguments
         """
         Get a list of the audiences in the AdAccount, filtered by the specified arguments
@@ -162,7 +203,7 @@ class AdAccount(PinterestBaseModel):
 
         Returns:
             list[Audience]: List of Audience Objects
-            str: Bookmark for pagination if present, else None.
+            Bookmark: Bookmark for pagination if present, else None.
         """
         return Audience.get_all(
             client=self._client,
@@ -180,7 +221,7 @@ class AdAccount(PinterestBaseModel):
         order: str = None,
         bookmark: str = None,
         **kwargs
-    ) -> tuple[list[CustomerList], str]:
+    ) -> tuple[list[CustomerList], Bookmark]:
         # pylint: disable=too-many-arguments
         """
         Get a list of customer lists in the AdAccount, filtered by the specified arguments
@@ -196,7 +237,7 @@ class AdAccount(PinterestBaseModel):
 
         Returns:
             list[CustomerList]: List of Audience Objects
-            str: Bookmark for pagination if present, else None.
+            Bookmark: Bookmark for pagination if present, else None.
         """
         return CustomerList.get_all(
             ad_account_id=self._id,

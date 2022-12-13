@@ -15,6 +15,7 @@ from pinterest.ads.ad_groups import AdGroup
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.base_model import PinterestBaseModel
+from pinterest.utils.bookmark import Bookmark
 
 
 class Campaign(PinterestBaseModel):
@@ -38,6 +39,23 @@ class Campaign(PinterestBaseModel):
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Uses the default client, if not provided.
         """
 
+        self._id = None
+        self._ad_account_id = None
+        self._name = None
+        self._status = None
+        self._lifetime_spend_cap = None
+        self._daily_spend_cap = None
+        self._order_line_id = None
+        self._tracking_urls = None
+        self._start_time = None
+        self._end_time = None
+        self._objective_type = None
+        self._created_time = None
+        self._updated_time = None
+        self._type = None
+        self._is_flexible_daily_budgets = None
+        self._is_campaign_budget_optimization = None
+
         PinterestBaseModel.__init__(
             self,
             _id=str(campaign_id),
@@ -49,6 +67,87 @@ class Campaign(PinterestBaseModel):
             )
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
+
+    @property
+    def id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._id
+
+    @property
+    def ad_account_id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._ad_account_id
+
+    @property
+    def name(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._name
+
+    @property
+    def status(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._status
+
+    @property
+    def lifetime_spend_cap(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._lifetime_spend_cap
+
+    @property
+    def daily_spend_cap(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._daily_spend_cap
+
+    @property
+    def order_line_id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._order_line_id
+
+    @property
+    def tracking_urls(self) -> dict:
+        # pylint: disable=missing-function-docstring
+        return self._tracking_urls
+
+    @property
+    def start_time(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._start_time
+
+    @property
+    def end_time(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._end_time
+
+    @property
+    def objective_type(self) -> ObjectiveType:
+        # pylint: disable=missing-function-docstring
+        return self._objective_type
+
+    @property
+    def created_time(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._created_time
+
+    @property
+    def updated_time(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._updated_time
+
+    @property
+    def type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._type
+
+    @property
+    def is_flexible_daily_budgets(self) -> bool:
+        # pylint: disable=missing-function-docstring
+        return self._is_flexible_daily_budgets
+
+    @property
+    def is_campaign_budget_optimization(self) -> bool:
+        # pylint: disable=missing-function-docstring
+        return self._is_campaign_budget_optimization
+
 
     @classmethod
     def create(
@@ -70,7 +169,7 @@ class Campaign(PinterestBaseModel):
         client:PinterestSDKClient = None,
         **kwargs
     ) -> Campaign:
-        # pylint: disable=too-many-locals,too-many-arguments
+        # pylint: disable=too-many-locals,too-many-arguments,duplicate-code
         """
         Create a new campaign. Every campaign has its own campaign_id\
         and houses one or more ad groups, which contain one or more ads.
@@ -159,36 +258,39 @@ class Campaign(PinterestBaseModel):
         Returns:
              Campaign: Campaign Object
         """
+        response = cls._create(
+            params={
+                "ad_account_id": str(ad_account_id),
+                "campaign_create_request": [
+                    CampaignCreateRequest(
+                        ad_account_id=str(ad_account_id),
+                        name=name,
+                        objective_type=ObjectiveType(objective_type),
+                        status=status,
+                        lifetime_spend_cap=lifetime_spend_cap,
+                        daily_spend_cap=daily_spend_cap,
+                        order_line_id=order_line_id,
+                        tracking_urls=tracking_urls,
+                        start_time=start_time,
+                        end_time=end_time,
+                        is_campaign_budget_optimization=is_campaign_budget_optimization,
+                        is_flexible_daily_budgets=is_flexible_daily_budgets,
+                        default_ad_group_budget_in_micro_currency=default_ad_group_budget_in_micro_currency,
+                        is_automated_campaign=is_automated_campaign,
+                        **kwargs
+                    )
+                ]
+            },
+            api=CampaignsApi,
+            create_fn=CampaignsApi.campaigns_create,
+            map_fn=lambda obj: obj.items[0].data
+        )
 
-        objective_type = ObjectiveType(objective_type)
-
-        if not client:
-            client = cls._get_client()
-
-        api_response = CampaignsApi(client).campaigns_create(
-            ad_account_id=str(ad_account_id),
-            campaign_create_request=[CampaignCreateRequest(
-                ad_account_id = str(ad_account_id),
-                name = name,
-                objective_type = objective_type,
-                status = status,
-                lifetime_spend_cap = lifetime_spend_cap,
-                daily_spend_cap = daily_spend_cap,
-                order_line_id = order_line_id,
-                tracking_urls = tracking_urls,
-                start_time = start_time,
-                end_time = end_time,
-                is_campaign_budget_optimization = is_campaign_budget_optimization,
-                is_flexible_daily_budgets = is_flexible_daily_budgets,
-                default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency,
-                is_automated_campaign = is_automated_campaign,
-                **kwargs
-                )],
-            )
-        verify_api_response(api_response)
-        campaign_data = api_response.items[0].data
-
-        return Campaign(ad_account_id=campaign_data.ad_account_id, campaign_id=campaign_data.id, client=client)
+        return cls(
+            ad_account_id=response.ad_account_id,
+            campaign_id=response.id,
+            client=cls._get_client(client)
+        )
 
     @classmethod
     def get_all(
@@ -201,7 +303,7 @@ class Campaign(PinterestBaseModel):
         bookmark:str = None,
         client:PinterestSDKClient = None,
         **kwargs
-    ) -> tuple[list[Campaign], str]:
+    ) -> tuple[list[Campaign], Bookmark]:
         # pylint: disable=too-many-arguments
         # pylint: disable=fixme
         """
@@ -226,48 +328,34 @@ class Campaign(PinterestBaseModel):
 
         Returns:
             list[Campaign]: List of Campaign Objects
-            str: Bookmark for pagination if present, else None.
+            Bookmark: Bookmark for pagination if present, else None.
         """
+        params = {"ad_account_id": ad_account_id}
+
         if campaign_ids:
             kwargs['campaign_ids'] = [",".join(campaign_ids)] # TODO:Change to only campaign_ids once v5 spec updated
         if entity_statuses:
             kwargs['entity_statuses'] = entity_statuses
-        if page_size:
-            kwargs['page_size'] = page_size
-        if order:
-            kwargs['order'] = order
-        if bookmark:
-            kwargs['bookmark'] = bookmark
 
-        raw_campaign_list = []
-        return_bookmark = None
-
-        if not client:
-            client = cls._get_client()
-
-        campaigns_api = CampaignsApi(api_client=client)
-        api_response = campaigns_api.campaigns_list(
-            ad_account_id=ad_account_id,
-            **kwargs
-            )
-        verify_api_response(api_response)
-
-        raw_campaign_list += api_response.get('items')
-        return_bookmark = api_response.get('bookmark')
-
-        if len(raw_campaign_list) == 0:
-            return None, None
-
-        campaign_list = [
-            Campaign(
+        def _map_function(obj):
+            return Campaign(
                 ad_account_id=ad_account_id,
-                campaign_id=campaign.get('id'),
+                campaign_id=obj.get('id'),
                 client=client,
-                _model_data=campaign
-                )
-            for campaign in raw_campaign_list
-            ]
-        return campaign_list, return_bookmark
+                _model_data=obj
+            )
+
+        return cls._list(
+            params=params,
+            page_size=page_size,
+            order=order,
+            bookmark=bookmark,
+            api=CampaignsApi,
+            list_fn=CampaignsApi.campaigns_list,
+            map_fn=_map_function,
+            client=client,
+            **kwargs
+        )
 
     def set_lifetime_budget(self, new_spend_cap:int) -> bool:
         """
@@ -400,33 +488,30 @@ class Campaign(PinterestBaseModel):
         Returns:
             bool: If campaign fields were successfully updated
         """
+        return self._update(
+            params={
+                "ad_account_id": self._ad_account_id,
+                "campaign_update_request": [
+                    CampaignUpdateRequest(
+                        id=self._id,
+                        ad_account_id=self._ad_account_id,
+                        **kwargs
+                    )
+                ]
+            },
+            api=CampaignsApi,
+            update_fn=CampaignsApi.campaigns_update,
+            **kwargs
+        )
 
-        api_response = self._generated_api.campaigns_update(
-            ad_account_id=self._ad_account_id,
-            campaign_update_request=[CampaignUpdateRequest(
-                id=self._id,
-                ad_account_id=self._ad_account_id,
-                **kwargs
-                )]
-            )
-        verify_api_response(api_response)
-
-        self._populate_fields()
-
-        for arg, value in kwargs.items():
-            if getattr(self, f'_{arg}') != value:
-                print(f"Expected {arg} is {value}"
-                + f" Actual value is {getattr(self, f'_{arg}')}")
-
-        return True
-
-    def list_ad_groups(self,
-                       page_size: int = 25,
-                       order: str = "ASCENDING",
-                       bookmark: str = None,
-                       entity_statuses: list[str] = None,
-                       **kwargs
-                       ):
+    def list_ad_groups(
+        self,
+        page_size: int = 25,
+        order: str = "ASCENDING",
+        bookmark: str = None,
+        entity_statuses: list[str] = None,
+        **kwargs
+        ) -> tuple(list[AdGroup], Bookmark):
         """
         List ad groups directed related to campaign.
         This method makes a synchronous HTTP request by default. To make an
@@ -438,7 +523,7 @@ class Campaign(PinterestBaseModel):
             bookmark (str, optional): _description_. Defaults to None.
             entity_statuses (str, optional): _description_. Defaults to None.
         Returns:
-            tuple[list[AdGroup], str]: _description_
+            tuple[list[AdGroup], Bookmark]: _description_
         """
 
         return AdGroup.get_all(

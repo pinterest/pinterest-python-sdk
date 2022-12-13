@@ -13,8 +13,8 @@ from pinterest.generated.client.model.ad_group_update_request import AdGroupUpda
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
-from pinterest.utils.error_handling import verify_api_response
 from pinterest.ads.ads import Ad
+from pinterest.utils.bookmark import Bookmark
 
 
 class AdGroup(PinterestBaseModel):
@@ -38,6 +38,32 @@ class AdGroup(PinterestBaseModel):
             ad_group_id (str): AdGroup ID, must be associated with the Ad Account ID provided in the path.
             client (_type_, optional): PinterestSDKClient Object. Defaults to default_api_client.
         """
+        self._name = None
+        self._status = None
+        self._budget_in_micro_currency = None
+        self._bid_in_micro_currency = None
+        self._bid_strategy_type = None
+        self._budget_type = None
+        self._start_time = None
+        self._end_time = None
+        self._targeting_spec = None
+        self._lifetime_frequency_cap = None
+        self._tracking_urls = None
+        self._auto_targeting_enabled = None
+        self._placement_group = None
+        self._pacing_delivery_type = None
+        self._campaign_id = None
+        self._billable_event = None
+        self._id = None
+        self._ad_account_id = None
+        self._created_time = None
+        self._updated_time = None
+        self._type = None
+        self._conversion_learning_mode_type = None
+        self._summary_status = None
+        self._feed_profile_id = None
+        self._dca_assets = None
+
         PinterestBaseModel.__init__(
             self,
             _id=str(ad_group_id),
@@ -49,6 +75,132 @@ class AdGroup(PinterestBaseModel):
         )
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
+
+    @property
+    def name(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._name
+
+    @property
+    def status(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._status
+
+    @property
+    def budget_in_micro_currency(self) -> int:
+        #pylint: disable=missing-function-docstring
+        return self._budget_in_micro_currency
+
+    @property
+    def bid_in_micro_currency(self) -> int:
+        #pylint: disable=missing-function-docstring
+        return self._bid_in_micro_currency
+
+    @property
+    def bid_strategy_type(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._bid_strategy_type
+
+    @property
+    def budget_type(self) -> BudgetType:
+        #pylint: disable=missing-function-docstring
+        return self._budget_type
+
+    @property
+    def start_time(self) -> int:
+        #pylint: disable=missing-function-docstring
+        return self._start_time
+
+    @property
+    def end_time(self) -> int:
+        #pylint: disable=missing-function-docstring
+        return self._end_time
+
+    @property
+    def targeting_spec(self) -> dict:
+        #pylint: disable=missing-function-docstring
+        return self._targeting_spec
+
+    @property
+    def lifetime_frequency_cap(self) -> int:
+        #pylint: disable=missing-function-docstring
+        return self._lifetime_frequency_cap
+
+    @property
+    def tracking_urls(self) -> dict:
+        #pylint: disable=missing-function-docstring
+        return self._tracking_urls
+
+    @property
+    def auto_targeting_enabled(self) -> bool:
+        #pylint: disable=missing-function-docstring
+        return self._auto_targeting_enabled
+
+    @property
+    def placement_group(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._placement_group
+
+    @property
+    def pacing_delivery_type(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._pacing_delivery_type
+
+    @property
+    def campaign_id(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._campaign_id
+
+    @property
+    def billable_event(self) -> ActionType:
+        #pylint: disable=missing-function-docstring
+        return self._billable_event
+
+    @property
+    def id(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._id
+
+    @property
+    def ad_account_id(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._ad_account_id
+
+    @property
+    def created_time(self) -> int:
+        #pylint: disable=missing-function-docstring
+        return self._created_time
+
+    @property
+    def updated_time(self) -> int:
+        #pylint: disable=missing-function-docstring
+        return self._updated_time
+
+    @property
+    def type(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._type
+
+    @property
+    def conversion_learning_mode_type(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._conversion_learning_mode_type
+
+    @property
+    def summary_status(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._summary_status
+
+    @property
+    def feed_profile_id(self) -> str:
+        #pylint: disable=missing-function-docstring
+        return self._feed_profile_id
+
+    @property
+    def dca_assets(self):
+        #pylint: disable=missing-function-docstring
+        return self._dca_assets
+
 
     @classmethod
     def create(
@@ -152,31 +304,34 @@ class AdGroup(PinterestBaseModel):
         Returns:
             AdGroup: AdGroup Object
         """
-        billable_event = ActionType(billable_event)
-        if not client:
-            client = cls._get_client()
-
-        api_response = AdGroupsApi(client).ad_groups_create(
-            ad_account_id=str(ad_account_id),
-            ad_group_create_request=[AdGroupCreateRequest(
-                ad_account_id = str(ad_account_id),
-                name = name,
-                campaign_id = str(campaign_id),
-                billable_event = billable_event,
-                budget_in_micro_currency = budget_in_micro_currency,
-                bid_in_micro_currency = bid_in_micro_currency,
-                start_time = start_time,
-                end_time = end_time,
-                tracking_url = tracking_url,
-                auto_targeting_enabled = auto_targeting_enabled,
-                **kwargs
-            )],
+        response = cls._create(
+            params={
+                "ad_account_id": str(ad_account_id),
+                "ad_group_create_request": [
+                    AdGroupCreateRequest(
+                        ad_account_id=str(ad_account_id),
+                        name=name,
+                        campaign_id=str(campaign_id),
+                        billable_event=ActionType(billable_event),
+                        budget_in_micro_currency=budget_in_micro_currency,
+                        bid_in_micro_currency=bid_in_micro_currency,
+                        start_time=start_time,
+                        end_time=end_time,
+                        tracking_url=tracking_url,
+                        auto_targeting_enabled=auto_targeting_enabled,
+                        **kwargs
+                    )
+                ]
+            },
+            api=AdGroupsApi,
+            create_fn=AdGroupsApi.ad_groups_create,
+            map_fn=lambda obj: obj.items[0].data
         )
-
-        verify_api_response(api_response)
-        ad_group_data = api_response.items[0].data
-
-        return AdGroup(ad_account_id=ad_group_data.ad_account_id, ad_group_id=ad_group_data.id, client=client)
+        return cls(
+            ad_account_id=response.ad_account_id,
+            ad_group_id=response.id,
+            client=cls._get_client(client)
+        )
 
     def update_fields(self, **kwargs) -> bool:
         """
@@ -189,25 +344,20 @@ class AdGroup(PinterestBaseModel):
             kwargs["billable_event"] = ActionType(kwargs["billable_event"])
         if "budget_type" in kwargs:
             kwargs["budget_type"] = BudgetType(kwargs["budget_type"])
-
-        api_response = self._generated_api.ad_groups_update(
-            ad_account_id=self._ad_account_id,
-            ad_group_update_request=[AdGroupUpdateRequest(
-                id=self._id,
-                **kwargs
-            )]
+        return self._update(
+            params={
+                "ad_account_id": self._ad_account_id,
+                "ad_group_update_request": [
+                    AdGroupUpdateRequest(
+                        id=self._id,
+                        **kwargs
+                    )
+                ]
+            },
+            api=AdGroupsApi,
+            update_fn=AdGroupsApi.ad_groups_update,
+            **kwargs
         )
-
-        verify_api_response(api_response)
-
-        self._populate_fields()
-
-        for arg, value in kwargs.items():
-            if getattr(self, f'_{arg}') != value:
-                raise AssertionError(f"Expected {arg} is {value}"
-                + f" Actual value is {getattr(self, f'_{arg}')}")
-
-        return True
 
     @classmethod
     def get_all(
@@ -221,7 +371,7 @@ class AdGroup(PinterestBaseModel):
         bookmark : str = None,
         client : PinterestSDKClient = None,
         **kwargs
-    ) -> tuple[list[AdGroup], str]:
+    ) -> tuple[list[AdGroup], Bookmark]:
         """
         List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids).
         <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id. Do not provide both.  # noqa: E501
@@ -238,60 +388,36 @@ class AdGroup(PinterestBaseModel):
             client (PinterestSDKClient, optional): _description_. Defaults to default_api_client.
 
         Returns:
-            tuple[list[AdGroup], str]: _description_
+            tuple[list[AdGroup], Bookmark]: _description_
         """
+        params = {"ad_account_id": ad_account_id}
+
         if ad_group_ids:
             kwargs["ad_group_ids"] = [",".join(ad_group_ids)]
         if campaign_ids:
             kwargs['campaign_ids'] = [",".join(campaign_ids)]
         if entity_statuses:
             kwargs["entity_statuses"] = entity_statuses
-        if page_size:
-            kwargs["page_size"] = page_size
-        if order:
-            kwargs['order'] = order
-        if bookmark:
-            kwargs['bookmark'] = bookmark
 
-        raw_ad_group_list = []
-        return_bookmark = None
-        if not client:
-            client = cls._get_client()
-
-        ad_groups_api = AdGroupsApi(api_client=client)
-        api_response = ad_groups_api.ad_groups_list(
-            ad_account_id=ad_account_id,
-            **kwargs
-            )
-        verify_api_response(api_response)
-
-        raw_ad_group_list += api_response.get('items')
-        return_bookmark = api_response.get('bookmark')
-
-        if not page_size:
-            while return_bookmark:
-                kwargs['bookmark'] = return_bookmark
-                api_response = ad_groups_api.ad_groups_list(
-                    ad_account_id=ad_account_id,
-                    **kwargs
-                    )
-                verify_api_response(api_response)
-                raw_ad_group_list += api_response.get('items')
-                return_bookmark = api_response.get('bookmark')
-
-        if len(raw_ad_group_list) == 0:
-            return None, None
-
-        ad_group_list = [
-            AdGroup(
+        def _map_function(obj):
+            return AdGroup(
                 ad_account_id=ad_account_id,
-                ad_group_id=ad_group.get('id'),
+                ad_group_id=obj.get('id'),
                 client=client,
-                _model_data=ad_group
-                )
-            for ad_group in raw_ad_group_list
-            ]
-        return ad_group_list, return_bookmark
+                _model_data=obj
+            )
+
+        return cls._list(
+            params=params,
+            page_size=page_size,
+            order=order,
+            bookmark=bookmark,
+            api=AdGroupsApi,
+            list_fn=AdGroupsApi.ad_groups_list,
+            map_fn=_map_function,
+            client=client,
+            **kwargs
+        )
 
     def list_ads(
         self,
@@ -301,7 +427,7 @@ class AdGroup(PinterestBaseModel):
         order : str = "ASCENDING",
         bookmark : str = None,
         **kwargs
-    ) -> tuple[list[Ad], str]:
+    ) -> tuple[list[Ad], Bookmark]:
         """
         Get list of ads under current AdGroup with specified arguments
 
@@ -318,7 +444,8 @@ class AdGroup(PinterestBaseModel):
             bookmark (str, optional): Cursor used to fetch the next page of items. Defaults to None.
 
         Returns:
-            tuple[list[Ad], str]: _description_
+            list[Ad]: List of Ads
+            Bookmark: Bookmark object
         """
         return Ad.get_all(
             ad_account_id=self._ad_account_id,

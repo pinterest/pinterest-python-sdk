@@ -1,7 +1,13 @@
 """
 Pinterest Base Model
 """
+from typing import Callable
+
 from pinterest.client import PinterestSDKClient
+
+from pinterest.utils.error_handling import verify_api_response
+from pinterest.utils.bookmark import Bookmark
+
 from pinterest.generated.client.exceptions import ApiTypeError
 
 
@@ -18,7 +24,7 @@ class PinterestBaseModel:
             generated_api_get_fn_args: dict,
             model_attribute_types: dict,
             client=None,
-        ):
+    ):
         # pylint: disable=too-many-arguments
         self._id = _id
         self._client = client
@@ -29,24 +35,18 @@ class PinterestBaseModel:
         self._generated_api_get_fn_args = generated_api_get_fn_args
         self._model_attribute_types = model_attribute_types
 
-    def __getattr__(self, name):
-        try:
-            return self.__dict[name]
-        except KeyError:
-            raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'") # pylint: disable=raise-missing-from
+        self._property_dict = dict((k, getattr(self, k))
+                        for k, v in self.__class__.__dict__.items()
+                        if isinstance(v, property))
 
     def __str__(self):
-        model_dict = self.__dict__.copy()
-        del model_dict['_client']
-        del model_dict['_generated_api']
-        del model_dict['_generated_api_get_fn']
-        del model_dict['_generated_api_get_fn_args']
-        del model_dict['_model_attribute_types']
-        model_id = model_dict.get('_id', '')
-        return f"{self.__class__.__name__} <{model_id}> Model: {model_dict}"
+        return f"{self.__class__.__name__} <{self._id}> Model: {self._property_dict}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(id={self._id})"
+        args_string = ""
+        for arg, arg_val in self._generated_api_get_fn_args.items():
+            args_string += f"{arg}={arg_val}"
+        return f"{self.__class__.__name__}({args_string})"
 
     def _populate_fields(self, **kwargs):
         """
@@ -57,10 +57,10 @@ class PinterestBaseModel:
             _model_data = getattr(
                 self._generated_api,
                 self._generated_api_get_fn
-                )(**self._generated_api_get_fn_args).to_dict()
+            )(**self._generated_api_get_fn_args).to_dict()
 
         for field in _model_data:
-            if not self._model_attribute_types.get(field) :
+            if not self._model_attribute_types.get(field):
                 continue
 
             if _model_data.get(field) is None:
@@ -79,6 +79,138 @@ class PinterestBaseModel:
                 attribute_value
             )
 
+    def __eq__(self, obj):
+        return isinstance(self, type(obj)) and getattr(self, "id") == getattr(obj, "id")
+
     @classmethod
-    def _get_client(cls):
-        return PinterestSDKClient.create_default_client()
+    def _get_client(cls, client = None):
+        if not client:
+            client = PinterestSDKClient.create_default_client()
+        return client
+
+    @classmethod
+    def _get_api_instance(
+        cls,
+        api,
+        client: PinterestSDKClient = None
+    ):
+        return api(api_client=cls._get_client(client))
+
+    @classmethod
+    def _call_method(
+        cls,
+        instance,
+        function,
+        params,
+        **kwargs
+    ):
+        return getattr(instance, function)(**params, **kwargs)
+
+    @classmethod
+    def _list(
+            cls,
+            params: [any] = None,
+            page_size: int = None,
+            order: str = None,
+            bookmark: str = None,
+            api: type = None,
+            list_fn: Callable = None,
+            map_fn: Callable = None,
+            client: PinterestSDKClient = None,
+            **kwargs
+    ):
+        # pylint: disable=too-many-arguments
+
+        if page_size:
+            kwargs["page_size"] = page_size
+        if order:
+            kwargs["order"] = order
+        if bookmark:
+            kwargs["bookmark"] = bookmark
+
+        items = []
+        bookmark = None
+
+        # Python do while, always execute at least 1
+        while True:
+            http_response = cls._call_method(
+                cls._get_api_instance(api, client),
+                list_fn.__name__,
+                params,
+                **kwargs
+            )
+
+            verify_api_response(http_response)
+
+            items = http_response.get('items', [])
+            bookmark = http_response.get('bookmark', None)
+            # Only execute 1 if page size is set
+            if page_size is not None:
+                break
+            # Set the new bookmark
+            if bookmark is not None:
+                kwargs["bookmark"] = bookmark
+            # if bookmark is none this mean all items is extracted.
+            else:
+                break
+
+        kwargs.update(params)
+        bookmark_model = Bookmark(
+                bookmark_token=bookmark,
+                model=cls,
+                model_fn='get_all',
+                model_fn_args=kwargs,
+                client=client,
+            ) if bookmark else None
+
+        return [map_fn(item) for item in items], bookmark_model
+
+    @classmethod
+    def _create(
+            cls,
+            params: [any] = None,
+            api: type = None,
+            create_fn: Callable = None,
+            map_fn: Callable = lambda x: x,
+            client: PinterestSDKClient = None,
+            **kwargs
+    ):
+        # pylint: disable=too-many-arguments, unused-argument
+        http_response = cls._call_method(
+            cls._get_api_instance(api, client),
+            create_fn.__name__,
+            params,
+            **kwargs
+        )
+        verify_api_response(http_response)
+        return map_fn(http_response)
+
+    def _update(
+            self,
+            params: [any] = None,
+            api: type = None,
+            update_fn: Callable = None,
+            map_fn: Callable = None,
+            client: PinterestSDKClient = None,
+            **kwargs
+    ):
+        # pylint: disable=too-many-arguments, protected-access
+        http_response = self.__class__._call_method(
+            self.__class__._get_api_instance(api, client),
+            update_fn.__name__,
+            params,
+        )
+
+        verify_api_response(http_response)
+
+        if map_fn:
+            self._populate_fields(_model_data=map_fn(http_response))
+        else:
+            self._populate_fields()
+
+        for arg, value in kwargs.items():
+            if getattr(self, f'_{arg}') != value:
+                raise AssertionError(f"Expected {arg} is {value}"
+                                     + f" Actual value is {getattr(self, f'_{arg}')}")
+
+        return True

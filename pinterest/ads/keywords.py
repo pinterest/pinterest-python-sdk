@@ -13,7 +13,6 @@ from pinterest.generated.client.model.keyword_update_body import KeywordUpdateBo
 from pinterest.generated.client.model.keyword_update import KeywordUpdate
 
 from pinterest.client import PinterestSDKClient
-from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.sdk_exceptions import SdkException
 from pinterest.utils.base_model import PinterestBaseModel
 
@@ -24,6 +23,16 @@ class Keyword(PinterestBaseModel):
     High level model class to manage keywords
     """
     def __init__(self, ad_account_id, keyword_id, client=None, **kwargs):
+
+        self._match_type = None
+        self._value = None
+        self._archived = None
+        self._id = None
+        self._parent_id = None
+        self._parent_type = None
+        self._type = None
+        self._bid = None
+
         PinterestBaseModel.__init__(
             self,
             _id=str(keyword_id),
@@ -35,6 +44,46 @@ class Keyword(PinterestBaseModel):
             )
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
+
+    @property
+    def match_type(self) -> MatchTypeResponse:
+        # pylint: disable=missing-function-docstring
+        return self._match_type
+
+    @property
+    def value(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._value
+
+    @property
+    def archived(self) -> bool:
+        # pylint: disable=missing-function-docstring
+        return self._archived
+
+    @property
+    def id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._id
+
+    @property
+    def parent_id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._parent_id
+
+    @property
+    def parent_type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._parent_type
+
+    @property
+    def type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._type
+
+    @property
+    def bid(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._bid
 
     @classmethod
     def create(
@@ -66,6 +115,14 @@ class Keyword(PinterestBaseModel):
         Returns:
             Keyword: Keyword Object
         """
+        # pylint: disable=line-too-long
+
+        def map_fn(obj):
+            if len(obj.keywords) == 0:
+                raise SdkException(
+                    status=f"Fail with error: {obj.errors[0].error_messages}",
+                    )
+            return obj.keywords[0]
 
         keyword = KeywordsCommon(
             match_type=MatchTypeResponse(match_type),
@@ -74,29 +131,25 @@ class Keyword(PinterestBaseModel):
             **kwargs
         )
 
-        if not client:
-            client = cls._get_client()
-
-        api_response = KeywordsApi(client).keywords_create(
-            ad_account_id=str(ad_account_id),
-            keywords_request=KeywordsRequest(
-                keywords=[keyword],
-                parent_id=str(parent_id),
-            ),
+        response = cls._create(
+            params={
+                "ad_account_id": str(ad_account_id),
+                "keywords_request": KeywordsRequest(
+                    keywords=[keyword],
+                    parent_id=str(parent_id),
+                ),
+            },
+            api=KeywordsApi,
+            create_fn=KeywordsApi.keywords_create,
+            map_fn=map_fn,
         )
 
-        if len(api_response.keywords) == 0:
-            raise SdkException(
-                status=f"Fail with error: {api_response.errors[0].error_messages}",
-                )
-
-        keyword_data = api_response.keywords[0]
-
-        return Keyword(
+        return cls(
             ad_account_id=ad_account_id,
-            keyword_id=keyword_data.id,
-            client=client,
-            _model_data=keyword_data.to_dict())
+            keyword_id=response.id,
+            client=cls._get_client(client),
+            _model_data=response.to_dict()
+        )
 
     @classmethod
     def get_all(
@@ -126,54 +179,29 @@ class Keyword(PinterestBaseModel):
             list[Keyword]: List of Keyword Objects
             str: Bookmark for paginations if present, else None.
         """
-        if page_size:
-            kwargs["page_size"] = page_size
-        if bookmark:
-            kwargs['bookmark'] = bookmark
+        params = {"ad_account_id": ad_account_id}
+
         if "match_type" in kwargs:
             kwargs["match_type"] = MatchType(kwargs["match_type"])
 
-        raw_keywords = []
-        return_bookmark = None
-        if not client:
-            client = cls._get_client()
+        def _map_function(obj):
+            return Keyword(
+                ad_account_id=ad_account_id,
+                keyword_id=obj.get('id'),
+                client=client,
+                _model_data=obj,
+            )
 
-        keywords_api = KeywordsApi(api_client=client)
-        api_response = keywords_api.keywords_get(
-            ad_account_id=ad_account_id,
+        return cls._list(
+            params=params,
+            page_size=page_size,
+            bookmark=bookmark,
+            api=KeywordsApi,
+            list_fn=KeywordsApi.keywords_get,
+            map_fn=_map_function,
+            client=client,
             **kwargs
         )
-        verify_api_response(api_response)
-
-        raw_keywords += api_response.get('items')
-        return_bookmark = api_response.get('bookmark')
-
-        if not page_size:
-            while return_bookmark:
-                kwargs["bookmark"] = return_bookmark
-                api_response = keywords_api.keywords_get(
-                    ad_account_id=ad_account_id,
-                    **kwargs
-                )
-                verify_api_response(api_response)
-
-                raw_keywords += api_response.get('items')
-                return_bookmark = api_response.get('bookmark')
-
-        if len(raw_keywords) == 0:
-            return None, None
-
-        keywords = [
-            Keyword(
-                ad_account_id=ad_account_id,
-                keyword_id=keyword.get('id'),
-                client=client,
-                _model_data=keyword,
-            )
-            for keyword in raw_keywords
-        ]
-
-        return keywords, return_bookmark
 
     def update_fields(self, **kwargs) -> bool:
         """Update keyword fields using any attributes
@@ -184,6 +212,7 @@ class Keyword(PinterestBaseModel):
         Returns:
             bool: if keyword fields were successfully updated
         """
+        # TODO(dfana@): replace this method logic with PinterestBaseModel._update, right now is not supported this logic
         api_response = self._generated_api.keywords_update(
             ad_account_id=self._ad_account_id,
             keyword_update_body=KeywordUpdateBody(
