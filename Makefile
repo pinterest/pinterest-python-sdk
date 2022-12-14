@@ -13,6 +13,10 @@ unit_tests:
 package_test:
 	./package_test/run.sh
 
+integration_tests:
+	@echo integration tests...
+	python -m pytest --cov ./pinterest/ --cov-branch ./integration_tests/ --cov-report term-missing
+
 clean: clean-build clean-pyc ## Clean
 
 clean-build:				## Clean python build
