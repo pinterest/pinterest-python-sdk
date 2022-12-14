@@ -1,0 +1,22 @@
+[flake8]
+exclude =
+    generated,
+    __pycache__,
+    venv,
+    .venv,
+    .git,
+    .tox,
+    dist,
+    doc,
+    *openstack/common/*,
+    *lib/python*,
+    *egg,
+    build,
+    tools/xenserver*,
+    releasenotes
+
+select =
+    E9,
+    F63,
+    F7,
+    F82
