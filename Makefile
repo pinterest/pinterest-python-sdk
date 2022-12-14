@@ -42,3 +42,13 @@ publish_pypi_test: clean pip_release_install build
 
 publish_pypi: clean pip_release_install build
 	twine upload -r pypi dist/*
+
+pylint:
+	@echo lint
+	pylint .
+
+flake:
+	flake8 . --count --show-source --statistics
+	flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+lint: pylint flake
