@@ -31,5 +31,5 @@ jobs:
           DEFAULT_AD_ACCOUNT_ID: ${{ secrets.CI_DEFAULT_AD_ACCOUNT_ID }}
         run: |
           python -m pip install --upgrade pip
-          make pip_dev
+          make install_dev
           make integration_tests
