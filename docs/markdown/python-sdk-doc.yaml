@@ -128,7 +128,9 @@ tags:
     \ (str, optional):  Cursor used to fetch the next page of items. Defaults to None.\
     \ </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[CustomerList]</code></b>:\
     \  List of Audience Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
-    \ for pagination if present, else None. </li>\n</ul>"
+    \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><em>This file\
+    \ was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: ad_accounts.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L0\"\
@@ -287,7 +289,9 @@ tags:
     ></a></p>\n<h3><kbd>method</kbd> <code>AdGroup.update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update adgroup fields using\
     \ any arguments </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
-    \  if adgroup fields were updated successfully </li>\n</ul>"
+    \  if adgroup fields were updated successfully </li>\n</ul>\n<hr />\n<p><em>This\
+    \ file was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: ad_groups.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L0\"\
@@ -412,7 +416,9 @@ tags:
     ></a></p>\n<h3><kbd>method</kbd> <code>Ad.update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update Ad fields suing any\
     \ arguments </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
-    \  If Ad fields were updated successfully </li>\n</ul>"
+    \  If Ad fields were updated successfully </li>\n</ul>\n<hr />\n<p><em>This file\
+    \ was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: ads.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/audiences.py#L0\"\
@@ -519,7 +525,9 @@ tags:
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
     ></a></p>\n<h3><kbd>method</kbd> <code>Audience.update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs)</code></p>\n<p>Update audience fields </p>\n<p>Keyword\
-    \ Args:  Any valid audience fields with valid values </p>"
+    \ Args:  Any valid audience fields with valid values </p>\n<hr />\n<p><em>This\
+    \ file was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: audiences.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L0\"\
@@ -707,7 +715,9 @@ tags:
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update the campaign fields\
     \ using any attributes. </p>\n<p>Keyword Args:  Any valid campaign fields with\
     \ valid values </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
-    \  If campaign fields were successfully updated </li>\n</ul>"
+    \  If campaign fields were successfully updated </li>\n</ul>\n<hr />\n<p><em>This\
+    \ file was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: campaigns.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L0\"\
@@ -805,7 +815,8 @@ tags:
     ></a></p>\n<h3><kbd>method</kbd> <code>CustomerList.update_fields</code></h3>\n\
     <p><code>python\nupdate_fields(**kwargs)</code></p>\n<p>Update customer lists\
     \ fields with valid values </p>\n<p>Keywords Args:  Any valid customer list field\
-    \ with valid value </p>"
+    \ with valid value </p>\n<hr />\n<p><em>This file was automatically generated\
+    \ via <a href=\"https://github.com/ml-tooling/lazydocs\">lazydocs</a>.</em></p>"
   name: customer_lists.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/keywords.py#L0\"\
@@ -864,7 +875,9 @@ tags:
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update keyword fields using\
     \ any attributes </p>\n<p>Keyword Args:  Any valid keyword fields with valid values\
     \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
-    \  if keyword fields were successfully updated </li>\n</ul>"
+    \  if keyword fields were successfully updated </li>\n</ul>\n<hr />\n<p><em>This\
+    \ file was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: keywords.md
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
@@ -873,7 +886,11 @@ tags:
     <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/bin/__init__.py"><img
     align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
 
-    <h1><kbd>module</kbd> <code>bin</code></h1>'
+    <h1><kbd>module</kbd> <code>bin</code></h1>
+
+    <hr />
+
+    <p><em>This file was automatically generated via <a href="https://github.com/ml-tooling/lazydocs">lazydocs</a>.</em></p>'
   name: bin.md
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
@@ -897,7 +914,11 @@ tags:
 
     main(_)</code></p>
 
-    <p>function to get config variables </p>'
+    <p>function to get config variables </p>
+
+    <hr />
+
+    <p><em>This file was automatically generated via <a href="https://github.com/ml-tooling/lazydocs">lazydocs</a>.</em></p>'
   name: get_config.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L0\"\
@@ -946,7 +967,8 @@ tags:
     ></a></p>\n<h3><kbd>classmethod</kbd> <code>PinterestSDKClient.set_default_refresh_token</code></h3>\n\
     <p><code>python\nset_default_refresh_token(refresh_token: str, app_id: str, app_secret:\
     \ str)</code></p>\n<p>Replace the default refresh_token, app_id, app_secret with\
-    \ the given ones. </p>"
+    \ the given ones. </p>\n<hr />\n<p><em>This file was automatically generated via\
+    \ <a href=\"https://github.com/ml-tooling/lazydocs\">lazydocs</a>.</em></p>"
   name: client.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/base_model.py#L0\"\
@@ -961,7 +983,8 @@ tags:
     ></a></p>\n<h3><kbd>method</kbd> <code>PinterestBaseModel.__init__</code></h3>\n\
     <p><code>python\n__init__(\n    _id: str,\n    generated_api: object,\n    generated_api_get_fn:\
     \ str,\n    generated_api_get_fn_args: dict,\n    model_attribute_types: dict,\n\
-    \    client=None\n)</code></p>"
+    \    client=None\n)</code></p>\n<hr />\n<p><em>This file was automatically generated\
+    \ via <a href=\"https://github.com/ml-tooling/lazydocs\">lazydocs</a>.</em></p>"
   name: base_model.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/bookmark.py#L0\"\
@@ -995,7 +1018,8 @@ tags:
     \ get the next page of items using Bookmark Pagination Token. </p>\n<p><strong>Returns:</strong></p>\n\
     <ul>\n<li><b><code>list[PinterestBaseModel]</code></b>:  List of SDK Model Objects\
     \ </li>\n<li><b><code>Bookmark</code></b>:  Bookmark Object for pagination if\
-    \ present, else None. </li>\n</ul>"
+    \ present, else None. </li>\n</ul>\n<hr />\n<p><em>This file was automatically\
+    \ generated via <a href=\"https://github.com/ml-tooling/lazydocs\">lazydocs</a>.</em></p>"
   name: bookmark.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/error_handling.py#L0\"\
@@ -1008,7 +1032,9 @@ tags:
     \ no errors in <code>response</code> received from api </p>\n<p><strong>Args:</strong></p>\n\
     <ul>\n<li><b><code>response</code></b>:  Response received from api request </li>\n\
     </ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>: \
-    \ If the <code>response</code> is without any exceptions </li>\n</ul>"
+    \ If the <code>response</code> is without any exceptions </li>\n</ul>\n<hr />\n\
+    <p><em>This file was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: error_handling.md
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
@@ -1034,7 +1060,11 @@ tags:
     load_json_config()</code></p>
 
     <p>Parse a config.json file and then load all the variables found as environment
-    variables. </p>'
+    variables. </p>
+
+    <hr />
+
+    <p><em>This file was automatically generated via <a href="https://github.com/ml-tooling/lazydocs">lazydocs</a>.</em></p>'
   name: load_json_config.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/refresh_access_token.py#L0\"\
@@ -1051,7 +1081,9 @@ tags:
     \ (str):  APP_SECRET </li>\n<li><b><code>refresh_access_token</code></b> (str):\
     \  Refresh access token retrieved from oauth. </li>\n<li><b><code>host</code></b>\
     \ (str):  base url of the host </li>\n</ul>\n<p><strong>Returns:</strong></p>\n\
-    <ul>\n<li><b><code>str</code></b>:  New access token </li>\n</ul>"
+    <ul>\n<li><b><code>str</code></b>:  New access token </li>\n</ul>\n<hr />\n<p><em>This\
+    \ file was automatically generated via <a href=\"https://github.com/ml-tooling/lazydocs\"\
+    >lazydocs</a>.</em></p>"
   name: refresh_access_token.md
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
@@ -1080,7 +1112,11 @@ tags:
 
     <p><code>python
 
-    __init__(status=None, reason=None, http_resp=None)</code></p>'
+    __init__(status=None, reason=None, http_resp=None)</code></p>
+
+    <hr />
+
+    <p><em>This file was automatically generated via <a href="https://github.com/ml-tooling/lazydocs">lazydocs</a>.</em></p>'
   name: sdk_exceptions.md
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
@@ -1089,7 +1125,11 @@ tags:
     <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/__init__.py"><img
     align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
 
-    <h1><kbd>module</kbd> <code>utils</code></h1>'
+    <h1><kbd>module</kbd> <code>utils</code></h1>
+
+    <hr />
+
+    <p><em>This file was automatically generated via <a href="https://github.com/ml-tooling/lazydocs">lazydocs</a>.</em></p>'
   name: utils.md
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
@@ -1142,7 +1182,11 @@ tags:
 
     <li><strong>PINTEREST_USER_AGENT</strong></li>
 
-    </ul>'
+    </ul>
+
+    <hr />
+
+    <p><em>This file was automatically generated via <a href="https://github.com/ml-tooling/lazydocs">lazydocs</a>.</em></p>'
   name: config.md
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
@@ -1153,7 +1197,11 @@ tags:
 
     <h1><kbd>module</kbd> <code>version</code></h1>
 
-    <p>Pinterest SDK Packages Version </p>'
+    <p>Pinterest SDK Packages Version </p>
+
+    <hr />
+
+    <p><em>This file was automatically generated via <a href="https://github.com/ml-tooling/lazydocs">lazydocs</a>.</em></p>'
   name: version.md
   x-traitTag: false
 x-tagGroups:
