@@ -11,6 +11,7 @@ class AnalyticsUtils():
     """
     @classmethod
     def get_ad_entity_analytics(cls):
+        # pylint: disable=missing-function-docstring
         # added as an example placeholder
         pass
 
@@ -39,14 +40,17 @@ class AnalyticsResponse():
 
     @property
     def entity_type(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._entity_type
 
     @property
     def fields(self) -> list[str]:
+        # pylint: disable=missing-function-docstring
         return self._fields
 
     @property
     def raw_response(self) -> dict:
+        # pylint: disable=missing-function-docstring
         return self._raw_response
 
     def __str__(self) -> str:
