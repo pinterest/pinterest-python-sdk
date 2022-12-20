@@ -3,18 +3,18 @@ info:
     email: pinterest-api@pinterest.com
     name: Pinterest, Inc.
     url: https://developers.pinterest.com/
-  description: Pinterest's REST API
+  description: Pinterest SDK for Python
   license:
     name: MIT
     url: https://spdx.org/licenses/MIT
   termsOfService: https://developers.pinterest.com/terms/
-  title: Pinterest REST API
-  version: 5.7.0
+  title: Pinterest Python SDK
+  version: 0.1.4
 openapi: 3.0.3
 paths:
-  /users:
+  /test:
     get:
-      description: This is a arbitrate endpoint, please visit https://developers.pinterest.com/docs/api/v5/
+      description: This is an arbitrate endpoint, please visit https://developers.pinterest.com/docs/api/v5/
         for more information
       responses:
         '200':
@@ -25,7 +25,7 @@ paths:
                   type: string
                 type: array
           description: A JSON array of user names
-      summary: Returns a list of users.
+      summary: Arbitrate summary
 servers:
 - url: https://api.pinterest.com/v5
 tags:
