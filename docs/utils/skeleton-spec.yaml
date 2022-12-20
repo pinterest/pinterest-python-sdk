@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  version: 5.7.0
-  title: Pinterest REST API
-  description: Pinterest's REST API
+  version: 0.1.4
+  title: Pinterest Python SDK
+  description: Pinterest SDK for Python
   contact:
     name: Pinterest, Inc.
     url: https://developers.pinterest.com/
@@ -14,9 +14,9 @@ info:
 servers:
   - url: https://api.pinterest.com/v5
 paths:
-  /users:
+  /test:
     get:
-      summary: Returns a list of users.
+      summary: Arbitrate summary
       description: This is an arbitrate endpoint, please visit https://developers.pinterest.com/docs/api/v5/ for more information
       responses:
         '200':    # status code

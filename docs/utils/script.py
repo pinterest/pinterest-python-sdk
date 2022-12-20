@@ -3,20 +3,29 @@ import sys
 import yaml
 import markdown
 
-modules = [
+MODULES = [
     "ads",
     "bin",
     "client",
     "organic",
     "utils",
 ]
+IGNORED_FILES = {
+    "ads.md", #Ignore this file since ads/__init__.py is converted into ads.md
+}
 PROJECT_PATH = os.path.abspath(os.getcwd())
 
 def set_up_python_path():
+    '''
+    Set up python path
+    '''
     sys.path.append(PROJECT_PATH)
 
 
 def remove_old_doc():
+    '''
+    Remove old doc in docs/pinterest
+    '''
     print("----------------- " + "Cleaning up old docs")
 
     files = next(os.walk("docs/pinterest"), (None, None, []))[2]
@@ -24,30 +33,50 @@ def remove_old_doc():
 
 
 def generate_new_doc():
+    '''
+    Use lazydoc to generate new doc at: docs/pinterest
+    '''
     print("----------------- " + "Generating md docs")
 
     from lazydocs import generate_docs
-    generate_docs(["pinterest"], output_path=f"docs/pinterest/", src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/')
+    generate_docs(
+        ['pinterest'],
+        output_path='docs/pinterest/',
+        src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/')
 
 
-def create_file_index():
+def create_file_index() -> dict:
+    '''
+    Create file index: index[module_name] = list[file_name]
+
+    This function also get rid of the module prefix that lazydocs added in every file
+
+    Note: all the file without module, such as configs.py, version.py is mapped
+    to index["extra"]
+    '''
     print("----------------- " + "Indexing docs")
 
     file_mapping = {}
     extra_mapping = []
     files = next(os.walk("docs/pinterest"), (None, None, []))[2]
     for file in files:
+        # Have to do make our own ignored list since lazydoc built-in ignore-module
+        # doesn't work for `__init__.py`` module
+        if file in IGNORED_FILES: continue
+
         found_matching_module = False
-        for module in modules:
+        for module in MODULES:
             if len(file) < len(module):
                 continue
 
             if file.find(module) == 0:
-                # Rename file to get rid of index, ex: ads.ad_groups.md -> ad_groups.md
+                # Rename file to get rid of module prefix (added by lazydocs)
+                # ex: ads.ad_groups.md -> ad_groups.md
                 new_name = file
                 if file != (module + ".md"):
                     new_name = file[len(module)+1:]
                     os.rename(f"docs/pinterest/{file}", f"docs/pinterest/{new_name}")
+
                 # Start indexing new file
                 if module not in file_mapping:
                     file_mapping[module] = []
@@ -55,9 +84,10 @@ def create_file_index():
                 found_matching_module = True
                 break
         if not found_matching_module:
+            # Extra mapping is for file without module, ie: configs.py, version.py
             extra_mapping.append(file)
     
-    total_mapping = len(extra_mapping)
+    total_mapping = len(extra_mapping) + len(IGNORED_FILES)
     return_mapping = {}
     for k,v in file_mapping.items():
         # Sort mapping by value
@@ -67,22 +97,30 @@ def create_file_index():
     if len(files) != total_mapping:
         raise Exception("Cound't map all files, please double check!")
     
-    print("Total file maps: " + str(total_mapping))
+    print("Total file mapped: " + str(total_mapping))
 
     # Sort mapping by index
     return_mapping = dict(sorted(return_mapping.items(), key=lambda item: item[0]))
 
-    # Add `extra`` mapping at the end to make sure the `extra` section
-    # appear at the end of the page
+    # Add extra mapping at the end to make sure the `extra` section
+    # appear at the end of the doc page
     return_mapping["extra"] = extra_mapping
 
-    return  return_mapping
+    # Return the sorted by both key and value for better visualization
+    return return_mapping
 
 
 def append_doc_to_spec_file(file_index: dict):
+    '''
+    Accord to index file, append docs to spec skeleton spec and overwrite to python-sdk-doc.yaml
+    '''
+    print("----------------- " + "Appending doc to spec file")
+
+    # Get skeleton spec
     spec_path = PROJECT_PATH + '/docs/utils/skeleton-spec.yaml'
     spec = yaml.load(open(spec_path, 'r'), Loader=yaml.FullLoader)
 
+    # Appending md doc into skeleton spec
     spec['tags'] = []
     spec['x-tagGroups'] = []
     for tag_name, md_files in file_index.items():
@@ -102,11 +140,16 @@ def append_doc_to_spec_file(file_index: dict):
                 "tags": tag_names,
             }
         )
+    
+    # Overwrite new spec to python-sdk-doc.yaml
     with open(PROJECT_PATH + '/docs/utils/python-sdk-doc.yaml', 'w') as file:
         yaml.dump(spec, file)
-    return spec
+
 
 def start_doc():
+    '''
+    Use this function to generate documentations
+    '''
     set_up_python_path()
 
     remove_old_doc()
