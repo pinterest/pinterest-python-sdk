@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  version: 5.7.0
+  title: Pinterest REST API
+  description: Pinterest's REST API
+  contact:
+    name: Pinterest, Inc.
+    url: https://developers.pinterest.com/
+    email: pinterest-api@pinterest.com
+  license:
+    name: MIT
+    url: https://spdx.org/licenses/MIT
+  termsOfService: https://developers.pinterest.com/terms/
+servers:
+  - url: https://api.pinterest.com/v5
+paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      description: This is an arbitrate endpoint, please visit https://developers.pinterest.com/docs/api/v5/ for more information
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
