@@ -290,13 +290,129 @@ tags:
     \  if adgroup fields were updated successfully </li>\n</ul>"
   name: ad_groups.md
   x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/__init__.py"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>ads</code></h1>'
+- description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L0\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h1><kbd>module</kbd> <code>ads.ads</code></h1>\n<p>Ads high level\
+    \ model </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L19\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h2><kbd>class</kbd> <code>Ad</code></h2>\n<p>Ad model used to view,\
+    \ create, update its attributes </p>\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L24\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>Ad.__init__</code></h3>\n<p><code>python\n\
+    __init__(\n    ad_account_id: 'str',\n    ad_id: 'str',\n    client: 'PinterestSDKClient'\
+    \ = None,\n    **kwargs\n) \u2192 None</code></p>\n<p>Initialize an Ad object.\
+    \ </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>ad_account_id</code></b>\
+    \ (str):  Ad's Ad Account ID. </li>\n<li><b><code>ad_id</code></b> (str):  Ad\
+    \ ID, must be associated with the Ad Account ID provided in the path. </li>\n\
+    <li><b><code>client</code></b> (PinterestSDKClient, optional):  PinterestSDKClient\
+    \ Object. Defaults to default_api_client. </li>\n</ul>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.ad_group_id</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> Ad.android_deep_link</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.campaign_id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.carousel_android_deep_links</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> Ad.carousel_destination_urls</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.carousel_ios_deep_links</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.click_tracking_url</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> Ad.collection_items_destination_url_template</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> Ad.created_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.creative_type</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.destination_url</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> Ad.id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.ios_deep_link</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> Ad.is_pin_deleted</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.is_removable</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.name</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> Ad.pin_id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.rejected_reasons</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> Ad.rejection_labels</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.review_status</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.status</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> Ad.summary_status</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.tracking_urls</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.type</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> Ad.updated_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ Ad.view_tracking_url</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L213\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Ad.create</code></h3>\n<p><code>python\n\
+    create(\n    ad_account_id: 'str',\n    ad_group_id: 'str',\n    creative_type:\
+    \ 'str',\n    pin_id: 'str',\n    is_pin_deleted: 'bool' = False,\n    is_removable:\
+    \ 'bool' = True,\n    status: 'str' = 'ACTIVE',\n    android_deep_link: 'str'\
+    \ = None,\n    carousel_android_deep_links: 'list[str]' = None,\n    carousel_destination_urls:\
+    \ 'list[str]' = None,\n    carousel_ios_deep_links: 'list[str]' = None,\n    click_tracking_url:\
+    \ 'str' = None,\n    destination_url: 'str' = None,\n    ios_deep_link: 'str'\
+    \ = None,\n    name: 'str' = None,\n    tracking_urls: 'dict' = None,\n    view_tracking_url:\
+    \ 'str' = None,\n    client: 'PinterestSDKClient' = None,\n    **kwargs\n) \u2192\
+    \ Ad</code></p>\n<p>Create a new ad. Request must contain ad_group_id, creative_type,\
+    \ and the source Pin pin_id. </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>ad_account_id</code></b>\
+    \ (str):  Campaign's Ad Account ID. </li>\n<li><b><code>ad_group_id</code></b>\
+    \ (str):  ID of the ad group that contains the ad. </li>\n<li><b><code>creative_type</code></b>\
+    \ (str):  Ad creative type enum. Enum: <code>\"REGULAR\"</code> <code>\"VIDEO\"\
+    </code> <code>\"SHOPPING\"</code>  <code>\"CAROUSEL\"</code> <code>\"MAX_VIDEO\"\
+    </code> <code>\"SHOP_THE_PIN\"</code> <code>\"IDEA\"</code> </li>\n<li><b><code>pin_id</code></b>\
+    \ (str):  ID of the pin used to make the ad. </li>\n<li><b><code>status</code></b>\
+    \ (str):  Entity status of the ad. Enum: <code>\"ACTIVE\"</code> <code>\"PAUSED\"\
+    </code> <code>\"ARCHIVED\"</code> </li>\n<li><b><code>is_pin_deleted</code></b>\
+    \ (bool):  Is original pin deleted? </li>\n<li><b><code>is_removable</code></b>\
+    \ (bool):  Is pin repinnable? </li>\n<li><b><code>android_deep_link</code></b>\
+    \ (str, optional):  Deep link URL for Android devices. Not currently  available.\
+    \ Using this field will generate an error. Defaults to None. </li>\n<li><b><code>carousel_android_deep_links</code></b>\
+    \ (list[str], optional):  List of deep links for the carousel pin on  Android.\
+    \ Defaults to None. </li>\n<li><b><code>carousel_destination_urls</code></b> (list[str],\
+    \ optional):  List of destination URLs for the carousel  pin to promote. Defaults\
+    \ to None. </li>\n<li><b><code>carousel_ios_deep_links</code></b> (list[str],\
+    \ optional):  List of deep links for the carousel pin on iOS.  Defaults to None.\
+    \ </li>\n<li><b><code>click_tracking_url</code></b> (str, optional):  Tracking\
+    \ url for the ad clicks. Defaults to None. </li>\n<li><b><code>destination_url</code></b>\
+    \ (str, optional):  Destination URL. Defaults to None. </li>\n<li><b><code>ios_deep_link</code></b>\
+    \ (str, optional):  Deep link URL for iOS devices. Not currently available. Using\
+    \  this field will generate an error.Defaults to None. </li>\n<li><b><code>name</code></b>\
+    \ (str, optional):  Name of the ad - 255 chars max.  Defaults to None. </li>\n\
+    <li><b><code>tracking_urls</code></b> (dict, optional):  Third-party tracking\
+    \ URLs.<br> Python <dict> with the format: </li>\n<li><b><code>{\"&lt;a href=\"\
+    https</code></b>: //developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\"\
+    &gt;Tracking </li>\n<li><b><code>event enum&lt;/a&gt;\"</code></b>: [URL string\
+    \ array],...}<br> For example: {\"impression\": </li>\n<li><b><code>[\"URL1\"\
+    , \"URL2\"], \"click\"</code></b>:  [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to\
+    \ three tracking URLs are supported for each event type. Tracking URLs set at\
+    \ the ad group or ad level can override those set at the campaign level. Pass\
+    \ in an empty object - {} - to remove tracking URLs.<br><br> For more </li>\n\
+    <li><b><code>information, see                         &lt;a href=\"https</code></b>:\
+    \ //help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\"\
+    \ target=\"_blank\"&gt;Third-party and dynamic tracking</a>. Defaults to None.\
+    \ </li>\n<li><b><code>view_tracking_url</code></b> (str, optional):  Tracking\
+    \ URL for ad impressions. Defaults to None. </li>\n<li><b><code>client</code></b>\
+    \ (PinterestSDKClient, optional):  PinterestSDKClient Object. Defaults to default_api_client.\
+    \ </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>Ad</code></b>:\
+    \  The newly created Ad. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L315\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Ad.get_all</code></h3>\n<p><code>python\n\
+    get_all(\n    ad_account_id: 'str',\n    campaign_ids: 'list[str]' = None,\n \
+    \   ad_group_ids: 'list[str]' = None,\n    ad_ids: 'list[str]' = None,\n    entity_statuses:\
+    \ 'list[str]' = None,\n    page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n\
+    \    bookmark: 'str' = None,\n    client: 'PinterestSDKClient' = None,\n    **kwargs\n\
+    ) \u2192 tuple[list[Ad], Bookmark]</code></p>\n<p>List ads that meet the filters\
+    \ provided: \n  - Listed campaign ids or ad group ids or ad ids \n  - Listed entity\
+    \ statuses <p/> If no filter is provided, all ads in the ad account are returned.\
+    \ </p>\n<p><strong>NOTE:</strong></p>\n<blockquote>\n<p>Provide only campaign_id\
+    \ or ad_group_id or ad_id. Do not provide more than one type. Review status is\
+    \ provided for each ad; if review_status is REJECTED, the rejected_reasons field\
+    \ will contain additional information. For more, see https://policy.pinterest.com/en/advertising-guidelines\
+    \ Pinterest advertising standards. \n</p>\n</blockquote>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>ad_account_id</code></b> (str):  Ad Account ID </li>\n<li><b><code>campaign_ids</code></b>\
+    \ (list[str], optional):  List of Campaign IDs to use to filter the results </li>\n\
+    <li><b><code>ad_group_ids</code></b> (list[str], optional):  List of Ad Group\
+    \ IDs to use to filter the results </li>\n<li><b><code>ad_ids</code></b> (list[str],\
+    \ optional):  List of Ad IDs to use to filter the results </li>\n<li><b><code>entity_statuses</code></b>\
+    \ (list[str], optional):  Possible Entity Statuses \"ACTIVE\", \"PAUSED\" or \"\
+    ARCHIVED\". Defaults  to None. </li>\n<li><b><code>page_size</code></b> (int[1..100],\
+    \ optional):  Maximum number of items to include in a single page of the response.\
+    \  See documentation on Pagination for more information. Defaults to None which\
+    \ will  return all campaigns. </li>\n<li><b><code>order</code></b> (str, optional):\
+    \  The order in which to sort the items returned: \u201CASCENDING\u201D or \u201C\
+    DESCENDING\u201D by ID.  Note that higher-value IDs are associated with more-recently\
+    \ added items. Defaults to  \"ASCENDING\". </li>\n<li><b><code>bookmark</code></b>\
+    \ (str, optional):  Cursor used to fetch the next page of items. Defaults to None.\
+    \ </li>\n<li><b><code>client</code></b> (ApiClient):  ApiClient Object </li>\n\
+    </ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[Ad]</code></b>:\
+    \  List of Ad Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark for pagination\
+    \ if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L394\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>Ad.update_fields</code></h3>\n<p><code>python\n\
+    update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update Ad fields suing any\
+    \ arguments </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
+    \  If Ad fields were updated successfully </li>\n</ul>"
   name: ads.md
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/audiences.py#L0\"\
