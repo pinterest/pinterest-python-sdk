@@ -44,8 +44,9 @@ def generate_new_doc():
     generate_docs(
         ['pinterest'],
         watermark=False,
-        output_path='docs/pinterest/',
+        remove_package_prefix=True,
         overview_file='README.md',
+        output_path='docs/pinterest/',
         src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/')
 
 
@@ -67,8 +68,8 @@ def sort_index(index: dict) -> dict:
 
 
 def remove_module_prefix_from_file(file: str, module: str) -> str:
-    """Remove module prefix from file
-    Rename file to get rid of module prefix (added by lazydocs)
+    """Remove module prefix from file name
+    By default, lazydocs add module as prefix
     ex: ads.ad_groups.md -> ad_groups.md
 
     Args:
@@ -79,9 +80,8 @@ def remove_module_prefix_from_file(file: str, module: str) -> str:
         str: new file name
     """
     new_name = file
-    if file != (module + ".md"):
+    if file != (module + ".md") and file.find(module) == 0:
         new_name = file[len(module)+1:]
-        os.rename(f"docs/pinterest/{file}", f"docs/pinterest/{new_name}")
     return new_name
 
 
@@ -130,10 +130,9 @@ def create_file_index() -> dict:
                 continue
 
             if file.find(module) == 0:
-                new_name = remove_module_prefix_from_file(file, module)
-                if module not in index: 
+                if module not in index:
                     index[module] = []
-                index[module].append(new_name)
+                index[module].append(file)
 
                 found_matching_module = True
                 break
@@ -155,19 +154,19 @@ def get_origin_file_name(file: str) -> str:
     """Get origin file name by removing filename extension: .md
 
     Args:
-        file (str): _description_
+        file (str): file name
 
     Returns:
         str: origin file name
     """
     return file[:-3]
 
-def append_doc_to_spec_file(file_index: dict):
+def append_doc_to_spec_file(index: dict):
     """
-    Accord to index file, append docs to spec skeleton spec and overwrite to python-sdk-doc.yaml
+    Accord to index file, append docs to spec skeleton spec and overwrite it to python-sdk-doc.yaml
 
     Args:
-        file_index (dict): file index
+        index (dict): file index
     """
     print("----------------- " + "Appending doc to spec file")
 
@@ -178,10 +177,10 @@ def append_doc_to_spec_file(file_index: dict):
     # Appending md doc into skeleton spec
     spec['tags'] = []
     spec['x-tagGroups'] = []
-    for tag_name, md_files in file_index.items():
+    for module, md_files in index.items():
         tag_names = []
         for md_file in md_files:
-            name = get_origin_file_name(md_file)
+            name = get_origin_file_name(remove_module_prefix_from_file(md_file, module))
             tag_names.append(name)
             spec['tags'].append(
                 {
@@ -192,7 +191,7 @@ def append_doc_to_spec_file(file_index: dict):
             )
         spec['x-tagGroups'].append(
             {
-                "name": 'pinterest.' + tag_name,
+                "name": 'pinterest.' + module,
                 "tags": tag_names,
             }
         )
