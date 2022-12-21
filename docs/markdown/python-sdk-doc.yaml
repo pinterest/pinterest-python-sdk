@@ -859,15 +859,6 @@ tags:
 - description: '<!-- markdownlint-disable -->
 
 
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/bin/__init__.py"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>bin</code></h1>'
-  name: bin
-  x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
     <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/bin/get_config.py#L0"><img
     align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
 
@@ -888,6 +879,15 @@ tags:
 
     <p>function to get config variables </p>'
   name: get_config
+  x-traitTag: false
+- description: '<!-- markdownlint-disable -->
+
+
+    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/bin/__init__.py"><img
+    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
+
+    <h1><kbd>module</kbd> <code>bin</code></h1>'
+  name: bin
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L0\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
@@ -1024,6 +1024,15 @@ tags:
     variables. </p>'
   name: load_json_config
   x-traitTag: false
+- description: '<!-- markdownlint-disable -->
+
+
+    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/__init__.py"><img
+    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
+
+    <h1><kbd>module</kbd> <code>utils</code></h1>'
+  name: utils
+  x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/refresh_access_token.py#L0\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
     ></a></p>\n<h1><kbd>module</kbd> <code>utils.refresh_access_token</code></h1>\n\
@@ -1069,15 +1078,6 @@ tags:
 
     __init__(status=None, reason=None, http_resp=None)</code></p>'
   name: sdk_exceptions
-  x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/__init__.py"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>utils</code></h1>'
-  name: utils
   x-traitTag: false
 - description: '<!-- markdownlint-disable -->
 
@@ -1155,8 +1155,8 @@ x-tagGroups:
   - keywords
 - name: pinterest.bin
   tags:
-  - bin
   - get_config
+  - bin
 - name: pinterest.client
   tags:
   - client
@@ -1166,9 +1166,9 @@ x-tagGroups:
   - bookmark
   - error_handling
   - load_json_config
+  - utils
   - refresh_access_token
   - sdk_exceptions
-  - utils
 - name: pinterest.extra
   tags:
   - config
