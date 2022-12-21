@@ -12,6 +12,7 @@ MODULES = [
 ]
 IGNORED_FILES = {
     "ads.md", #Ignore this file since ads/__init__.py is converted into ads.md
+    "organic.md",
     "README.md",
     ".pages",
 }
