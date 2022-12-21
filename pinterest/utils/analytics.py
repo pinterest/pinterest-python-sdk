@@ -2,18 +2,47 @@
 Analytics Class for Pinterest Python SDK
 """
 from __future__ import annotations
+from typing import Callable
 
 from pinterest.utils.validations import AdsEntityType
+from pinterest.utils.base_model import PinterestBaseModel
+
+from pinterest.client import PinterestSDKClient
+
 
 class AnalyticsUtils():
     """
     Utility class with functions to make model specific analytics api calls.
     """
     @classmethod
-    def get_ad_entity_analytics(cls):
-        # pylint: disable=missing-function-docstring
-        # added as an example placeholder
-        pass
+    def _get_ad_entity_analytics(
+        cls,
+        params:list,
+        api:type,
+        analytics_fn: Callable,
+        ad_entity: PinterestBaseModel,
+        client:PinterestSDKClient = None,
+        **kwargs
+    ) -> AnalyticsResponse:
+        """
+        Helper function used to get ad entity analytics.
+
+        Args:
+            params (list): List of params
+            api (type):
+            analytics_fn (Callable):
+            ad_entity (PinterestBaseModel):
+            client (PinterestSDKClient, optional):
+
+        Returns:
+            AnalyticsResponse:
+        """
+
+        return AnalyticsResponse(
+            entity_type=ad_entity,
+            fields=params.get('columns'),
+            raw_response=getattr(api(client), analytics_fn)(**params, **kwargs)
+        )
 
 
 class AnalyticsResponse():
@@ -22,7 +51,7 @@ class AnalyticsResponse():
     """
     def __init__(
         self,
-        entity_type:str,
+        entity_type:PinterestBaseModel,
         fields:list[str],
         raw_response:dict,
         ) -> None:
