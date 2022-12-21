@@ -12,6 +12,8 @@ MODULES = [
 ]
 IGNORED_FILES = {
     "ads.md", #Ignore this file since ads/__init__.py is converted into ads.md
+    "README.md",
+    ".pages",
 }
 PROJECT_PATH = os.path.abspath(os.getcwd())
 
@@ -41,7 +43,9 @@ def generate_new_doc():
     from lazydocs import generate_docs
     generate_docs(
         ['pinterest'],
+        watermark=False,
         output_path='docs/pinterest/',
+        overview_file='README.md',
         src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/')
 
 
@@ -147,6 +151,16 @@ def create_file_index() -> dict:
 
     return return_index
 
+def get_origin_file_name(file: str) -> str:
+    """Get origin file name by removing filename extension: .md
+
+    Args:
+        file (str): _description_
+
+    Returns:
+        str: origin file name
+    """
+    return file[:-3]
 
 def append_doc_to_spec_file(file_index: dict):
     """
@@ -167,10 +181,11 @@ def append_doc_to_spec_file(file_index: dict):
     for tag_name, md_files in file_index.items():
         tag_names = []
         for md_file in md_files:
-            tag_names.append(md_file)
+            name = get_origin_file_name(md_file)
+            tag_names.append(name)
             spec['tags'].append(
                 {
-                    "name": md_file,
+                    "name": name,
                     "description": markdown.markdown(open(PROJECT_PATH + '/docs/pinterest/' + md_file, 'r').read()),
                     "x-traitTag": False,
                 }
