@@ -38,19 +38,18 @@ tags:
     \ used to create, update its attributes and list its different entities. </p>\n\
     <p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_accounts.py#L27\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdAccount.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(ad_account_id: 'str', client=None, **kwargs) \u2192 None</code></p>\n\
     <p>Initialize an object of an AdAccount. </p>\n<p><strong>Args:</strong></p>\n\
     <ul>\n<li><b><code>ad_account_id</code></b> (str):  Unique identifier of an ad\
     \ account. </li>\n<li><b><code>client</code></b> (PinterestSDKClient, optional):\
     \  PinterestSDKClient Object. Defaults to <code>default_api_client</code>. </li>\n\
-    </ul>\n<hr />\n<h4><kbd>property</kbd> AdAccount.country</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdAccount.currency</h4>\n<hr />\n<h4><kbd>property</kbd> AdAccount.id</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdAccount.name</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdAccount.owner</h4>\n<hr />\n<h4><kbd>property</kbd> AdAccount.permissions</h4>\n\
-    <hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_accounts.py#L89\"\
+    </ul>\n<hr />\n<h4><kbd>property</kbd> country</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ currency</h4>\n<hr />\n<h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ name</h4>\n<hr />\n<h4><kbd>property</kbd> owner</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ permissions</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_accounts.py#L89\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>AdAccount.create</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
     create(\n    name: 'str',\n    owner_user_id: 'str',\n    country: 'str',\n  \
     \  client: 'PinterestSDKClient' = None,\n    **kwargs\n) \u2192 AdAccount</code></p>\n\
     <p>Create a new ad account. Different ad accounts can support different currencies,\
@@ -69,29 +68,29 @@ tags:
     <ul>\n<li><b><code>AdAccount</code></b>:  AdAccount Object </li>\n</ul>\n<hr />\n\
     <p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_accounts.py#L181\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdAccount.list_audiences</code></h3>\n\
-    <p><code>python\nlist_audiences(\n    entity_statuses: 'list[str]' = None,\n \
-    \   page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n    bookmark: 'str'\
-    \ = None,\n    **kwargs\n) \u2192 tuple[list[Audience], Bookmark]</code></p>\n\
-    <p>Get a list of the audiences in the AdAccount, filtered by the specified arguments\
-    \ </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>entity_statuses</code></b>\
-    \ (list[str], optional):  Possible Entity Statuses \"ACTIVE\", \"PAUSED\" or \"\
-    ARCHIVED\". Defaults  to None. </li>\n<li><b><code>page_size</code></b> (int[1..100],\
-    \ optional):  Maximum number of items to include in a single page of the response.\
-    \  See documentation on Pagination for more information. Defaults to None  which\
-    \ will return default number of audiences. </li>\n<li><b><code>order</code></b>\
-    \ (str, optional):  The order in which to sort the items returned: \u201CASCENDING\u201D\
-    \ or \u201CDESCENDING\u201D by ID.  Note that higher-value IDs are associated\
-    \ with more-recently added items. Defaults to  \"ASCENDING\". </li>\n<li><b><code>bookmark</code></b>\
-    \ (str, optional):  Cursor used to fetch the next page of items. Defaults to None.\
-    \ </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[Audience]</code></b>:\
+    ></a></p>\n<h3><kbd>method</kbd> <code>list_audiences</code></h3>\n<p><code>python\n\
+    list_audiences(\n    entity_statuses: 'list[str]' = None,\n    page_size: 'int'\
+    \ = None,\n    order: 'str' = 'ASCENDING',\n    bookmark: 'str' = None,\n    **kwargs\n\
+    ) \u2192 tuple[list[Audience], Bookmark]</code></p>\n<p>Get a list of the audiences\
+    \ in the AdAccount, filtered by the specified arguments </p>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>entity_statuses</code></b> (list[str], optional):  Possible\
+    \ Entity Statuses \"ACTIVE\", \"PAUSED\" or \"ARCHIVED\". Defaults  to None. </li>\n\
+    <li><b><code>page_size</code></b> (int[1..100], optional):  Maximum number of\
+    \ items to include in a single page of the response.  See documentation on Pagination\
+    \ for more information. Defaults to None  which will return default number of\
+    \ audiences. </li>\n<li><b><code>order</code></b> (str, optional):  The order\
+    \ in which to sort the items returned: \u201CASCENDING\u201D or \u201CDESCENDING\u201D\
+    \ by ID.  Note that higher-value IDs are associated with more-recently added items.\
+    \ Defaults to  \"ASCENDING\". </li>\n<li><b><code>bookmark</code></b> (str, optional):\
+    \  Cursor used to fetch the next page of items. Defaults to None. </li>\n</ul>\n\
+    <p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[Audience]</code></b>:\
     \  List of Audience Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
     \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_accounts.py#L134\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdAccount.list_campaigns</code></h3>\n\
-    <p><code>python\nlist_campaigns(\n    campaign_ids: 'list[str]' = None,\n    entity_statuses:\
-    \ 'list[str]' = None,\n    page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n\
-    \    bookmark: 'str' = None,\n    **kwargs\n) \u2192 tuple[list[Campaign], Bookmark]</code></p>\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>list_campaigns</code></h3>\n<p><code>python\n\
+    list_campaigns(\n    campaign_ids: 'list[str]' = None,\n    entity_statuses: 'list[str]'\
+    \ = None,\n    page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n   \
+    \ bookmark: 'str' = None,\n    **kwargs\n) \u2192 tuple[list[Campaign], Bookmark]</code></p>\n\
     <p>Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered\
     \ by the specified options. \n- The token's user_account must either be the Owner\
     \ of the specified ad account, or have one of the necessary            roles granted\
@@ -114,9 +113,9 @@ tags:
     \  List of Campaign Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
     \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_accounts.py#L218\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdAccount.list_customer_lists</code></h3>\n\
-    <p><code>python\nlist_customer_lists(\n    page_size: 'int' = None,\n    order:\
-    \ 'str' = None,\n    bookmark: 'str' = None,\n    **kwargs\n) \u2192 tuple[list[CustomerList],\
+    ></a></p>\n<h3><kbd>method</kbd> <code>list_customer_lists</code></h3>\n<p><code>python\n\
+    list_customer_lists(\n    page_size: 'int' = None,\n    order: 'str' = None,\n\
+    \    bookmark: 'str' = None,\n    **kwargs\n) \u2192 tuple[list[CustomerList],\
     \ Bookmark]</code></p>\n<p>Get a list of customer lists in the AdAccount, filtered\
     \ by the specified arguments </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>page_size</code></b>\
     \ (int[1..100], optional):  Maximum number of items to include in a single page\
@@ -140,33 +139,31 @@ tags:
     \ to view, create, update its attributes and list its different entities. </p>\n\
     <p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L26\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdGroup.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(ad_account_id: 'str', ad_group_id: 'str', client=None, **kwargs) \u2192\
     \ None</code></p>\n<p>Initialize an AdGroup object. </p>\n<p><strong>Args:</strong></p>\n\
     <ul>\n<li><b><code>ad_account_id</code></b> (str):  AdGroup's Ad Account ID. </li>\n\
     <li><b><code>ad_group_id</code></b> (str):  AdGroup ID, must be associated with\
     \ the Ad Account ID provided in the path. </li>\n<li><b><code>client</code></b>\
     \ (<em>type</em>, optional):  PinterestSDKClient Object. Defaults to default_api_client.\
-    \ </li>\n</ul>\n<hr />\n<h4><kbd>property</kbd> AdGroup.ad_account_id</h4>\n<hr\
-    \ />\n<h4><kbd>property</kbd> AdGroup.auto_targeting_enabled</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.bid_in_micro_currency</h4>\n<hr />\n<h4><kbd>property</kbd> AdGroup.bid_strategy_type</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdGroup.billable_event</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.budget_in_micro_currency</h4>\n<hr />\n<h4><kbd>property</kbd> AdGroup.budget_type</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdGroup.campaign_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.conversion_learning_mode_type</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.created_time</h4>\n<hr />\n<h4><kbd>property</kbd> AdGroup.dca_assets</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdGroup.end_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.feed_profile_id</h4>\n<hr />\n<h4><kbd>property</kbd> AdGroup.id</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdGroup.lifetime_frequency_cap</h4>\n<hr />\n\
-    <h4><kbd>property</kbd> AdGroup.name</h4>\n<hr />\n<h4><kbd>property</kbd> AdGroup.pacing_delivery_type</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdGroup.placement_group</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.start_time</h4>\n<hr />\n<h4><kbd>property</kbd> AdGroup.status</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdGroup.summary_status</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.targeting_spec</h4>\n<hr />\n<h4><kbd>property</kbd> AdGroup.tracking_urls</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> AdGroup.type</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ AdGroup.updated_time</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L205\"\
+    \ </li>\n</ul>\n<hr />\n<h4><kbd>property</kbd> ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ auto_targeting_enabled</h4>\n<hr />\n<h4><kbd>property</kbd> bid_in_micro_currency</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> bid_strategy_type</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ billable_event</h4>\n<hr />\n<h4><kbd>property</kbd> budget_in_micro_currency</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> budget_type</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ campaign_id</h4>\n<hr />\n<h4><kbd>property</kbd> conversion_learning_mode_type</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> created_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ dca_assets</h4>\n<hr />\n<h4><kbd>property</kbd> end_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ feed_profile_id</h4>\n<hr />\n<h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ lifetime_frequency_cap</h4>\n<hr />\n<h4><kbd>property</kbd> name</h4>\n<hr\
+    \ />\n<h4><kbd>property</kbd> pacing_delivery_type</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ placement_group</h4>\n<hr />\n<h4><kbd>property</kbd> start_time</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> status</h4>\n<hr />\n<h4><kbd>property</kbd> summary_status</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> targeting_spec</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ tracking_urls</h4>\n<hr />\n<h4><kbd>property</kbd> type</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ updated_time</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L205\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>AdGroup.create</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
     create(\n    ad_account_id: 'str',\n    name: 'str',\n    campaign_id: 'str',\n\
     \    billable_event: 'str',\n    budget_in_micro_currency: 'int' = None,\n   \
     \ bid_in_micro_currency: 'int' = None,\n    start_time: 'int' = None,\n    end_time:\
@@ -228,21 +225,21 @@ tags:
     \ </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>AdGroup</code></b>:\
     \  AdGroup Object </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L471\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdGroup.disable_auto_targeting</code></h3>\n\
-    <p><code>python\ndisable_auto_targeting()</code></p>\n<p>Disable auto-targeting\
-    \ for ad group. Also known as <a href='https://help.pinterest.com/en/business/article/expanded-targeting'>\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>disable_auto_targeting</code></h3>\n<p><code>python\n\
+    disable_auto_targeting()</code></p>\n<p>Disable auto-targeting for ad group. Also\
+    \ known as <a href='https://help.pinterest.com/en/business/article/expanded-targeting'>\"\
     expanded targeting\"</a>. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
     \  true if ad group disable auto_targeting_enabled </li>\n</ul>\n<hr />\n<p><a\
     \ href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L461\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdGroup.enable_auto_targeting</code></h3>\n\
-    <p><code>python\nenable_auto_targeting()</code></p>\n<p>Enable auto-targeting\
-    \ for ad group. Also known as <a href='https://help.pinterest.com/en/business/article/expanded-targeting'>\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>enable_auto_targeting</code></h3>\n<p><code>python\n\
+    enable_auto_targeting()</code></p>\n<p>Enable auto-targeting for ad group. Also\
+    \ known as <a href='https://help.pinterest.com/en/business/article/expanded-targeting'>\"\
     expanded targeting\"</a>. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
     \  true if ad group enable auto_targeting_enabled </li>\n</ul>\n<hr />\n<p><a\
     \ href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L362\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>AdGroup.get_all</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
     get_all(\n    ad_account_id: 'str',\n    campaign_ids: 'list[str]' = None,\n \
     \   ad_group_ids: 'list[str]' = None,\n    entity_statuses: 'list[str]' = None,\n\
     \    page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n    bookmark:\
@@ -264,7 +261,7 @@ tags:
     \ Bookmark]</code></b>:  <em>description</em> </li>\n</ul>\n<hr />\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L422\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdGroup.list_ads</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>list_ads</code></h3>\n<p><code>python\n\
     list_ads(\n    ad_ids: 'list[str]' = None,\n    entity_statuses: 'list[str]' =\
     \ None,\n    page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n    bookmark:\
     \ 'str' = None,\n    **kwargs\n) \u2192 tuple[list[Ad], Bookmark]</code></p>\n\
@@ -284,7 +281,7 @@ tags:
     \ of Ads </li>\n<li><b><code>Bookmark</code></b>:  Bookmark object </li>\n</ul>\n\
     <hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L336\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>AdGroup.update_fields</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update adgroup fields using\
     \ any arguments </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
     \  if adgroup fields were updated successfully </li>\n</ul>"
@@ -298,7 +295,7 @@ tags:
     ></a></p>\n<h2><kbd>class</kbd> <code>Ad</code></h2>\n<p>Ad model used to view,\
     \ create, update its attributes </p>\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L24\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Ad.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(\n    ad_account_id: 'str',\n    ad_id: 'str',\n    client: 'PinterestSDKClient'\
     \ = None,\n    **kwargs\n) \u2192 None</code></p>\n<p>Initialize an Ad object.\
     \ </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>ad_account_id</code></b>\
@@ -306,26 +303,26 @@ tags:
     \ ID, must be associated with the Ad Account ID provided in the path. </li>\n\
     <li><b><code>client</code></b> (PinterestSDKClient, optional):  PinterestSDKClient\
     \ Object. Defaults to default_api_client. </li>\n</ul>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.ad_group_id</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Ad.android_deep_link</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.campaign_id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.carousel_android_deep_links</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Ad.carousel_destination_urls</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.carousel_ios_deep_links</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.click_tracking_url</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Ad.collection_items_destination_url_template</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Ad.created_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.creative_type</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.destination_url</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Ad.id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.ios_deep_link</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Ad.is_pin_deleted</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.is_removable</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.name</h4>\n<hr />\n\
-    <h4><kbd>property</kbd> Ad.pin_id</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.rejected_reasons</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Ad.rejection_labels</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.review_status</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.status</h4>\n<hr />\n\
-    <h4><kbd>property</kbd> Ad.summary_status</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.tracking_urls</h4>\n<hr />\n<h4><kbd>property</kbd> Ad.type</h4>\n<hr />\n\
-    <h4><kbd>property</kbd> Ad.updated_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Ad.view_tracking_url</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L213\"\
+    \ ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd> ad_group_id</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> android_deep_link</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ campaign_id</h4>\n<hr />\n<h4><kbd>property</kbd> carousel_android_deep_links</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> carousel_destination_urls</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ carousel_ios_deep_links</h4>\n<hr />\n<h4><kbd>property</kbd> click_tracking_url</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> collection_items_destination_url_template</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> created_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ creative_type</h4>\n<hr />\n<h4><kbd>property</kbd> destination_url</h4>\n<hr\
+    \ />\n<h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd> ios_deep_link</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> is_pin_deleted</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ is_removable</h4>\n<hr />\n<h4><kbd>property</kbd> name</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ pin_id</h4>\n<hr />\n<h4><kbd>property</kbd> rejected_reasons</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> rejection_labels</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ review_status</h4>\n<hr />\n<h4><kbd>property</kbd> status</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ summary_status</h4>\n<hr />\n<h4><kbd>property</kbd> tracking_urls</h4>\n<hr\
+    \ />\n<h4><kbd>property</kbd> type</h4>\n<hr />\n<h4><kbd>property</kbd> updated_time</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> view_tracking_url</h4>\n<hr />\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L213\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Ad.create</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
     create(\n    ad_account_id: 'str',\n    ad_group_id: 'str',\n    creative_type:\
     \ 'str',\n    pin_id: 'str',\n    is_pin_deleted: 'bool' = False,\n    is_removable:\
     \ 'bool' = True,\n    status: 'str' = 'ACTIVE',\n    android_deep_link: 'str'\
@@ -377,7 +374,7 @@ tags:
     \ </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>Ad</code></b>:\
     \  The newly created Ad. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L315\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Ad.get_all</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
     get_all(\n    ad_account_id: 'str',\n    campaign_ids: 'list[str]' = None,\n \
     \   ad_group_ids: 'list[str]' = None,\n    ad_ids: 'list[str]' = None,\n    entity_statuses:\
     \ 'list[str]' = None,\n    page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n\
@@ -409,7 +406,7 @@ tags:
     \  List of Ad Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark for pagination\
     \ if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ads.py#L394\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Ad.update_fields</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update Ad fields suing any\
     \ arguments </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
     \  If Ad fields were updated successfully </li>\n</ul>"
@@ -423,18 +420,17 @@ tags:
     ></a></p>\n<h2><kbd>class</kbd> <code>Audience</code></h2>\n<p>High level model\
     \ class to manage audiences for an AdAccount </p>\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/audiences.py#L28\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Audience.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(ad_account_id, audience_id, client=None, **kwargs)</code></p>\n<hr />\n\
-    <h4><kbd>property</kbd> Audience.ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Audience.audience_type</h4>\n<hr />\n<h4><kbd>property</kbd> Audience.created_timestamp</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Audience.description</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Audience.id</h4>\n<hr />\n<h4><kbd>property</kbd> Audience.name</h4>\n<hr />\n\
-    <h4><kbd>property</kbd> Audience.rule</h4>\n<hr />\n<h4><kbd>property</kbd> Audience.size</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Audience.status</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Audience.type</h4>\n<hr />\n<h4><kbd>property</kbd> Audience.updated_timestamp</h4>\n\
-    <hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/audiences.py#L107\"\
+    <h4><kbd>property</kbd> ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd> audience_type</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> created_timestamp</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ description</h4>\n<hr />\n<h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ name</h4>\n<hr />\n<h4><kbd>property</kbd> rule</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ size</h4>\n<hr />\n<h4><kbd>property</kbd> status</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ type</h4>\n<hr />\n<h4><kbd>property</kbd> updated_timestamp</h4>\n<hr />\n\
+    <p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/audiences.py#L107\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Audience.create</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
     create(\n    ad_account_id: 'str',\n    name: 'str',\n    rule: 'dict',\n    audience_type:\
     \ 'str',\n    description: 'str' = None,\n    client: 'PinterestSDKClient' = None,\n\
     \    **kwargs\n) \u2192 Audience</code></p>\n<p>Create an audience you can use\
@@ -494,7 +490,7 @@ tags:
     \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>Audience</code></b>:\
     \  Audience Object </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/audiences.py#L190\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Audience.get_all</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
     get_all(\n    ad_account_id: 'str',\n    entity_statuses: 'list[str]' = None,\n\
     \    page_size: 'int' = None,\n    order: 'str' = 'ASCENDING',\n    bookmark:\
     \ 'str' = None,\n    client: 'PinterestSDKClient' = None,\n    **kwargs\n) \u2192\
@@ -517,7 +513,7 @@ tags:
     \  List of Audience Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
     \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/audiences.py#L252\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Audience.update_fields</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs)</code></p>\n<p>Update audience fields </p>\n<p>Keyword\
     \ Args:  Any valid audience fields with valid values </p>"
   name: audiences
@@ -531,7 +527,7 @@ tags:
     \ used to view, create, update its attributes and list its different entities.\
     \ </p>\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L26\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(\n    ad_account_id: 'str',\n    campaign_id: 'str',\n    client: 'PinterestSDKClient'\
     \ = None,\n    **kwargs\n) \u2192 None</code></p>\n<p>Initialize a Campaign object.\
     \ </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>ad_account_id</code></b>\
@@ -539,32 +535,31 @@ tags:
     \ (str):  Campaign ID, must be associated with the Ad Account ID provided in the\
     \ path. </li>\n<li><b><code>client</code></b> (PinterestSDKClient, optional):\
     \  PinterestSDKClient Object. Uses the default client, if not provided. </li>\n\
-    </ul>\n<hr />\n<h4><kbd>property</kbd> Campaign.ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Campaign.created_time</h4>\n<hr />\n<h4><kbd>property</kbd> Campaign.daily_spend_cap</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Campaign.end_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Campaign.id</h4>\n<hr />\n<h4><kbd>property</kbd> Campaign.is_campaign_budget_optimization</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Campaign.is_flexible_daily_budgets</h4>\n<hr />\n\
-    <h4><kbd>property</kbd> Campaign.lifetime_spend_cap</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Campaign.name</h4>\n<hr />\n<h4><kbd>property</kbd> Campaign.objective_type</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Campaign.order_line_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Campaign.start_time</h4>\n<hr />\n<h4><kbd>property</kbd> Campaign.status</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Campaign.tracking_urls</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Campaign.type</h4>\n<hr />\n<h4><kbd>property</kbd> Campaign.updated_time</h4>\n\
-    <hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L463\"\
+    </ul>\n<hr />\n<h4><kbd>property</kbd> ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ created_time</h4>\n<hr />\n<h4><kbd>property</kbd> daily_spend_cap</h4>\n<hr\
+    \ />\n<h4><kbd>property</kbd> end_time</h4>\n<hr />\n<h4><kbd>property</kbd> id</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> is_campaign_budget_optimization</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> is_flexible_daily_budgets</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ lifetime_spend_cap</h4>\n<hr />\n<h4><kbd>property</kbd> name</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> objective_type</h4>\n<hr />\n<h4><kbd>property</kbd> order_line_id</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> start_time</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ status</h4>\n<hr />\n<h4><kbd>property</kbd> tracking_urls</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ type</h4>\n<hr />\n<h4><kbd>property</kbd> updated_time</h4>\n<hr />\n<p><a\
+    \ href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L463\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.activate</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>activate</code></h3>\n<p><code>python\n\
     activate() \u2192 bool</code></p>\n<p>Activate a paused or archived campaign </p>\n\
     <p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:  If campaign\
     \ status was successfully changed to 'ACTIVE' </li>\n</ul>\n<hr />\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L472\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.archive</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>archive</code></h3>\n<p><code>python\n\
     archive() \u2192 bool</code></p>\n<p>Archive an active or paused campaign </p>\n\
     <p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:  If campaign\
     \ status was successfully changed to 'ARCHIVED' </li>\n</ul>\n<hr />\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L152\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Campaign.create</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
     create(\n    ad_account_id: 'str',\n    name: 'str',\n    objective_type: 'str',\n\
     \    status: 'str' = 'ACTIVE',\n    lifetime_spend_cap: 'int' = None,\n    daily_spend_cap:\
     \ 'int' = None,\n    order_line_id: 'int' = None,\n    tracking_urls: 'str' =\
@@ -630,7 +625,7 @@ tags:
     \ for endpoint. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>Campaign</code></b>:\
     \  Campaign Object </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L295\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Campaign.get_all</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
     get_all(\n    ad_account_id: 'str',\n    campaign_ids: 'list[str]' = None,\n \
     \   entity_statuses: 'list[str]' = None,\n    page_size: 'int' = None,\n    order:\
     \ 'str' = 'ASCENDING',\n    bookmark: 'str' = None,\n    client: 'PinterestSDKClient'\
@@ -655,19 +650,17 @@ tags:
     \  List of Campaign Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
     \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L417\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.get_daily_budget</code></h3>\n\
-    <p><code>python\nget_daily_budget() \u2192 float</code></p>\n<p>Get the current\
-    \ daily spend cap budget of the campaign. </p>\n<p><strong>Returns:</strong></p>\n\
-    <ul>\n<li><b><code>float</code></b>:  Current daily spend cap budget </li>\n</ul>\n\
-    <hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L408\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>get_daily_budget</code></h3>\n<p><code>python\n\
+    get_daily_budget() \u2192 float</code></p>\n<p>Get the current daily spend cap\
+    \ budget of the campaign. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>float</code></b>:\
+    \  Current daily spend cap budget </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L408\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.get_lifetime_budget</code></h3>\n\
-    <p><code>python\nget_lifetime_budget() \u2192 float</code></p>\n<p>Get the current\
-    \ life time spend cap budget of the campaign. </p>\n<p><strong>Returns:</strong></p>\n\
-    <ul>\n<li><b><code>float</code></b>:  Current life time spend cap budget </li>\n\
-    </ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L507\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>get_lifetime_budget</code></h3>\n<p><code>python\n\
+    get_lifetime_budget() \u2192 float</code></p>\n<p>Get the current life time spend\
+    \ cap budget of the campaign. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>float</code></b>:\
+    \  Current life time spend cap budget </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L507\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.list_ad_groups</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>list_ad_groups</code></h3>\n<p><code>python\n\
     list_ad_groups(\n    page_size: 'int' = 25,\n    order: 'str' = 'ASCENDING',\n\
     \    bookmark: 'str' = None,\n    entity_statuses: 'list[str]' = None,\n    **kwargs\n\
     ) \u2192 tuple(list[AdGroup], Bookmark)</code></p>\n<p>List ad groups directed\
@@ -681,29 +674,28 @@ tags:
     <ul>\n<li><b><code>tuple[list[AdGroup], Bookmark]</code></b>:  <em>description</em>\
     \ </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L454\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.pause</code></h3>\n<p><code>python\n\
-    pause() \u2192 bool</code></p>\n<p>Pause an active or archived campaign </p>\n\
-    <p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:  If campaign\
-    \ status was successfully changed to 'PAUSED' </li>\n</ul>\n<hr />\n<p><a href=\"\
-    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L384\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>pause</code></h3>\n<p><code>python\npause()\
+    \ \u2192 bool</code></p>\n<p>Pause an active or archived campaign </p>\n<p><strong>Returns:</strong></p>\n\
+    <ul>\n<li><b><code>bool</code></b>:  If campaign status was successfully changed\
+    \ to 'PAUSED' </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L384\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.set_daily_budget</code></h3>\n\
-    <p><code>python\nset_daily_budget(new_spend_cap: 'int') \u2192 bool</code></p>\n\
-    <p>Set new daily spend cap budget for the campaign. </p>\n<p><strong>Args:</strong></p>\n\
-    <ul>\n<li><b><code>new_spend_cap</code></b> (int):  The new campaign daily spending\
+    ></a></p>\n<h3><kbd>method</kbd> <code>set_daily_budget</code></h3>\n<p><code>python\n\
+    set_daily_budget(new_spend_cap: 'int') \u2192 bool</code></p>\n<p>Set new daily\
+    \ spend cap budget for the campaign. </p>\n<p><strong>Args:</strong></p>\n<ul>\n\
+    <li><b><code>new_spend_cap</code></b> (int):  The new campaign daily spending\
     \ cap. </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
     \  If the daily budget was changed successfully </li>\n</ul>\n<hr />\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L360\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.set_lifetime_budget</code></h3>\n\
-    <p><code>python\nset_lifetime_budget(new_spend_cap: 'int') \u2192 bool</code></p>\n\
-    <p>Set new life time spend cap budget for the campaign. </p>\n<p><strong>Args:</strong></p>\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>set_lifetime_budget</code></h3>\n<p><code>python\n\
+    set_lifetime_budget(new_spend_cap: 'int') \u2192 bool</code></p>\n<p>Set new life\
+    \ time spend cap budget for the campaign. </p>\n<p><strong>Args:</strong></p>\n\
     <ul>\n<li><b><code>new_spend_cap</code></b> (int):  The new campaign total spending\
     \ cap. </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
     \  If the lifetime budget was changed successfully </li>\n</ul>\n<hr />\n<p><a\
     \ href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/campaigns.py#L481\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Campaign.update_fields</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update the campaign fields\
     \ using any attributes. </p>\n<p>Keyword Args:  Any valid campaign fields with\
     \ valid values </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
@@ -719,19 +711,17 @@ tags:
     \ model class to manage customer_lists for an CustomerList </p>\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L24\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>CustomerList.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(ad_account_id, customer_list_id, client=None, **kwargs)</code></p>\n\
-    <hr />\n<h4><kbd>property</kbd> CustomerList.ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ CustomerList.created_time</h4>\n<hr />\n<h4><kbd>property</kbd> CustomerList.exceptions</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> CustomerList.id</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ CustomerList.name</h4>\n<hr />\n<h4><kbd>property</kbd> CustomerList.num_batches</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> CustomerList.num_removed_user_records</h4>\n<hr\
-    \ />\n<h4><kbd>property</kbd> CustomerList.num_uploaded_user_records</h4>\n<hr\
-    \ />\n<h4><kbd>property</kbd> CustomerList.status</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ CustomerList.type</h4>\n<hr />\n<h4><kbd>property</kbd> CustomerList.updated_time</h4>\n\
-    <hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L245\"\
+    <hr />\n<h4><kbd>property</kbd> ad_account_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ created_time</h4>\n<hr />\n<h4><kbd>property</kbd> exceptions</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd> name</h4>\n<hr\
+    \ />\n<h4><kbd>property</kbd> num_batches</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ num_removed_user_records</h4>\n<hr />\n<h4><kbd>property</kbd> num_uploaded_user_records</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> status</h4>\n<hr />\n<h4><kbd>property</kbd> type</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> updated_time</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L245\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>CustomerList.add_record</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>add_record</code></h3>\n<p><code>python\n\
     add_record(record)</code></p>\n<p>Add records to an existing customer list, the\
     \ system scans the additions for existing Pinterest accounts; those are the records\
     \ that will be added to your \u201CCUSTOMER_LIST\u201D audience. </p>\n<p>Your\
@@ -743,14 +733,14 @@ tags:
     <ul>\n<li><b><code>bool</code></b>:  If record was added to the customer list\
     \ fields were successfully updated </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L106\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>CustomerList.create</code></h3>\n\
-    <p><code>python\ncreate(\n    ad_account_id: 'str',\n    name: 'str',\n    records:\
-    \ 'str',\n    list_type: 'str' = 'EMAIL',\n    client: 'PinterestSDKClient' =\
-    \ None,\n    **kwargs\n)</code></p>\n<p>Create a customer list from your records(hashed\
-    \ or plain-text email addresses, or hashed MAIDs or IDFAs). </p>\n<p>A customer\
-    \ list is one of the four types of Pinterest audiences: for more information,\
-    \ see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\"\
-    >Audience targeting</a> or the <a href=\"https://developers.pinterest.com/docs/features/ads-management/#Audiences\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
+    create(\n    ad_account_id: 'str',\n    name: 'str',\n    records: 'str',\n  \
+    \  list_type: 'str' = 'EMAIL',\n    client: 'PinterestSDKClient' = None,\n   \
+    \ **kwargs\n)</code></p>\n<p>Create a customer list from your records(hashed or\
+    \ plain-text email addresses, or hashed MAIDs or IDFAs). </p>\n<p>A customer list\
+    \ is one of the four types of Pinterest audiences: for more information, see <a\
+    \ href=\"https://help.pinterest.com/en/business/article/audience-targeting\">Audience\
+    \ targeting</a> or the <a href=\"https://developers.pinterest.com/docs/features/ads-management/#Audiences\"\
     >Audiences</a> section of the ads management guide. </p>\n<p>Please review our\
     \ <a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\"\
     >requirements</a> for what type of information is allowed when uploading a customer\
@@ -775,9 +765,9 @@ tags:
     \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>CustomerList</code></b>:\
     \  CustomerList object </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L192\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>CustomerList.get_all</code></h3>\n\
-    <p><code>python\nget_all(\n    ad_account_id: 'str',\n    page_size: 'int' = None,\n\
-    \    order: 'str' = None,\n    bookmark: 'str' = None,\n    client: 'PinterestSDKClient'\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
+    get_all(\n    ad_account_id: 'str',\n    page_size: 'int' = None,\n    order:\
+    \ 'str' = None,\n    bookmark: 'str' = None,\n    client: 'PinterestSDKClient'\
     \ = None,\n    **kwargs\n) \u2192 tuple[list[CustomerList], Bookmark]</code></p>\n\
     <p>Get a list of the customer lists in the AdAccount, filtered by the specified\
     \ arguments </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>ad_account_id</code></b>\
@@ -793,19 +783,19 @@ tags:
     \  List of CustomerList Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
     \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L266\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>CustomerList.remove_record</code></h3>\n\
-    <p><code>python\nremove_record(record)</code></p>\n<p>Remove records to an existing\
-    \ customer list. </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>record</code></b>\
-    \ (str):  Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails\
-    \ must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5.\
-    \ MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. </li>\n</ul>\n<p><strong>Returns:</strong></p>\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>remove_record</code></h3>\n<p><code>python\n\
+    remove_record(record)</code></p>\n<p>Remove records to an existing customer list.\
+    \ </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>record</code></b> (str):\
+    \  Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must\
+    \ be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs\
+    \ and IDFAs must be hashed with SHA1, SHA256, or MD5. </li>\n</ul>\n<p><strong>Returns:</strong></p>\n\
     <ul>\n<li><b><code>bool</code></b>:  If record was removed to the customer list\
     \ fields were successfully updated </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L171\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>CustomerList.update_fields</code></h3>\n\
-    <p><code>python\nupdate_fields(**kwargs)</code></p>\n<p>Update customer lists\
-    \ fields with valid values </p>\n<p>Keywords Args:  Any valid customer list field\
-    \ with valid value </p>"
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_fields</code></h3>\n<p><code>python\n\
+    update_fields(**kwargs)</code></p>\n<p>Update customer lists fields with valid\
+    \ values </p>\n<p>Keywords Args:  Any valid customer list field with valid value\
+    \ </p>"
   name: customer_lists
   x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/keywords.py#L0\"\
@@ -816,16 +806,15 @@ tags:
     ></a></p>\n<h2><kbd>class</kbd> <code>Keyword</code></h2>\n<p>High level model\
     \ class to manage keywords </p>\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/keywords.py#L25\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Keyword.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(ad_account_id, keyword_id, client=None, **kwargs)</code></p>\n<hr />\n\
-    <h4><kbd>property</kbd> Keyword.archived</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Keyword.bid</h4>\n<hr />\n<h4><kbd>property</kbd> Keyword.id</h4>\n<hr />\n\
-    <h4><kbd>property</kbd> Keyword.match_type</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Keyword.parent_id</h4>\n<hr />\n<h4><kbd>property</kbd> Keyword.parent_type</h4>\n\
-    <hr />\n<h4><kbd>property</kbd> Keyword.type</h4>\n<hr />\n<h4><kbd>property</kbd>\
-    \ Keyword.value</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/keywords.py#L88\"\
+    <h4><kbd>property</kbd> archived</h4>\n<hr />\n<h4><kbd>property</kbd> bid</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd> match_type</h4>\n\
+    <hr />\n<h4><kbd>property</kbd> parent_id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ parent_type</h4>\n<hr />\n<h4><kbd>property</kbd> type</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ value</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/keywords.py#L88\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Keyword.create</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
     create(\n    ad_account_id: 'str',\n    parent_id: 'str',\n    value: 'str',\n\
     \    bid: 'int' = None,\n    match_type: 'str' = None,\n    client: 'PinterestSDKClient'\
     \ = None,\n    **kwargs\n) \u2192 Keyword</code></p>\n<p>Create keywords for follow\
@@ -842,7 +831,7 @@ tags:
     <li><b><code>Keyword</code></b>:  Keyword Object </li>\n</ul>\n<hr />\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/keywords.py#L154\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>Keyword.get_all</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
     get_all(\n    ad_account_id: 'str',\n    page_size: 'int' = None,\n    bookmark:\
     \ 'str' = None,\n    client: 'PinterestSDKClient' = None,\n    **kwargs\n) \u2192\
     \ tuple[list[Keyword], str]</code></p>\n<p>Get a list of keywords bases on the\
@@ -860,7 +849,7 @@ tags:
     \  List of Keyword Objects </li>\n<li><b><code>str</code></b>:  Bookmark for paginations\
     \ if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/keywords.py#L206\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Keyword.update_fields</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_fields</code></h3>\n<p><code>python\n\
     update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update keyword fields using\
     \ any attributes </p>\n<p>Keyword Args:  Any valid keyword fields with valid values\
     \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
@@ -911,39 +900,38 @@ tags:
     \ generated by OpenAPI Generator. Ref: https://openapi-generator.tech </p>\n<p><a\
     \ href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L28\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>PinterestSDKClient.__init__</code></h3>\n\
-    <p><code>python\n__init__(\n    access_token=None,\n    refresh_token=None,\n\
-    \    app_id=None,\n    app_secret=None,\n    configuration=None,\n    header_name=None,\n\
-    \    header_value=None,\n    cookie=None,\n    pool_threads=1\n)</code></p>\n\
-    <hr />\n<h4><kbd>property</kbd> PinterestSDKClient.pool</h4>\n<p>Create thread\
-    \ pool on first request avoids instantiating unused threadpool for blocking clients.\
-    \ </p>\n<hr />\n<h4><kbd>property</kbd> PinterestSDKClient.user_agent</h4>\n<p>User\
-    \ agent for this API client </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L53\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
+    __init__(\n    access_token=None,\n    refresh_token=None,\n    app_id=None,\n\
+    \    app_secret=None,\n    configuration=None,\n    header_name=None,\n    header_value=None,\n\
+    \    cookie=None,\n    pool_threads=1\n)</code></p>\n<hr />\n<h4><kbd>property</kbd>\
+    \ pool</h4>\n<p>Create thread pool on first request avoids instantiating unused\
+    \ threadpool for blocking clients. </p>\n<hr />\n<h4><kbd>property</kbd> user_agent</h4>\n\
+    <p>User agent for this API client </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L53\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>PinterestSDKClient.create_client_with_refresh_token</code></h3>\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create_client_with_refresh_token</code></h3>\n\
     <p><code>python\ncreate_client_with_refresh_token(\n    refresh_token: str,\n\
     \    app_id: str,\n    app_secret: str\n)</code></p>\n<p>Get a new SDK client\
     \ with the given refresh token, app id and app secret. </p>\n<hr />\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L67\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>PinterestSDKClient.create_client_with_token</code></h3>\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create_client_with_token</code></h3>\n\
     <p><code>python\ncreate_client_with_token(access_token: str)</code></p>\n<p>Get\
     \ a new SDK client with the given access token. </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L98\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>PinterestSDKClient.create_default_client</code></h3>\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create_default_client</code></h3>\n\
     <p><code>python\ncreate_default_client()</code></p>\n<p>Returns the default SDK\
     \ client. </p>\n<p>If client is not explicitly initialized, a new client will\
     \ be initialized from environment variables. </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L82\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>PinterestSDKClient.set_default_access_token</code></h3>\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>set_default_access_token</code></h3>\n\
     <p><code>python\nset_default_access_token(access_token: str)</code></p>\n<p>Replace\
     \ the default access_token with the given ones. </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L76\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>PinterestSDKClient.set_default_client</code></h3>\n\
-    <p><code>python\nset_default_client(client)</code></p>\n<p>Replace the default\
-    \ client with the given client. </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L89\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>set_default_client</code></h3>\n<p><code>python\n\
+    set_default_client(client)</code></p>\n<p>Replace the default client with the\
+    \ given client. </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L89\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>classmethod</kbd> <code>PinterestSDKClient.set_default_refresh_token</code></h3>\n\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>set_default_refresh_token</code></h3>\n\
     <p><code>python\nset_default_refresh_token(refresh_token: str, app_id: str, app_secret:\
     \ str)</code></p>\n<p>Replace the default refresh_token, app_id, app_secret with\
     \ the given ones. </p>"
@@ -958,8 +946,8 @@ tags:
     \ Model for all other Higher Level Models in the Python Client </p>\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/base_model.py#L19\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>PinterestBaseModel.__init__</code></h3>\n\
-    <p><code>python\n__init__(\n    _id: str,\n    generated_api: object,\n    generated_api_get_fn:\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
+    __init__(\n    _id: str,\n    generated_api: object,\n    generated_api_get_fn:\
     \ str,\n    generated_api_get_fn_args: dict,\n    model_attribute_types: dict,\n\
     \    client=None\n)</code></p>"
   name: base_model
@@ -973,7 +961,7 @@ tags:
     \ used as a utilty to improve pagination experience for user. </p>\n<p><a href=\"\
     https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/bookmark.py#L12\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Bookmark.__init__</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
     __init__(\n    bookmark_token: 'str',\n    model: 'object',\n    model_fn: 'str',\n\
     \    model_fn_args: 'dict',\n    client: 'PinterestSDKClient'\n)</code></p>\n\
     <p>Initialize a Bookmark object. </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>bookmark_token</code></b>\
@@ -984,13 +972,12 @@ tags:
     \ (PinterestSDKClient):  Client used to make the SDK call. </li>\n</ul>\n<hr />\n\
     <p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/bookmark.py#L52\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Bookmark.get_bookmark_token</code></h3>\n\
-    <p><code>python\nget_bookmark_token() \u2192 str</code></p>\n<p>Returns the bookmark\
-    \ pagination token in string format. </p>\n<p><strong>Returns:</strong></p>\n\
-    <ul>\n<li><b><code>str</code></b>:  pagination or continuatiuon token </li>\n\
-    </ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/bookmark.py#L37\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>get_bookmark_token</code></h3>\n<p><code>python\n\
+    get_bookmark_token() \u2192 str</code></p>\n<p>Returns the bookmark pagination\
+    \ token in string format. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>str</code></b>:\
+    \  pagination or continuatiuon token </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/bookmark.py#L37\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
-    ></a></p>\n<h3><kbd>method</kbd> <code>Bookmark.get_next</code></h3>\n<p><code>python\n\
+    ></a></p>\n<h3><kbd>method</kbd> <code>get_next</code></h3>\n<p><code>python\n\
     get_next() \u2192 tuple[list[object], Bookmark]</code></p>\n<p>Function used to\
     \ get the next page of items using Bookmark Pagination Token. </p>\n<p><strong>Returns:</strong></p>\n\
     <ul>\n<li><b><code>list[PinterestBaseModel]</code></b>:  List of SDK Model Objects\
@@ -1076,7 +1063,7 @@ tags:
     <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/sdk_exceptions.py#L7"><img
     align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
 
-    <h3><kbd>method</kbd> <code>SdkException.__init__</code></h3>
+    <h3><kbd>method</kbd> <code>__init__</code></h3>
 
     <p><code>python
 
