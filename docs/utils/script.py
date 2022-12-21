@@ -150,8 +150,8 @@ def create_file_index() -> dict:
 
     return return_index
 
-def get_origin_file_name(file: str) -> str:
-    """Get origin file name by removing filename extension: .md
+def truncate_md_extension(file: str) -> str:
+    """Truncate .md file extension
 
     Args:
         file (str): file name
@@ -180,7 +180,7 @@ def append_doc_to_spec_file(index: dict):
     for module, md_files in index.items():
         tag_names = []
         for md_file in md_files:
-            name = get_origin_file_name(remove_module_prefix_from_file(md_file, module))
+            name = truncate_md_extension(remove_module_prefix_from_file(md_file, module))
             tag_names.append(name)
             spec['tags'].append(
                 {
