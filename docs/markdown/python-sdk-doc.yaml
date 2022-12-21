@@ -1159,30 +1159,30 @@ tags:
 x-tagGroups:
 - name: pinterest.ads
   tags:
-  - ad_accounts.md
-  - ad_groups.md
-  - ads.md
-  - audiences.md
-  - campaigns.md
-  - customer_lists.md
-  - keywords.md
+  - ad_accounts
+  - ad_groups
+  - ads
+  - audiences
+  - campaigns
+  - customer_lists
+  - keywords
 - name: pinterest.bin
   tags:
-  - bin.md
-  - get_config.md
+  - bin
+  - get_config
 - name: pinterest.client
   tags:
-  - client.md
+  - client
 - name: pinterest.utils
   tags:
-  - base_model.md
-  - bookmark.md
-  - error_handling.md
-  - load_json_config.md
-  - refresh_access_token.md
-  - sdk_exceptions.md
-  - utils.md
+  - base_model
+  - bookmark
+  - error_handling
+  - load_json_config
+  - refresh_access_token
+  - sdk_exceptions
+  - utils
 - name: pinterest.extra
   tags:
-  - config.md
-  - version.md
+  - config
+  - version
