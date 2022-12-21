@@ -937,6 +937,310 @@ tags:
     \ the given ones. </p>"
   name: client
   x-traitTag: false
+- description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L0\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h1><kbd>module</kbd> <code>organic.boards</code></h1>\n<p>Board Class\
+    \ for Pinterest Python SDK </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L20\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h2><kbd>class</kbd> <code>BoardSection</code></h2>\n<p>Board Section\
+    \ model used as a helper model for <code>BOARD</code> </p>\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L24\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
+    __init__(board_section_id: 'str', name: 'str') \u2192 None</code></p>\n<p>Initialize\
+    \ a Board Section object. </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>board_section_id</code></b>\
+    \ (str):  Unique identifier of a board section. </li>\n<li><b><code>name</code></b>\
+    \ (str):  Name for the board section. </li>\n</ul>\n<hr />\n<h4><kbd>property</kbd>\
+    \ id</h4>\n<hr />\n<h4><kbd>property</kbd> name</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L49\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
+    create(\n    board_id: 'str',\n    name: 'str',\n    client: 'PinterestSDKClient'\
+    \ = None\n) \u2192 BoardSection</code></p>\n<p>Class method to help create a board\
+    \ section. </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>board_id</code></b>\
+    \ (str):  Unique identifier of a board. </li>\n<li><b><code>name</code></b> (str):\
+    \  Name for the board section. </li>\n<li><b><code>client</code></b> (PinterestSDKClient,\
+    \ optional):  PinterestSDKClient Object. Uses the default client, if not provided.\
+    \ </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>BoardSection</code></b>:\
+    \  The created board section. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L162\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>delete</code></h3>\n<p><code>python\n\
+    delete(\n    board_id: 'str',\n    board_section_id: 'str',\n    client: 'PinterestSDKClient'\
+    \ = None\n) \u2192 None</code></p>\n<p>Class method to help delete a board section.\
+    \ </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>board_id</code></b>\
+    \ (str):  Unique identifier of a board. </li>\n<li><b><code>board_section_id</code></b>\
+    \ (str):  Unique identifier of a board section. </li>\n<li><b><code>client</code></b>\
+    \ (PinterestSDKClient, optional):  PinterestSDKClient Object. Uses the default\
+    \ client, if not provided. </li>\n</ul>\n<p><strong>Returns:</strong>\n None </p>\n\
+    <hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L81\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
+    get_all(\n    board_id: 'str',\n    page_size: 'int' = None,\n    bookmark: 'str'\
+    \ = None,\n    client: 'PinterestSDKClient' = None,\n    **kwargs\n) \u2192 tuple[list[BoardSection],\
+    \ Bookmark]</code></p>\n<p>List board sections in a given board id. </p>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>board_id</code></b> (str, optional):  Unique identifier of\
+    \ a board. </li>\n<li><b><code>page_size</code></b> (int[1..100], optional): \
+    \ Maximum number of items to include in a single page of the response.  See documentation\
+    \ on Pagination for more information. Defaults to None which will  return default\
+    \ page size campaigns. </li>\n<li><b><code>bookmark</code></b> (str, optional):\
+    \  Cursor used to fetch the next page of items. Defaults to None. </li>\n<li><b><code>client</code></b>\
+    \ (PinterestSDKClient, optional):  <em>description</em>. Defaults to None. </li>\n\
+    </ul>\n<p>Keyword Args: Any valid keyword arguments or query parameters for endpoint.\
+    \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[BoardSection]</code></b>:\
+    \  List of BoardSection Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
+    \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L128\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>update</code></h3>\n<p><code>python\n\
+    update(\n    board_id: 'str',\n    board_section_id: 'str',\n    name: 'str',\n\
+    \    client: 'PinterestSDKClient' = None\n) \u2192 BoardSection</code></p>\n<p>Class\
+    \ method to help update a board section. </p>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>board_id</code></b> (str):  Unique identifier of a board. </li>\n\
+    <li><b><code>board_section_id</code></b> (str):  Unique identifier of a board\
+    \ section. </li>\n<li><b><code>name</code></b> (str):  Name for the board section.\
+    \ </li>\n<li><b><code>client</code></b> (PinterestSDKClient, optional):  PinterestSDKClient\
+    \ Object. Uses the default client, if not provided. </li>\n</ul>\n<p><strong>Returns:</strong></p>\n\
+    <ul>\n<li><b><code>BoardSection</code></b>:  The updated board section. </li>\n\
+    </ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L190\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h2><kbd>class</kbd> <code>Board</code></h2>\n<p>Board model used to\
+    \ view, create, update its attributes and list its different entities. </p>\n\
+    <p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L194\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
+    __init__(board_id: 'str', client: 'PinterestSDKClient' = None, **kwargs) \u2192\
+    \ None</code></p>\n<p>Initialize a Board object. </p>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>board_id</code></b> (str):  Unique identifier of a board. </li>\n\
+    <li><b><code>client</code></b> (PinterestSDKClient, optional):  PinterestSDKClient\
+    \ Object. Uses the default client, if not provided. </li>\n</ul>\n<hr />\n<h4><kbd>property</kbd>\
+    \ description</h4>\n<hr />\n<h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ name</h4>\n<hr />\n<h4><kbd>property</kbd> owner</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ privacy</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L253\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
+    create(\n    name: 'str',\n    description: 'str' = None,\n    privacy: 'str'\
+    \ = 'PUBLIC',\n    client: 'PinterestSDKClient' = None,\n    **kwargs\n) \u2192\
+    \ Board</code></p>\n<p>Create a board owned by the \"operation user_account\"\
+    . </p>\n<ul>\n<li>By default, the \"operation user_account\" is the token user_account.\
+    \ </li>\n</ul>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>name</code></b>\
+    \ (str):  Board name. </li>\n<li><b><code>description</code></b> (str, optional):\
+    \  Board description. Defaults to None. </li>\n<li><b><code>privacy</code></b>\
+    \ (str, optional):  Enum: <code>\"PUBLIC\"</code>, <code>\"PROTECTED\"</code>,\
+    \ <code>\"SECRET\"</code>. Defaults to \"PUBLIC\". </li>\n<li><b><code>client</code></b>\
+    \ (PinterestSDKClient, optional):  PinterestSDKClient Object, uses the default\
+    \ client, if not provided. </li>\n</ul>\n<p>Keyword Args: Any valid keyword arguments\
+    \ or query parameters for endpoint. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n\
+    <li><b><code>Board</code></b>:  Board object </li>\n</ul>\n<hr />\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L425\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>create_section</code></h3>\n<p><code>python\n\
+    create_section(name: 'str') \u2192 BoardSection</code></p>\n<p>Create a board\
+    \ section on a board owned by the \"operation user_account\" - or on a group board\
+    \ that has been shared with this account. </p>\n<ul>\n<li>By default, the \"operation\
+    \ user_account\" is the token user_account. </li>\n</ul>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>name</code></b> (str):  Name for the board section. </li>\n\
+    </ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>BoardSection</code></b>:\
+    \  The created board section. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L295\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>delete</code></h3>\n<p><code>python\n\
+    delete(board_id: 'str', client: 'PinterestSDKClient' = None) \u2192 bool</code></p>\n\
+    <p>Delete a board owned by the \"operation user_account\". </p>\n<ul>\n<li>By\
+    \ default, the \"operation user_account\" is the token user_account. </li>\n</ul>\n\
+    <p><strong>Args:</strong></p>\n<ul>\n<li><b><code>board_id</code></b> (str): \
+    \ Unique identifier of a board. </li>\n<li><b><code>client</code></b> (PinterestSDKClient,\
+    \ optional):  PinterestSDKClient Object. Uses the default client, if not provided.\
+    \ </li>\n</ul>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
+    \  If the board was deleted successfully. </li>\n</ul>\n<hr />\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L465\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>delete_section</code></h3>\n<p><code>python\n\
+    delete_section(section_id: 'str') \u2192 None</code></p>\n<p>Delete a board section\
+    \ on a board owned by the \"operation user_account\" - or on a group board that\
+    \ has been shared with this account. </p>\n<ul>\n<li>By default, the \"operation\
+    \ user_account\" is the token user_account. </li>\n</ul>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>section_id</code></b> (str):  Unique identifier of a board\
+    \ section. </li>\n</ul>\n<p><strong>Returns:</strong>\n None </p>\n<hr />\n<p><a\
+    \ href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L323\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>get_all</code></h3>\n<p><code>python\n\
+    get_all(\n    privacy: 'str' = None,\n    page_size: 'int' = None,\n    bookmark:\
+    \ 'str' = None,\n    client: 'PinterestSDKClient' = None,\n    **kwargs\n) \u2192\
+    \ tuple[list[Board], Bookmark]</code></p>\n<p>Get a list of the boards owned by\
+    \ the \"operation user_account\" + group boards where this account is a collaborator\
+    \ </p>\n<p>Optional: Specify a privacy type (public, protected, or secret) to\
+    \ indicate which boards to return. </p>\n<ul>\n<li>If no privacy is specified,\
+    \ all boards that can be returned (based on the scopes of the token and ad_account\
+    \ role if applicable) will be returned. </li>\n</ul>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>privacy</code></b> (str, optional):   Enum: <code>\"PUBLIC\"\
+    </code>, <code>\"PROTECTED\"</code>, <code>\"SECRET\"</code>. Defaults to \"PUBLIC\"\
+    . </li>\n<li><b><code>page_size</code></b> (int[1..100], optional):  Maximum number\
+    \ of items to include in a single page of the response.  See documentation on\
+    \ Pagination for more information. Defaults to None which will  return default\
+    \ page size campaigns. </li>\n<li><b><code>bookmark</code></b> (str, optional):\
+    \  Cursor used to fetch the next page of items. Defaults to None. </li>\n<li><b><code>client</code></b>\
+    \ (PinterestSDKClient, optional):  <em>description</em>. Defaults to None. </li>\n\
+    </ul>\n<p>Keyword Args: Any valid keyword arguments or query parameters for endpoint.\
+    \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[Board]</code></b>:\
+    \  List of Board Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark for\
+    \ pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L518\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>list_pins</code></h3>\n<p><code>python\n\
+    list_pins(\n    section_id: 'str' = None,\n    page_size: 'int' = None,\n    bookmark:\
+    \ 'str' = None,\n    **kwargs\n) \u2192 tuple[list[Pin], Bookmark]</code></p>\n\
+    <p>Get a list of the Pins on a board owned by the \"operation user_account\" -\
+    \ or on a group board that has been shared with this account. </p>\n<ul>\n<li>By\
+    \ default, the \"operation user_account\" is the token user_account. </li>\n</ul>\n\
+    <p><strong>Args:</strong></p>\n<ul>\n<li><b><code>section_id</code></b> (str,\
+    \ optional):  Unique identifier of a board section. If not passed in, all pins\
+    \ under  the board will be listed. </li>\n<li><b><code>page_size</code></b> (int[1..100],\
+    \ optional):  Maximum number of items to include in a single page of the response.\
+    \  See documentation on Pagination for more information. Defaults to None which\
+    \ will  return default page size campaigns. </li>\n<li><b><code>bookmark</code></b>\
+    \ (str, optional):  Cursor used to fetch the next page of items. Defaults to None.\
+    \ </li>\n</ul>\n<p>Keyword Args: Any valid keyword arguments or query parameters\
+    \ for endpoint. </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[Pin]</code></b>:\
+    \  List of Pin Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark for\
+    \ pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L484\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>list_sections</code></h3>\n<p><code>python\n\
+    list_sections(\n    page_size: 'int' = None,\n    bookmark: 'str' = None,\n  \
+    \  **kwargs\n) \u2192 tuple[list[BoardSection], Bookmark]</code></p>\n<p>Get a\
+    \ list of all board sections from a board owned by the \"operation user_account\"\
+    \ - or a group board that has been shared with this account. </p>\n<p>By default,\
+    \ the \"operation user_account\" is the token user_account. </p>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>page_size</code></b> (int[1..100], optional):  Maximum number\
+    \ of items to include in a single page of the response.  See documentation on\
+    \ Pagination for more information. Defaults to None which will  return default\
+    \ page size campaigns. </li>\n<li><b><code>bookmark</code></b> (str, optional):\
+    \  Cursor used to fetch the next page of items. Defaults to None. </li>\n</ul>\n\
+    <p>Keyword Args: Any valid keyword arguments or query parameters for endpoint.\
+    \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>list[BoardSection]</code></b>:\
+    \  List of BoardSection Objects </li>\n<li><b><code>Bookmark</code></b>:  Bookmark\
+    \ for pagination if present, else None. </li>\n</ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L407\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>make_public</code></h3>\n<p><code>python\n\
+    make_public() \u2192 bool</code></p>\n<p>Change the privacy of the board to <code>PUBLIC</code>.\
+    \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
+    \  If the board was successfully made public. </li>\n</ul>\n<hr />\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L416\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>make_secret</code></h3>\n<p><code>python\n\
+    make_secret() \u2192 bool</code></p>\n<p>Change the privacy of the board to <code>SECRET</code>.\
+    \ </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
+    \  If the board was successfully made secret. </li>\n</ul>\n<hr />\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L380\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_fields</code></h3>\n<p><code>python\n\
+    update_fields(**kwargs) \u2192 bool</code></p>\n<p>Update the board fields using\
+    \ any attributes. </p>\n<p>Keyword Args:  Any valid campaign fields with valid\
+    \ values </p>\n<p><strong>Returns:</strong></p>\n<ul>\n<li><b><code>bool</code></b>:\
+    \  If board fields were successfully updated </li>\n</ul>\n<hr />\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/boards.py#L444\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>update_section</code></h3>\n<p><code>python\n\
+    update_section(section_id: 'str', name: 'str') \u2192 BoardSection</code></p>\n\
+    <p>Update a board section on a board owned by the \"operation user_account\" -\
+    \ or on a group board that has been shared with this account. </p>\n<ul>\n<li>By\
+    \ default, the \"operation user_account\" is the token user_account. </li>\n</ul>\n\
+    <p><strong>Args:</strong></p>\n<ul>\n<li><b><code>section_id</code></b> (str):\
+    \  Unique identifier of a board section. </li>\n<li><b><code>name</code></b> (str):\
+    \  Name for the board section. </li>\n</ul>\n<p><strong>Returns:</strong></p>\n\
+    <ul>\n<li><b><code>BoardSection</code></b>:  The created board section. </li>\n\
+    </ul>"
+  name: boards
+  x-traitTag: false
+- description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/pins.py#L0\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h1><kbd>module</kbd> <code>organic.pins</code></h1>\n<p>Pin Class\
+    \ for Pinterest Python SDK </p>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/pins.py#L14\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h2><kbd>class</kbd> <code>Pin</code></h2>\n<p>Pin model used to view,\
+    \ create, update its attributes and list its different entities. </p>\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/pins.py#L18\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>__init__</code></h3>\n<p><code>python\n\
+    __init__(\n    pin_id: 'str',\n    ad_account_id: 'str' = None,\n    client: 'PinterestSDKClient'\
+    \ = None,\n    **kwargs\n) \u2192 None</code></p>\n<p>Initialize or get a Pin\
+    \ owned by the \"operation user_account\" - or on a group board that has been\
+    \ shared with this account. </p>\n<p>By default, the \"operation user_account\"\
+    \ is the token user_account. Optional: Business Access: Specify an ad_account_id\
+    \ (obtained via List ad accounts) to use the owner of that ad_account as the \"\
+    operation user_account\". In order to do this, the token user_account must have\
+    \ one of the following Business Access roles on the ad_account: </p>\n<ul>\n<li>For\
+    \ Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.\
+    \ </li>\n<li>For Pins on secret boards: Owner, Admin. </li>\n</ul>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>pin_id</code></b> (str):  Unique identifier of a Pin. </li>\n\
+    <li><b><code>ad_account_id</code></b> (str, optional):  Unique identifier of an\
+    \ ad account. Defaults to None. </li>\n<li><b><code>client</code></b> (PinterestSDKClient,\
+    \ optional):  PinterestSDKClient Object. Uses the default client, if not provided.\
+    \ </li>\n</ul>\n<hr />\n<h4><kbd>property</kbd> alt_text</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ board_id</h4>\n<hr />\n<h4><kbd>property</kbd> board_owner</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ board_section_id</h4>\n<hr />\n<h4><kbd>property</kbd> created_at</h4>\n<hr\
+    \ />\n<h4><kbd>property</kbd> description</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ dominant_color</h4>\n<hr />\n<h4><kbd>property</kbd> id</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ link</h4>\n<hr />\n<h4><kbd>property</kbd> media</h4>\n<hr />\n<h4><kbd>property</kbd>\
+    \ media_source</h4>\n<hr />\n<h4><kbd>property</kbd> parent_pin_id</h4>\n<hr />\n\
+    <h4><kbd>property</kbd> title</h4>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/pins.py#L140\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>create</code></h3>\n<p><code>python\n\
+    create(\n    board_id: 'str',\n    media_source: 'dict',\n    link: 'str' = None,\n\
+    \    title: 'str' = None,\n    description: 'str' = None,\n    dominant_color:\
+    \ 'str' = None,\n    alt_text: 'str' = None,\n    board_section_id: 'str' = None,\n\
+    \    parent_pin_id: 'str' = None,\n    client: 'PinterestSDKClient' = None,\n\
+    \    **kwargs\n) \u2192 Pin</code></p>\n<p>Create a Pin on a board or board section\
+    \ owned by the \"operation user_account\". </p>\n<p>Note: If the current \"operation\
+    \ user_account\" (defined by the access token) has access to another user's Ad\
+    \ Accounts via Pinterest Business Access, you can modify your request to make\
+    \ use of the current operation_user_account's permissions to those Ad Accounts\
+    \ by including the ad_account_id in the path parameters for the request (e.g.\
+    \ .../?ad_account_id=12345&amp;...). </p>\n<p>This function is intended solely\
+    \ for publishing new content created by the user. If you are interested in saving\
+    \ content created by others to your Pinterest boards, sometimes called 'curated\
+    \ content', please use our Save button (https://developers.pinterest.com/docs/add-ons/save-button)\
+    \ instead. For more tips on creating fresh content for Pinterest, review our Content\
+    \ App Solutions Guide (https://developers.pinterest.com/docs/solutions/content-apps).\
+    \ </p>\n<p>Learn more (https://developers.pinterest.com/docs/solutions/content-apps/#creatingvideopins)\
+    \ about video Pin creation </p>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>board_id</code></b>\
+    \ (str):  The board to which this Pin belongs. </li>\n<li><b><code>media_source</code></b>\
+    \ (dict):  Pin media source. In format:  { </li>\n<li><b><code>'source_type'</code></b>:\
+    \  (str), </li>\n<li><b><code>'content_type'</code></b>:  (str), </li>\n<li><b><code>'data'</code></b>:\
+    \  (str), </li>\n<li><b><code>'url'</code></b>:  (str), </li>\n<li><b><code>'cover_image_url'</code></b>:\
+    \  (str), </li>\n<li><b><code>'media_id'</code></b>:  (str), } </li>\n<li><b><code>link</code></b>\
+    \ (str, optional):  Redirect link of &lt;= 2048 characters. Defaults to None.\
+    \ </li>\n<li><b><code>title</code></b> (str, optional):  Title of the pin &lt;=\
+    \ 100 characters. Defaults to None. </li>\n<li><b><code>description</code></b>\
+    \ (str, optional):  Description of the pin &lt;= 500 characters. Defaults to None.\
+    \ </li>\n<li><b><code>dominant_color</code></b> (str, optional):  Dominant pin\
+    \ color. Hex number, e.g. \"#6E7874\". Defaults to None. </li>\n<li><b><code>alt_text</code></b>\
+    \ (str, optional):  &lt;= 500 characters. Defaults to None. </li>\n<li><b><code>board_section_id</code></b>\
+    \ (str, optional):  The board section to which this Pin belongs. Defaults to None.\
+    \ </li>\n<li><b><code>parent_pin_id</code></b> (str, optional):  The source pin\
+    \ id if this pin was saved from another pin. </li>\n<li><b><code>Learn more (https</code></b>:\
+    \ //help.pinterest.com/article/save-pins-on-pinterest). Defaults to None. </li>\n\
+    <li><b><code>client</code></b> (PinterestSDKClient, optional):  PinterestSDKClient\
+    \ Object, uses the default client, if not provided. </li>\n</ul>\n<p>Keyword Args:\
+    \ Any valid keyword arguments or query parameters for endpoint. </p>\n<p><strong>Returns:</strong></p>\n\
+    <ul>\n<li><b><code>Pin</code></b>:  Pin object </li>\n</ul>\n<hr />\n<p><a href=\"\
+    https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/pins.py#L222\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>classmethod</kbd> <code>delete</code></h3>\n<p><code>python\n\
+    delete(pin_id: 'str', client: 'PinterestSDKClient' = None) \u2192 bool</code></p>\n\
+    <p>Delete a Pin owned by the \"operation user_account\". </p>\n<ul>\n<li>By default,\
+    \ the \"operation user_account\" is the token user_account. </li>\n</ul>\n<p><strong>Args:</strong></p>\n\
+    <ul>\n<li><b><code>pin_id</code></b> (str):  Unique identifier of a pin. </li>\n\
+    <li><b><code>client</code></b> (PinterestSDKClient, optional):  PinterestSDKClient\
+    \ Object. Uses the default client, if not provided. </li>\n</ul>\n<p><strong>Returns:</strong></p>\n\
+    <ul>\n<li><b><code>bool</code></b>:  If the pin was deleted successfully. </li>\n\
+    </ul>\n<hr />\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/organic/pins.py#L250\"\
+    ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
+    ></a></p>\n<h3><kbd>method</kbd> <code>save</code></h3>\n<p><code>python\nsave(board_id:\
+    \ 'str', board_section_id: 'str' = None) \u2192 None</code></p>\n<p>Save a pin\
+    \ on a board or board section owned by the \"operation user_account\". </p>\n\
+    <ul>\n<li>By default, the \"operation user_account\" is the token user_account.\
+    \ </li>\n</ul>\n<p><strong>Args:</strong></p>\n<ul>\n<li><b><code>board_id</code></b>\
+    \ (str):  Unique identifier of the board to which the pin will be saved. Defaults\
+    \ to None. </li>\n<li><b><code>board_section_id</code></b> (str, optional):  Unique\
+    \ identifier of the board section to which the pin will be saved.  Defaults to\
+    \ None. </li>\n</ul>"
+  name: pins
+  x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/base_model.py#L0\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
     ></a></p>\n<h1><kbd>module</kbd> <code>utils.base_model</code></h1>\n<p>Pinterest\
@@ -1160,6 +1464,10 @@ x-tagGroups:
 - name: pinterest.client
   tags:
   - client
+- name: pinterest.organic
+  tags:
+  - boards
+  - pins
 - name: pinterest.utils
   tags:
   - base_model

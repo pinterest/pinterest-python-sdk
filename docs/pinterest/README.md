@@ -16,6 +16,9 @@
 - [`bin.get_config`](./bin.get_config.md#module-binget_config): command to get config variables
 - [`client`](./client.md#module-client): Pinterest Client
 - [`config`](./config.md#module-config): Pinterest config
+- [`organic`](./organic.md#module-organic)
+- [`organic.boards`](./organic.boards.md#module-organicboards): Board Class for Pinterest Python SDK
+- [`organic.pins`](./organic.pins.md#module-organicpins): Pin Class for Pinterest Python SDK
 - [`utils`](./utils.md#module-utils)
 - [`utils.base_model`](./utils.base_model.md#module-utilsbase_model): Pinterest Base Model
 - [`utils.bookmark`](./utils.bookmark.md#module-utilsbookmark): Bookmark Model
@@ -35,6 +38,9 @@
 - [`customer_lists.CustomerList`](./ads.customer_lists.md#class-customerlist): High level model class to manage customer_lists for an CustomerList
 - [`keywords.Keyword`](./ads.keywords.md#class-keyword): High level model class to manage keywords
 - [`client.PinterestSDKClient`](./client.md#class-pinterestsdkclient): Wrapper API client for SDK high level models
+- [`boards.Board`](./organic.boards.md#class-board): Board model used to view, create, update its attributes and list its different entities.
+- [`boards.BoardSection`](./organic.boards.md#class-boardsection): Board Section model used as a helper model for `BOARD`
+- [`pins.Pin`](./organic.pins.md#class-pin): Pin model used to view, create, update its attributes and list its different entities.
 - [`base_model.PinterestBaseModel`](./utils.base_model.md#class-pinterestbasemodel): Base Model for all other Higher Level Models in the Python Client
 - [`bookmark.Bookmark`](./utils.bookmark.md#class-bookmark): Bookmark Model used as a utilty to improve pagination experience for user.
 - [`sdk_exceptions.SdkException`](./utils.sdk_exceptions.md#class-sdkexception): Raises an exception for Model's Errors
