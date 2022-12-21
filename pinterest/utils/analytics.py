@@ -15,7 +15,7 @@ class AnalyticsUtils():
     Utility class with functions to make model specific analytics api calls.
     """
     @classmethod
-    def _get_ad_entity_analytics(
+    def get_ad_entity_analytics(
         cls,
         params:list,
         api:type,

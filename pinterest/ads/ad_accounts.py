@@ -311,7 +311,7 @@ class AdAccount(PinterestBaseModel):
         kwargs['view_window_days'] = view_window_days
         kwargs['conversion_report_time'] = conversion_report_time
 
-        ad_account_analytics_response = AnalyticsUtils._get_ad_entity_analytics(
+        ad_account_analytics_response = AnalyticsUtils.get_ad_entity_analytics(
             params=kwargs,
             api=AdAccountsApi,
             analytics_fn=AdAccountsApi.ad_account_analytics,
