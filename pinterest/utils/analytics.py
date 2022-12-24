@@ -6,6 +6,12 @@ from typing import Callable
 
 from pinterest.utils.validations import AdsEntityType
 from pinterest.utils.base_model import PinterestBaseModel
+<<<<<<< HEAD
+=======
+
+from pinterest.client import PinterestSDKClient
+
+>>>>>>> c09fda9 (Ad Account `get_analytics` (#40))
 
 from pinterest.client import PinterestSDKClient
 
@@ -15,6 +21,7 @@ class AnalyticsUtils:
     Utility class with functions to make model specific analytics api calls.
     """
     @classmethod
+<<<<<<< HEAD
     def get_entity_analytics(
         cls,
         params: list,
@@ -22,6 +29,15 @@ class AnalyticsUtils:
         analytics_fn: Callable,
         entity: PinterestBaseModel,
         client: PinterestSDKClient = None,
+=======
+    def get_ad_entity_analytics(
+        cls,
+        params:list,
+        api:type,
+        analytics_fn: Callable,
+        ad_entity: PinterestBaseModel,
+        client:PinterestSDKClient = None,
+>>>>>>> c09fda9 (Ad Account `get_analytics` (#40))
         **kwargs
     ) -> AnalyticsResponse:
         """
@@ -31,7 +47,11 @@ class AnalyticsUtils:
             params (list): List of params
             api (type):
             analytics_fn (Callable):
+<<<<<<< HEAD
             entity (PinterestBaseModel):
+=======
+            ad_entity (PinterestBaseModel):
+>>>>>>> c09fda9 (Ad Account `get_analytics` (#40))
             client (PinterestSDKClient, optional):
 
         Returns:
@@ -39,8 +59,13 @@ class AnalyticsUtils:
         """
 
         return AnalyticsResponse(
+<<<<<<< HEAD
             entity_type=entity,
             fields=params.get('columns', []),
+=======
+            entity_type=ad_entity,
+            fields=params.get('columns'),
+>>>>>>> c09fda9 (Ad Account `get_analytics` (#40))
             raw_response=getattr(api(client), analytics_fn)(**params, **kwargs)
         )
 
