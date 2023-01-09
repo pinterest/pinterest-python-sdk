@@ -12,10 +12,7 @@
 - [`ads.campaigns`](./ads.campaigns.md#module-adscampaigns): Campaign Class for Pinterest Python SDK
 - [`ads.customer_lists`](./ads.customer_lists.md#module-adscustomer_lists): High level module class for Customer List object
 - [`ads.keywords`](./ads.keywords.md#module-adskeywords): High level module class for Keyword object
-- [`bin`](./bin.md#module-bin)
-- [`bin.get_config`](./bin.get_config.md#module-binget_config): command to get config variables
 - [`client`](./client.md#module-client): Pinterest Client
-- [`config`](./config.md#module-config): Pinterest config
 - [`organic`](./organic.md#module-organic)
 - [`organic.boards`](./organic.boards.md#module-organicboards): Board Class for Pinterest Python SDK
 - [`organic.pins`](./organic.pins.md#module-organicpins): Pin Class for Pinterest Python SDK
@@ -26,7 +23,6 @@
 - [`utils.load_json_config`](./utils.load_json_config.md#module-utilsload_json_config): module with the function `load_json_config` that parse a config.json file and then load all the variables found as
 - [`utils.refresh_access_token`](./utils.refresh_access_token.md#module-utilsrefresh_access_token): This script has functions for generating a new ACCESSTOKEN using the REFRESHTOKEN
 - [`utils.sdk_exceptions`](./utils.sdk_exceptions.md#module-utilssdk_exceptions): SDK Exceptions for error handling in the models.
-- [`version`](./version.md#module-version): Pinterest SDK Packages Version
 
 ## Classes
 
@@ -47,7 +43,6 @@
 
 ## Functions
 
-- [`get_config.main`](./bin.get_config.md#function-main): function to get config variables
 - [`error_handling.verify_api_response`](./utils.error_handling.md#function-verify_api_response): Verify that there are no errors in `response` received from api
 - [`load_json_config.load_json_config`](./utils.load_json_config.md#function-load_json_config): Parse a config.json file and then load all the variables found as environment variables.
 - [`refresh_access_token.get_new_access_token`](./utils.refresh_access_token.md#function-get_new_access_token): Function used to retrieve a new access token for a user using the refresh token.

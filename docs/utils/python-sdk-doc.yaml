@@ -856,39 +856,6 @@ tags:
     \  if keyword fields were successfully updated </li>\n</ul>"
   name: keywords
   x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/bin/get_config.py#L0"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>bin.get_config</code></h1>
-
-    <p>command to get config variables </p>
-
-    <hr />
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/bin/get_config.py#L7"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h2><kbd>function</kbd> <code>main</code></h2>
-
-    <p><code>python
-
-    main(_)</code></p>
-
-    <p>function to get config variables </p>'
-  name: get_config
-  x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/bin/__init__.py"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>bin</code></h1>'
-  name: bin
-  x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/client/__init__.py#L0\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
     ></a></p>\n<h1><kbd>module</kbd> <code>client</code></h1>\n<p>Pinterest Client\
@@ -1328,15 +1295,6 @@ tags:
     variables. </p>'
   name: load_json_config
   x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/__init__.py"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>utils</code></h1>'
-  name: utils
-  x-traitTag: false
 - description: "<!-- markdownlint-disable -->\n\n<p><a href=\"https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/utils/refresh_access_token.py#L0\"\
     ><img align=\"right\" style=\"float:right;\" src=\"https://img.shields.io/badge/-source-cccccc?style=flat-square\"\
     ></a></p>\n<h1><kbd>module</kbd> <code>utils.refresh_access_token</code></h1>\n\
@@ -1383,70 +1341,6 @@ tags:
     __init__(status=None, reason=None, http_resp=None)</code></p>'
   name: sdk_exceptions
   x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/config.py#L0"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>config</code></h1>
-
-    <p>Pinterest config </p>
-
-    <h2><strong>Global Variables</strong></h2>
-
-    <ul>
-
-    <li><strong>PINTEREST_DEBUG</strong></li>
-
-    <li><strong>PINTEREST_PORT</strong></li>
-
-    <li><strong>PINTEREST_APP_ID</strong></li>
-
-    <li><strong>PINTEREST_APP_SECRET</strong></li>
-
-    <li><strong>PINTEREST_CLIENT_ID</strong></li>
-
-    <li><strong>PINTEREST_REDIRECT_URI</strong></li>
-
-    <li><strong>PINTEREST_RESPONSE_TYPE</strong></li>
-
-    <li><strong>PINTEREST_SCOPE</strong></li>
-
-    <li><strong>PINTEREST_STATE</strong></li>
-
-    <li><strong>PINTEREST_ACCESS_TOKEN_JSON_PATH</strong></li>
-
-    <li><strong>PINTEREST_ACCESS_TOKEN</strong></li>
-
-    <li><strong>PINTEREST_REFRESH_ACCESS_TOKEN</strong></li>
-
-    <li><strong>PINTEREST_API_URI</strong></li>
-
-    <li><strong>PINTEREST_LOG_FILE</strong></li>
-
-    <li><strong>PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS</strong></li>
-
-    <li><strong>PINTEREST_LOGGER_FORMAT</strong></li>
-
-    <li><strong>PINTEREST_SDK_VERSION</strong></li>
-
-    <li><strong>PINTEREST_USER_AGENT</strong></li>
-
-    </ul>'
-  name: config
-  x-traitTag: false
-- description: '<!-- markdownlint-disable -->
-
-
-    <p><a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/version.py#L0"><img
-    align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a></p>
-
-    <h1><kbd>module</kbd> <code>version</code></h1>
-
-    <p>Pinterest SDK Packages Version </p>'
-  name: version
-  x-traitTag: false
 x-tagGroups:
 - name: pinterest.ads
   tags:
@@ -1457,10 +1351,6 @@ x-tagGroups:
   - campaigns
   - customer_lists
   - keywords
-- name: pinterest.bin
-  tags:
-  - get_config
-  - bin
 - name: pinterest.client
   tags:
   - client
@@ -1474,10 +1364,5 @@ x-tagGroups:
   - bookmark
   - error_handling
   - load_json_config
-  - utils
   - refresh_access_token
   - sdk_exceptions
-- name: pinterest.extra
-  tags:
-  - config
-  - version
