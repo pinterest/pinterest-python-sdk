@@ -14,6 +14,7 @@ MODULES = [
 IGNORED_FILES_INDEXING = {
     "ads.md", #Ignore this file since ads/__init__.py is converted into ads.md
     "organic.md",
+    "utils.md",
     "README.md",
     ".pages",
 }
