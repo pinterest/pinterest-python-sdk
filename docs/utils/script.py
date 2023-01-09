@@ -10,13 +10,23 @@ MODULES = [
     "organic",
     "utils",
 ]
-IGNORED_FILES = {
+
+IGNORED_FILES_INDEXING = {
     "ads.md", #Ignore this file since ads/__init__.py is converted into ads.md
     "organic.md",
+    "utils.md",
     "README.md",
     ".pages",
 }
+
+IGNORE_MODULES = [
+    "bin",
+    "config",
+    "version",
+]
+
 PROJECT_PATH = os.path.abspath(os.getcwd())
+
 
 def set_up_python_path():
     """
@@ -44,6 +54,7 @@ def generate_new_doc():
     from lazydocs import generate_docs
     generate_docs(
         ['pinterest'],
+        ignored_modules=IGNORE_MODULES,
         watermark=False,
         remove_package_prefix=True,
         overview_file='README.md',
@@ -122,7 +133,7 @@ def create_file_index() -> dict:
     files = next(os.walk("docs/pinterest"), (None, None, []))[2]
 
     for file in files:
-        if file in IGNORED_FILES: 
+        if file in IGNORED_FILES_INDEXING: 
             continue
 
         found_matching_module = False
@@ -143,11 +154,10 @@ def create_file_index() -> dict:
     
     return_index = sort_index(index)
 
-    # Add extra mapping at the end to make sure the `extra` section
-    # appear at the end of the doc page
-    return_index["extra"] = extra_mapping
+    if extra_mapping:
+        return_index["extra"] = extra_mapping
 
-    check_index(len(files)-len(IGNORED_FILES), return_index)
+    check_index(len(files)-len(IGNORED_FILES_INDEXING), return_index)
 
     return return_index
 
