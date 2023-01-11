@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `ads.customer_lists`
 High level module class for Customer List object 
@@ -9,12 +9,12 @@ High level module class for Customer List object
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `CustomerList`
 High level model class to manage customer_lists for an CustomerList 
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -119,7 +119,7 @@ __init__(ad_account_id, customer_list_id, client=None, **kwargs)
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L245"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L245"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_record`
 
@@ -145,7 +145,7 @@ Your original list of records to add will be deleted when the matching process i
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L106"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L106"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `create`
 
@@ -192,7 +192,7 @@ Keyword Args: Any valid keyword arguments or query parameters for endpoint.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L192"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L192"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `get_all`
 
@@ -230,7 +230,7 @@ Keyword Args: Any valid keyword arguments or query parameters for endpoint.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L266"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L266"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `remove_record`
 
@@ -254,7 +254,7 @@ Remove records to an existing customer list.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/customer_lists.py#L171"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/customer_lists.py#L171"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_fields`
 

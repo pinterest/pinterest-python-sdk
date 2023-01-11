@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `ads.ad_groups`
 High level module class for AdGroup object 
@@ -9,12 +9,12 @@ High level module class for AdGroup object
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L20"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L20"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `AdGroup`
 AdGroup model used to view, create, update its attributes and list its different entities. 
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L26"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L26"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -237,7 +237,7 @@ Initialize an AdGroup object.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L205"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L205"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `create`
 
@@ -329,7 +329,7 @@ to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits 
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L471"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L471"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `disable_auto_targeting`
 
@@ -347,7 +347,7 @@ Disable auto-targeting for ad group. Also known as <a href='https://help.pintere
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L461"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L461"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `enable_auto_targeting`
 
@@ -365,7 +365,7 @@ Enable auto-targeting for ad group. Also known as <a href='https://help.pinteres
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L362"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L362"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `get_all`
 
@@ -405,7 +405,7 @@ List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or a
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L422"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L422"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_ads`
 
@@ -441,7 +441,7 @@ Get list of ads under current AdGroup with specified arguments
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/pinterest/ads/ad_groups.py#L336"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ad_groups.py#L336"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_fields`
 
