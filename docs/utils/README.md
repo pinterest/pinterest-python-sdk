@@ -6,7 +6,7 @@ The documentation for this library has been generated using [lazydocs](https://g
 
 Make sure you are in virtual environment, and run `script.py`:
 ```
-python3 docs/utils/scripts.py
+python3 docs/utils/script.py
 ```
 
 ## Documentation guide
