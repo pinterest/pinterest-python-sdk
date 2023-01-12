@@ -1,4 +1,4 @@
-# Pinterest SDK for Python [Beta]
+# Pinterest SDK for Python
 [![build](https://github.com/pinterest/pinterest-python-sdk/actions/workflows/build.yml/badge.svg)](https://github.com/pinterest/pinterest-python-sdk/actions/workflows/build.yml)
 
 ### Introduction
@@ -204,7 +204,7 @@ For any issues or questions related to the SDK you are welcome to submit them th
   * [Bug Report Template](https://github.com/pinterest/pinterest-python-sdk/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)
   * [Feature Request Template](https://github.com/pinterest/pinterest-python-sdk/blob/main/.github/ISSUE_TEMPLATE/feature_request.md)
 
-**Note**: There is currently no guaranteed SLA for responding to or resolving issues while the SDK is in beta.
+**Note**: There is no guaranteed SLA for responding to or resolving issues.
 
 For any general issues related to the Pinterest API (or other Pinterest products) you can contact support at [help.pinterest.com](https://help.pinterest.com)
 
