@@ -44,7 +44,6 @@ def remove_old_doc():
     files = next(os.walk("docs/pinterest"), (None, None, []))[2]
     for file in files: os.remove(f"docs/pinterest/{file}")
 
-
 def generate_new_doc():
     """
     Use lazydoc to generate new doc at: docs/pinterest
@@ -59,7 +58,7 @@ def generate_new_doc():
         remove_package_prefix=True,
         overview_file='README.md',
         output_path='docs/pinterest/',
-        src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/')
+        src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/')
 
 
 def sort_index(index: dict) -> dict:
