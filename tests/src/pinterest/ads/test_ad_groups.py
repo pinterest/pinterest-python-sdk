@@ -4,10 +4,10 @@ Test AdGroup Model
 from unittest import TestCase
 from unittest.mock import patch
 
-from pinterest.generated.client.model.ad_response import AdResponse
-from pinterest.generated.client.model.ad_group_response import AdGroupResponse
-from pinterest.generated.client.model.ad_group_array_response import AdGroupArrayResponse
-from pinterest.generated.client.model.ad_group_array_response_element import AdGroupArrayResponseElement
+from openapi_generated.pinterest_client.model.ad_response import AdResponse
+from openapi_generated.pinterest_client.model.ad_group_response import AdGroupResponse
+from openapi_generated.pinterest_client.model.ad_group_array_response import AdGroupArrayResponse
+from openapi_generated.pinterest_client.model.ad_group_array_response_element import AdGroupArrayResponseElement
 
 from pinterest.ads.ad_groups import AdGroup
 from pinterest.ads.ads import Ad

@@ -4,9 +4,9 @@ Test Campaign Model
 
 from unittest.mock import patch
 
-from pinterest.generated.client.model.objective_type import ObjectiveType
-from pinterest.generated.client.exceptions import ApiValueError
-from pinterest.generated.client.exceptions import NotFoundException
+from openapi_generated.pinterest_client.model.objective_type import ObjectiveType
+from openapi_generated.pinterest_client.exceptions import ApiValueError
+from openapi_generated.pinterest_client.exceptions import NotFoundException
 
 from pinterest.ads.ad_groups import AdGroup
 from pinterest.ads.campaigns import Campaign

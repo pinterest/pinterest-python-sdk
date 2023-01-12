@@ -4,9 +4,9 @@ Test Ad Model
 
 from pinterest.ads.ads import Ad
 
-from pinterest.generated.client.exceptions import ApiValueError
-from pinterest.generated.client.exceptions import NotFoundException
-from pinterest.generated.client.model.entity_status import EntityStatus
+from openapi_generated.pinterest_client.exceptions import ApiValueError
+from openapi_generated.pinterest_client.exceptions import NotFoundException
+from openapi_generated.pinterest_client.model.entity_status import EntityStatus
 
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_PIN_ID, DEFAULT_AD_ACCOUNT_ID

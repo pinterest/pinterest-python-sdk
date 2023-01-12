@@ -3,13 +3,13 @@ High level module class for Customer List object
 """
 from __future__ import annotations
 
-from pinterest.generated.client.model.user_list_type import UserListType
+from openapi_generated.pinterest_client.model.user_list_type import UserListType
 
-from pinterest.generated.client.api.customer_lists_api import CustomerListsApi
+from openapi_generated.pinterest_client.api.customer_lists_api import CustomerListsApi
 
-from pinterest.generated.client.model.customer_list_request import CustomerListRequest
-from pinterest.generated.client.model.customer_list import CustomerList as GeneratedCustomerList
-from pinterest.generated.client.model.customer_list_update_request import CustomerListUpdateRequest
+from openapi_generated.pinterest_client.model.customer_list_request import CustomerListRequest
+from openapi_generated.pinterest_client.model.customer_list import CustomerList as GeneratedCustomerList
+from openapi_generated.pinterest_client.model.customer_list_update_request import CustomerListUpdateRequest
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel

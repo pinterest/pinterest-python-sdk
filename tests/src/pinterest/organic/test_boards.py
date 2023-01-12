@@ -6,7 +6,7 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from pinterest.client import PinterestSDKClient
-from pinterest.generated.client.model.board import Board as GeneratedBoard
+from openapi_generated.pinterest_client.model.board import Board as GeneratedBoard
 
 from pinterest.organic.boards import Board
 

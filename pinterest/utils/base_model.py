@@ -3,12 +3,13 @@ Pinterest Base Model
 """
 from typing import Callable
 
+from openapi_generated.pinterest_client.exceptions import ApiTypeError
+
 from pinterest.client import PinterestSDKClient
 
 from pinterest.utils.error_handling import verify_api_response
 from pinterest.utils.bookmark import Bookmark
 
-from pinterest.generated.client.exceptions import ApiTypeError
 
 
 class PinterestBaseModel:

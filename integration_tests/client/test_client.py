@@ -7,7 +7,7 @@ from pinterest.utils.refresh_access_token import get_new_access_token
 
 from pinterest import config
 
-from pinterest.generated.client.exceptions import UnauthorizedException
+from openapi_generated.pinterest_client.exceptions import UnauthorizedException
 
 from pinterest.organic.boards import Board
 from pinterest.client import PinterestSDKClient
