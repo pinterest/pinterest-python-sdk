@@ -7,7 +7,7 @@ flake8==3.8.4
 isort==5.6.4
 pylint==2.15.0
 pytest-cov
-sphinx==5.2.3
-sphinx-rtd-theme==1.0.0
-sphinx_markdown_builder==0.5.5
 parameterized==0.8.1
+lazydocs==0.4.8
+pyyaml==6.0
+markdown==3.4.1
