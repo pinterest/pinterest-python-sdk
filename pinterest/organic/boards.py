@@ -3,11 +3,11 @@ Board Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
-from pinterest.generated.client.api.boards_api import BoardsApi
-from pinterest.generated.client.model.board import Board as GeneratedBoard
-from pinterest.generated.client.model.board_update import BoardUpdate
+from openapi_generated.pinterest_client.api.boards_api import BoardsApi
+from openapi_generated.pinterest_client.model.board import Board as GeneratedBoard
+from openapi_generated.pinterest_client.model.board_update import BoardUpdate
 
-from pinterest.generated.client.model.board_section import BoardSection as GeneratedBoardSection
+from openapi_generated.pinterest_client.model.board_section import BoardSection as GeneratedBoardSection
 
 from pinterest.organic.pins import Pin
 

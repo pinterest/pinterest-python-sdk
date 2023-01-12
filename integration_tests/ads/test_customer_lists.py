@@ -3,7 +3,7 @@ Test CustomerList Model
 """
 from unittest.mock import patch
 
-from pinterest.generated.client.exceptions import ApiValueError
+from openapi_generated.pinterest_client.exceptions import ApiValueError
 
 from pinterest.ads.customer_lists import CustomerList
 

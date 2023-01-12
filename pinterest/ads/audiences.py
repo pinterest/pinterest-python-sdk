@@ -3,17 +3,17 @@ High level module class for Audience object
 """
 from __future__ import annotations
 
-from pinterest.generated.client.model.audience_type import AudienceType
+from openapi_generated.pinterest_client.model.audience_type import AudienceType
 
-from pinterest.generated.client.api.audiences_api import AudiencesApi
+from openapi_generated.pinterest_client.api.audiences_api import AudiencesApi
 
-from pinterest.generated.client.model.audience_create_request import AudienceCreateRequest
-from pinterest.generated.client.model.audience_update_request import AudienceUpdateRequest
+from openapi_generated.pinterest_client.model.audience_create_request import AudienceCreateRequest
+from openapi_generated.pinterest_client.model.audience_update_request import AudienceUpdateRequest
 
-from pinterest.generated.client.model.audience import Audience as GeneratedAudience
-from pinterest.generated.client.model.audience_rule import AudienceRule
-from pinterest.generated.client.model.audience_update_operation_type import AudienceUpdateOperationType
-from pinterest.generated.client.model.objective_type import ObjectiveType
+from openapi_generated.pinterest_client.model.audience import Audience as GeneratedAudience
+from openapi_generated.pinterest_client.model.audience_rule import AudienceRule
+from openapi_generated.pinterest_client.model.audience_update_operation_type import AudienceUpdateOperationType
+from openapi_generated.pinterest_client.model.objective_type import ObjectiveType
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel

@@ -3,9 +3,9 @@ Pin Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
-from pinterest.generated.client.api.pins_api import PinsApi
-from pinterest.generated.client.model.pin import Pin as GeneratedPin
-from pinterest.generated.client.model.inline_object import InlineObject
+from openapi_generated.pinterest_client.api.pins_api import PinsApi
+from openapi_generated.pinterest_client.model.pin import Pin as GeneratedPin
+from openapi_generated.pinterest_client.model.inline_object import InlineObject
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel

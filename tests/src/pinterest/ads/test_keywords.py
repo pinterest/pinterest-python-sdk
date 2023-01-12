@@ -4,15 +4,15 @@ Test Keyword Model
 from unittest import TestCase
 from unittest.mock import patch
 
-from pinterest.generated.client.model.paginated import Paginated
-from pinterest.generated.client.model.keyword import Keyword as GeneratedKeyword
-from pinterest.generated.client.model.keywords_response import KeywordsResponse
-from pinterest.generated.client.model.match_type_response import MatchTypeResponse
+from openapi_generated.pinterest_client.model.paginated import Paginated
+from openapi_generated.pinterest_client.model.keyword import Keyword as GeneratedKeyword
+from openapi_generated.pinterest_client.model.keywords_response import KeywordsResponse
+from openapi_generated.pinterest_client.model.match_type_response import MatchTypeResponse
 
 
 from pinterest.ads.keywords import Keyword
 
-from pinterest.generated.client.model.match_type_response import MatchTypeResponse
+from openapi_generated.pinterest_client.model.match_type_response import MatchTypeResponse
 
 class TestKeyword(TestCase):
     '''

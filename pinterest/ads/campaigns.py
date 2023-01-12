@@ -3,13 +3,13 @@ Campaign Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
-from pinterest.generated.client.api.campaigns_api import CampaignsApi
+from openapi_generated.pinterest_client.api.campaigns_api import CampaignsApi
 
-from pinterest.generated.client.model.campaign_response import CampaignResponse
-from pinterest.generated.client.model.campaign_create_request import CampaignCreateRequest
-from pinterest.generated.client.model.campaign_update_request import CampaignUpdateRequest
+from openapi_generated.pinterest_client.model.campaign_response import CampaignResponse
+from openapi_generated.pinterest_client.model.campaign_create_request import CampaignCreateRequest
+from openapi_generated.pinterest_client.model.campaign_update_request import CampaignUpdateRequest
 
-from pinterest.generated.client.model.objective_type import ObjectiveType
+from openapi_generated.pinterest_client.model.objective_type import ObjectiveType
 
 from pinterest.ads.ad_groups import AdGroup
 from pinterest.client import PinterestSDKClient

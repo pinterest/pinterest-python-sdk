@@ -1,11 +1,11 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from pinterest.generated.client.model.ad_response import AdResponse
-from pinterest.generated.client.model.entity_status import EntityStatus
-from pinterest.generated.client.model.ad_array_response import AdArrayResponse
-from pinterest.generated.client.model.ad_array_response_element import AdArrayResponseElement
-from pinterest.generated.client.model.exception import Exception as ModelException
+from openapi_generated.pinterest_client.model.ad_response import AdResponse
+from openapi_generated.pinterest_client.model.entity_status import EntityStatus
+from openapi_generated.pinterest_client.model.ad_array_response import AdArrayResponse
+from openapi_generated.pinterest_client.model.ad_array_response_element import AdArrayResponseElement
+from openapi_generated.pinterest_client.model.exception import Exception as ModelException
 
 from pinterest.ads.ads import Ad
 

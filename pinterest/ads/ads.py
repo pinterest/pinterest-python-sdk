@@ -3,13 +3,13 @@ Ads high level model
 """
 from __future__ import annotations
 
-from pinterest.generated.client.api.ads_api import AdsApi
+from openapi_generated.pinterest_client.api.ads_api import AdsApi
 
-from pinterest.generated.client.model.ad_response import AdResponse
-from pinterest.generated.client.model.ad_create_request import AdCreateRequest
-from pinterest.generated.client.model.creative_type import CreativeType
-from pinterest.generated.client.model.entity_status import EntityStatus
-from pinterest.generated.client.model.ad_update_request import AdUpdateRequest
+from openapi_generated.pinterest_client.model.ad_response import AdResponse
+from openapi_generated.pinterest_client.model.ad_create_request import AdCreateRequest
+from openapi_generated.pinterest_client.model.creative_type import CreativeType
+from openapi_generated.pinterest_client.model.entity_status import EntityStatus
+from openapi_generated.pinterest_client.model.ad_update_request import AdUpdateRequest
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel

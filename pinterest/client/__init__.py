@@ -4,8 +4,8 @@ Pinterest Client
 import os
 from importlib import reload
 
-from pinterest.generated.client.configuration import Configuration
-from pinterest.generated.client.api_client import ApiClient
+from openapi_generated.pinterest_client.configuration import Configuration
+from openapi_generated.pinterest_client.api_client import ApiClient
 from pinterest import config
 from pinterest.utils.refresh_access_token import get_new_access_token
 from pinterest.utils.sdk_exceptions import SdkException
