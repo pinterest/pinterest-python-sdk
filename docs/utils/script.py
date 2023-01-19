@@ -58,7 +58,7 @@ def generate_new_doc():
         remove_package_prefix=True,
         overview_file='README.md',
         output_path='docs/pinterest/',
-        src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/')
+        src_base_url='https://github.com/pinterest/pinterest-python-sdk/blob/main/')
 
 
 def sort_index(index: dict) -> dict:
