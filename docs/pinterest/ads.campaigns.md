@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `ads.campaigns`
 Campaign Class for Pinterest Python SDK 
@@ -9,12 +9,12 @@ Campaign Class for Pinterest Python SDK
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L21"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L21"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Campaign`
 Campaign model used to view, create, update its attributes and list its different entities. 
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L26"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L26"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -170,7 +170,7 @@ Initialize a Campaign object.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L463"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L463"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `activate`
 
@@ -188,7 +188,7 @@ Activate a paused or archived campaign
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L472"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L472"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `archive`
 
@@ -206,7 +206,7 @@ Archive an active or paused campaign
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L152"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L152"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `create`
 
@@ -298,7 +298,7 @@ Keyword Args: Any valid keyword arguments or query parameters for endpoint.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L295"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L295"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `get_all`
 
@@ -340,7 +340,7 @@ Keyword Args: Any valid keyword arguments or query parameters for endpoint.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L417"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L417"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_daily_budget`
 
@@ -358,7 +358,7 @@ Get the current daily spend cap budget of the campaign.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L408"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L408"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_lifetime_budget`
 
@@ -376,7 +376,7 @@ Get the current life time spend cap budget of the campaign.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L507"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L507"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_ad_groups`
 
@@ -407,7 +407,7 @@ List ad groups directed related to campaign. This method makes a synchronous HTT
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L454"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L454"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `pause`
 
@@ -425,7 +425,7 @@ Pause an active or archived campaign
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L384"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L384"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_daily_budget`
 
@@ -449,7 +449,7 @@ Set new daily spend cap budget for the campaign.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L360"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L360"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_lifetime_budget`
 
@@ -473,7 +473,7 @@ Set new life time spend cap budget for the campaign.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/campaigns.py#L481"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/campaigns.py#L481"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_fields`
 

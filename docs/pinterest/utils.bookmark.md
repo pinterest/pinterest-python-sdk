@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/utils/bookmark.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/utils/bookmark.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `utils.bookmark`
 Bookmark Model 
@@ -9,12 +9,12 @@ Bookmark Model
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/utils/bookmark.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/utils/bookmark.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Bookmark`
 Bookmark Model used as a utilty to improve pagination experience for user. 
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/utils/bookmark.py#L12"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/utils/bookmark.py#L12"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -45,7 +45,7 @@ Initialize a Bookmark object.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/utils/bookmark.py#L52"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/utils/bookmark.py#L52"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_bookmark_token`
 
@@ -63,7 +63,7 @@ Returns the bookmark pagination token in string format.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/utils/bookmark.py#L37"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/utils/bookmark.py#L37"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_next`
 
