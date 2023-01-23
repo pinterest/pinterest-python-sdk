@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ads.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ads.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `ads.ads`
 Ads high level model 
@@ -9,12 +9,12 @@ Ads high level model
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ads.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ads.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Ad`
 Ad model used to view, create, update its attributes 
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ads.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ads.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -258,7 +258,7 @@ Initialize an Ad object.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ads.py#L213"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ads.py#L213"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `create`
 
@@ -323,7 +323,7 @@ Create a new ad. Request must contain ad_group_id, creative_type, and the source
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ads.py#L315"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ads.py#L315"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `get_all`
 
@@ -374,7 +374,7 @@ List ads that meet the filters provided:
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/ads/ads.py#L394"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ads.py#L394"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `update_fields`
 
