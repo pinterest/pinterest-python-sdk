@@ -179,7 +179,7 @@ campaign.set_lifetime_budget(
 
 ## Documentation
 
-* [Overview](https://github.com/pinterest/pinterest-python-sdk/blob/main/docs/pinterest/README.md)
+* Documentation is hosted on [Developer Site](https://developers.pinterest.com/docs/sdk/).
 
 
 ## Exceptions
