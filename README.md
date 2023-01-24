@@ -180,6 +180,10 @@ campaign.set_lifetime_budget(
 ## Documentation
 
 * Documentation is hosted on [Developer Site](https://developers.pinterest.com/docs/sdk/).
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5a733b3 (Point to doc page on devsite (#58))
 
 ## Exceptions
 
