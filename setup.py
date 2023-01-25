@@ -40,7 +40,7 @@ else:
     __version__ = _get_prod_version()
 
 if __version__ is None:
-    raise "Version is not defined"
+    raise ValueError("Version is not defined")
 
 setup(
     name="pinterest-api-sdk",
