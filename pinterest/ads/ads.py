@@ -15,7 +15,7 @@ from openapi_generated.pinterest_client.model.ad_update_request import AdUpdateR
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.utils.bookmark import Bookmark
-from utils.analytics import AnalyticsResponse, AnalyticsUtils
+from pinterest.utils.analytics import AnalyticsResponse, AnalyticsUtils
 
 
 class Ad(PinterestBaseModel):
