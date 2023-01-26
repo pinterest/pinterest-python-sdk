@@ -6,7 +6,6 @@ from __future__ import annotations
 from datetime import date
 
 from openapi_generated.pinterest_client.api.ads_api import AdsApi
-
 from openapi_generated.pinterest_client.model.ad_response import AdResponse
 from openapi_generated.pinterest_client.model.ad_create_request import AdCreateRequest
 from openapi_generated.pinterest_client.model.creative_type import CreativeType
