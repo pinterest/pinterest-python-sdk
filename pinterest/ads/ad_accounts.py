@@ -4,15 +4,14 @@ AdAccount Class for Pinterest Python SDK
 from __future__ import annotations
 from datetime import date
 
-from pinterest.generated.client.model.country import Country
-from pinterest.generated.client.model.ad_account_owner import AdAccountOwner
-from pinterest.generated.client.model.currency import Currency
-from pinterest.generated.client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
-from pinterest.generated.client.model.conversion_report_attribution_type import ConversionReportAttributionType
-
-from pinterest.generated.client.api.ad_accounts_api import AdAccountsApi
-from pinterest.generated.client.model.ad_account import AdAccount as GeneratedAdAccount
-from pinterest.generated.client.model.ad_account_create_request import AdAccountCreateRequest
+from openapi_generated.pinterest_client.model.country import Country
+from openapi_generated.pinterest_client.model.ad_account_owner import AdAccountOwner
+from openapi_generated.pinterest_client.model.currency import Currency
+from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
+from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
+from openapi_generated.pinterest_client.api.ad_accounts_api import AdAccountsApi
+from openapi_generated.pinterest_client.model.ad_account import AdAccount as GeneratedAdAccount
+from openapi_generated.pinterest_client.model.ad_account_create_request import AdAccountCreateRequest
 
 from pinterest.client import PinterestSDKClient
 from pinterest.ads.campaigns import Campaign

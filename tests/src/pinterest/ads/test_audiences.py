@@ -5,8 +5,8 @@ Test Audience Model
 from unittest import TestCase
 from unittest.mock import patch
 
-from pinterest.generated.client.model.audience import Audience as GeneratedAudience
-from pinterest.generated.client.model.audience_rule import AudienceRule
+from openapi_generated.pinterest_client.model.audience import Audience as GeneratedAudience
+from openapi_generated.pinterest_client.model.audience_rule import AudienceRule
 
 from pinterest.ads.audiences import Audience
 

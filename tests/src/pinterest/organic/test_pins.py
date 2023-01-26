@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 from pinterest.client import PinterestSDKClient
 
-from pinterest.generated.client.model.pin import Pin as GeneratedPin
+from openapi_generated.pinterest_client.model.pin import Pin as GeneratedPin
 
 from pinterest.organic.pins import Pin
 

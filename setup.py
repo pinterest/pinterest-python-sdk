@@ -2,26 +2,45 @@
 Pinterest Client Package Setup
 """
 import os
+from datetime import datetime
 from pathlib import Path
 from setuptools import setup, find_namespace_packages
 
+
+def _get_test_version():
+    return datetime.today().strftime('%m%d%Y%H%M%S')
+
+
+def _get_prod_version():
+    module = {}
+    with open(os.path.join(package_root, "pinterest/version.py"), encoding='UTF-8') as fp:
+        exec(fp.read(), module)  # pylint: disable=exec-used
+    return module.get("__version__")
+
+
+_IS_TEST_BUILD = os.environ.get("IS_TEST_BUILD", 0)
 
 REQUIRES = [
   "urllib3==1.26.12",
   "python-dateutil",
   "python-dotenv==0.20.0",
   "six==1.16.0",
-  "Pinterest-Generated-Client==0.1.4"
+  "Pinterest-Generated-Client==0.1.5"
 ]
 
 long_description = (Path(__file__).parent / "README.md").read_text()
 package_root = os.path.abspath(os.path.dirname(__file__))
 
+__version__ = None
 
-module = {}
-with open(os.path.join(package_root, "pinterest/version.py"), encoding='UTF-8') as fp:
-    exec(fp.read(), module)  # pylint: disable=exec-used
-__version__ = module.get("__version__")
+if _IS_TEST_BUILD:
+    print("* Test build enable")
+    __version__ = _get_test_version()
+else:
+    __version__ = _get_prod_version()
+
+if __version__ is None:
+    raise ValueError("Version is not defined")
 
 setup(
     name="pinterest-api-sdk",

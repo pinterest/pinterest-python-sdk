@@ -34,10 +34,14 @@ build: 						## Build command
 	python -m build
 	ls -l dist
 
+build_test: 				## Build test command
+	IS_TEST_BUILD=1 python -m build
+	ls -l dist
+
 pip_release_install:
 	pip install twine build
 
-publish_pypi_test: clean pip_release_install build
+publish_pypi_test: clean pip_release_install build_test
 	twine upload -r testpypi dist/*
 
 publish_pypi: clean pip_release_install build

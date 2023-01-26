@@ -3,14 +3,14 @@ High level module class for Keyword object
 """
 from __future__ import annotations
 
-from pinterest.generated.client.api.keywords_api import KeywordsApi
-from pinterest.generated.client.model.match_type import MatchType
-from pinterest.generated.client.model.keywords_common import KeywordsCommon
-from pinterest.generated.client.model.keywords_request import KeywordsRequest
-from pinterest.generated.client.model.keyword import Keyword as GeneratedKeyword
-from pinterest.generated.client.model.match_type_response import MatchTypeResponse
-from pinterest.generated.client.model.keyword_update_body import KeywordUpdateBody
-from pinterest.generated.client.model.keyword_update import KeywordUpdate
+from openapi_generated.pinterest_client.api.keywords_api import KeywordsApi
+from openapi_generated.pinterest_client.model.match_type import MatchType
+from openapi_generated.pinterest_client.model.keywords_common import KeywordsCommon
+from openapi_generated.pinterest_client.model.keywords_request import KeywordsRequest
+from openapi_generated.pinterest_client.model.keyword import Keyword as GeneratedKeyword
+from openapi_generated.pinterest_client.model.match_type_response import MatchTypeResponse
+from openapi_generated.pinterest_client.model.keyword_update_body import KeywordUpdateBody
+from openapi_generated.pinterest_client.model.keyword_update import KeywordUpdate
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.sdk_exceptions import SdkException

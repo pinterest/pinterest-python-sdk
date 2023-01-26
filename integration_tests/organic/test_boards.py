@@ -8,7 +8,7 @@ from unittest import skip
 from unittest.mock import patch
 from parameterized import parameterized
 
-from pinterest.generated.client.exceptions import NotFoundException
+from openapi_generated.pinterest_client.exceptions import NotFoundException
 
 from pinterest.organic.boards import Board
 from pinterest.organic.boards import BoardSection
