@@ -9,7 +9,6 @@ from openapi_generated.pinterest_client.model.ad_account_owner import AdAccountO
 from openapi_generated.pinterest_client.model.currency import Currency
 from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
 from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
-
 from openapi_generated.pinterest_client.api.ad_accounts_api import AdAccountsApi
 from openapi_generated.pinterest_client.model.ad_account import AdAccount as GeneratedAdAccount
 from openapi_generated.pinterest_client.model.ad_account_create_request import AdAccountCreateRequest
