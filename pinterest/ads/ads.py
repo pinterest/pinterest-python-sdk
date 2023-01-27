@@ -498,6 +498,6 @@ class Ad(PinterestBaseModel):
             params=kwargs,
             api=AdsApi,
             analytics_fn=AdsApi.ads_analytics,
-            ad_entity=self.__class__,
+            ad_entity=Ad,
             client=self._client
         )
