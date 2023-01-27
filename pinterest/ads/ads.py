@@ -510,7 +510,7 @@ class Ad(PinterestBaseModel):
         return AnalyticsUtils.get_ad_entity_analytics(
             params=kwargs,
             api=AdsApi,
-            analytics_fn=AdsApi.ad_account_targeting_analytics_get,
+            analytics_fn=AdsApi.ad_targeting_analytics_get,
             ad_entity=Ad,
             client=self._client
         )
