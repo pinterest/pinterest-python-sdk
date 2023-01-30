@@ -6,12 +6,12 @@ from __future__ import annotations
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 
-from pinterest.generated.client.api.conversion_events_api import ConversionEventsApi
+from openapi_generated.pinterest_client.api.conversion_events_api import ConversionEventsApi
 
-from pinterest.generated.client.model.conversion_events import ConversionEvents
-from pinterest.generated.client.model.conversion_events_data import ConversionEventsData
-from pinterest.generated.client.model.conversion_api_response_events import ConversionApiResponseEvents
-from pinterest.generated.client.model.conversion_events_user_data import ConversionEventsUserData
+from openapi_generated.pinterest_client.model.conversion_events import ConversionEvents
+from openapi_generated.pinterest_client.model.conversion_events_data import ConversionEventsData
+from openapi_generated.pinterest_client.model.conversion_api_response_events import ConversionApiResponseEvents
+from openapi_generated.pinterest_client.model.conversion_events_user_data import ConversionEventsUserData
 
 class Conversion(PinterestBaseModel):
     # pylint: disable=too-many-locals
