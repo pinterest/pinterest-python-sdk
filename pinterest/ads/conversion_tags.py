@@ -121,8 +121,6 @@ class ConversionTag(PinterestBaseModel):
     ) -> ConversionTag:
         # pylint: disable=too-many-locals,too-many-arguments
         """
-        This endpoint is currently in beta and not available to all apps.
-
         Create a conversion tag, also known as\
         <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\"\\
         target=\"_blank\">Pinterest tag</a>
