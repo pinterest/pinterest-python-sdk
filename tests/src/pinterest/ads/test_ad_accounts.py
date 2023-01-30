@@ -5,13 +5,13 @@ Test Ad Account Model
 from unittest import TestCase
 from unittest.mock import patch
 
-from pinterest.generated.client.model.ad_account import AdAccount as GeneratedAdAccount
-from pinterest.generated.client.model.customer_list import CustomerList as GeneratedCustomerList
-from pinterest.generated.client.model.country import Country
-from pinterest.generated.client.model.ad_account_owner import AdAccountOwner
-from pinterest.generated.client.model.currency import Currency
+from openapi_generated.pinterest_client.model.ad_account import AdAccount as GeneratedAdAccount
+from openapi_generated.pinterest_client.model.customer_list import CustomerList as GeneratedCustomerList
+from openapi_generated.pinterest_client.model.country import Country
+from openapi_generated.pinterest_client.model.ad_account_owner import AdAccountOwner
+from openapi_generated.pinterest_client.model.currency import Currency
 
-from pinterest.generated.client.model.campaign_response import CampaignResponse
+from openapi_generated.pinterest_client.model.campaign_response import CampaignResponse
 
 from pinterest.ads.ad_accounts import AdAccount
 from pinterest.ads.campaigns import Campaign

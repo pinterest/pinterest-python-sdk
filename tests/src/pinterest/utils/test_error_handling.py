@@ -4,10 +4,10 @@ Test Error Handling
 
 from unittest import TestCase
 
-from pinterest.generated.client.model.campaign_create_response import CampaignCreateResponse
-from pinterest.generated.client.model.campaign_create_response_item import CampaignCreateResponseItem
-from pinterest.generated.client.model.campaign_create_response_data import CampaignCreateResponseData
-from pinterest.generated.client.model.exception import Exception as GeneratedException
+from openapi_generated.pinterest_client.model.campaign_create_response import CampaignCreateResponse
+from openapi_generated.pinterest_client.model.campaign_create_response_item import CampaignCreateResponseItem
+from openapi_generated.pinterest_client.model.campaign_create_response_data import CampaignCreateResponseData
+from openapi_generated.pinterest_client.model.exception import Exception as GeneratedException
 
 from pinterest.utils.sdk_exceptions import SdkException
 from pinterest.utils.error_handling import verify_api_response

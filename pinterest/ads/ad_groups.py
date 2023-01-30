@@ -3,13 +3,13 @@ High level module class for AdGroup object
 """
 from __future__ import annotations
 
-from pinterest.generated.client.api.ad_groups_api import AdGroupsApi
+from openapi_generated.pinterest_client.api.ad_groups_api import AdGroupsApi
 
-from pinterest.generated.client.model.action_type import ActionType
-from pinterest.generated.client.model.budget_type import BudgetType
-from pinterest.generated.client.model.ad_group_response import AdGroupResponse
-from pinterest.generated.client.model.ad_group_create_request import AdGroupCreateRequest
-from pinterest.generated.client.model.ad_group_update_request import AdGroupUpdateRequest
+from openapi_generated.pinterest_client.model.action_type import ActionType
+from openapi_generated.pinterest_client.model.budget_type import BudgetType
+from openapi_generated.pinterest_client.model.ad_group_response import AdGroupResponse
+from openapi_generated.pinterest_client.model.ad_group_create_request import AdGroupCreateRequest
+from openapi_generated.pinterest_client.model.ad_group_update_request import AdGroupUpdateRequest
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel

@@ -1,8 +1,10 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from pinterest.generated.client.model.conversion_api_response import ConversionApiResponse
-from pinterest.generated.client.model.conversion_api_response_events import ConversionApiResponseEvents
+
+from openapi_generated.pinterest_client.model.conversion_api_response import ConversionApiResponse
+from openapi_generated.pinterest_client.model.conversion_api_response_events import ConversionApiResponseEvents
+
 
 from pinterest.ads.conversion_events import Conversion
 

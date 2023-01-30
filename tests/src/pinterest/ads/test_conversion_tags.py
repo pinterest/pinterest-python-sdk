@@ -6,14 +6,15 @@ from unittest.mock import patch
 
 from pinterest.ads.conversion_tags import ConversionTag
 
-from pinterest.generated.client.model.entity_status import EntityStatus
-from pinterest.generated.client.model.conversion_tag_type import ConversionTagType
-from pinterest.generated.client.model.conversion_tag_configs import ConversionTagConfigs
-from pinterest.generated.client.model.conversion_tag_response import ConversionTagResponse
-from pinterest.generated.client.model.conversion_event_response import ConversionEventResponse
-from pinterest.generated.client.model.enhanced_match_status_type import EnhancedMatchStatusType
-from pinterest.generated.client.model.conversion_tag_list_response import ConversionTagListResponse
-from pinterest.generated.client.model.conversion_tags_ocpm_eligible_response import ConversionTagsOcpmEligibleResponse
+from openapi_generated.pinterest_client.model.entity_status import EntityStatus
+from openapi_generated.pinterest_client.model.conversion_tag_type import ConversionTagType
+from openapi_generated.pinterest_client.model.conversion_tag_configs import ConversionTagConfigs
+from openapi_generated.pinterest_client.model.conversion_tag_response import ConversionTagResponse
+from openapi_generated.pinterest_client.model.conversion_event_response import ConversionEventResponse
+from openapi_generated.pinterest_client.model.enhanced_match_status_type import EnhancedMatchStatusType
+from openapi_generated.pinterest_client.model.conversion_tag_list_response import ConversionTagListResponse
+from openapi_generated.pinterest_client.model.conversion_tags_ocpm_eligible_response import ConversionTagsOcpmEligibleResponse
+
 
 class TestConversionTagCreate(TestCase):
     """

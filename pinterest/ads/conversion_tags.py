@@ -3,20 +3,19 @@ Conversion Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
-from pinterest.client import PinterestSDKClient
+from openapi_generated.pinterest_client.api.conversion_tags_api import ConversionTagsApi
+from openapi_generated.pinterest_client.model.entity_status import EntityStatus
+from openapi_generated.pinterest_client.model.conversion_tag_type import ConversionTagType
+from openapi_generated.pinterest_client.model.conversion_tag_create import ConversionTagCreate
+from openapi_generated.pinterest_client.model.conversion_tag_configs import ConversionTagConfigs
+from openapi_generated.pinterest_client.model.conversion_tag_response import ConversionTagResponse
+from openapi_generated.pinterest_client.model.conversion_event_response import ConversionEventResponse
+from openapi_generated.pinterest_client.model.enhanced_match_status_type import EnhancedMatchStatusType
 
+from pinterest.client import PinterestSDKClient
 from pinterest.utils.bookmark import Bookmark
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.utils.error_handling import verify_api_response
-
-from pinterest.generated.client.api.conversion_tags_api import ConversionTagsApi
-from pinterest.generated.client.model.entity_status import EntityStatus
-from pinterest.generated.client.model.conversion_tag_type import ConversionTagType
-from pinterest.generated.client.model.conversion_tag_create import ConversionTagCreate
-from pinterest.generated.client.model.conversion_tag_configs import ConversionTagConfigs
-from pinterest.generated.client.model.conversion_tag_response import ConversionTagResponse
-from pinterest.generated.client.model.conversion_event_response import ConversionEventResponse
-from pinterest.generated.client.model.enhanced_match_status_type import EnhancedMatchStatusType
 
 class ConversionTag(PinterestBaseModel):
     # pylint: disable=too-few-public-methods, too-many-arguments, duplicate-code
@@ -122,8 +121,6 @@ class ConversionTag(PinterestBaseModel):
     ) -> ConversionTag:
         # pylint: disable=too-many-locals,too-many-arguments
         """
-        This endpoint is currently in beta and not available to all apps.
-
         Create a conversion tag, also known as\
         <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\"\\
         target=\"_blank\">Pinterest tag</a>

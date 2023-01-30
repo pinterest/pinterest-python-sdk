@@ -5,7 +5,7 @@ Test Pin Model
 """
 from parameterized import parameterized
 
-from pinterest.generated.client.exceptions import NotFoundException
+from openapi_generated.pinterest_client.exceptions import NotFoundException
 
 from pinterest.organic.pins import Pin
 

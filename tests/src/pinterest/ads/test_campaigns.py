@@ -5,12 +5,12 @@ Test Campaign Model
 from unittest import TestCase
 from unittest.mock import patch
 
-from pinterest.generated.client.model.campaign_response import CampaignResponse
-from pinterest.generated.client.model.campaign_create_response import CampaignCreateResponse
-from pinterest.generated.client.model.campaign_create_response_item import CampaignCreateResponseItem
-from pinterest.generated.client.model.campaign_create_response_data import CampaignCreateResponseData
-from pinterest.generated.client.model.campaign_update_response import CampaignUpdateResponse
-from pinterest.generated.client.model.objective_type import ObjectiveType
+from openapi_generated.pinterest_client.model.campaign_response import CampaignResponse
+from openapi_generated.pinterest_client.model.campaign_create_response import CampaignCreateResponse
+from openapi_generated.pinterest_client.model.campaign_create_response_item import CampaignCreateResponseItem
+from openapi_generated.pinterest_client.model.campaign_create_response_data import CampaignCreateResponseData
+from openapi_generated.pinterest_client.model.campaign_update_response import CampaignUpdateResponse
+from openapi_generated.pinterest_client.model.objective_type import ObjectiveType
 
 from pinterest.ads.campaigns import Campaign
 

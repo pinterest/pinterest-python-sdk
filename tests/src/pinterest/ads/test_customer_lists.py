@@ -6,7 +6,7 @@ from unittest import TestCase
 from unittest.mock import patch
 from webbrowser import get
 
-from pinterest.generated.client.model.customer_list import CustomerList as GeneratedCustomerList
+from openapi_generated.pinterest_client.model.customer_list import CustomerList as GeneratedCustomerList
 
 from pinterest.ads.customer_lists import CustomerList
 

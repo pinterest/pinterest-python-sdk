@@ -10,7 +10,7 @@ from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 from pinterest.ads.keywords import Keyword
 from pinterest.utils.sdk_exceptions import SdkException
 
-from pinterest.generated.client.model.match_type_response import MatchTypeResponse
+from openapi_generated.pinterest_client.model.match_type_response import MatchTypeResponse
 
 
 class TestCreateKeyword(BaseTestCase):

@@ -1,8 +1,8 @@
 """
 Provide helper and utility functions for Organic Endpoints Integration Testing
 """
-from pinterest.generated.client.api.boards_api import BoardsApi
-from pinterest.generated.client.model.board import Board as GeneratedBoard
+from openapi_generated.pinterest_client.api.boards_api import BoardsApi
+from openapi_generated.pinterest_client.model.board import Board as GeneratedBoard
 
 from pinterest.client import PinterestSDKClient
 
