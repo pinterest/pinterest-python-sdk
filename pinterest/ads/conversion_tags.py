@@ -9,6 +9,7 @@ from pinterest.utils.bookmark import Bookmark
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.utils.error_handling import verify_api_response
 
+
 from openapi_generated.pinterest_client.api.conversion_tags_api import ConversionTagsApi
 from openapi_generated.pinterest_client.model.entity_status import EntityStatus
 from openapi_generated.pinterest_client.model.conversion_tag_type import ConversionTagType

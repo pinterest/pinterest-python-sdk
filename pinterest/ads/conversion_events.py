@@ -6,6 +6,7 @@ from __future__ import annotations
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 
+
 from openapi_generated.pinterest_client.api.conversion_events_api import ConversionEventsApi
 
 from openapi_generated.pinterest_client.model.conversion_events import ConversionEvents
