@@ -26,14 +26,12 @@ class AnalyticsUtils:
     ) -> AnalyticsResponse:
         """
         Helper function used to get ad entity analytics.
-
         Args:
             params (list): List of params
             api (type):
             analytics_fn (Callable):
             entity (PinterestBaseModel):
             client (PinterestSDKClient, optional):
-
         Returns:
             AnalyticsResponse:
         """
@@ -57,7 +55,6 @@ class AnalyticsResponse():
         ) -> None:
         """
         Initialize an Ads Analytics object.
-
         Args:
             entity_type (str): Entity Type identifier. Enum: ad_account, campaign, ad_group, ad.
             fields (list[str]): _description_
