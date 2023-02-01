@@ -505,7 +505,7 @@ class Ad(PinterestBaseModel):
             ad_entity=Ad,
             client=self._client
         )
-    
+
     def get_targeting_analytics(
         self,
         start_date: date,
