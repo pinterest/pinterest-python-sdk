@@ -12,7 +12,7 @@ from openapi_generated.pinterest_client.model.inline_object import InlineObject
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.utils.error_handling import verify_api_response
-from utils.analytics import AnalyticsResponse, AnalyticsUtils
+from pinterest.utils.analytics import AnalyticsResponse, AnalyticsUtils
 
 
 class Pin(PinterestBaseModel):

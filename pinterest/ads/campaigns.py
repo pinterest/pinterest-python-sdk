@@ -695,6 +695,7 @@ class Campaign(PinterestBaseModel):
         """
         kwargs['ad_account_id'] = self.ad_account_id
         kwargs['campaign_ids'] = [self.id]
+        kwargs['start_date'] = start_date
         kwargs['end_date'] = end_date
         kwargs['targeting_types'] = [AdsAnalyticsTargetingType(targeting_type) for targeting_type in targeting_types]
         kwargs['columns'] = columns
