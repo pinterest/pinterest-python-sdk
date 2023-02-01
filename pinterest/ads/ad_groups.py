@@ -651,6 +651,6 @@ class AdGroup(PinterestBaseModel):
             params=kwargs,
             api=AdGroupsApi,
             analytics_fn=AdGroupsApi.ad_groups_analytics,
-            ad_entity=AdGroupsApi,
+            ad_entity=AdGroup,
             client=self._client
         )
