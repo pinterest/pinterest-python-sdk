@@ -330,10 +330,10 @@ class Pin(PinterestBaseModel):
         kwargs['end_date'] = end_date
         kwargs['metric_types'] = metric_types
 
-        return AnalyticsUtils.get_ad_entity_analytics(
+        return AnalyticsUtils.get_entity_analytics(
             params=kwargs,
             api=PinsApi,
             analytics_fn=PinsApi.pins_analytics,
-            ad_entity=Pin,
+            entity=Pin,
             client=self._client
         )

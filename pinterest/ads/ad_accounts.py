@@ -312,11 +312,11 @@ class AdAccount(PinterestBaseModel):
         kwargs['view_window_days'] = view_window_days
         kwargs['conversion_report_time'] = conversion_report_time
 
-        ad_account_analytics_response = AnalyticsUtils.get_ad_entity_analytics(
+        ad_account_analytics_response = AnalyticsUtils.get_entity_analytics(
             params=kwargs,
             api=AdAccountsApi,
             analytics_fn=AdAccountsApi.ad_account_analytics,
-            ad_entity=AdAccount,
+            entity=AdAccount,
             client=self._client
         )
 
@@ -394,11 +394,11 @@ class AdAccount(PinterestBaseModel):
         if attribution_types:
             kwargs['attribution_types'] = ConversionReportAttributionType(attribution_types)
 
-        ad_account_analytics_response = AnalyticsUtils.get_ad_entity_analytics(
+        ad_account_analytics_response = AnalyticsUtils.get_entity_analytics(
             params=kwargs,
             api=AdAccountsApi,
             analytics_fn=AdAccountsApi.ad_account_targeting_analytics_get,
-            ad_entity=AdAccount,
+            entity=AdAccount,
             client=self._client
         )
 
