@@ -10,18 +10,18 @@ from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.client import PinterestSDKClient
 
 
-class AnalyticsUtils():
+class AnalyticsUtils:
     """
     Utility class with functions to make model specific analytics api calls.
     """
     @classmethod
-    def get_ad_entity_analytics(
+    def get_entity_analytics(
         cls,
-        params:list,
-        api:type,
+        params: list,
+        api: type,
         analytics_fn: Callable,
-        ad_entity: PinterestBaseModel,
-        client:PinterestSDKClient = None,
+        entity: PinterestBaseModel,
+        client: PinterestSDKClient = None,
         **kwargs
     ) -> AnalyticsResponse:
         """
@@ -31,7 +31,7 @@ class AnalyticsUtils():
             params (list): List of params
             api (type):
             analytics_fn (Callable):
-            ad_entity (PinterestBaseModel):
+            entity (PinterestBaseModel):
             client (PinterestSDKClient, optional):
 
         Returns:
@@ -39,8 +39,8 @@ class AnalyticsUtils():
         """
 
         return AnalyticsResponse(
-            entity_type=ad_entity,
-            fields=params.get('columns'),
+            entity_type=entity,
+            fields=params.get('columns', []),
             raw_response=getattr(api(client), analytics_fn)(**params, **kwargs)
         )
 
