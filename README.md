@@ -183,8 +183,11 @@ campaign.set_lifetime_budget(
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 >>>>>>> 5a733b3 (Point to doc page on devsite (#58))
 
+=======
+>>>>>>> 980226d (fix conflics)
 ## Exceptions
 
 See `pinterest.utils.sdk_exceptions` for a list of exceptions which may be thrown by the SDK.
