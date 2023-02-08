@@ -21,9 +21,16 @@ from pinterest.generated.client.model.conversion_report_attribution_type import 
 from openapi_generated.pinterest_client.model.country import Country
 from openapi_generated.pinterest_client.model.ad_account_owner import AdAccountOwner
 from openapi_generated.pinterest_client.model.currency import Currency
+<<<<<<< HEAD
 from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
 from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
+<<<<<<< HEAD
 >>>>>>> b14fe65 (Update with last main changes  (#61))
+=======
+=======
+
+>>>>>>> d1f7acc (Change generated client package name and version (#52))
+>>>>>>> 438d97e (fix conflicts)
 from openapi_generated.pinterest_client.api.ad_accounts_api import AdAccountsApi
 from openapi_generated.pinterest_client.model.ad_account import AdAccount as GeneratedAdAccount
 from openapi_generated.pinterest_client.model.ad_account_create_request import AdAccountCreateRequest

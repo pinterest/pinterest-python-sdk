@@ -3,6 +3,7 @@ Ads high level model
 """
 from __future__ import annotations
 
+<<<<<<< HEAD
 from datetime import date
 
 from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
@@ -10,6 +11,10 @@ from openapi_generated.pinterest_client.model.ads_analytics_targeting_type impor
 from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
 
 from openapi_generated.pinterest_client.api.ads_api import AdsApi
+=======
+from openapi_generated.pinterest_client.api.ads_api import AdsApi
+
+>>>>>>> d1f7acc (Change generated client package name and version (#52))
 from openapi_generated.pinterest_client.model.ad_response import AdResponse
 from openapi_generated.pinterest_client.model.ad_create_request import AdCreateRequest
 from openapi_generated.pinterest_client.model.creative_type import CreativeType
