@@ -3,16 +3,8 @@ Pin Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 from datetime import date
 
-=======
->>>>>>> d1f7acc (Change generated client package name and version (#52))
-=======
-from datetime import date
-
->>>>>>> aa63ab6 (Add get pin analytic (#73))
 from openapi_generated.pinterest_client.api.pins_api import PinsApi
 from openapi_generated.pinterest_client.model.pin import Pin as GeneratedPin
 from openapi_generated.pinterest_client.model.inline_object import InlineObject

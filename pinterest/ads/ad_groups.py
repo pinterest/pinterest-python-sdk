@@ -3,20 +3,11 @@ High level module class for AdGroup object
 """
 from __future__ import annotations
 
-<<<<<<< HEAD
 from datetime import date
 
 from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
 from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
 from openapi_generated.pinterest_client.api.ad_groups_api import AdGroupsApi
-<<<<<<< HEAD
-
-=======
-from openapi_generated.pinterest_client.api.ad_groups_api import AdGroupsApi
-
->>>>>>> d1f7acc (Change generated client package name and version (#52))
-=======
->>>>>>> 58c044f (fix conflicts)
 from openapi_generated.pinterest_client.model.action_type import ActionType
 from openapi_generated.pinterest_client.model.budget_type import BudgetType
 from openapi_generated.pinterest_client.model.ad_group_response import AdGroupResponse
