@@ -6,15 +6,11 @@ from __future__ import annotations
 from datetime import date
 
 from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
-
 from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
-
 from openapi_generated.pinterest_client.api.campaigns_api import CampaignsApi
-
 from openapi_generated.pinterest_client.model.campaign_response import CampaignResponse
 from openapi_generated.pinterest_client.model.campaign_create_request import CampaignCreateRequest
 from openapi_generated.pinterest_client.model.campaign_update_request import CampaignUpdateRequest
-
 from openapi_generated.pinterest_client.model.objective_type import ObjectiveType
 
 from pinterest.ads.ad_groups import AdGroup

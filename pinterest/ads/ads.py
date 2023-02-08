@@ -6,9 +6,7 @@ from __future__ import annotations
 from datetime import date
 
 from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
-
 from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
-
 from openapi_generated.pinterest_client.api.ads_api import AdsApi
 from openapi_generated.pinterest_client.model.ad_response import AdResponse
 from openapi_generated.pinterest_client.model.ad_create_request import AdCreateRequest
