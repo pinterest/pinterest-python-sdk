@@ -181,7 +181,6 @@ campaign.set_lifetime_budget(
 
 * Documentation is hosted on [Developer Site](https://developers.pinterest.com/docs/sdk/).
 
-
 ## Exceptions
 
 See `pinterest.utils.sdk_exceptions` for a list of exceptions which may be thrown by the SDK.
