@@ -22,6 +22,7 @@ from openapi_generated.pinterest_client.model.country import Country
 from openapi_generated.pinterest_client.model.ad_account_owner import AdAccountOwner
 from openapi_generated.pinterest_client.model.currency import Currency
 <<<<<<< HEAD
+<<<<<<< HEAD
 from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
 from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
 <<<<<<< HEAD
@@ -30,7 +31,14 @@ from openapi_generated.pinterest_client.model.conversion_report_attribution_type
 =======
 
 >>>>>>> d1f7acc (Change generated client package name and version (#52))
+<<<<<<< HEAD
 >>>>>>> 438d97e (fix conflicts)
+=======
+=======
+from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
+from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
+>>>>>>> e470fd7 (fix conflicts)
+>>>>>>> b845cf6 (fix conflicts)
 from openapi_generated.pinterest_client.api.ad_accounts_api import AdAccountsApi
 from openapi_generated.pinterest_client.model.ad_account import AdAccount as GeneratedAdAccount
 from openapi_generated.pinterest_client.model.ad_account_create_request import AdAccountCreateRequest
@@ -57,7 +65,6 @@ class AdAccount(PinterestBaseModel):
         ) -> None:
         """
         Initialize an object of an AdAccount.
-
         Args:
             ad_account_id (str): Unique identifier of an ad account.
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Defaults to `default_api_client`.
@@ -129,16 +136,13 @@ class AdAccount(PinterestBaseModel):
         For more, see <a class="reference external" href=\
             "https://help.pinterest.com/en/business/article/create-an-advertiser-account">\
                 Create an advertiser account</a>.
-
         Args:
             name (str): Ad Account name
             owner_user_id (str): Ad Account's owning user ID
             country (str): Country ID from ISO 3166-1 alpha-2. Example: "US" or "RU".
             client (PinterestSDKClient): PinterestSDKClient Object
-
         Keyword Args:
             Any valid keyword arguments or query parameters for endpoint.
-
         Returns:
             AdAccount: AdAccount Object
         """
@@ -172,7 +176,6 @@ class AdAccount(PinterestBaseModel):
             roles granted to them via\
                 <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">\
                     Business Access</a>: Admin, Analyst, Campaign Manager.
-
         Args:
             campaign_ids (list[str], optional): List of Campaign Ids to use to filter the results. Defaults to None.
             entity_statuses (list[str], optional): Possible Entity Statuses "ACTIVE", "PAUSED" or "ARCHIVED". Defaults
@@ -184,10 +187,8 @@ class AdAccount(PinterestBaseModel):
                                    Note that higher-value IDs are associated with more-recently added items. Defaults to
                                    "ASCENDING".
             bookmark (str, optional): Cursor used to fetch the next page of items. Defaults to None.
-
         Keyword Args:
             Any valid keyword arguments or query parameters for endpoint.
-
         Returns:
             list[Campaign]: List of Campaign Objects
             Bookmark: Bookmark for pagination if present, else None.
@@ -214,7 +215,6 @@ class AdAccount(PinterestBaseModel):
         # pylint: disable=too-many-arguments
         """
         Get a list of the audiences in the AdAccount, filtered by the specified arguments
-
         Args:
             entity_statuses (list[str], optional): Possible Entity Statuses "ACTIVE", "PAUSED" or "ARCHIVED". Defaults
                                                    to None.
@@ -225,7 +225,6 @@ class AdAccount(PinterestBaseModel):
                                    Note that higher-value IDs are associated with more-recently added items. Defaults to
                                    "ASCENDING".
             bookmark (str, optional): Cursor used to fetch the next page of items. Defaults to None.
-
         Returns:
             list[Audience]: List of Audience Objects
             Bookmark: Bookmark for pagination if present, else None.
@@ -250,7 +249,6 @@ class AdAccount(PinterestBaseModel):
         # pylint: disable=too-many-arguments
         """
         Get a list of customer lists in the AdAccount, filtered by the specified arguments
-
         Args:
             page_size (int[1..100], optional): Maximum number of items to include in a single page of the response.
                                                See documentation on Pagination for more information. Defaults to None
@@ -259,7 +257,6 @@ class AdAccount(PinterestBaseModel):
                                    Note that higher-value IDs are associated with more-recently added items. Defaults to
                                    "ASCENDING".
             bookmark (str, optional): Cursor used to fetch the next page of items. Defaults to None.
-
         Returns:
             list[CustomerList]: List of Audience Objects
             Bookmark: Bookmark for pagination if present, else None.
@@ -287,10 +284,8 @@ class AdAccount(PinterestBaseModel):
     ) -> AnalyticsResponse:
         """
         Get analytics for the specified ad_account_id, filtered by the specified options.
-
         - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary
         roles granted to them via Business Access: Admin, Analyst, Campaign Manager.
-
         Args:
             start_date (date): Metric report start date (UTC).
             end_date (date): Metric report end date (UTC).
@@ -320,7 +315,6 @@ class AdAccount(PinterestBaseModel):
                 the conversion metrics returned from this endpoint will be reported. There are two dates associated
                 with a conversion event: the date that the user interacted with the ad, and the date that the user
                 completed a conversion event. Defaults to "TIME_OF_AD_ACTION".
-
         Returns:
             AnalyticsResponse: AnalyticsResponse object.
         """
@@ -334,6 +328,7 @@ class AdAccount(PinterestBaseModel):
         kwargs['view_window_days'] = view_window_days
         kwargs['conversion_report_time'] = conversion_report_time
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         ad_account_analytics_response = AnalyticsUtils.get_entity_analytics(
             params=kwargs,
@@ -429,6 +424,92 @@ class AdAccount(PinterestBaseModel):
             analytics_fn=AdAccountsApi.ad_account_analytics,
             ad_entity=AdAccount,
 >>>>>>> c09fda9 (Ad Account `get_analytics` (#40))
+=======
+        ad_account_analytics_response = AnalyticsUtils.get_entity_analytics(
+            params=kwargs,
+            api=AdAccountsApi,
+            analytics_fn=AdAccountsApi.ad_account_analytics,
+            entity=AdAccount,
+            client=self._client
+        )
+
+        return ad_account_analytics_response
+
+    def get_targeting_analytics(
+        self,
+        start_date:date,
+        end_date:date,
+        targeting_types:list[str],
+        columns:list[str],
+        granularity:str,
+        click_window_days:int=30,
+        engagement_window_days:int=30,
+        view_window_days:int=1,
+        conversion_report_time:str = "TIME_OF_AD_ACTION",
+        attribution_types:str = None,
+        **kwargs
+    ) -> AnalyticsResponse:
+        """
+        Get analytics for the specified ad_account_id, filtered by the specified options.
+        - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary
+        roles granted to them via Business Access: Admin, Analyst, Campaign Manager.
+        Args:
+            start_date (date): Metric report start date (UTC).
+            end_date (date): Metric report end date (UTC).
+            targeting_types (list[str]): Items Enum: "KEYWORD" "APPTYPE" "GENDER" "LOCATION" "PLACEMENT" "COUNTRY"
+                "TARGETED_INTEREST" "PINNER_INTEREST" "AUDIENCE_INCLUDE" "AUDIENCE_EXCLUDE" "GEO" "AGE_BUCKET" "REGION"
+                Targeting type breakdowns for the report. The reporting per targeting type
+                is independent from each other.
+            columns (list[str]): Columns to retrieve, encoded as a comma-separated string. NOTE: Any metrics defined as
+                MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000,
+                or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of
+                the advertiser'scurrency. For example, if the advertiser's currency is GBP (British pound sterling), all
+                MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound). If a column has no value,
+                it may not be returned
+            granularity (str): Enum: "TOTAL" "DAY" "HOUR" "WEEK" "MONTH"
+                TOTAL - metrics are aggregated over the specified date range.
+                DAY - metrics are broken down daily.
+                HOUR - metrics are broken down hourly.
+                WEEKLY - metrics are broken down weekly.
+                MONTHLY - metrics are broken down monthly
+            click_window_days (int, optional): Enum: 1 7 30 60. Number of days to use as the conversion attribution
+                window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use
+                their defined attribution windows.. Defaults to 30.
+            engagement_window_days (int, optional): Enum: 1 7 30 60 Number of days to use as the conversion attribution
+                window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card
+                swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution
+                windows. Defaults to 30.
+            view_window_days (int, optional): Enum: 1 7 30 60. Number of days to use as the conversion attribution
+                window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their
+                defined attribution windows. Defaults to 1.
+            conversion_report_time (str, optional): Enum: "TIME_OF_AD_ACTION" "TIME_OF_CONVERSION". The date by which
+                the conversion metrics returned from this endpoint will be reported. There are two dates associated
+                with a conversion event: the date that the user interacted with the ad, and the date that the user
+                completed a conversion event. Defaults to "TIME_OF_AD_ACTION".
+            attribution_types (str): Enum: "INDIVIDUAL" "HOUSEHOLD"
+                List of types of attribution for the conversion report
+        Returns:
+            AnalyticsResponse: AnalyticsResponse object.
+        """
+        kwargs['ad_account_id'] = self.id
+        kwargs['start_date'] = start_date
+        kwargs['end_date'] = end_date
+        kwargs['targeting_types'] = [AdsAnalyticsTargetingType(targeting_type) for targeting_type in targeting_types]
+        kwargs['columns'] = columns
+        kwargs['granularity'] = granularity
+        kwargs['click_window_days'] = click_window_days
+        kwargs['engagement_window_days'] = engagement_window_days
+        kwargs['view_window_days'] = view_window_days
+        kwargs['conversion_report_time'] = conversion_report_time
+        if attribution_types:
+            kwargs['attribution_types'] = ConversionReportAttributionType(attribution_types)
+
+        ad_account_analytics_response = AnalyticsUtils.get_entity_analytics(
+            params=kwargs,
+            api=AdAccountsApi,
+            analytics_fn=AdAccountsApi.ad_account_targeting_analytics_get,
+            entity=AdAccount,
+>>>>>>> e470fd7 (fix conflicts)
             client=self._client
         )
 
