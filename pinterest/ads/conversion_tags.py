@@ -200,7 +200,7 @@ class ConversionTag(PinterestBaseModel):
 
         def _map_function(obj):
             return ConversionTag(
-                ad_account_id = ad_account_id,
+                ad_account_id = str(ad_account_id),
                 conversion_tag_id = obj.get('id'),
                 client = client,
                 _model_data = obj.to_dict()
@@ -235,7 +235,7 @@ class ConversionTag(PinterestBaseModel):
         Returns:
             list[ConversionEventResponse]: List of ConversionTagEvent
         """
-        params = {"ad_account_id" : ad_account_id}
+        params = {"ad_account_id" : str(ad_account_id)}
 
         def _map_function(obj):
             return ConversionEventResponse(
@@ -275,7 +275,7 @@ class ConversionTag(PinterestBaseModel):
             list[ConversionEventResponse]: List of ConversionTagEvent
         """
         api_response = ConversionTagsApi(api_client=cls._get_client(client)).ocpm_eligible_conversion_tags_get(
-            ad_account_id = ad_account_id,
+            ad_account_id = str(ad_account_id),
             **kwargs,
         )
 
