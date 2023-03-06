@@ -152,7 +152,6 @@ class Pin(PinterestBaseModel):
         client:PinterestSDKClient = None,
         **kwargs
     ) -> Pin:
-        # pylint: disable=too-many-arguments
         """
         Create a Pin on a board or board section owned by the "operation user_account".
 
@@ -197,6 +196,7 @@ class Pin(PinterestBaseModel):
         Returns:
             Pin: Pin object
         """
+        # pylint: disable=too-many-arguments, no-value-for-parameter
 
         if not client:
             client = cls._get_client()
@@ -212,9 +212,9 @@ class Pin(PinterestBaseModel):
                 board_section_id=board_section_id,
                 media_source=media_source,
                 parent_pin_id=parent_pin_id,
-                **kwargs
+                **kwargs,
             )
-        )
+        )  # pylint: disable=no-value-for-parameter
         verify_api_response(api_response)
 
         return Pin(pin_id=getattr(api_response, "id"), client=client)
