@@ -147,13 +147,24 @@ class ConversionTag(PinterestBaseModel):
         Args:
             ad_account_id (str): ConversionTag's Ad Account ID
             name (str): ConversionTag name
-            aem_enabled (bool=False, Nullable): Whether Automatic Enhanced Match email is enabled. See Enhanced match for more information.
+            aem_enabled (bool=False, Nullable): Whether Automatic Enhanced Match email is enabled. See\
+            Enhanced match for more information.
+
             md_frequency (float=1.0, Nullable): Metadata ingestion frequency.
-            aem_fnln_enabled (bool=False, Nullable): Whether Automatic Enhanced Match name is enabled. See Enhanced match for more information.
-            aem_ph_enabled (bool=False, Nullable): Whether Automatic Enhanced Match phone is enabled. See Enhanced match for more information.
-            aem_ge_enabled (bool=False, Nullable): Whether Automatic Enhanced Match gender is enabled. See Enhanced match for more information.
-            aem_db_enabled (bool=False, Nullable): Whether Automatic Enhanced Match birthdate is enabled. See Enhanced match for more information.
-            aem_loc_enabled (bool=False, Nullable): Whether Automatic Enhanced Match location is enabled. See Enhanced match for more information.
+            aem_fnln_enabled (bool=False, Nullable): Whether Automatic Enhanced Match name is enabled. See\
+            Enhanced match for more information.
+
+            aem_ph_enabled (bool=False, Nullable): Whether Automatic Enhanced Match phone is enabled. See\
+            Enhanced match for more information.
+
+            aem_ge_enabled (bool=False, Nullable): Whether Automatic Enhanced Match gender is enabled. See\
+            Enhanced match for more information.
+
+            aem_db_enabled (bool=False, Nullable): Whether Automatic Enhanced Match birthdate is enabled. See\
+            Enhanced match for more information.
+
+            aem_loc_enabled (bool=False, Nullable): Whether Automatic Enhanced Match location is enabled. See\
+            Enhanced match for more information.
 
         Returns:
             ConversionTag: ConversionTag Object
