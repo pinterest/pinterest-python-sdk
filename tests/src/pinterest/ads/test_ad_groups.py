@@ -84,6 +84,7 @@ class TestAdGroup(TestCase):
             campaign_id=self.test_campaign_id,
             billable_event='CLICKTHROUGH',
             name='SDK_TEST_CLIENT_ADGROUP',
+            auto_targeting_enabled=False
         )
 
         assert created_ad_group
