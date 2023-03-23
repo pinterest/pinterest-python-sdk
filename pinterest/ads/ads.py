@@ -70,6 +70,7 @@ class Ad(PinterestBaseModel):
             generated_api_get_fn="ads_get",
             generated_api_get_fn_args={"ad_account_id": ad_account_id, "ad_id": ad_id},
             model_attribute_types = AdResponse.openapi_types,
+            client=client,
         )
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
