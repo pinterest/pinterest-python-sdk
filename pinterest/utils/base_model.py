@@ -132,28 +132,21 @@ class PinterestBaseModel:
         items = []
         bookmark = None
 
-        # Python do while, always execute at least 1
-        while True:
-            http_response = cls._call_method(
-                cls._get_api_instance(api, client),
-                list_fn.__name__,
-                params,
-                **kwargs
-            )
+        http_response = cls._call_method(
+            cls._get_api_instance(api, client),
+            list_fn.__name__,
+            params,
+            **kwargs
+        )
 
-            verify_api_response(http_response)
+        verify_api_response(http_response)
 
-            items = http_response.get('items', [])
-            bookmark = http_response.get('bookmark', None)
-            # Only execute 1 if page size is set
-            if page_size is not None:
-                break
-            # Set the new bookmark
-            if bookmark is not None:
-                kwargs["bookmark"] = bookmark
-            # if bookmark is none this mean all items is extracted.
-            else:
-                break
+        items = http_response.get('items', [])
+        bookmark = http_response.get('bookmark', None)
+
+        # Set the new bookmark
+        if bookmark is not None:
+            kwargs["bookmark"] = bookmark
 
         kwargs.update(params)
         bookmark_model = Bookmark(
