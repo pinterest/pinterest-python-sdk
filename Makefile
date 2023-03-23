@@ -1,3 +1,5 @@
+.PHONY: integration_tests
+
 install:
 	@echo pip install
 	pip install -r requirements.txt
