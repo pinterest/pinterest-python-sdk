@@ -152,7 +152,7 @@ class PinterestBaseModel:
         bookmark_model = Bookmark(
                 bookmark_token=bookmark,
                 model=cls,
-                model_fn='get_all',
+                model_fn=list_fn.__name__,
                 model_fn_args=kwargs,
                 client=client,
             ) if bookmark else None
