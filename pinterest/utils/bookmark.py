@@ -43,6 +43,7 @@ class Bookmark:
             Bookmark: Bookmark Object for pagination if present, else None.
         """
         self.model_fn_args['bookmark'] = self.bookmark_token
+        self.model_fn_args['client'] = self.client
         if 'kwargs' in self.model_fn_args:
             kwargs = self.model_fn_args.get('kwargs')
             del self.model_fn_args['kwargs']
