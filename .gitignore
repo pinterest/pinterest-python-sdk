@@ -70,3 +70,4 @@ target/
 
 # Config files
 .env
+http_logs.txt
