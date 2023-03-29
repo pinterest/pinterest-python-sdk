@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from openapi_generated.pinterest_client.api.pins_api import PinsApi
 from openapi_generated.pinterest_client.model.pin import Pin as GeneratedPin
+from openapi_generated.pinterest_client.model.pin_create import PinCreate as GeneratedPinCreate
 from openapi_generated.pinterest_client.model.inline_object import InlineObject
 
 from pinterest.client import PinterestSDKClient
@@ -202,7 +203,7 @@ class Pin(PinterestBaseModel):
             client = cls._get_client()
 
         api_response = PinsApi(client).pins_create(
-            pin=GeneratedPin(
+            pin_create=GeneratedPinCreate(
                 link=link,
                 title=title,
                 description=description,
