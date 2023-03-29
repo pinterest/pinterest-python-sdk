@@ -69,6 +69,7 @@ class TestModelAttributes(BaseTestCase):
             ("ad"),
             ("customer_list"),
             ("audience"),
+            ("conversion_tag"),
         ]
     )
     def test_ads_model_attributes_match_properties(self, model_name):

@@ -31,7 +31,7 @@ class BaseTestCase(TestCase):
         self._audience_utils = None
         self._ad_group_utils = None
         self._ads_utils = None
-        self._conversion_utils = None
+        self._conversion_tag_utils = None
         self._ad_utils = None
         self._test_customer_list_utils = None
         self._board_utils = None
@@ -89,9 +89,9 @@ class BaseTestCase(TestCase):
     @property
     def conversion_tag_utils(self):
         """Conversion Tag util object"""
-        if not self._conversion_utils:
-            self._conversion_utils = ConversionTagUtils()
-        return self._conversion_utils
+        if not self._conversion_tag_utils:
+            self._conversion_tag_utils = ConversionTagUtils()
+        return self._conversion_tag_utils
 
     @property
     def board_utils(self):
