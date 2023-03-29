@@ -108,7 +108,7 @@ class CampaignUtils:
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
             name="SDK Test Campaign",
             objective_type="AWARENESS",
-            daily_spend_cap=10,
+            daily_spend_cap=10000000,
         )
         self.campaign_id = self.campaign._id
 
@@ -124,7 +124,7 @@ class CampaignUtils:
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
             name="SDK Test Campaign",
             objective_type="AWARENESS",
-            daily_spend_cap=10,
+            daily_spend_cap=10000000,
         )
 
     def create_new_campaign(self, **kwargs):
