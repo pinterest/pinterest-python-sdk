@@ -30,7 +30,7 @@ class ConversionTag(PinterestBaseModel):
         **kwargs
     ) -> None:
         """
-        Initialize Conversion Tag Object
+        Initialize Conversion Tag Object.
 
         Args:
             ad_account_id (str): ConversionTag's Ad Account ID
@@ -208,14 +208,14 @@ class ConversionTag(PinterestBaseModel):
         Get a list of ConversionTag, filter by specified arguments
 
         Args:
-            ad_account_id (str): _description_
-            filter_deleted (bool, optional): _description_. Defaults to False.
-            client (_type_, optional): _description_. Defaults to PinterestSDKClient=None.
+            ad_account_id (str): Unique identifier of an ad account.
+            filter_deleted (bool=False, optional): Filter out deleted tags.
+            client (_type_, optional): PinterestSDKClient Object. Uses the default client, if not provided.
 
         Returns:
             list[ConversionTag]: List of ConversionTags
         """
-        params = {"ad_account_id" : ad_account_id, "filter_deleted": filter_deleted}
+        params = {"ad_account_id" : str(ad_account_id), "filter_deleted": filter_deleted}
 
         def _map_function(obj):
             return ConversionTag(
@@ -245,7 +245,7 @@ class ConversionTag(PinterestBaseModel):
         **kwargs
     ) -> tuple[list[ConversionEventResponse], Bookmark]:
         """
-        Get page visit conversion tag events for an ad account
+        Get page visit conversion tag events for an ad account.
 
         Args:
             ad_account (str): Ad Account ID
@@ -284,7 +284,7 @@ class ConversionTag(PinterestBaseModel):
         **kwargs
     ) -> tuple[str, list[ConversionEventResponse]]:
         """
-        Get OCPM eligible conversion tag events for an Ad Account
+        Get OCPM eligible conversion tag events for an Ad Account.
 
         Args:
             ad_account_id (str): Ad Account ID

@@ -159,33 +159,57 @@ class TestConversionTagCreate(TestCase):
                     enhanced_match_status = EnhancedMatchStatusType("VALIDATION_COMPLETE"),
                     id = self.test_conversion_tag_id,
                     last_fired_time_ms = float(1599030000000),
-                    name = "ACME Checkout Test Tag",
+                    name = "ACME Checkout Test Tag 1",
                     status = EntityStatus("ACTIVE"),
                     version = "3",
                     configs = test_configs
-                )
+                ),
+                ConversionTagResponse(
+                    ad_account_id = self.test_ad_account_id,
+                    code_snippet = "<script type=text/javascript> [...]",
+                    enhanced_match_status = EnhancedMatchStatusType("NOT_VALIDATED"),
+                    id = self.test_conversion_tag_id,
+                    last_fired_time_ms = float(1599030000000),
+                    name = "ACME Checkout Test Tag 2",
+                    status = EntityStatus("ACTIVE"),
+                    version = "3",
+                    configs = test_configs
+                )   
             ]
         )
 
         conversion_tags = ConversionTag.get_all(
             ad_account_id = self.test_ad_account_id,
         )
-        conversion_tag = conversion_tags[0]
+
 
         get_mock.assert_not_called()
-
         assert conversion_tags
-        assert len(conversion_tags) == 1
-        assert conversion_tag
-        assert conversion_tag.ad_account_id == self.test_ad_account_id
-        assert conversion_tag.code_snippet == "<script type=text/javascript> [...]"
-        assert conversion_tag.enhanced_match_status == EnhancedMatchStatusType("VALIDATION_COMPLETE")
-        assert conversion_tag.id == self.test_conversion_tag_id
-        assert conversion_tag.last_fired_time_ms == float(1599030000000)
-        assert conversion_tag.name == "ACME Checkout Test Tag"
-        assert conversion_tag.status == EntityStatus("ACTIVE")
-        assert conversion_tag.version == "3"
-        assert conversion_tag.configs == test_configs
+        assert len(conversion_tags) == 2
+
+        conversion_tag_1 = conversion_tags[0]
+        assert conversion_tag_1
+        assert conversion_tag_1.ad_account_id == self.test_ad_account_id
+        assert conversion_tag_1.code_snippet == "<script type=text/javascript> [...]"
+        assert conversion_tag_1.enhanced_match_status == EnhancedMatchStatusType("VALIDATION_COMPLETE")
+        assert conversion_tag_1.id == self.test_conversion_tag_id
+        assert conversion_tag_1.last_fired_time_ms == float(1599030000000)
+        assert conversion_tag_1.name == "ACME Checkout Test Tag 1"
+        assert conversion_tag_1.status == EntityStatus("ACTIVE")
+        assert conversion_tag_1.version == "3"
+        assert conversion_tag_1.configs == test_configs
+
+        conversion_tag_2 = conversion_tags[1]
+        assert conversion_tag_2
+        assert conversion_tag_2.ad_account_id == self.test_ad_account_id
+        assert conversion_tag_2.code_snippet == "<script type=text/javascript> [...]"
+        assert conversion_tag_2.enhanced_match_status == EnhancedMatchStatusType("NOT_VALIDATED")
+        assert conversion_tag_2.id == self.test_conversion_tag_id
+        assert conversion_tag_2.last_fired_time_ms == float(1599030000000)
+        assert conversion_tag_2.name == "ACME Checkout Test Tag 2"
+        assert conversion_tag_2.status == EntityStatus("ACTIVE")
+        assert conversion_tag_2.version == "3"
+        assert conversion_tag_2.configs == test_configs
 
     @patch('pinterest.ads.conversion_tags.ConversionTagsApi.page_visit_conversion_tags_get')
     def test_get_page_visit_conversion_tag_event(self, get_page_visit_mock):
@@ -200,6 +224,12 @@ class TestConversionTagCreate(TestCase):
                     "conversion_tag_id": self.test_conversion_tag_id,
                     "ad_account_id": self.test_ad_account_id,
                     "created_time": 1564768710,
+                },
+                {
+                    "conversion_event": "UNKNOWN",
+                    "conversion_tag_id": self.test_conversion_tag_id,
+                    "ad_account_id": self.test_ad_account_id,
+                    "created_time": 1564768711,
                 }
             ],
             "bookmark": "test_bookmark",
@@ -213,10 +243,19 @@ class TestConversionTagCreate(TestCase):
         assert bookmark.get_bookmark_token() == "test_bookmark"
 
         assert conversion_tag_events
-        assert len(conversion_tag_events) == 1
-        assert type(conversion_tag_events[0]) == ConversionEventResponse
-        assert conversion_tag_events[0].ad_account_id == self.test_ad_account_id
-        assert conversion_tag_events[0].conversion_tag_id == self.test_conversion_tag_id
+        assert len(conversion_tag_events) == 2
+
+        conversion_tag_event_1 = conversion_tag_events[0]
+        assert type(conversion_tag_event_1) == ConversionEventResponse
+        assert conversion_tag_event_1.conversion_event == ConversionTagType("PAGE_LOAD")
+        assert conversion_tag_event_1.ad_account_id == self.test_ad_account_id
+        assert conversion_tag_event_1.conversion_tag_id == self.test_conversion_tag_id
+
+        conversion_tag_event_2 = conversion_tag_events[1]
+        assert type(conversion_tag_event_2) == ConversionEventResponse
+        assert conversion_tag_event_2.conversion_event == ConversionTagType("UNKNOWN")
+        assert conversion_tag_event_2.ad_account_id == self.test_ad_account_id
+        assert conversion_tag_event_2.conversion_tag_id == self.test_conversion_tag_id
 
     @patch('pinterest.ads.conversion_tags.ConversionTagsApi.ocpm_eligible_conversion_tags_get')
     def test_get_ocpm_eligible_conversion_tag_events(self, get_mock):
