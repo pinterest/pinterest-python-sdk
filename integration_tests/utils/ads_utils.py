@@ -142,6 +142,8 @@ class AdGroupUtils:
             billable_event="IMPRESSION",
             client=self.test_client,
             name="SDK_INTEGRATION_TEST_ADGROUP",
+            auto_targeting_enabled=False,
+            bid_in_micro_currency=10000000,
         )
         self.ad_group_id = self.ad_group._id
 
@@ -158,6 +160,8 @@ class AdGroupUtils:
             billable_event="IMPRESSION",
             client=self.test_client,
             name="SDK_INTEGRATION_TEST_ADGROUP",
+            auto_targeting_enabled=False,
+            bid_in_micro_currency=10000000,
         )
 
     def create_new_ad_group(self, **kwargs):

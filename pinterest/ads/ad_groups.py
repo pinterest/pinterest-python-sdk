@@ -63,6 +63,7 @@ class AdGroup(PinterestBaseModel):
         self._summary_status = None
         self._feed_profile_id = None
         self._dca_assets = None
+        self._optimization_goal_metadata = None
 
         PinterestBaseModel.__init__(
             self,
@@ -200,6 +201,11 @@ class AdGroup(PinterestBaseModel):
     def dca_assets(self):
         #pylint: disable=missing-function-docstring
         return self._dca_assets
+
+    @property
+    def optimization_goal_metadata(self):
+        #pylint: disable=missing-function-docstring
+        return self._optimization_goal_metadata
 
 
     @classmethod
