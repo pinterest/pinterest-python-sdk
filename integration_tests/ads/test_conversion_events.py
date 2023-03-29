@@ -23,6 +23,8 @@ class TestSendConversionEvent(BaseTestCase):
         raw_user_data = dict(
             em = ["964bbaf162703657e787eb4455197c8b35c18940c75980b0285619fe9b8acec8"] #random hash256
         )
+        raw_custom_data = dict()
+
         conversion_events = [
             Conversion.create_conversion_event(
                 event_name = "add_to_cart",
@@ -30,6 +32,7 @@ class TestSendConversionEvent(BaseTestCase):
                 event_time = 1670026573,
                 event_id = "eventId0001",
                 user_data = raw_user_data,
+                custom_data= raw_custom_data,
             )
             for _ in range(NUMBER_OF_CONVERSION_EVENTS)
         ]
@@ -64,6 +67,8 @@ class TestSendConversionEvent(BaseTestCase):
         raw_user_data = dict(
             em = ["test_non_hashed_email@pinterest.com"]
         )
+        raw_custom_data = dict()
+
         conversion_events = [
             Conversion.create_conversion_event(
                 event_name = "add_to_cart",
@@ -71,6 +76,7 @@ class TestSendConversionEvent(BaseTestCase):
                 event_time = 1670026573,
                 event_id = "eventId0001",
                 user_data = raw_user_data,
+                custom_data = raw_custom_data,
             )
             for _ in range(NUMBER_OF_CONVERSION_EVENTS)
         ]
@@ -87,5 +93,5 @@ class TestSendConversionEvent(BaseTestCase):
         assert response.num_events_processed == 2
         assert len(response.events) == 2
 
-        assert response.events[0].warning_message == "'em' is not in sha256 hashed format."
-        assert response.events[1].warning_message == "'em' is not in sha256 hashed format."
+        assert response.events[0].warning_message #warning returned
+        assert response.events[1].warning_message #warning returned

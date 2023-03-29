@@ -3,11 +3,12 @@ Conversion Event Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
-from openapi_generated.pinterest_client.api.conversion_events_api import ConversionEventsApi
 from openapi_generated.pinterest_client.model.conversion_events import ConversionEvents
+from openapi_generated.pinterest_client.api.conversion_events_api import ConversionEventsApi
 from openapi_generated.pinterest_client.model.conversion_events_data import ConversionEventsData
-from openapi_generated.pinterest_client.model.conversion_api_response_events import ConversionApiResponseEvents
 from openapi_generated.pinterest_client.model.conversion_events_user_data import ConversionEventsUserData
+from openapi_generated.pinterest_client.model.conversion_events_custom_data import ConversionEventsCustomData
+from openapi_generated.pinterest_client.model.conversion_api_response_events import ConversionApiResponseEvents
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
@@ -26,6 +27,7 @@ class Conversion(PinterestBaseModel):
         event_time : int,
         event_id : str,
         user_data : dict,
+        custom_data : dict,
         event_source_url : str = None,
         partner_name : str = None,
         app_id : str = None,
@@ -39,7 +41,7 @@ class Conversion(PinterestBaseModel):
         language : str = None,
         **kwargs
     ) -> ConversionEventsData:
-        """ Create Conversion Event Data to be sent
+        """ Create Conversion Event Data to be sent.
 
         Args:
             event_name (str): The type of the user event, Enum: "add_to_cart", "checkout", "custom",
@@ -51,6 +53,7 @@ class Conversion(PinterestBaseModel):
                 between events ingested via both the conversion API and Pinterest tracking
             user_data (dict): Object containing customer information data. Note, it is required at least
                 one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
+            custom_data (dict): Object containing other custom data.
             event_source_url (str, optional): URL of the web conversion event
             partner_name (str, optional): The third party partner name responsible to send the event to
                 Conversion API on behalf of the adverstiser. Only send this field if Pinterest has worked
@@ -74,6 +77,7 @@ class Conversion(PinterestBaseModel):
             event_time = event_time,
             event_id = event_id,
             user_data = ConversionEventsUserData(**user_data),
+            custom_data = ConversionEventsCustomData(**custom_data),
             event_source_url = event_source_url,
             partner_name = partner_name,
             app_id = app_id,
@@ -98,12 +102,11 @@ class Conversion(PinterestBaseModel):
         **kwargs,
     )-> tuple(int, int, list[ConversionApiResponseEvents]):
         """
-        Send conversion events to Pinterest API for Conversions
+        Send conversion events to Pinterest API for Conversions.
 
-        Note: Highly recommend to use create_client_with_token (with Conversion Access Token) to create new client
-        for this functionality.
+        Note: Highly recommend to use create_client_with_token (with Conversion Access Token) to create different
+        client for this functionality.
         """
-
         response = ConversionEventsApi(api_client=cls._get_client(client)).events_create(
             ad_account_id = str(ad_account_id),
             conversion_events = ConversionEvents(
