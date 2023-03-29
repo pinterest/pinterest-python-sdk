@@ -97,6 +97,10 @@ class TestGetListConversionTag(BaseTestCase):
         conversion_tags = ConversionTag.get_all(ad_account_id = ad_account_id)
 
         assert len(conversion_tags) == NUMBER_OF_NEW_CONVERSION_TAG
+        for conversion_tag in conversion_tags:
+            assert conversion_tag.name == "SDK_TEST_CONVERSION_TAG"
+            assert conversion_tag.ad_account_id == ad_account_id
+
 
 class TestGetPageVsitConversionTag(BaseTestCase):
     """

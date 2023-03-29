@@ -141,16 +141,16 @@ class Pin(PinterestBaseModel):
     @classmethod
     def create(
         cls,
-        board_id:str,
-        media_source:dict,
-        link:str = None,
-        title:str = None,
-        description:str = None,
-        dominant_color:str = None,
-        alt_text:str = None,
-        board_section_id:str = None,
-        parent_pin_id:str = None,
-        client:PinterestSDKClient = None,
+        board_id : str,
+        media_source : dict,
+        link : str = None,
+        title : str = None,
+        description : str = None,
+        dominant_color : str = None,
+        alt_text : str = None,
+        board_section_id : str = None,
+        parent_pin_id : str = None,
+        client : PinterestSDKClient = None,
         **kwargs
     ) -> Pin:
         """
@@ -213,8 +213,8 @@ class Pin(PinterestBaseModel):
                 board_section_id=board_section_id,
                 media_source=media_source,
                 parent_pin_id=parent_pin_id,
-                **kwargs,
-            )
+            ),
+            **kwargs,
         )  # pylint: disable=no-value-for-parameter
         verify_api_response(api_response)
 
