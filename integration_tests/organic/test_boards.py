@@ -57,16 +57,16 @@ class TestCreateAndDeleteBoard(BaseTestCase):
         """
         Test creating a new Board and deleting the Board successfully
         """
-        randon_board_name = self.board_utils.get_randon_board_name()
+        random_board_name = self.board_utils.get_random_board_name()
         board = Board.create(
-            name=randon_board_name,
+            name=random_board_name,
             description="SDK Test Board Description",
             privacy="PUBLIC",
             client=self.test_client
         )
 
         assert board
-        assert board.name == randon_board_name
+        assert board.name == random_board_name
 
         self.board_utils.delete_board(board_id=board.id)
 
@@ -91,7 +91,7 @@ class TestBoardUpdateFields(BaseTestCase):
         board = self.board_utils.create_new_board(
             description=old_description,
             privacy=old_privacy,
-            name=self.board_utils.get_randon_board_name()
+            name=self.board_utils.get_random_board_name()
         )
 
         assert board.description == old_description
@@ -110,7 +110,7 @@ class TestBoardUpdateFields(BaseTestCase):
         """
         Test updating the name of the board with invalid/existing board name value.
         """
-        board = self.board_utils.create_new_board(name=self.board_utils.get_randon_board_name())
+        board = self.board_utils.create_new_board(name=self.board_utils.get_random_board_name())
 
         assert board
 
@@ -138,7 +138,7 @@ class TestChangeBoardPrivacy(BaseTestCase):
         and
         Test making a public board secret successfully
         """
-        board = self.board_utils.create_new_board(privacy=old_privacy, name=self.board_utils.get_randon_board_name())
+        board = self.board_utils.create_new_board(privacy=old_privacy, name=self.board_utils.get_random_board_name())
 
         assert board
         assert board.privacy == old_privacy
@@ -157,8 +157,8 @@ class TestBoardSectionOperations(BaseTestCase):
         """
         Test creating a new board section under a board model successfully.
         """
-        randon_board_name = self.board_utils.get_randon_board_name()
-        board = self.board_utils.create_new_board(name=randon_board_name)
+        random_board_name = self.board_utils.get_random_board_name()
+        board = self.board_utils.create_new_board(name=random_board_name)
 
         assert board
 
@@ -286,7 +286,7 @@ class TestListPinsOnBoardAndBoardSection(BaseTestCase):
         """
         Test if all pins on a board are returned
         """
-        new_board = self.board_utils.create_new_board(name=self.board_utils.get_randon_board_name())
+        new_board = self.board_utils.create_new_board(name=self.board_utils.get_random_board_name())
 
         NUMBER_OF_PINS_TO_CREATE = 3
 
@@ -339,8 +339,8 @@ class TestListPinsOnBoardAndBoardSection(BaseTestCase):
         """
         Test if all pins on a board section are returned
         """
-        randon_board_name = self.board_utils.get_randon_board_name()
-        new_board = self.board_utils.create_new_board(name=randon_board_name)
+        random_board_name = self.board_utils.get_random_board_name()
+        new_board = self.board_utils.create_new_board(name=random_board_name)
         new_section = new_board.create_section(name="GET ALL PINS FROM BOARD SECTION Test")
 
         NUMBER_OF_PINS_TO_CREATE = 3
