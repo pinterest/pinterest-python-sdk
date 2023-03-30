@@ -57,7 +57,7 @@ class TestCreateAndDeleteBoard(BaseTestCase):
         """
         Test creating a new Board and deleting the Board successfully
         """
-        random_board_name = self.board_utils.get_randon_board_name()
+        random_board_name = self.board_utils.get_random_board_name()
         board = Board.create(
             name=random_board_name,
             description="SDK Test Board Description",
