@@ -16,8 +16,10 @@ package_test:
 	./package_test/run.sh
 
 integration_tests:
+	@echo cleaning organic data...
+	python -m pytest ./integration_tests/clean_organic_data.py
 	@echo integration tests...
-	python -m pytest --cov ./pinterest/ --cov-branch ./integration_tests/ --cov-report term-missing
+	python -m pytest --ignore=clean_organic_data.py --cov ./pinterest/ --cov-branch ./integration_tests/ --cov-report term-missing
 
 clean: clean-build clean-pyc ## Clean
 
