@@ -16,6 +16,8 @@ from pinterest.organic.pins import Pin
 
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_BOARD_ID, DEFAULT_BOARD_NAME
+import random
+
 
 class TestGetBoard(BaseTestCase):
     """
@@ -56,15 +58,16 @@ class TestCreateAndDeleteBoard(BaseTestCase):
         """
         Test creating a new Board and deleting the Board successfully
         """
+        randon_board_name = self.board_utils.get_randon_board_name()
         board = Board.create(
-            name="SDK Test Create Board",
+            name=randon_board_name,
             description="SDK Test Board Description",
             privacy="PUBLIC",
             client=self.test_client
         )
 
         assert board
-        assert board.name == "SDK Test Create Board"
+        assert board.name == randon_board_name
 
         self.board_utils.delete_board(board_id=board.id)
 
@@ -88,7 +91,8 @@ class TestBoardUpdateFields(BaseTestCase):
 
         board = self.board_utils.create_new_board(
             description=old_description,
-            privacy=old_privacy
+            privacy=old_privacy,
+            name=self.board_utils.get_randon_board_name()
         )
 
         assert board.description == old_description
@@ -107,7 +111,7 @@ class TestBoardUpdateFields(BaseTestCase):
         """
         Test updating the name of the board with invalid/existing board name value.
         """
-        board = self.board_utils.create_new_board()
+        board = self.board_utils.create_new_board(name=self.board_utils.get_randon_board_name())
 
         assert board
 
@@ -135,7 +139,7 @@ class TestChangeBoardPrivacy(BaseTestCase):
         and
         Test making a public board secret successfully
         """
-        board = self.board_utils.create_new_board(privacy=old_privacy)
+        board = self.board_utils.create_new_board(privacy=old_privacy, name=self.board_utils.get_randon_board_name())
 
         assert board
         assert board.privacy == old_privacy
@@ -154,7 +158,8 @@ class TestBoardSectionOperations(BaseTestCase):
         """
         Test creating a new board section under a board model successfully.
         """
-        board = self.board_utils.create_new_board(name="Create Board Section Test")
+        randon_board_name = self.board_utils.get_randon_board_name()
+        board = self.board_utils.create_new_board(name=randon_board_name)
 
         assert board
 
@@ -282,41 +287,35 @@ class TestListPinsOnBoardAndBoardSection(BaseTestCase):
         """
         Test if all pins on a board are returned
         """
-        new_board = self.board_utils.create_new_board(name="GET ALL BOARD PINS TEST BOARD")
+        new_board = self.board_utils.create_new_board(name=self.board_utils.get_randon_board_name())
 
         NUMBER_OF_PINS_TO_CREATE = 3
 
         PIN_CREATION_MEDIA_SOURCES = [
             {
-                "source_type": "image_url",
+                "source_type": "image_base64",
                 "content_type": "image/jpeg",
-                "data": "string",
-                'url':'https://i.pinimg.com/564x/28/75/e9/2875e94f8055227e72d514b837adb271.jpg'
+                "data": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABNUlEQVR4nOzRQQkAIADAQBH7fwXrWcQY93CXYLB17h5xpg74XQOwBmANwBqANQBrANYArAFYA7AGYA3AGoA1AGsA1gCsAVgDsAZgDcAagDUAawDWAKwBWAOwBmANwBqANQBrANYArAFYA7AGYA3AGoA1AGsA1gCsAVgDsAZgDcAagDUAawDWAKwBWAOwBmANwBqANQBrANYArAFYA7AGYA3AGoA1AGsA1gCsAVgDsAZgDcAagDUAawDWAKwBWAOwBmANwBqANQBrANYArAFYA7AGYA3AGoA1AGsA1gCsAVgDsAZgDcAagDUAawDWAKwBWAOwBmANwBqANQBrANYArAFYA7AGYA3AGoA1AGsA1gCsAVgDsAZgDcAagDUAawDWAKwBWAOwBmANwBqANQBrAPYCAAD//2UYAxd4/Gr3AAAAAElFTkSuQmCC",
             },
             {
-                "source_type": "image_url",
+                "source_type": "image_base64",
                 "content_type": "image/jpeg",
-                "data": "string",
-                'url':'https://i.picsum.photos/id/13/2500/1667.jpg?hmac=SoX9UoHhN8HyklRA4A3vcCWJMVtiBXUg0W4ljWTor7s'
+                "data": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABVElEQVR4nOzTQQ3CQABEUdgQziQoQgYeuGCiYiqnOiqiIvbw0vQ/BZP8zGN5/m9ntv7eesKUoQdcXQGwAmAFwAqAFQArAFYArABYAbACYAXACoAVACsAVgCsAFgBsAJgBcAKgBUAKwBWAKwAWAGwAmAFwAqAFQArAFYArABYAbACYAXACoAVACsAVgCsAFgBsAJgBcAKgBUAKwBWAKwAWAGwAmAFwAqAFQArAFYArABYAbACYAXACoAVACsAdt/HR2+Y8n1tesKUHoAVACsAVgCsAFgBsAJgBcAKgBUAKwBWAKwAWAGwAmAFwAqAFQArAFYArABYAbACYAXACoAVACsAVgCsAFgBsAJgBcAKgBUAKwBWAKwAWAGwAmAFwAqAFQArAFYArABYAbACYAXACoAVACsAVgCsAFgBsAJgBcAKgBUAKwBWAKwAWAGwAmBHAAAA//8nhwWSfghzXAAAAABJRU5ErkJggg==",
             },
             {
-                "source_type": "image_url",
+                "source_type": "image_base64",
                 "content_type": "image/jpeg",
-                "data": "string",
-                'url':'https://i.picsum.photos/id/21/3008/2008.jpg?hmac=T8DSVNvP-QldCew7WD4jj_S3mWwxZPqdF0CNPksSko4'
-            }
+                "data": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABpklEQVR4nOzbQSrtcRiH8XtvZwm3W3esFFZgZAfGRgbMbYAlUIyUPSg5SilCtiA7MFcytgSjt2fy+Szg+zv1nHf4X6x+PvyatHa7N7r/trUc3f+7fTi6/2d0nR8JEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFii7vLp9EHPk6+RveXV7O///3gfHTfBcQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmACx30fr/2Zf2H0enf9//TK6/7oz+/2BC4gJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFii5XNjdEHjk/vR/cvzvZH928eZ/+jLiAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASIfQcAAP//pBwaLoqp/uUAAAAASUVORK5CYII=",
+            },
         ]
-
-        created_pin_ids = set(
-            getattr(self.pin_utils.create_new_pin(
+        created_pin_ids = set()
+        for num in range(NUMBER_OF_PINS_TO_CREATE):
+            response = self.pin_utils.create_new_pin(
                 board_id=new_board.id,
                 title=f"GET ALL PINS TEST #{num}",
                 media_source=PIN_CREATION_MEDIA_SOURCES[num]
-                ),
-                'id'
             )
-            for num in range(NUMBER_OF_PINS_TO_CREATE)
-        )
+            created_pin_ids.add(getattr(response, 'id'))
 
         assert len(created_pin_ids) == NUMBER_OF_PINS_TO_CREATE
 
@@ -325,6 +324,7 @@ class TestListPinsOnBoardAndBoardSection(BaseTestCase):
         # delete organic data from prod
         for pin in pins_list:
             self.pin_utils.delete_pin(pin.id)
+
         self.board_utils.delete_board(new_board.id)
 
         assert len(created_pin_ids) == len(pins_list)
@@ -340,7 +340,8 @@ class TestListPinsOnBoardAndBoardSection(BaseTestCase):
         """
         Test if all pins on a board section are returned
         """
-        new_board = self.board_utils.create_new_board(name="GET ALL BOARD SECTION PINS TEST BOARD")
+        randon_board_name = self.board_utils.get_randon_board_name()
+        new_board = self.board_utils.create_new_board(name=randon_board_name)
         new_section = new_board.create_section(name="GET ALL PINS FROM BOARD SECTION Test")
 
         NUMBER_OF_PINS_TO_CREATE = 3
@@ -355,13 +356,15 @@ class TestListPinsOnBoardAndBoardSection(BaseTestCase):
                 "source_type": "image_url",
                 "content_type": "image/jpeg",
                 "data": "string",
-                'url':'https://i.picsum.photos/id/13/2500/1667.jpg?hmac=SoX9UoHhN8HyklRA4A3vcCWJMVtiBXUg0W4ljWTor7s'
+                'url': 'https://images.ctfassets.net/h67z7i6sbjau/3chyNvP0vDdeBOrgVVFkYs/9caeeb499cf87fb6da93d69816099'
+                       'a70/homepage_headerimage_1440x1169_2x.jpg'
             },
             {
                 "source_type": "image_url",
                 "content_type": "image/jpeg",
                 "data": "string",
-                'url':'https://i.picsum.photos/id/21/3008/2008.jpg?hmac=T8DSVNvP-QldCew7WD4jj_S3mWwxZPqdF0CNPksSko4'
+                'url':'https://images.ctfassets.net/h67z7i6sbjau/38kSKHGDbcr5sRDRAZ25qe/9355e0ad3b7e8c0f9e0bff27b5c258'
+                      '38/homepage_action_section_720x720.jpg.jpg'
             }
         ]
 
