@@ -150,7 +150,8 @@ class PinterestBaseModel:
         if bookmark is not None:
             kwargs["bookmark"] = bookmark
 
-        kwargs.update(params)
+        if not bookmark_model_cls:
+            kwargs.update(params)
         bookmark_model = Bookmark(
                 bookmark_token=bookmark,
                 model=cls if not bookmark_model_cls else bookmark_model_cls,
