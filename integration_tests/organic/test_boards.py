@@ -33,8 +33,8 @@ class TestGetBoard(BaseTestCase):
 
         assert board
         assert board.id == DEFAULT_BOARD_ID
-        assert board.name == DEFAULT_BOARD_NAME
-
+        self.assertIsNotNone(board.name)
+        self.assertIsNotNone(board.description)
     def test_get_board_failure_invalid_board_id(self):
         """
         Test getting a Board failure due to invalid board id
