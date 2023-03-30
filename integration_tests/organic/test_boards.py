@@ -13,6 +13,7 @@ from openapi_generated.pinterest_client.exceptions import NotFoundException
 from pinterest.organic.boards import Board
 from pinterest.organic.boards import BoardSection
 from pinterest.organic.pins import Pin
+from pinterest.utils.bookmark import Bookmark
 
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_BOARD_ID, DEFAULT_BOARD_NAME
@@ -318,7 +319,12 @@ class TestListPinsOnBoardAndBoardSection(BaseTestCase):
 
         assert len(created_pin_ids) == NUMBER_OF_PINS_TO_CREATE
 
-        pins_list, _ = new_board.list_pins()
+        pins_list_1, bookmark_1 = new_board.list_pins(page_size=NUMBER_OF_PINS_TO_CREATE//2+1)
+        assert isinstance(bookmark_1, Bookmark)
+
+        pins_list_2, _ = bookmark_1.get_next()
+
+        pins_list = pins_list_1 + pins_list_2
 
         # delete organic data from prod
         for pin in pins_list:
