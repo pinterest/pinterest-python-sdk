@@ -26,7 +26,7 @@ class BoardUtils:
         self.test_client = client or PinterestSDKClient.create_default_client()
         self.board = Board(board_id=DEFAULT_BOARD_ID, client=client)
 
-    def get_randon_board_name(self):
+    def get_random_board_name(self):
         return "SDK Test Create Board {}".format(random.randint(0, 1000))
 
     def get_board(self):
