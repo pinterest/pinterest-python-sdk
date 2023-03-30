@@ -16,7 +16,6 @@ from pinterest.organic.pins import Pin
 
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_BOARD_ID, DEFAULT_BOARD_NAME
-import random
 
 
 class TestGetBoard(BaseTestCase):
