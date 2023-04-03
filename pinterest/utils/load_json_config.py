@@ -5,7 +5,7 @@ environment variables.
 import json
 import os
 
-__all__ = ['load_json_config']
+__all__ = ['load_json_config', 'load_json_config_from_single_env_var']
 
 _PREFIX = 'PINTEREST_'
 
@@ -22,6 +22,19 @@ def load_json_config():
 
     for attribute, value in config_json.items():
         _set_as_environment_variables(f'{_PREFIX}{attribute.upper()}', str(value))
+
+def load_json_config_from_single_env_var():
+    """
+    Parse PINTEREST_JSON_ENV_VARIABLES environment variable to split long JSON string into individual environment variables.
+    """
+    config_json = os.environ.get('PINTEREST_JSON_ENV_VARIABLES')
+    if not config_json:
+        return
+
+    config_json = json.loads(config_json)
+
+    for attribute, value in config_json.items():
+        os.environ[attribute] = str(value)
 
 
 def _get_current_dir():
