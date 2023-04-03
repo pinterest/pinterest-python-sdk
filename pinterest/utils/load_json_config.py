@@ -25,7 +25,8 @@ def load_json_config():
 
 def load_json_config_from_single_env_var():
     """
-    Parse PINTEREST_JSON_ENV_VARIABLES environment variable to split long JSON string into individual environment variables.
+    Parse PINTEREST_JSON_ENV_VARIABLES environment variable to split long JSON string into
+    individual environment variables.
     """
     config_json = os.environ.get('PINTEREST_JSON_ENV_VARIABLES')
     if not config_json:
