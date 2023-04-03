@@ -53,6 +53,8 @@ def get_new_access_token(
             f"Response from server: {response.body}"
             )
     if response.status != 200:
+        print(response.data)
+        print(response.getheaders())
         raise SdkException(http_resp=response)
 
     data = json.loads(response.data)

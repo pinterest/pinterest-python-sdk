@@ -18,6 +18,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run all integration tests
         env:
+          PINTEREST_DEBUG: true
           PINTEREST_REFRESH_ACCESS_TOKEN: ${{ secrets.CI_REFRESH_ACCESS_TOKEN }}
           PINTEREST_APP_SECRET: ${{ secrets.CI_APP_SECRET }}
           PINTEREST_APP_ID: ${{ secrets.CI_APP_ID }}
