@@ -117,6 +117,8 @@ class PinterestBaseModel:
             api: type = None,
             list_fn: Callable = None,
             map_fn: Callable = None,
+            bookmark_model_cls: object = None,
+            bookmark_model_fn: Callable = None,
             client: PinterestSDKClient = None,
             **kwargs
     ):
@@ -148,13 +150,14 @@ class PinterestBaseModel:
         if bookmark is not None:
             kwargs["bookmark"] = bookmark
 
-        kwargs.update(params)
+        if not bookmark_model_cls:
+            kwargs.update(params)
         bookmark_model = Bookmark(
                 bookmark_token=bookmark,
-                model=cls,
-                model_fn='get_all',
+                model=cls if not bookmark_model_cls else bookmark_model_cls,
+                model_fn='get_all' if not bookmark_model_fn else bookmark_model_fn.__name__,
                 model_fn_args=kwargs,
-                client=client,
+                client=client if not bookmark_model_cls else None,
             ) if bookmark else None
 
         return [map_fn(item) for item in items], bookmark_model

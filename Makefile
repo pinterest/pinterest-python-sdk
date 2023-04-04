@@ -1,4 +1,4 @@
-.PHONY: integration_tests lint unit_tests
+.PHONY: integration_tests lint unit_tests clean_organic_data
 
 install:
 	@echo pip install
@@ -15,9 +15,11 @@ unit_tests:
 package_test:
 	./package_test/run.sh
 
-integration_tests:
+clean_organic_data:
 	@echo cleaning organic data...
 	python -m pytest ./integration_tests/clean_organic_data.py
+
+integration_tests: clean_organic_data
 	@echo integration tests...
 	python -m pytest --ignore=clean_organic_data.py --cov ./pinterest/ --cov-branch ./integration_tests/ --cov-report term-missing
 
