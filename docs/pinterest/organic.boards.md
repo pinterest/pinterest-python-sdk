@@ -419,8 +419,7 @@ Keyword Args: Any valid keyword arguments or query parameters for endpoint.
 list_pins(
     section_id: 'str' = None,
     page_size: 'int' = None,
-    bookmark: 'str' = None,
-    **kwargs
+    bookmark: 'str' = None
 ) → tuple[list[Pin], Bookmark]
 ```
 
