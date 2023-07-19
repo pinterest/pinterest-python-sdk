@@ -64,7 +64,7 @@ class TestUpdateAdGroup(BaseTestCase):
 
         new_name = "SDK_AD_GROUP_NEW_NAME"
         new_spec = {
-                "GENDER": ["MALE"]
+                "GENDER": ["male"]
         }
 
         ad_group.update_fields(

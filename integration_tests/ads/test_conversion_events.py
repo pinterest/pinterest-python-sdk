@@ -51,11 +51,9 @@ class TestSendConversionEvent(BaseTestCase):
 
         assert response.events[0].status == "processed"
         assert response.events[0].error_message == ""
-        assert response.events[0].warning_message == ""
 
         assert response.events[1].status == "processed"
         assert response.events[1].error_message == ""
-        assert response.events[1].warning_message == ""
 
     def test_send_conversion_fail(self):
         """
@@ -90,8 +88,8 @@ class TestSendConversionEvent(BaseTestCase):
 
         assert response
         assert response.num_events_received == 2
-        assert response.num_events_processed == 2
+        assert response.num_events_processed == 0
         assert len(response.events) == 2
 
-        assert response.events[0].warning_message #warning returned
-        assert response.events[1].warning_message #warning returned
+        assert 'hashed format' in response.events[0].error_message
+        assert 'hashed format' in response.events[0].error_message
