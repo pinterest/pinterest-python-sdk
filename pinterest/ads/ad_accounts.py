@@ -140,6 +140,7 @@ class AdAccount(PinterestBaseModel):
             },
             api=AdAccountsApi,
             create_fn=AdAccountsApi.ad_accounts_create,
+            client=cls._get_client(client),
         )
         return cls(ad_account_id=response.id, client=cls._get_client(client))
 

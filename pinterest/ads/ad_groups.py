@@ -331,7 +331,8 @@ class AdGroup(PinterestBaseModel):
             },
             api=AdGroupsApi,
             create_fn=AdGroupsApi.ad_groups_create,
-            map_fn=lambda obj: obj.items[0].data
+            map_fn=lambda obj: obj.items[0].data,
+            client=cls._get_client(client),
         )
         return cls(
             ad_account_id=response.ad_account_id,
