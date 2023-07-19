@@ -187,6 +187,7 @@ class ConversionTag(PinterestBaseModel):
             api = ConversionTagsApi,
             create_fn = ConversionTagsApi.conversion_tags_create,
             map_fn = lambda obj : obj,
+            client=cls._get_client(client),
         )
 
 
