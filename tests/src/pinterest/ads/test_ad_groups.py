@@ -102,7 +102,7 @@ class TestAdGroup(TestCase):
         update_mock.__name__ = "ad_groups_update"
         new_name = "SDK_AD_GROUP_NEW_NAME"
         new_spec = {
-                "GENDER": ["MALE"]
+                "GENDER": ["male"]
         }
 
         get_mock.return_value = AdGroupResponse(
