@@ -117,6 +117,8 @@ class PinterestBaseModel:
             api: type = None,
             list_fn: Callable = None,
             map_fn: Callable = None,
+            bookmark_model_cls: object = None,
+            bookmark_model_fn: Callable = None,
             client: PinterestSDKClient = None,
             **kwargs
     ):
@@ -132,36 +134,30 @@ class PinterestBaseModel:
         items = []
         bookmark = None
 
-        # Python do while, always execute at least 1
-        while True:
-            http_response = cls._call_method(
-                cls._get_api_instance(api, client),
-                list_fn.__name__,
-                params,
-                **kwargs
-            )
+        http_response = cls._call_method(
+            cls._get_api_instance(api, client),
+            list_fn.__name__,
+            params,
+            **kwargs
+        )
 
-            verify_api_response(http_response)
+        verify_api_response(http_response)
 
-            items = http_response.get('items', [])
-            bookmark = http_response.get('bookmark', None)
-            # Only execute 1 if page size is set
-            if page_size is not None:
-                break
-            # Set the new bookmark
-            if bookmark is not None:
-                kwargs["bookmark"] = bookmark
-            # if bookmark is none this mean all items is extracted.
-            else:
-                break
+        items = http_response.get('items', [])
+        bookmark = http_response.get('bookmark', None)
 
-        kwargs.update(params)
+        # Set the new bookmark
+        if bookmark is not None:
+            kwargs["bookmark"] = bookmark
+
+        if not bookmark_model_cls:
+            kwargs.update(params)
         bookmark_model = Bookmark(
                 bookmark_token=bookmark,
-                model=cls,
-                model_fn='get_all',
+                model=cls if not bookmark_model_cls else bookmark_model_cls,
+                model_fn='get_all' if not bookmark_model_fn else bookmark_model_fn.__name__,
                 model_fn_args=kwargs,
-                client=client,
+                client=client if not bookmark_model_cls else None,
             ) if bookmark else None
 
         return [map_fn(item) for item in items], bookmark_model

@@ -18,17 +18,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run all integration tests
         env:
-          PINTEREST_REFRESH_ACCESS_TOKEN: ${{ secrets.CI_REFRESH_ACCESS_TOKEN }}
-          PINTEREST_APP_SECRET: ${{ secrets.CI_APP_SECRET }}
-          PINTEREST_APP_ID: ${{ secrets.CI_APP_ID }}
-          PINTEREST_API_URI: ${{ secrets.CI_HOST_URI }}
-          CONVERSION_ACCESS_TOKEN: ${{ secrets.CI_CONVERSION_ACCESS_TOKEN }}
-          DEFAULT_BOARD_ID: ${{ secrets.CI_DEFAULT_BOARD_ID }}
-          DEFAULT_BOARD_NAME: ${{ secrets.CI_DEFAULT_BOARD_NAME }}
-          DEFAULT_PIN_ID: ${{ secrets.CI_DEFAULT_PIN_ID }}
-          DEFAULT_BOARD_SECTION_ID: ${{ secrets.CI_DEFAULT_BOARD_SECTION_ID }}
-          OWNER_USER_ID: ${{ secrets.CI_OWNER_USER_ID }}
-          DEFAULT_AD_ACCOUNT_ID: ${{ secrets.CI_DEFAULT_AD_ACCOUNT_ID }}
+          PINTEREST_JSON_ENV_VARIABLES: ${{ secrets.CI_INTEG_TEST_JSON }}
         run: |
           python -m pip install --upgrade pip
           make install_dev

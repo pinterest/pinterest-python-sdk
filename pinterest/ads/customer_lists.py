@@ -160,6 +160,7 @@ class CustomerList(PinterestBaseModel):
             },
             api=CustomerListsApi,
             create_fn=CustomerListsApi.customer_lists_create,
+            client=cls._get_client(client),
         )
 
         return cls(

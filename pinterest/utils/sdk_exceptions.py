@@ -4,7 +4,7 @@ SDK Exceptions for error handling in the models.
 
 class SdkException(Exception):
     """Raises an exception for Model's Errors"""
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None, body=None):
         if http_resp:
             self.status = http_resp.status
             self.reason = http_resp.reason
@@ -13,7 +13,7 @@ class SdkException(Exception):
         else:
             self.status = status
             self.reason = reason
-            self.body = None
+            self.body = body
             self.headers = None
 
     def __str__(self):

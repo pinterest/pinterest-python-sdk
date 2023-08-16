@@ -58,6 +58,7 @@ class Campaign(PinterestBaseModel):
         self._type = None
         self._is_flexible_daily_budgets = None
         self._is_campaign_budget_optimization = None
+        self._summary_status = None
 
         PinterestBaseModel.__init__(
             self,
@@ -150,6 +151,11 @@ class Campaign(PinterestBaseModel):
     def is_campaign_budget_optimization(self) -> bool:
         # pylint: disable=missing-function-docstring
         return self._is_campaign_budget_optimization
+
+    @property
+    def summary_status(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._summary_status
 
 
     @classmethod
@@ -286,7 +292,8 @@ class Campaign(PinterestBaseModel):
             },
             api=CampaignsApi,
             create_fn=CampaignsApi.campaigns_create,
-            map_fn=lambda obj: obj.items[0].data
+            map_fn=lambda obj: obj.items[0].data,
+            client=cls._get_client(client),
         )
 
         return cls(

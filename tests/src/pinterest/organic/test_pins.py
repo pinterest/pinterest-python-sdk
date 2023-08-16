@@ -11,7 +11,7 @@ from openapi_generated.pinterest_client.model.pin import Pin as GeneratedPin
 
 from pinterest.organic.pins import Pin
 
-class TestGetPin(TestCase):
+class TestPin(TestCase):
     """
     Test Pin model and its higher level functions
     """

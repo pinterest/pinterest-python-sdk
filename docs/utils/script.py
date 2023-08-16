@@ -44,6 +44,7 @@ def remove_old_doc():
     files = next(os.walk("docs/pinterest"), (None, None, []))[2]
     for file in files: os.remove(f"docs/pinterest/{file}")
 
+
 def generate_new_doc():
     """
     Use lazydoc to generate new doc at: docs/pinterest
@@ -113,6 +114,7 @@ def check_index(num_file: int, index: dict):
     if num_file != num_file_indexed:
         raise Exception("Cound't index all file, please double check")
 
+
 def create_file_index() -> dict:
     """
     Create file index: index[module_name] = list[file_name]
@@ -160,6 +162,7 @@ def create_file_index() -> dict:
 
     return return_index
 
+
 def truncate_md_extension(file: str) -> str:
     """Truncate .md file extension
 
@@ -170,6 +173,7 @@ def truncate_md_extension(file: str) -> str:
         str: origin file name
     """
     return file[:-3]
+
 
 def append_doc_to_spec_file(index: dict):
     """
@@ -183,6 +187,10 @@ def append_doc_to_spec_file(index: dict):
     # Get skeleton spec
     spec_path = PROJECT_PATH + '/docs/utils/skeleton-spec.yaml'
     spec = yaml.load(open(spec_path, 'r'), Loader=yaml.FullLoader)
+
+    # Update version
+    from pinterest.version import __version__
+    spec['info']['version'] = __version__
 
     # Appending md doc into skeleton spec
     spec['tags'] = []

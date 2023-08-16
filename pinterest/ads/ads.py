@@ -74,6 +74,7 @@ class Ad(PinterestBaseModel):
             generated_api_get_fn="ads_get",
             generated_api_get_fn_args={"ad_account_id": ad_account_id, "ad_id": ad_id},
             model_attribute_types = AdResponse.openapi_types,
+            client=client,
         )
         self._ad_account_id = str(ad_account_id)
         self._populate_fields(**kwargs)
@@ -308,7 +309,8 @@ class Ad(PinterestBaseModel):
             },
             api=AdsApi,
             create_fn=AdsApi.ads_create,
-            map_fn=lambda obj: obj.items[0].data
+            map_fn=lambda obj: obj.items[0].data,
+            client=cls._get_client(client),
         )
         return cls(
             ad_account_id=response.ad_account_id,

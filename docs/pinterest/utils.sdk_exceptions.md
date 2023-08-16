@@ -19,7 +19,7 @@ Raises an exception for Model's Errors
 ### <kbd>method</kbd> `__init__`
 
 ```python
-__init__(status=None, reason=None, http_resp=None)
+__init__(status=None, reason=None, http_resp=None, body=None)
 ```
 
 

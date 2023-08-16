@@ -46,6 +46,8 @@ class AdAccount(PinterestBaseModel):
         self._country = None
         self._currency = None
         self._permissions = None
+        self._created_time = None
+        self._updated_time = None
 
         PinterestBaseModel.__init__(
             self,
@@ -88,6 +90,16 @@ class AdAccount(PinterestBaseModel):
         # pylint: disable=missing-function-docstring
         return self._permissions
 
+    @property
+    def created_time(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._created_time
+
+    @property
+    def updated_time(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._updated_time
+
     @classmethod
     def create(
             cls,
@@ -127,6 +139,7 @@ class AdAccount(PinterestBaseModel):
             },
             api=AdAccountsApi,
             create_fn=AdAccountsApi.ad_accounts_create,
+            client=cls._get_client(client),
         )
         return cls(ad_account_id=response.id, client=cls._get_client(client))
 

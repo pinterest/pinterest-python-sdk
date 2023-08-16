@@ -23,6 +23,8 @@ class TestCreateAdGroup(BaseTestCase):
             campaign_id=getattr(self.ad_group_utils.campaign, "_id"),
             billable_event="IMPRESSION",
             name="SDK_INTEGRATION_TEST_ADGROUP",
+            auto_targeting_enabled=False,
+            bid_in_micro_currency=10000000,
         )
 
         assert ad_group
@@ -62,7 +64,7 @@ class TestUpdateAdGroup(BaseTestCase):
 
         new_name = "SDK_AD_GROUP_NEW_NAME"
         new_spec = {
-                "GENDER": ["MALE"]
+                "GENDER": ["male"]
         }
 
         ad_group.update_fields(
@@ -136,6 +138,8 @@ class TestGetListAdGroup(BaseTestCase):
             campaign_id=getattr(new_campaign, "_id"),
             billable_event="IMPRESSION",
             name="SDK_INTEGRATION_TEST_ADGROUP",
+            auto_targeting_enabled=False,
+            bid_in_micro_currency=10000000,
         )
 
         new_ad_groups = AdGroup.get_all(
