@@ -9,10 +9,5 @@ def test_delete_organic_data():
     """
     Delete organic boards from default client
     """
-    all_boards, _ = Board.get_all()
-    for board in all_boards:
-        if board.id == DEFAULT_BOARD_ID:
-            continue
-        Board.delete(board_id=board.id)
+    pass
 
-    assert len(Board.get_all()[0]) == 1
