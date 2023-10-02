@@ -1,7 +1,9 @@
 """
 Test Ad Account Model
 """
-
+from datetime import date
+from datetime import timedelta
+from parameterized import parameterized
 from unittest.mock import patch
 
 from pinterest.ads.ad_accounts import AdAccount
@@ -9,7 +11,8 @@ from pinterest.ads.campaigns import Campaign
 from pinterest.ads.audiences import Audience
 
 from integration_tests.base_test import BaseTestCase
-from integration_tests.config import OWNER_USER_ID, DEFAULT_AD_ACCOUNT_ID
+from integration_tests.config import OWNER_USER_ID
+from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 
 
 class TestAdAccount(BaseTestCase):
@@ -136,3 +139,59 @@ class TestListCustomerLists(BaseTestCase):
             get_all_customer_list_ids.add(getattr(customer_list, "_id"))
 
         assert new_customer_list_ids == get_all_customer_list_ids
+
+
+class TestGetAnalytics(BaseTestCase):
+    """
+    Test getting Ad accounts analytics
+    """
+    DAYS_BACK = 2
+    FURTHEST_BACK_HOUR = 7  # Futhest allowed days back for granularity HOUR
+    MAX_RANGE_DAYS = 3  # Max time range in days for granularity HOUR
+    FURTHEST_BACK_NOT_HOUR = 90  # Futhest allowed days back for any granularity but HOUR
+
+    @parameterized.expand(
+        [
+            ("granularity_total","TOTAL"),
+            ("granularity_day", "DAY"),
+            ("granularity_hour", "HOUR"),
+            ("granularity_week", "WEEK"),
+            ("granularity_month", "MONTH"),
+        ]
+    )
+    def test_get_ad_analytics_success(self, name, granularity):
+        analytics_info_dict = {
+            'ad_account_id': DEFAULT_AD_ACCOUNT_ID,
+            'start_date': date.today() - timedelta(self.DAYS_BACK),
+            'end_date': date.today(),
+            'columns': ["ADVERTISER_ID","PIN_PROMOTION_ID","SPEND_IN_DOLLAR"],
+            'granularity': granularity,
+        }
+        ad_account = AdAccount(
+            ad_account_id=self.ad_account_utils.get_default_ad_account_id(),
+            client=self.test_client
+            )
+        ad_account_analytics = ad_account.get_analytics(**analytics_info_dict)
+        self.assertIsNotNone(ad_account_analytics)
+        self.assertIsNotNone(ad_account_analytics.raw_response)
+
+
+class TestGetTargetingAnalytics(BaseTestCase):
+
+    def test_get_ad_targeting_analytics_success(self):
+        analytics_info_dict = {
+            'ad_account_id': DEFAULT_AD_ACCOUNT_ID,
+            'start_date': date.today() - timedelta(2),
+            'end_date': date.today(),
+            'targeting_types':["GENDER"],
+            'columns': ["ADVERTISER_ID","PIN_PROMOTION_ID","SPEND_IN_DOLLAR"],
+            'granularity': 'DAY',
+        }
+        ad_account = AdAccount(
+            ad_account_id=self.ad_account_utils.get_default_ad_account_id(),
+            client=self.test_client
+            )
+        ad_analytics = ad_account.get_targeting_analytics(**analytics_info_dict)
+        self.assertIsNotNone(ad_analytics)
+        self.assertIsNotNone(ad_analytics.raw_response)
+        self.assertIsNotNone(ad_analytics.raw_response.get('data'))
