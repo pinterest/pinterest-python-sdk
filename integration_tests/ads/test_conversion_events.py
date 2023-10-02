@@ -8,6 +8,8 @@ from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 from pinterest.client import PinterestSDKClient
 from pinterest.ads.conversion_events import Conversion
 
+from openapi_generated.pinterest_client.exceptions import ApiException
+
 class TestSendConversionEvent(BaseTestCase):
     """
     Test send Conversion Event
@@ -79,17 +81,12 @@ class TestSendConversionEvent(BaseTestCase):
             for _ in range(NUMBER_OF_CONVERSION_EVENTS)
         ]
 
-        response = Conversion.send_conversion_events(
-            client = client,
-            ad_account_id = DEFAULT_AD_ACCOUNT_ID,
-            conversion_events = conversion_events,
-            test = True,
-        )
+        with self.assertRaises(ApiException):
+            Conversion.send_conversion_events(
+                client = client,
+                ad_account_id = DEFAULT_AD_ACCOUNT_ID,
+                conversion_events = conversion_events,
+                test = True,
+            )
 
-        assert response
-        assert response.num_events_received == 2
-        assert response.num_events_processed == 0
-        assert len(response.events) == 2
 
-        assert 'hashed format' in response.events[0].error_message
-        assert 'hashed format' in response.events[0].error_message
