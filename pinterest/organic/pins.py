@@ -45,8 +45,12 @@ class Pin(PinterestBaseModel):
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Uses the default client, if not provided.
         """
         self._ad_account_id = None
-
         self._id = None
+        self._is_owner = None
+        self._is_standard = None
+        self._note = None
+        self._has_been_promoted = None
+        self._creative_type = None
         self._created_at = None
         self._link = None
         self._title = None
@@ -78,6 +82,26 @@ class Pin(PinterestBaseModel):
     def id(self) -> str:
         # pylint: disable=missing-function-docstring
         return self._id
+
+    @property
+    def is_owner(self) -> str:
+        return self._is_owner
+    
+    @property
+    def is_standard(self) -> str:
+        return self._is_standard
+    
+    @property
+    def note(self) -> str:
+        return self._note
+
+    @property
+    def has_been_promoted(self) -> str:
+        return self._has_been_promoted
+
+    @property
+    def creative_type(self) -> str:
+        return self._creative_type
 
     @property
     def created_at(self) -> str:
@@ -286,7 +310,7 @@ class Pin(PinterestBaseModel):
             start_date: date,
             end_date: date,
             app_types: str = "ALL",
-            metric_types: str | list[str] = "ALL",
+            metric_types: list[str] = [],
             split_field: str = None,
             **kwargs
     ) -> AnalyticsResponse:
@@ -320,6 +344,7 @@ class Pin(PinterestBaseModel):
         Returns:
             AnalyticsResponse: AnalyticsResponse object.
         """
+        kwargs['pin_id'] = self._id
         if self._ad_account_id:
             kwargs['ad_account_id'] = self._ad_account_id
         if app_types:
