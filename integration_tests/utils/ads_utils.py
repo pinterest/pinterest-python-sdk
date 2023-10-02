@@ -13,7 +13,7 @@ from pinterest.ads.keywords import Keyword
 from pinterest.ads.conversion_tags import ConversionTag
 
 
-from integration_tests.config import DEFAULT_PIN_ID, OWNER_USER_ID, DEFAULT_AD_ACCOUNT_ID
+from integration_tests.config import DEFAULT_AD_GROUP_ID, DEFAULT_PIN_ID, OWNER_USER_ID, DEFAULT_AD_ACCOUNT_ID
 
 
 def _merge_default_params_with_params(default_params, params):
@@ -212,7 +212,7 @@ class AdUtils:
         self.ad = Ad.create(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
             ad_group_id=getattr(self.ad_group, "_id"),
-            creative_type="REGULAR",
+            creative_type="IDEA",
             pin_id=DEFAULT_PIN_ID,
             name="Test_create_ad",
             status="ACTIVE",
@@ -232,7 +232,7 @@ class AdUtils:
         return dict(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
             ad_group_id=getattr(self.ad_group, "_id"),
-            creative_type="REGULAR",
+            creative_type="IDEA",
             pin_id=DEFAULT_PIN_ID,
             name="Test_create_ad",
             status="ACTIVE",
