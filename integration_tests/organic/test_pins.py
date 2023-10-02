@@ -3,9 +3,12 @@ Test Pin Model
 
 *NOTE*: Do not forget to delete pin after the test.
 """
+from datetime import date
+from datetime import timedelta
 from parameterized import parameterized
 
 from openapi_generated.pinterest_client.exceptions import NotFoundException
+from openapi_generated.pinterest_client.exceptions import ApiException
 
 from pinterest.organic.pins import Pin
 
@@ -102,6 +105,7 @@ class TestSavePin(BaseTestCase):
         """
         pin = self.pin_utils.create_new_pin(title="Test Saving Pin")
         assert pin
+        assert pin.title == "Test Saving Pin"
 
         pin.save(**pin_save_kwargs)
 
@@ -117,3 +121,51 @@ class TestSavePin(BaseTestCase):
                 pin_id=pin.id,
                 client=self.test_client
                 )
+
+class TestGetAnalytics(BaseTestCase):
+    """
+    Test getting a Pin analytics
+    """
+    DAYS_BACK = 4
+    EXPECTED_NUM_OF_DAILY_METRICS = DAYS_BACK + 1
+    DAYS_BACK_OUT_OF_RANGE = 91
+    METRIC_TYPES = "IMPRESSION,OUTBOUND_CLICK,PIN_CLICK,SAVE,SAVE_RATE,TOTAL_COMMENTS,TOTAL_REACTIONS"
+
+    def validate_raw_response(self, raw_response):
+        self.assertIsNotNone(raw_response)
+        self.assertIsNotNone(raw_response.get('all'))
+        self.assertIsNotNone(raw_response.get('all').get('daily_metrics'))
+        self.assertIsNotNone(raw_response.get('all').get('lifetime_metrics'))
+        self.assertIsNotNone(raw_response.get('all').get('summary_metrics'))
+        self.assertEqual(len(raw_response.get('all').get('daily_metrics')), self.EXPECTED_NUM_OF_DAILY_METRICS)
+        for metric in self.METRIC_TYPES.split(','):
+            self.assertIn(metric, {**raw_response.get('all').get('summary_metrics'),**raw_response.get('all').get('lifetime_metrics')})
+
+
+    def test_get_analytics_success(self):
+        """
+        Test request the Pin analitycs
+        """
+        analytics_info_dict = {
+            'pin_id': DEFAULT_PIN_ID,
+            'start_date': date.today() - timedelta(self.DAYS_BACK),
+            'end_date': date.today(),
+            'metric_types': ["IMPRESSION,OUTBOUND_CLICK,PIN_CLICK,SAVE,SAVE_RATE,TOTAL_COMMENTS,TOTAL_REACTIONS"],
+        }
+        pin = Pin(pin_id=analytics_info_dict.pop('pin_id'))
+        analytics = pin.get_analytics(**analytics_info_dict)
+        self.assertIsNotNone(analytics)
+        self.validate_raw_response(analytics.raw_response)
+
+    def test_get_analytics_failure(self):
+        """Test request the Pin analytics from before 90 days ago. 
+        """
+        analytics_info_dict = {
+            'pin_id': DEFAULT_PIN_ID,
+            'start_date': date.today() - timedelta(self.DAYS_BACK_OUT_OF_RANGE),
+            'end_date': date.today(),
+            'metric_types': ["IMPRESSION,OUTBOUND_CLICK,PIN_CLICK,SAVE,SAVE_RATE,TOTAL_COMMENTS,TOTAL_REACTIONS"],
+        }
+        pin = Pin(pin_id=analytics_info_dict.pop('pin_id'))
+        with self.assertRaises(ApiException):
+            pin.get_analytics(**analytics_info_dict)
