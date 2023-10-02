@@ -1,10 +1,13 @@
 """
 Test Campaign Model
 """
-
+from datetime import date
+from datetime import timedelta
+from parameterized import parameterized
 from unittest.mock import patch
 
 from openapi_generated.pinterest_client.model.objective_type import ObjectiveType
+from openapi_generated.pinterest_client.exceptions import ApiException
 from openapi_generated.pinterest_client.exceptions import ApiValueError
 from openapi_generated.pinterest_client.exceptions import NotFoundException
 
@@ -15,6 +18,7 @@ from pinterest.utils.bookmark import Bookmark
 
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
+from integration_tests.config import DEFAULT_CAMPAIGN_ID
 
 
 class TestCreateCampaign(BaseTestCase):
@@ -233,3 +237,138 @@ class TestGetAllCampaigns(BaseTestCase):
             assert isinstance(campaign, Campaign)
 
         assert created_campaign_ids == get_all_campaigns_ids
+
+
+class TestGetAnalytics(BaseTestCase):
+    """
+    Test getting Campaign analytics
+    """
+    DAYS_BACK = 2
+    FURTHEST_DAYS_BACK_HOUR = 7  # Futhest allowed days back for granularity HOUR
+    FURTHEST_DAYS_BACK_NOT_HOUR = 90  # Futhest allowed days back for any granularity but HOUR
+
+    @parameterized.expand(
+        [
+            ("granularity_total","TOTAL"),
+            ("granularity_day", "DAY"),
+            ("granularity_hour", "HOUR"),
+            ("granularity_week", "WEEK"),
+            ("granularity_month", "MONTH"),
+        ]
+    )
+    def test_get_campaign_analytics_success(self, name, granularity):
+        
+        analytics_info_dict = {
+            'ad_account_id': DEFAULT_AD_ACCOUNT_ID,
+            'start_date': date.today() - timedelta(self.DAYS_BACK),
+            'end_date': date.today(),
+            'columns': ["ADVERTISER_ID","TOTAL_ENGAGEMENT","SPEND_IN_DOLLAR"],
+            'granularity': granularity,
+        }
+        campaign = Campaign(
+            client=self.test_client,
+            ad_account_id=DEFAULT_AD_ACCOUNT_ID,
+            campaign_id=DEFAULT_CAMPAIGN_ID,
+        )
+        
+        campaign_analytics = campaign.get_analytics(**analytics_info_dict)
+        self.assertIsNotNone(campaign_analytics)
+        self.assertIsNotNone(campaign_analytics.raw_response)
+        analytics_response = campaign_analytics.raw_response.get('value')
+        for dict_item in analytics_response:
+            for column in analytics_info_dict.get('columns'):
+                self.assertIn(column, dict_item)
+            if granularity != 'TOTAL':
+                self.assertIn('DATE', dict_item)
+
+    @parameterized.expand(
+        [
+            ("granularity_total","TOTAL", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+            ("granularity_day", "DAY", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+            ("granularity_hour", "HOUR", FURTHEST_DAYS_BACK_HOUR + 1),
+            ("granularity_week", "WEEK", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+            ("granularity_month", "MONTH", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+        ]
+    )
+    def test_get_campaign_analytics_fail(self, name, granularity, days_back):
+        analytics_info_dict = {
+            'ad_account_id': DEFAULT_AD_ACCOUNT_ID,
+            'start_date': date.today() - timedelta(days_back),
+            'end_date': date.today(),
+            'columns': ["ADVERTISER_ID","PIN_PROMOTION_ID","SPEND_IN_DOLLAR"],
+            'granularity': granularity,
+        }
+        campaign = Campaign(
+            client=self.test_client,
+            ad_account_id=DEFAULT_AD_ACCOUNT_ID,
+            campaign_id=DEFAULT_CAMPAIGN_ID,
+        )
+        with self.assertRaises(ApiException):
+            campaign.get_analytics(**analytics_info_dict)
+
+class TestGetTargetingAnalytics(BaseTestCase):
+    """
+    Test getting targeting analytics for Campaigns 
+    """
+    DAYS_BACK = 2
+    FURTHEST_DAYS_BACK_HOUR = 7  # Futhest allowed days back for granularity HOUR
+    FURTHEST_DAYS_BACK_NOT_HOUR = 90  # Futhest allowed days back for any granularity but HOUR
+
+    @parameterized.expand(
+        [
+            ("granularity_total","TOTAL"),
+            ("granularity_day", "DAY"),
+            ("granularity_week", "WEEK"),
+            ("granularity_month", "MONTH"),
+        ]
+    )
+    def test_get_campaign_targeting_analytics_success(self, name, granularity):
+        analytics_info_dict = {
+            'ad_account_id': DEFAULT_AD_ACCOUNT_ID,
+            'start_date': date.today() - timedelta(self.DAYS_BACK),
+            'end_date': date.today(),
+            'targeting_types':["GENDER"],
+            'columns': ["SPEND_IN_MICRO_DOLLAR","SPEND_IN_DOLLAR", "TOTAL_ENGAGEMENT"],
+            'granularity': granularity,
+        }
+        campaign = Campaign(
+            client=self.test_client,
+            ad_account_id=DEFAULT_AD_ACCOUNT_ID,
+            campaign_id=DEFAULT_CAMPAIGN_ID,
+        )
+        campaign_analytics = campaign.get_targeting_analytics(**analytics_info_dict)
+        self.assertIsNotNone(campaign_analytics)
+        self.assertIsNotNone(campaign_analytics.raw_response)
+        analytics_response = campaign_analytics.raw_response.get('data')
+        for dict_item in analytics_response:
+            self.assertIsNotNone(dict_item.get('metrics'))
+            for column in analytics_info_dict.get('columns'):
+                self.assertIn(column, dict_item.get('metrics'))
+            if granularity != 'TOTAL':
+                self.assertIn('DATE', dict_item.get('metrics'))
+    
+    @parameterized.expand(
+        [
+            ("granularity_total","TOTAL", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+            ("granularity_day", "DAY", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+            ("granularity_hour", "HOUR", FURTHEST_DAYS_BACK_HOUR + 1),
+            ("granularity_week", "WEEK", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+            ("granularity_month", "MONTH", FURTHEST_DAYS_BACK_NOT_HOUR + 1),
+        ]
+    )
+    def test_get_campaign_targeting_analytics_fail(self, name, granularity, days_back):
+        analytics_info_dict = {
+            'ad_account_id': DEFAULT_AD_ACCOUNT_ID,
+            'start_date': date.today() - timedelta(days_back),
+            'end_date': date.today(),
+            'targeting_types':["GENDER"],
+            'columns': ["SPEND_IN_MICRO_DOLLAR","SPEND_IN_DOLLAR", "TOTAL_ENGAGEMENT"],
+            'granularity': granularity,
+        }
+        campaign = Campaign(
+            client=self.test_client,
+            ad_account_id=DEFAULT_AD_ACCOUNT_ID,
+            campaign_id=DEFAULT_CAMPAIGN_ID,
+        )
+        with self.assertRaises(ApiException):
+            campaign.get_targeting_analytics(**analytics_info_dict)
