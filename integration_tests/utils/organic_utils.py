@@ -79,4 +79,5 @@ class PinUtils:
         return Pin.create(**_merge_default_params_with_params(self.get_default_params(), kwargs))
 
     def delete_pin(self, pin_id):
-        return Pin.delete(pin_id=pin_id, client=self.test_client)
+        if pin_id != DEFAULT_PIN_ID: # Make sure default pin is not being deleted
+            return Pin.delete(pin_id=pin_id, client=self.test_client)
