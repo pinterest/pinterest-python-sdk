@@ -4,7 +4,6 @@ Analytics Class for Pinterest Python SDK
 from __future__ import annotations
 from typing import Callable
 
-from pinterest.utils.validations import AdsEntityType
 from pinterest.utils.base_model import PinterestBaseModel
 
 from pinterest.client import PinterestSDKClient

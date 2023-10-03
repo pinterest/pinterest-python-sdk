@@ -236,10 +236,12 @@ class Board(PinterestBaseModel):
 
     @property
     def created_at(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._created_at
 
     @property
     def board_pins_modified_at(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._board_pins_modified_at
 
     @property
@@ -249,23 +251,23 @@ class Board(PinterestBaseModel):
 
     @property
     def collaborator_count(self) -> int:
+        # pylint: disable=missing-function-docstring
         return self._collaborator_count
 
     @property
     def pin_count(self) -> int:
+        # pylint: disable=missing-function-docstring
         return self._pin_count
 
     @property
     def follower_count(self) -> int:
+        # pylint: disable=missing-function-docstring
         return self._follower_count
-    
-    @property
-    def media(self):
-        return self._media
 
     @property
-    def owner(self) -> str:
-        return self._owner
+    def media(self):
+        # pylint: disable=missing-function-docstring
+        return self._media
 
     @property
     def description(self) -> str:

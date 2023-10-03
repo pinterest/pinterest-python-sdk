@@ -85,22 +85,27 @@ class Pin(PinterestBaseModel):
 
     @property
     def is_owner(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._is_owner
-    
+
     @property
     def is_standard(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._is_standard
-    
+
     @property
     def note(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._note
 
     @property
     def has_been_promoted(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._has_been_promoted
 
     @property
     def creative_type(self) -> str:
+        # pylint: disable=missing-function-docstring
         return self._creative_type
 
     @property
@@ -310,7 +315,7 @@ class Pin(PinterestBaseModel):
             start_date: date,
             end_date: date,
             app_types: str = "ALL",
-            metric_types: list[str] = [],
+            metric_types: list[str] = None,
             split_field: str = None,
             **kwargs
     ) -> AnalyticsResponse:
