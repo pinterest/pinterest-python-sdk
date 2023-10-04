@@ -43,6 +43,11 @@ class Pin(PinterestBaseModel):
         self._ad_account_id = None
 
         self._id = None
+        self._is_owner = None
+        self._is_standard = None
+        self._note = None
+        self._has_been_promoted = None
+        self._creative_type = None
         self._created_at = None
         self._link = None
         self._title = None
@@ -74,6 +79,31 @@ class Pin(PinterestBaseModel):
     def id(self) -> str:
         # pylint: disable=missing-function-docstring
         return self._id
+
+    @property
+    def is_owner(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._is_owner
+
+    @property
+    def is_standard(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._is_standard
+
+    @property
+    def note(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._note
+
+    @property
+    def has_been_promoted(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._has_been_promoted
+
+    @property
+    def creative_type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._creative_type
 
     @property
     def created_at(self) -> str:
