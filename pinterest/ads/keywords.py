@@ -142,6 +142,7 @@ class Keyword(PinterestBaseModel):
             api=KeywordsApi,
             create_fn=KeywordsApi.keywords_create,
             map_fn=map_fn,
+            client=cls._get_client(client),
         )
 
         return cls(

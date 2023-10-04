@@ -8,6 +8,7 @@ from openapi_generated.pinterest_client.model.ad_response import AdResponse
 from openapi_generated.pinterest_client.model.ad_group_response import AdGroupResponse
 from openapi_generated.pinterest_client.model.ad_group_array_response import AdGroupArrayResponse
 from openapi_generated.pinterest_client.model.ad_group_array_response_element import AdGroupArrayResponseElement
+from openapi_generated.pinterest_client.model.targeting_spec import TargetingSpec
 
 from pinterest.ads.ad_groups import AdGroup
 from pinterest.ads.ads import Ad
@@ -84,6 +85,7 @@ class TestAdGroup(TestCase):
             campaign_id=self.test_campaign_id,
             billable_event='CLICKTHROUGH',
             name='SDK_TEST_CLIENT_ADGROUP',
+            auto_targeting_enabled=False
         )
 
         assert created_ad_group
@@ -100,9 +102,7 @@ class TestAdGroup(TestCase):
         """
         update_mock.__name__ = "ad_groups_update"
         new_name = "SDK_AD_GROUP_NEW_NAME"
-        new_spec = {
-                "GENDER": ["MALE"]
-        }
+        new_spec = TargetingSpec(gender=["male"])
 
         get_mock.return_value = AdGroupResponse(
             id=self.test_ad_group_id,

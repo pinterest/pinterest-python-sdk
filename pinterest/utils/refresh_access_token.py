@@ -43,10 +43,17 @@ def get_new_access_token(
         body=data,
         timeout=5
     )
-    if not response.status == 200:
-        raise SdkException(reason="Authentication error. \
-            Kindly check if the following variables are correct: [PINTEREST_ACCESS_TOKEN] or \
-            [PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]")
+    if response.status == 401:
+        raise SdkException(
+            status=response.status,
+            reason=response.reason,
+            body="Authentication error. " +
+            "Kindly check if the following variables are correct: [PINTEREST_ACCESS_TOKEN] or " +
+            "[PINTEREST_APP_ID, PINTEREST_APP_SECRET, PINTEREST_REFRESH_ACCESS_TOKEN]. " +
+            f"Response from server: {response.body}"
+            )
+    if response.status != 200:
+        raise SdkException(http_resp=response)
 
     data = json.loads(response.data)
 

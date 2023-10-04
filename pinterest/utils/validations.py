@@ -1,6 +1,6 @@
 from enum import Enum
 
-def AdsEntityType(Enum):
+class AdsEntityType(Enum):
     AD_ACCOUNT = "ad_account"
     CAMPAIGN = "campaign"
     ADGROUP = "ad_group"

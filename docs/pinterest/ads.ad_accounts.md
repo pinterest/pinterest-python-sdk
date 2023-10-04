@@ -42,6 +42,14 @@ Initialize an object of an AdAccount.
 
 ---
 
+#### <kbd>property</kbd> created_time
+
+
+
+
+
+---
+
 #### <kbd>property</kbd> currency
 
 
@@ -80,11 +88,19 @@ Initialize an object of an AdAccount.
 
 
 
+---
+
+#### <kbd>property</kbd> updated_time
+
+
+
+
+
 
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L101"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>classmethod</kbd> `create`
 
@@ -119,7 +135,7 @@ Keyword Args: Any valid keyword arguments or query parameters for endpoint.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_audiences`
 
@@ -153,7 +169,7 @@ Get a list of the audiences in the AdAccount, filtered by the specified argument
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L134"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L146"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_campaigns`
 
@@ -192,7 +208,7 @@ Keyword Args: Any valid keyword arguments or query parameters for endpoint.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L218"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/ads/ad_accounts.py#L230"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `list_customer_lists`
 

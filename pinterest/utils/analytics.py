@@ -4,7 +4,6 @@ Analytics Class for Pinterest Python SDK
 from __future__ import annotations
 from typing import Callable
 
-from pinterest.utils.validations import AdsEntityType
 from pinterest.utils.base_model import PinterestBaseModel
 
 from pinterest.client import PinterestSDKClient
@@ -39,7 +38,7 @@ class AnalyticsUtils:
         return AnalyticsResponse(
             entity_type=entity,
             fields=params.get('columns', []),
-            raw_response=getattr(api(client), analytics_fn)(**params, **kwargs)
+            raw_response=getattr(api(client), analytics_fn.__name__)(**params, **kwargs)
         )
 
 
@@ -56,11 +55,11 @@ class AnalyticsResponse():
         """
         Initialize an Ads Analytics object.
         Args:
-            entity_type (str): Entity Type identifier. Enum: ad_account, campaign, ad_group, ad.
+            entity_type (PinterestBaseModel): Entity Type identifier. Enum: ad_account, campaign, ad_group, ad.
             fields (list[str]): _description_
             raw_response (dict): _description_
         """
-        self._entity_type = AdsEntityType(entity_type).name
+        self._entity_type = entity_type.__name__.lower()
         self._fields = fields
         self._raw_response = raw_response
 

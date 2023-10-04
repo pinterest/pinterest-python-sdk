@@ -18,12 +18,42 @@ class TestCreateConversionTag(BaseTestCase):
         """
         conversion_tag = ConversionTag.create(
             ad_account_id = DEFAULT_AD_ACCOUNT_ID,
-            name = "Test Conversion Tag"
+            name = "Test Conversion Tag",
+            aem_enabled = None,
+            md_frequency = None,
+            aem_fnln_enabled = None,
+            aem_ph_enabled = None,
+            aem_ge_enabled = None,
+            aem_db_enabled = None,
+            aem_loc_enabled = None,
         )
 
         assert conversion_tag
         assert getattr(conversion_tag, "_id")
         assert getattr(conversion_tag, "_name") == "Test Conversion Tag"
+        assert getattr(conversion_tag.configs, "aem_enabled") == False
+
+    def test_create_conversion_tag_with_configs_success(self):
+        """
+        Test creating a new Conversion Tag successfully
+        """
+        conversion_tag = ConversionTag.create(
+            ad_account_id = DEFAULT_AD_ACCOUNT_ID,
+            name = "Test Conversion Tag",
+            aem_enabled = True,
+            md_frequency = 1.2,
+            aem_fnln_enabled = None,
+            aem_ph_enabled = None,
+            aem_ge_enabled = None,
+            aem_db_enabled = None,
+            aem_loc_enabled = None,
+        )
+
+        assert conversion_tag
+        assert getattr(conversion_tag, "_id")
+        assert getattr(conversion_tag, "_name") == "Test Conversion Tag"
+        assert getattr(conversion_tag.configs, "aem_enabled") == True
+        assert getattr(conversion_tag.configs, "md_frequency") == 1.2
 
 class TestGetConversionTag(BaseTestCase):
     """
@@ -67,6 +97,10 @@ class TestGetListConversionTag(BaseTestCase):
         conversion_tags = ConversionTag.get_all(ad_account_id = ad_account_id)
 
         assert len(conversion_tags) == NUMBER_OF_NEW_CONVERSION_TAG
+        for conversion_tag in conversion_tags:
+            assert conversion_tag.name == "SDK_TEST_CONVERSION_TAG"
+            assert conversion_tag.ad_account_id == ad_account_id
+
 
 class TestGetPageVsitConversionTag(BaseTestCase):
     """

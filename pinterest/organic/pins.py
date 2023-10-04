@@ -7,6 +7,7 @@ from datetime import date
 
 from openapi_generated.pinterest_client.api.pins_api import PinsApi
 from openapi_generated.pinterest_client.model.pin import Pin as GeneratedPin
+from openapi_generated.pinterest_client.model.pin_create import PinCreate as GeneratedPinCreate
 from openapi_generated.pinterest_client.model.inline_object import InlineObject
 
 from pinterest.client import PinterestSDKClient
@@ -44,8 +45,12 @@ class Pin(PinterestBaseModel):
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Uses the default client, if not provided.
         """
         self._ad_account_id = None
-
         self._id = None
+        self._is_owner = None
+        self._is_standard = None
+        self._note = None
+        self._has_been_promoted = None
+        self._creative_type = None
         self._created_at = None
         self._link = None
         self._title = None
@@ -77,6 +82,31 @@ class Pin(PinterestBaseModel):
     def id(self) -> str:
         # pylint: disable=missing-function-docstring
         return self._id
+
+    @property
+    def is_owner(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._is_owner
+
+    @property
+    def is_standard(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._is_standard
+
+    @property
+    def note(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._note
+
+    @property
+    def has_been_promoted(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._has_been_promoted
+
+    @property
+    def creative_type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._creative_type
 
     @property
     def created_at(self) -> str:
@@ -144,19 +174,18 @@ class Pin(PinterestBaseModel):
     @classmethod
     def create(
         cls,
-        board_id:str,
-        media_source:dict,
-        link:str = None,
-        title:str = None,
-        description:str = None,
-        dominant_color:str = None,
-        alt_text:str = None,
-        board_section_id:str = None,
-        parent_pin_id:str = None,
-        client:PinterestSDKClient = None,
+        board_id : str,
+        media_source : dict,
+        link : str = None,
+        title : str = None,
+        description : str = None,
+        dominant_color : str = None,
+        alt_text : str = None,
+        board_section_id : str = None,
+        parent_pin_id : str = None,
+        client : PinterestSDKClient = None,
         **kwargs
     ) -> Pin:
-        # pylint: disable=too-many-arguments
         """
         Create a Pin on a board or board section owned by the "operation user_account".
 
@@ -201,12 +230,13 @@ class Pin(PinterestBaseModel):
         Returns:
             Pin: Pin object
         """
+        # pylint: disable=too-many-arguments, no-value-for-parameter
 
         if not client:
             client = cls._get_client()
 
         api_response = PinsApi(client).pins_create(
-            pin=GeneratedPin(
+            pin_create=GeneratedPinCreate(
                 link=link,
                 title=title,
                 description=description,
@@ -216,9 +246,9 @@ class Pin(PinterestBaseModel):
                 board_section_id=board_section_id,
                 media_source=media_source,
                 parent_pin_id=parent_pin_id,
-                **kwargs
-            )
-        )
+            ),
+            **kwargs,
+        )  # pylint: disable=no-value-for-parameter
         verify_api_response(api_response)
 
         return Pin(pin_id=getattr(api_response, "id"), client=client)
@@ -285,7 +315,7 @@ class Pin(PinterestBaseModel):
             start_date: date,
             end_date: date,
             app_types: str = "ALL",
-            metric_types: str | list[str] = "ALL",
+            metric_types: list[str] = None,
             split_field: str = None,
             **kwargs
     ) -> AnalyticsResponse:
@@ -319,6 +349,7 @@ class Pin(PinterestBaseModel):
         Returns:
             AnalyticsResponse: AnalyticsResponse object.
         """
+        kwargs['pin_id'] = self._id
         if self._ad_account_id:
             kwargs['ad_account_id'] = self._ad_account_id
         if app_types:

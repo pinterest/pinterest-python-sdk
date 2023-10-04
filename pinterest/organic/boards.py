@@ -205,7 +205,14 @@ class Board(PinterestBaseModel):
             client (PinterestSDKClient, optional): PinterestSDKClient Object. Uses the default client, if not provided.
         """
         self._id = None
+        self._created_at = None
+        self._board_pins_modified_at = None
         self._name = None
+        self._collaborator_count = None
+        self._pin_count = None
+        self._follower_count = None
+        self._media = None
+        self._owner = None
         self._description = None
         self._owner = None
         self._privacy = None
@@ -228,9 +235,39 @@ class Board(PinterestBaseModel):
         return self._id
 
     @property
+    def created_at(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._created_at
+
+    @property
+    def board_pins_modified_at(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._board_pins_modified_at
+
+    @property
     def name(self) -> str:
         # pylint: disable=missing-function-docstring
         return self._name
+
+    @property
+    def collaborator_count(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._collaborator_count
+
+    @property
+    def pin_count(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._pin_count
+
+    @property
+    def follower_count(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._follower_count
+
+    @property
+    def media(self):
+        # pylint: disable=missing-function-docstring
+        return self._media
 
     @property
     def description(self) -> str:
@@ -520,7 +557,6 @@ class Board(PinterestBaseModel):
         section_id:str = None,
         page_size:int = None,
         bookmark:str = None,
-        **kwargs
     ) -> tuple[list[Pin], Bookmark]:
         """
         Get a list of the Pins on a board owned by the "operation user_account" - or on a group board that has been
@@ -562,6 +598,7 @@ class Board(PinterestBaseModel):
             api=BoardsApi,
             list_fn=BoardsApi.boards_list_pins if not section_id else BoardsApi.board_sections_list_pins,
             map_fn=_map_function,
+            bookmark_model_cls=self,
+            bookmark_model_fn=self.list_pins,
             client=self._client,
-            **kwargs
         )

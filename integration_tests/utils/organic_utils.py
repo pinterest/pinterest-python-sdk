@@ -1,8 +1,7 @@
 """
 Provide helper and utility functions for Organic Endpoints Integration Testing
 """
-from openapi_generated.pinterest_client.api.boards_api import BoardsApi
-from openapi_generated.pinterest_client.model.board import Board as GeneratedBoard
+import random
 
 from pinterest.client import PinterestSDKClient
 
@@ -26,6 +25,9 @@ class BoardUtils:
     def __init__(self, client=None):
         self.test_client = client or PinterestSDKClient.create_default_client()
         self.board = Board(board_id=DEFAULT_BOARD_ID, client=client)
+
+    def get_random_board_name(self):
+        return "SDK Test Create Board {}".format(random.randint(0, 1000))
 
     def get_board(self):
         return self.board
@@ -77,4 +79,5 @@ class PinUtils:
         return Pin.create(**_merge_default_params_with_params(self.get_default_params(), kwargs))
 
     def delete_pin(self, pin_id):
-        return Pin.delete(pin_id=pin_id, client=self.test_client)
+        if pin_id != DEFAULT_PIN_ID: # Make sure default pin is not being deleted
+            return Pin.delete(pin_id=pin_id, client=self.test_client)
