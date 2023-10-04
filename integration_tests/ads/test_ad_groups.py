@@ -5,6 +5,8 @@ Test AdGroup Model
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 
+from openapi_generated.pinterest_client.model.targeting_spec import TargetingSpec
+
 from pinterest.ads.ad_groups import AdGroup
 
 
@@ -63,9 +65,7 @@ class TestUpdateAdGroup(BaseTestCase):
         )
 
         new_name = "SDK_AD_GROUP_NEW_NAME"
-        new_spec = {
-                "GENDER": ["male"]
-        }
+        new_spec = TargetingSpec(gender=["male"])
 
         ad_group.update_fields(
             name=new_name,
