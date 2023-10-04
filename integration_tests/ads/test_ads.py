@@ -9,7 +9,7 @@ from openapi_generated.pinterest_client.exceptions import NotFoundException
 from openapi_generated.pinterest_client.model.entity_status import EntityStatus
 
 from integration_tests.base_test import BaseTestCase
-from integration_tests.config import DEFAULT_PIN_ID, DEFAULT_AD_ACCOUNT_ID
+from integration_tests.config import DEFAULT_PIN_ID, DEFAULT_AD_ACCOUNT_ID, DEFAULT_AD_GROUP_ID
 
 
 class TestCreateAd(BaseTestCase):
@@ -23,8 +23,8 @@ class TestCreateAd(BaseTestCase):
         """
         ad = Ad.create(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
-            ad_group_id=self.ad_group_utils.get_ad_group_id(),
-            creative_type="REGULAR",
+            ad_group_id=DEFAULT_AD_GROUP_ID,
+            creative_type="IDEA",
             pin_id=DEFAULT_PIN_ID,
             name="Test_create_ad",
             status="ACTIVE",
@@ -43,7 +43,7 @@ class TestCreateAd(BaseTestCase):
         """
         ad_arguments = dict(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
-            ad_group_id=self.ad_group_utils.get_ad_group_id(),
+            ad_group_id=DEFAULT_AD_GROUP_ID,
             pin_id=DEFAULT_PIN_ID,
             name="Test_create_ad",
             status="ACTIVE",
@@ -59,7 +59,7 @@ class TestCreateAd(BaseTestCase):
         """
         ad_arguments = dict(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
-            ad_group_id=self.ad_group_utils.get_ad_group_id(),
+            ad_group_id=DEFAULT_AD_GROUP_ID,
             creative_type="NOT",
             pin_id=DEFAULT_PIN_ID,
             name="Test_create_ad",
