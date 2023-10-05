@@ -2,6 +2,7 @@
 Provide helper and utility functions for Organic Endpoints Integration Testing
 """
 import random
+import logging
 
 from pinterest.client import PinterestSDKClient
 
@@ -10,6 +11,7 @@ from pinterest.organic.pins import Pin
 
 from integration_tests.config import DEFAULT_BOARD_ID, DEFAULT_PIN_ID
 
+log = logging.getLogger(__name__)
 
 def _merge_default_params_with_params(default_params, params):
     if not params:
@@ -81,3 +83,5 @@ class PinUtils:
     def delete_pin(self, pin_id):
         if pin_id != DEFAULT_PIN_ID: # Make sure default pin is not being deleted
             return Pin.delete(pin_id=pin_id, client=self.test_client)
+        else:
+            log.warning(f"Default pin {DEFAULT_PIN_ID} was attempted to be deleted.")
