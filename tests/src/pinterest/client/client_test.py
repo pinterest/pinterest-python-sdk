@@ -75,13 +75,10 @@ class ClientTest(unittest.TestCase):
         self.assertNotEqual(refresh_token, PINTEREST_REFRESH_ACCESS_TOKEN)
         self.assertNotEqual(app_id, PINTEREST_APP_ID)
         self.assertNotEqual(app_secret, PINTEREST_APP_SECRET)
-        
-        try:
+        with self.assertRaises(SdkException):
             PinterestSDKClient._get_access_token(
                 refresh_token=refresh_token,
                 app_id=app_id,
                 app_secret=app_secret
             )
-            self.assertTrue(False)
-        except SdkException as e:
-            self.assertTrue(True)
+
