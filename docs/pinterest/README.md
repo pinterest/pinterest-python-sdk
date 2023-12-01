@@ -10,6 +10,8 @@
 - [`ads.ads`](./ads.ads.md#module-adsads): Ads high level model
 - [`ads.audiences`](./ads.audiences.md#module-adsaudiences): High level module class for Audience object
 - [`ads.campaigns`](./ads.campaigns.md#module-adscampaigns): Campaign Class for Pinterest Python SDK
+- [`ads.conversion_events`](./ads.conversion_events.md#module-adsconversion_events): Conversion Event Class for Pinterest Python SDK
+- [`ads.conversion_tags`](./ads.conversion_tags.md#module-adsconversion_tags): Conversion Class for Pinterest Python SDK
 - [`ads.customer_lists`](./ads.customer_lists.md#module-adscustomer_lists): High level module class for Customer List object
 - [`ads.keywords`](./ads.keywords.md#module-adskeywords): High level module class for Keyword object
 - [`client`](./client.md#module-client): Pinterest Client
@@ -31,6 +33,8 @@
 - [`ads.Ad`](./ads.ads.md#class-ad): Ad model used to view, create, update its attributes
 - [`audiences.Audience`](./ads.audiences.md#class-audience): High level model class to manage audiences for an AdAccount
 - [`campaigns.Campaign`](./ads.campaigns.md#class-campaign): Campaign model used to view, create, update its attributes and list its different entities.
+- [`conversion_events.Conversion`](./ads.conversion_events.md#class-conversion): Conversion Event Model used to send conversion events to Pinterest API
+- [`conversion_tags.ConversionTag`](./ads.conversion_tags.md#class-conversiontag): Conversion Tag model used to view, create, update its attributes and list its different entities
 - [`customer_lists.CustomerList`](./ads.customer_lists.md#class-customerlist): High level model class to manage customer_lists for an CustomerList
 - [`keywords.Keyword`](./ads.keywords.md#class-keyword): High level model class to manage keywords
 - [`client.PinterestSDKClient`](./client.md#class-pinterestsdkclient): Wrapper API client for SDK high level models
@@ -45,4 +49,5 @@
 
 - [`error_handling.verify_api_response`](./utils.error_handling.md#function-verify_api_response): Verify that there are no errors in `response` received from api
 - [`load_json_config.load_json_config`](./utils.load_json_config.md#function-load_json_config): Parse a config.json file and then load all the variables found as environment variables.
+- [`load_json_config.load_json_config_from_single_env_var`](./utils.load_json_config.md#function-load_json_config_from_single_env_var): Parse PINTEREST_JSON_ENV_VARIABLES environment variable to split long JSON string into
 - [`refresh_access_token.get_new_access_token`](./utils.refresh_access_token.md#function-get_new_access_token): Function used to retrieve a new access token for a user using the refresh token.

@@ -1,10 +1,8 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-
 from openapi_generated.pinterest_client.model.conversion_api_response import ConversionApiResponse
 from openapi_generated.pinterest_client.model.conversion_api_response_events import ConversionApiResponseEvents
-
 
 from pinterest.ads.conversion_events import Conversion
 
@@ -46,6 +44,7 @@ class TestConversionEvent(TestCase):
                 event_time = 1670026573,
                 event_id = "eventId0001",
                 user_data = raw_user_data,
+                custom_data = dict(),
             )
             for _ in range(NUMBER_OF_CONVERSION_EVENTS)
         ]

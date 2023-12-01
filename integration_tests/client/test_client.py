@@ -12,6 +12,7 @@ from openapi_generated.pinterest_client.exceptions import UnauthorizedException
 from pinterest.organic.boards import Board
 from pinterest.client import PinterestSDKClient
 from integration_tests.base_test import BaseTestCase
+from pinterest.utils.error_handling import SdkException
 
 
 class ClientTest(BaseTestCase):
@@ -55,6 +56,18 @@ class ClientTest(BaseTestCase):
         )
         PinterestSDKClient.set_default_access_token(access_token=good_access_token)
         self.assertIsNotNone(Board.get_all())
+
+    def test_bad_refresh_token(self):
+        refresh_token = 'refresh_token'
+        app_id = '12345'
+        app_secret = '123456asdfg'
+        with self.assertRaises(SdkException):
+            PinterestSDKClient._get_access_token(
+                refresh_token=refresh_token,
+                app_id=app_id,
+                app_secret=app_secret
+            )
+
 
 
 

@@ -30,7 +30,7 @@ class TestCreateCampaign(BaseTestCase):
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
             name="SDK Test Campaign",
             objective_type="AWARENESS",
-            daily_spend_cap=10,
+            daily_spend_cap=10000000,
         )
 
         assert campaign
@@ -52,7 +52,7 @@ class TestCreateCampaign(BaseTestCase):
 
         self.assertRaisesRegex(
             SdkException,
-            r"^[\S\s]*campaigns should have a campaign level budget[\S\s]*$",
+            r"^[\S\s]*code 2384[\S\s]*$",
             Campaign.create,
             **campaign_arguments)
 
@@ -65,7 +65,7 @@ class TestCreateCampaign(BaseTestCase):
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
             name="SDK Test Campaign",
             objective_type="INCORRECT_OBJECTIVE_TYPE",
-            daily_spend_cap=10,
+            daily_spend_cap=10000000,
         )
         with self.assertRaisesRegex(ApiValueError, "Invalid"):
             Campaign.create(**campaign_arguments)
@@ -184,6 +184,8 @@ class TestGetAllCampaigns(BaseTestCase):
                     campaign_id=getattr(campaign, '_id'),
                     billable_event="IMPRESSION",
                     name="SDK_INTEGRATION_TEST_ADGROUP",
+                    auto_targeting_enabled=False,
+                    bid_in_micro_currency=10000000,
                 )
             )
 

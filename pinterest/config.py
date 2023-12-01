@@ -4,11 +4,12 @@ Pinterest config
 import os as _os
 from dotenv import load_dotenv as _load_env_vars
 from pinterest.version import __version__
-from pinterest.utils.load_json_config import load_json_config as _load_json
+from pinterest.utils.load_json_config import load_json_config as _load_json,\
+    load_json_config_from_single_env_var as _load_json_single_variable
 
 _load_env_vars()
 _load_json()
-
+_load_json_single_variable()
 
 PINTEREST_DEBUG = _os.environ.get('PINTEREST_DEBUG', "False").lower() == "true"
 PINTEREST_PORT = _os.environ.get('PINTEREST_PORT', 0)

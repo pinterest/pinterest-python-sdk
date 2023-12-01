@@ -67,6 +67,7 @@ class AdGroup(PinterestBaseModel):
         self._summary_status = None
         self._feed_profile_id = None
         self._dca_assets = None
+        self._optimization_goal_metadata = None
 
         PinterestBaseModel.__init__(
             self,
@@ -205,6 +206,11 @@ class AdGroup(PinterestBaseModel):
         #pylint: disable=missing-function-docstring
         return self._dca_assets
 
+    @property
+    def optimization_goal_metadata(self):
+        #pylint: disable=missing-function-docstring
+        return self._optimization_goal_metadata
+
 
     @classmethod
     def create(
@@ -329,7 +335,8 @@ class AdGroup(PinterestBaseModel):
             },
             api=AdGroupsApi,
             create_fn=AdGroupsApi.ad_groups_create,
-            map_fn=lambda obj: obj.items[0].data
+            map_fn=lambda obj: obj.items[0].data,
+            client=cls._get_client(client),
         )
         return cls(
             ad_account_id=response.ad_account_id,

@@ -30,7 +30,7 @@ class ConversionTag(PinterestBaseModel):
         **kwargs
     ) -> None:
         """
-        Initialize Conversion Tag Object
+        Initialize Conversion Tag Object.
 
         Args:
             ad_account_id (str): ConversionTag's Ad Account ID
@@ -109,13 +109,13 @@ class ConversionTag(PinterestBaseModel):
         cls,
         ad_account_id : str,
         name : str,
-        aem_enabled : bool = False,
-        md_frequency : float = 0.0,
-        aem_fnln_enabled : bool = False,
-        aem_ph_enabled : bool = False,
-        aem_ge_enabled : bool = False,
-        aem_db_enabled : bool = False,
-        aem_loc_enabled : bool = False,
+        aem_enabled : bool = None,
+        md_frequency : float = None,
+        aem_fnln_enabled : bool = None,
+        aem_ph_enabled : bool = None,
+        aem_ge_enabled : bool = None,
+        aem_db_enabled : bool = None,
+        aem_loc_enabled : bool = None,
         client:PinterestSDKClient = None,
         **kwargs
     ) -> ConversionTag:
@@ -147,6 +147,24 @@ class ConversionTag(PinterestBaseModel):
         Args:
             ad_account_id (str): ConversionTag's Ad Account ID
             name (str): ConversionTag name
+            aem_enabled (bool=False, Nullable): Whether Automatic Enhanced Match email is enabled. See\
+            Enhanced match for more information.
+
+            md_frequency (float=1.0, Nullable): Metadata ingestion frequency.
+            aem_fnln_enabled (bool=False, Nullable): Whether Automatic Enhanced Match name is enabled. See\
+            Enhanced match for more information.
+
+            aem_ph_enabled (bool=False, Nullable): Whether Automatic Enhanced Match phone is enabled. See\
+            Enhanced match for more information.
+
+            aem_ge_enabled (bool=False, Nullable): Whether Automatic Enhanced Match gender is enabled. See\
+            Enhanced match for more information.
+
+            aem_db_enabled (bool=False, Nullable): Whether Automatic Enhanced Match birthdate is enabled. See\
+            Enhanced match for more information.
+
+            aem_loc_enabled (bool=False, Nullable): Whether Automatic Enhanced Match location is enabled. See\
+            Enhanced match for more information.
 
         Returns:
             ConversionTag: ConversionTag Object
@@ -169,7 +187,9 @@ class ConversionTag(PinterestBaseModel):
             api = ConversionTagsApi,
             create_fn = ConversionTagsApi.conversion_tags_create,
             map_fn = lambda obj : obj,
+            client=cls._get_client(client),
         )
+
 
         return cls(
             ad_account_id = response.ad_account_id,
@@ -189,18 +209,18 @@ class ConversionTag(PinterestBaseModel):
         Get a list of ConversionTag, filter by specified arguments
 
         Args:
-            ad_account_id (str): _description_
-            filter_deleted (bool, optional): _description_. Defaults to False.
-            client (_type_, optional): _description_. Defaults to PinterestSDKClient=None.
+            ad_account_id (str): Unique identifier of an ad account.
+            filter_deleted (bool=False, optional): Filter out deleted tags.
+            client (_type_, optional): PinterestSDKClient Object. Uses the default client, if not provided.
 
         Returns:
             list[ConversionTag]: List of ConversionTags
         """
-        params = {"ad_account_id" : ad_account_id, "filter_deleted": filter_deleted}
+        params = {"ad_account_id" : str(ad_account_id), "filter_deleted": filter_deleted}
 
         def _map_function(obj):
             return ConversionTag(
-                ad_account_id = ad_account_id,
+                ad_account_id = str(ad_account_id),
                 conversion_tag_id = obj.get('id'),
                 client = client,
                 _model_data = obj.to_dict()
@@ -226,7 +246,7 @@ class ConversionTag(PinterestBaseModel):
         **kwargs
     ) -> tuple[list[ConversionEventResponse], Bookmark]:
         """
-        Get page visit conversion tag events for an ad account
+        Get page visit conversion tag events for an ad account.
 
         Args:
             ad_account (str): Ad Account ID
@@ -235,7 +255,7 @@ class ConversionTag(PinterestBaseModel):
         Returns:
             list[ConversionEventResponse]: List of ConversionTagEvent
         """
-        params = {"ad_account_id" : ad_account_id}
+        params = {"ad_account_id" : str(ad_account_id)}
 
         def _map_function(obj):
             return ConversionEventResponse(
@@ -265,7 +285,7 @@ class ConversionTag(PinterestBaseModel):
         **kwargs
     ) -> tuple[str, list[ConversionEventResponse]]:
         """
-        Get OCPM eligible conversion tag events for an Ad Account
+        Get OCPM eligible conversion tag events for an Ad Account.
 
         Args:
             ad_account_id (str): Ad Account ID
@@ -275,7 +295,7 @@ class ConversionTag(PinterestBaseModel):
             list[ConversionEventResponse]: List of ConversionTagEvent
         """
         api_response = ConversionTagsApi(api_client=cls._get_client(client)).ocpm_eligible_conversion_tags_get(
-            ad_account_id = ad_account_id,
+            ad_account_id = str(ad_account_id),
             **kwargs,
         )
 

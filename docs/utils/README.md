@@ -11,4 +11,4 @@ python3 docs/utils/script.py
 
 ## Documentation guide
 
-If you make change to this package, you have to regenerate doc, especially changes that add or remove module, you have to update `MODULES` and `IGNORED_FILES` under `script.py`
+When making change that add or remove module, you have to update `MODULES` and `IGNORED_FILES_INDEXING` accordingly and `IGNORE_MODULES` if needed.

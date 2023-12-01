@@ -178,7 +178,8 @@ class Audience(PinterestBaseModel):
                 ),
             },
             api=AudiencesApi,
-            create_fn=AudiencesApi.audiences_create
+            create_fn=AudiencesApi.audiences_create,
+            client=cls._get_client(client),
         )
 
         return cls(

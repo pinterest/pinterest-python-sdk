@@ -45,7 +45,7 @@ Initialize a Bookmark object.
 
 ---
 
-<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/utils/bookmark.py#L52"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="https://github.com/pinterest/pinterest-python-sdk/blob/main/pinterest/utils/bookmark.py#L54"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_bookmark_token`
 

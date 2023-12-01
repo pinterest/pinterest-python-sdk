@@ -520,7 +520,6 @@ class Board(PinterestBaseModel):
         section_id:str = None,
         page_size:int = None,
         bookmark:str = None,
-        **kwargs
     ) -> tuple[list[Pin], Bookmark]:
         """
         Get a list of the Pins on a board owned by the "operation user_account" - or on a group board that has been
@@ -562,6 +561,7 @@ class Board(PinterestBaseModel):
             api=BoardsApi,
             list_fn=BoardsApi.boards_list_pins if not section_id else BoardsApi.board_sections_list_pins,
             map_fn=_map_function,
+            bookmark_model_cls=self,
+            bookmark_model_fn=self.list_pins,
             client=self._client,
-            **kwargs
         )
