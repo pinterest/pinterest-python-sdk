@@ -3,8 +3,11 @@ High level module class for AdGroup object
 """
 from __future__ import annotations
 
-from openapi_generated.pinterest_client.api.ad_groups_api import AdGroupsApi
+from datetime import date
 
+from openapi_generated.pinterest_client.model.conversion_report_attribution_type import ConversionReportAttributionType
+from openapi_generated.pinterest_client.model.ads_analytics_targeting_type import AdsAnalyticsTargetingType
+from openapi_generated.pinterest_client.api.ad_groups_api import AdGroupsApi
 from openapi_generated.pinterest_client.model.action_type import ActionType
 from openapi_generated.pinterest_client.model.budget_type import BudgetType
 from openapi_generated.pinterest_client.model.ad_group_response import AdGroupResponse
@@ -15,6 +18,7 @@ from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.ads.ads import Ad
 from pinterest.utils.bookmark import Bookmark
+from pinterest.utils.analytics import AnalyticsResponse, AnalyticsUtils
 
 
 class AdGroup(PinterestBaseModel):
@@ -484,3 +488,173 @@ class AdGroup(PinterestBaseModel):
             bool: true if ad group disable auto_targeting_enabled
         """
         return self.update_fields(auto_targeting_enabled=False)
+
+    def get_targeting_analytics(
+        self,
+        start_date: date,
+        end_date: date,
+        targeting_types: list[str],
+        columns: list[str],
+        granularity: str,
+        click_window_days: int = 30,
+        engagement_window_days: int = 30,
+        view_window_days: int = 1,
+        conversion_report_time: str = "TIME_OF_AD_ACTION",
+        attribution_types: str = None,
+        **kwargs
+    ) -> AnalyticsResponse:
+        """
+        Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will
+        include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type
+        (e.g. "age_bucket") for applicable values (e.g. "45-49").
+
+            - The token's user_account must either be the Owner of the specified ad account, or have one of the
+            necessary roles granted to them via Business Access: Admin, Analyst, Campaign Manager.
+
+
+        Args:
+            start_date (date): Metric report start date (UTC). Format: YYYY-MM-DD
+            end_date (date): Metric report end date (UTC). Format: YYYY-MM-DD
+            targeting_types (list[str]): Example: targeting_types=APPTYPE
+                Targeting type breakdowns for the report. The reporting per targeting type is independent from
+                each other.
+            columns (list[str]): Example: columns=SPEND_IN_DOLLAR
+                Columns to retrieve, encoded as a comma-separated string. NOTE: Any metrics defined as MICRO_DOLLARS
+                returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 -
+                one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's
+                currency.
+
+                For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will
+                be in GBP microunits (1/1,000,000 British pound).
+
+                If a column has no value, it may not be returned
+
+            granularity (str): Enum: "TOTAL" "DAY" "HOUR" "WEEK" "MONTH"
+                TOTAL - metrics are aggregated over the specified date range.
+                DAY - metrics are broken down daily.
+                HOUR - metrics are broken down hourly.
+                WEEKLY - metrics are broken down weekly.
+                MONTHLY - metrics are broken down monthly
+            click_window_days (int, optional): Default: 30
+                Enum: 1 7 30 60
+                Example: click_window_days=1
+                Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest
+                Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified,
+                defaults to 30 days.
+            engagement_window_days (int, optional): Default: 30
+                Enum: 1 7 30 60
+                Number of days to use as the conversion attribution window for an engagement action. Engagements include
+                saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics.
+                Prior conversion tags use their defined attribution windows. If not specified, defaults to 30 days.
+            view_window_days (int, optional): Default: 1
+                Enum: 1 7 30 60
+                Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag
+                conversion metrics. Prior conversion tags use their defined attribution windows. If not specified,
+                defaults to 1 day.
+            conversion_report_time (str, optional): Default: "TIME_OF_AD_ACTION"
+                Enum: "TIME_OF_AD_ACTION" "TIME_OF_CONVERSION"
+                Example: conversion_report_time=TIME_OF_AD_ACTION
+                The date by which the conversion metrics returned from this endpoint will be reported. There are two
+                dates associated with a conversion event: the date that the user interacted with the ad, and the date
+                that the user completed a conversion event.
+            attribution_types (str): Enum: "INDIVIDUAL" "HOUSEHOLD"
+                Example: attribution_types=INDIVIDUAL
+                List of types of attribution for the conversion report
+        Returns:
+            AnalyticsResponse: AnalyticsResponse object.
+        """
+        kwargs['ad_account_id'] = self.ad_account_id
+        kwargs['ad_group_ids'] = [self.id]
+        kwargs['start_date'] = start_date
+        kwargs['end_date'] = end_date
+        kwargs['targeting_types'] = [AdsAnalyticsTargetingType(targeting_type) for targeting_type in targeting_types]
+        kwargs['columns'] = columns
+        kwargs['granularity'] = granularity
+        kwargs['click_window_days'] = click_window_days
+        kwargs['engagement_window_days'] = engagement_window_days
+        kwargs['view_window_days'] = view_window_days
+        kwargs['conversion_report_time'] = conversion_report_time
+
+        if attribution_types:
+            kwargs['attribution_types'] = ConversionReportAttributionType(attribution_types)
+
+        return AnalyticsUtils.get_entity_analytics(
+            params=kwargs,
+            api=AdGroupsApi,
+            analytics_fn=AdGroupsApi.ad_groups_targeting_analytics_get,
+            entity=AdGroup,
+            client=self._client
+        )
+
+    def get_analytics(
+            self,
+            start_date: date,
+            end_date: date,
+            columns: list[str],
+            granularity: str,
+            click_window_days: int = 30,
+            engagement_window_days: int = 30,
+            view_window_days: int = 1,
+            conversion_report_time: str = "TIME_OF_AD_ACTION",
+            **kwargs
+    ) -> AnalyticsResponse:
+        """
+        Get analytics for the specified ad groups in the specified ad_account_id, filtered by the specified options.
+        - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary
+        roles granted to them via Business Access: Admin, Analyst, Campaign Manager.
+        Args:
+            start_date (date): Metric report start date (UTC). Format: YYYY-MM-DD
+            end_date (date): Metric report end date (UTC). Format: YYYY-MM-DD
+            columns (list[str]): Columns to retrieve, encoded as a comma-separated string. NOTE: Any metrics defined as
+                MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000,
+                or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of
+                the advertiser's currency.For example, if the advertiser's currency is GBP (British pound sterling),
+                all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound). If a column has no
+                value, it may not be returned
+            granularity (str): Enum: "TOTAL" "DAY" "HOUR" "WEEK" "MONTH"
+                TOTAL - metrics are aggregated over the specified date range.
+                DAY - metrics are broken down daily.
+                HOUR - metrics are broken down hourly.
+                WEEKLY - metrics are broken down weekly.
+                MONTHLY - metrics are broken down monthly
+            click_window_days (int, optional): Default: 30
+                Enum: 1 7 30 60
+                Number of days to use as the conversion attribution window for an engagement action. Engagements include
+                saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics.
+                Prior conversion tags use their defined attribution windows. If not specified, defaults to 30 days.
+            engagement_window_days (int, optional): Default: 30
+                Enum: 1 7 30 60
+                Number of days to use as the conversion attribution window for an engagement action. Engagements include
+                saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics.
+                Prior conversion tags use their defined attribution windows. If not specified, defaults to 30 days.
+            view_window_days (int, optional): Default: 1
+                Enum: 1 7 30 60
+                Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag
+                conversion metrics. Prior conversion tags use their defined attribution windows. If not specified,
+                defaults to 1 day.
+            conversion_report_time (str, optional): Default: "TIME_OF_AD_ACTION"
+                Enum: "TIME_OF_AD_ACTION" "TIME_OF_CONVERSION"
+                Example: conversion_report_time=TIME_OF_AD_ACTION
+                The date by which the conversion metrics returned from this endpoint will be reported. There are two
+                dates associated with a conversion event: the date that the user interacted with the ad, and the date
+                that the user completed a conversion event.
+        Returns:
+            AnalyticsResponse: AnalyticsResponse object.
+        """
+        kwargs['ad_group_ids'] = [self.id]
+        kwargs['start_date'] = start_date
+        kwargs['end_date'] = end_date
+        kwargs['columns'] = columns
+        kwargs['granularity'] = granularity
+        kwargs['click_window_days'] = click_window_days
+        kwargs['engagement_window_days'] = engagement_window_days
+        kwargs['view_window_days'] = view_window_days
+        kwargs['conversion_report_time'] = conversion_report_time
+
+        return AnalyticsUtils.get_entity_analytics(
+            params=kwargs,
+            api=AdGroupsApi,
+            analytics_fn=AdGroupsApi.ad_groups_analytics,
+            entity=AdGroup,
+            client=self._client
+        )

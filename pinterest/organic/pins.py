@@ -3,6 +3,8 @@ Pin Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
+from datetime import date
+
 from openapi_generated.pinterest_client.api.pins_api import PinsApi
 from openapi_generated.pinterest_client.model.pin import Pin as GeneratedPin
 from openapi_generated.pinterest_client.model.pin_create import PinCreate as GeneratedPinCreate
@@ -11,6 +13,8 @@ from openapi_generated.pinterest_client.model.inline_object import InlineObject
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
 from pinterest.utils.error_handling import verify_api_response
+from pinterest.utils.analytics import AnalyticsResponse, AnalyticsUtils
+
 
 class Pin(PinterestBaseModel):
     """
@@ -276,3 +280,61 @@ class Pin(PinterestBaseModel):
         verify_api_response(api_response)
 
         self._populate_fields(_model_data=api_response.to_dict())
+
+    def get_analytics(
+            self,
+            start_date: date,
+            end_date: date,
+            app_types: str = "ALL",
+            metric_types: str | list[str] = "ALL",
+            split_field: str = None,
+            **kwargs
+    ) -> AnalyticsResponse:
+        """
+        Get analytics for a Pin owned by the "operation user_account" - or on a group board that has been shared with
+        this account.
+
+            - By default, the "operation user_account" is the token user_account.
+
+        Optional: Business Access: Specify an ad_account_id (obtained via List ad accounts) to use the owner of that
+        ad_account as the "operation user_account". In order to do this, the token user_account must have one of the
+        following Business Access roles on the ad_account:
+
+            - For Pins on public or protected boards: Admin, Analyst.
+            - For Pins on secret boards: Admin.
+
+        Args:
+            start_date (date): Metric report start date (UTC). Format: YYYY-MM-DD
+            end_date (date): Metric report end date (UTC). Format: YYYY-MM-DD
+            app_types (str): Default: "ALL"
+                Enum: "ALL" "MOBILE" "TABLET" "WEB"
+                Apps or devices to get data for, default is all.
+            metric_types (list[str], str):
+                - Standard Pin metric types: "OUTBOUND_CLICK" "PIN_CLICK" "IMPRESSION" "SAVE" "SAVE_RATE"
+                - Video Pin metric types :"OUTBOUND_CLICK" "IMPRESSION" "SAVE" "QUARTILE_95_PERCENT_VIEW"
+                    "VIDEO_10S_VIEW" "VIDEO_AVG_WATCH_TIME" "VIDEO_MRC_VIEW" "VIDEO_START" "VIDEO_V50_WATCH_TIME"
+                Pin metric types to get data for, default is all.
+            split_field (str): Default: "NO_SPLIT"
+                Enum: "NO_SPLIT" "APP_TYPE"
+                How to split the data into groups. Not including this param means data won't be split.
+        Returns:
+            AnalyticsResponse: AnalyticsResponse object.
+        """
+        if self._ad_account_id:
+            kwargs['ad_account_id'] = self._ad_account_id
+        if app_types:
+            kwargs['app_types'] = app_types
+        if split_field:
+            kwargs['split_field'] = split_field
+
+        kwargs['start_date'] = start_date
+        kwargs['end_date'] = end_date
+        kwargs['metric_types'] = metric_types
+
+        return AnalyticsUtils.get_entity_analytics(
+            params=kwargs,
+            api=PinsApi,
+            analytics_fn=PinsApi.pins_analytics,
+            entity=Pin,
+            client=self._client
+        )
