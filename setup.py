@@ -25,10 +25,10 @@ REQUIRES = [
   "python-dateutil",
   "python-dotenv==0.20.0",
   "six==1.16.0",
-  "Pinterest-Generated-Client==0.1.7"
+  "Pinterest-Generated-Client==0.1.8"
 ]
 
-long_description = (Path(__file__).parent / "README.md").read_text()
+long_description = (Path(__file__).parent / "README.md").read_text(encoding='UTF-8')
 package_root = os.path.abspath(os.path.dirname(__file__))
 
 __version__ = None
