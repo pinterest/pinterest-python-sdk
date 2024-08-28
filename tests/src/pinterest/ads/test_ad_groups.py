@@ -8,6 +8,7 @@ from openapi_generated.pinterest_client.model.ad_response import AdResponse
 from openapi_generated.pinterest_client.model.ad_group_response import AdGroupResponse
 from openapi_generated.pinterest_client.model.ad_group_array_response import AdGroupArrayResponse
 from openapi_generated.pinterest_client.model.ad_group_array_response_element import AdGroupArrayResponseElement
+from openapi_generated.pinterest_client.model.targeting_spec import TargetingSpec
 
 from pinterest.ads.ad_groups import AdGroup
 from pinterest.ads.ads import Ad
@@ -102,7 +103,7 @@ class TestAdGroup(TestCase):
         update_mock.__name__ = "ad_groups_update"
         new_name = "SDK_AD_GROUP_NEW_NAME"
         new_spec = {
-                "GENDER": ["male"]
+                "gender": ["male"]
         }
 
         get_mock.return_value = AdGroupResponse(
@@ -124,7 +125,7 @@ class TestAdGroup(TestCase):
                         ad_account_id=self.test_ad_account_id,
                         campaign_id=self.test_campaign_id,
                         name=new_name,
-                        targeting_spec=new_spec
+                        targeting_spec=TargetingSpec(**new_spec)
                     ),
                     exceptions=[]
                 )
@@ -138,7 +139,7 @@ class TestAdGroup(TestCase):
 
         assert update_response == True
         assert getattr(ad_group_response, "_name") == new_name
-        assert getattr(ad_group_response, "_targeting_spec") == new_spec
+        assert str(getattr(ad_group_response, "_targeting_spec")) == str(new_spec)
 
     @patch('pinterest.ads.ad_groups.AdGroupsApi.ad_groups_list')
     @patch('pinterest.ads.ad_groups.AdGroupsApi.ad_groups_get')
