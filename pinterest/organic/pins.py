@@ -332,12 +332,19 @@ class Pin(PinterestBaseModel):
         Get a list of the pins owned by the "operation user_account"
 
         Args:
-            pin_filter (str): Pin filter.. [optional]
-            include_protected_pins (bool): Specify if return pins from protected boards. [optional] if omitted the server will use the default value of False
-            pin_type (str): The type of pins to return, currently only enabled for private pins. [optional] if omitted the server will use the default value of "PRIVATE"
-            creative_types ([str]): Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.. [optional]
-            ad_account_id (str): Unique identifier of an ad account.. [optional]
-            pin_metrics (bool): Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.. [optional] if omitted the server will use the default value of False
+            pin_filter (str): Pin filter. [optional]
+            include_protected_pins (bool): Specify if return pins from protected boards. [optional]
+                if omitted the server will use the default value of False
+            pin_type (str): The type of pins to return, currently only enabled for private pins. [optional]
+                if omitted the server will use the default value of "PRIVATE"
+            creative_types ([str]): Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has
+                been deprecated. Please use COLLECTION instead. [optional]
+            ad_account_id (str): Unique identifier of an ad account. [optional]
+            pin_metrics (bool): Specify whether to return 90d and lifetime Pin metrics. Total comments
+                and total reactions are only available with lifetime Pin metrics. If Pin was created before
+                <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats.
+                Lifetime metrics are available for all Pin formats since then.. [optional] if omitted the server
+                will use the default value of False
             page_size (int[1..100], optional): Maximum number of items to include in a single page of the response.
                                     See documentation on Pagination for more information. Defaults to None which will
                                     return default page size campaigns.

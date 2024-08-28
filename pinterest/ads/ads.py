@@ -17,7 +17,7 @@ from pinterest.utils.bookmark import Bookmark
 
 
 class Ad(PinterestBaseModel):
-    # pylint: disable=R0903,duplicate-code
+    # pylint: disable=R0903,duplicate-code,R0902
     """
     Ad model used to view, create, update its attributes
     """
