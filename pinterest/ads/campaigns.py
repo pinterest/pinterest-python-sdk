@@ -56,7 +56,6 @@ class Campaign(PinterestBaseModel):
         self._is_flexible_daily_budgets = None
         self._is_campaign_budget_optimization = None
         self._summary_status = None
-        self._targeting_template_ids = None
 
         PinterestBaseModel.__init__(
             self,
