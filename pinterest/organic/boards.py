@@ -3,6 +3,8 @@ Board Class for Pinterest Python SDK
 """
 from __future__ import annotations
 
+from datetime import datetime
+
 from openapi_generated.pinterest_client.api.boards_api import BoardsApi
 from openapi_generated.pinterest_client.model.board import Board as GeneratedBoard
 from openapi_generated.pinterest_client.model.board_update import BoardUpdate
@@ -209,6 +211,12 @@ class Board(PinterestBaseModel):
         self._description = None
         self._owner = None
         self._privacy = None
+        self._board_pins_modified_at = None
+        self._pin_count = None
+        self._created_at = None
+        self._media = None
+        self._collaborator_count = None
+        self._follower_count = None
 
         PinterestBaseModel.__init__(
             self,
@@ -246,6 +254,36 @@ class Board(PinterestBaseModel):
     def privacy(self) -> str:
         # pylint: disable=missing-function-docstring
         return self._privacy
+
+    @property
+    def board_pins_modified_at(self) -> datetime:
+        # pylint: disable=missing-function-docstring
+        return self._board_pins_modified_at
+
+    @property
+    def pin_count(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._pin_count
+
+    @property
+    def created_at(self) -> datetime:
+        # pylint: disable=missing-function-docstring
+        return self._created_at
+
+    @property
+    def media(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._media
+
+    @property
+    def collaborator_count(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._collaborator_count
+
+    @property
+    def follower_count(self) -> int:
+        # pylint: disable=missing-function-docstring
+        return self._follower_count
 
     def __repr__(self):
         return f"{self.__class__.__name__}(board_id={self._id})"

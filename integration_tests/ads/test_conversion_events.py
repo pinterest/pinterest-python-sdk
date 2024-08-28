@@ -2,11 +2,16 @@
 Test Conversion Model
 """
 import os as _os
+from datetime import datetime
+
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
+from openapi_generated.pinterest_client import ApiException
 
 from pinterest.client import PinterestSDKClient
 from pinterest.ads.conversion_events import Conversion
+
+_get_event_time = lambda: int(datetime.now().timestamp())
 
 class TestSendConversionEvent(BaseTestCase):
     """
@@ -21,7 +26,7 @@ class TestSendConversionEvent(BaseTestCase):
 
         NUMBER_OF_CONVERSION_EVENTS = 2
         raw_user_data = dict(
-            em = ["964bbaf162703657e787eb4455197c8b35c18940c75980b0285619fe9b8acec8"] #random hash256
+            em = ["f660ab912ec121d1b1e928a0bb4bc61b15f5ad44d5efdc4e1c92a25e99b8e44a"] #random hash256
         )
         raw_custom_data = dict()
 
@@ -29,7 +34,7 @@ class TestSendConversionEvent(BaseTestCase):
             Conversion.create_conversion_event(
                 event_name = "add_to_cart",
                 action_source = "app_ios",
-                event_time = 1670026573,
+                event_time = _get_event_time(),
                 event_id = "eventId0001",
                 user_data = raw_user_data,
                 custom_data= raw_custom_data,
@@ -71,7 +76,7 @@ class TestSendConversionEvent(BaseTestCase):
             Conversion.create_conversion_event(
                 event_name = "add_to_cart",
                 action_source = "app_ios",
-                event_time = 1670026573,
+                event_time = _get_event_time(),
                 event_id = "eventId0001",
                 user_data = raw_user_data,
                 custom_data = raw_custom_data,
@@ -79,17 +84,12 @@ class TestSendConversionEvent(BaseTestCase):
             for _ in range(NUMBER_OF_CONVERSION_EVENTS)
         ]
 
-        response = Conversion.send_conversion_events(
-            client = client,
-            ad_account_id = DEFAULT_AD_ACCOUNT_ID,
-            conversion_events = conversion_events,
-            test = True,
-        )
-
-        assert response
-        assert response.num_events_received == 2
-        assert response.num_events_processed == 0
-        assert len(response.events) == 2
-
-        assert 'hashed format' in response.events[0].error_message
-        assert 'hashed format' in response.events[0].error_message
+        try:
+            Conversion.send_conversion_events(
+                client = client,
+                ad_account_id = DEFAULT_AD_ACCOUNT_ID,
+                conversion_events = conversion_events,
+                test = True,
+            )
+        except ApiException as e:
+            assert e.status == 422

@@ -10,6 +10,7 @@ from openapi_generated.pinterest_client.model.budget_type import BudgetType
 from openapi_generated.pinterest_client.model.ad_group_response import AdGroupResponse
 from openapi_generated.pinterest_client.model.ad_group_create_request import AdGroupCreateRequest
 from openapi_generated.pinterest_client.model.ad_group_update_request import AdGroupUpdateRequest
+from openapi_generated.pinterest_client.model.targeting_spec import TargetingSpec
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
@@ -64,6 +65,7 @@ class AdGroup(PinterestBaseModel):
         self._feed_profile_id = None
         self._dca_assets = None
         self._optimization_goal_metadata = None
+        self._targeting_template_ids = None
 
         PinterestBaseModel.__init__(
             self,
@@ -206,6 +208,11 @@ class AdGroup(PinterestBaseModel):
     def optimization_goal_metadata(self):
         #pylint: disable=missing-function-docstring
         return self._optimization_goal_metadata
+
+    @property
+    def targeting_template_ids(self):
+        #pylint: disable=missing-function-docstring
+        return self._targeting_template_ids
 
 
     @classmethod
@@ -351,6 +358,9 @@ class AdGroup(PinterestBaseModel):
             kwargs["billable_event"] = ActionType(kwargs["billable_event"])
         if "budget_type" in kwargs:
             kwargs["budget_type"] = BudgetType(kwargs["budget_type"])
+        if "targeting_spec" in kwargs:
+            kwargs["targeting_spec"] = TargetingSpec(**kwargs["targeting_spec"])
+
         return self._update(
             params={
                 "ad_account_id": self._ad_account_id,
