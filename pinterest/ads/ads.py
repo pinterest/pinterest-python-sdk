@@ -17,7 +17,7 @@ from pinterest.utils.bookmark import Bookmark
 
 
 class Ad(PinterestBaseModel):
-    # pylint: disable=R0903,duplicate-code
+    # pylint: disable=R0903,duplicate-code,R0902
     """
     Ad model used to view, create, update its attributes
     """
@@ -63,6 +63,11 @@ class Ad(PinterestBaseModel):
         self._type = None
         self._updated_time = None
         self._summary_status = None
+        self._grid_click_type = None
+        self._customizable_cta_type = None
+        self._lead_form_id = None
+        self._quiz_pin_data = None
+
         PinterestBaseModel.__init__(
             self,
             _id=str(ad_id),
@@ -210,6 +215,25 @@ class Ad(PinterestBaseModel):
         # pylint: disable=missing-function-docstring
         return self._summary_status
 
+    @property
+    def grid_click_type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._grid_click_type
+
+    @property
+    def customizable_cta_type(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._customizable_cta_type
+
+    @property
+    def lead_form_id(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._lead_form_id
+
+    @property
+    def quiz_pin_data(self) -> str:
+        # pylint: disable=missing-function-docstring
+        return self._quiz_pin_data
 
     @classmethod
     def create(cls,

@@ -141,7 +141,8 @@ class PinterestSDKClient(ApiClient):
                     api_uri: str = config.PINTEREST_API_URI,
                     debug: str = config.PINTEREST_DEBUG,
                     log_file: str = config.PINTEREST_LOG_FILE,
-                    logger_format: str = config.PINTEREST_LOGGER_FORMAT):
+                    logger_format: str = config.PINTEREST_LOGGER_FORMAT,
+                    disabled_client_side_validations: str = config.PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS):
         _config = Configuration(
             access_token=access_token,
             host=api_uri,
@@ -150,6 +151,7 @@ class PinterestSDKClient(ApiClient):
         _config.debug = debug
         _config.logger_file = log_file
         _config.logger_format = logger_format
+        _config.disabled_client_side_validations = disabled_client_side_validations
         return _config
 
     @classmethod

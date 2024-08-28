@@ -63,9 +63,7 @@ class TestUpdateAdGroup(BaseTestCase):
         )
 
         new_name = "SDK_AD_GROUP_NEW_NAME"
-        new_spec = {
-                "GENDER": ["male"]
-        }
+        new_spec = {"gender": ["male"]}
 
         ad_group.update_fields(
             name=new_name,
@@ -74,7 +72,7 @@ class TestUpdateAdGroup(BaseTestCase):
 
         assert ad_group
         assert getattr(ad_group, "_name") == new_name
-        assert getattr(ad_group,"_targeting_spec") == new_spec
+        assert str(getattr(ad_group,"_targeting_spec")) == str(new_spec)
 
     def test_update_fail_with_invalid_tracking_urls(self):
         """

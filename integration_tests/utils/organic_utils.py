@@ -47,6 +47,8 @@ class BoardUtils:
         return Board.create(**_merge_default_params_with_params(self.get_default_params(), kwargs))
 
     def delete_board(self, board_id):
+        if board_id == DEFAULT_BOARD_ID:
+            return
         return Board.delete(board_id=board_id, client=self.test_client)
 
 
@@ -79,4 +81,6 @@ class PinUtils:
         return Pin.create(**_merge_default_params_with_params(self.get_default_params(), kwargs))
 
     def delete_pin(self, pin_id):
+        if pin_id == DEFAULT_PIN_ID:
+            return
         return Pin.delete(pin_id=pin_id, client=self.test_client)

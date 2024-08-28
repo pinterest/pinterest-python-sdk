@@ -25,7 +25,15 @@ PINTEREST_ACCESS_TOKEN = _os.environ.get('PINTEREST_ACCESS_TOKEN')
 PINTEREST_REFRESH_ACCESS_TOKEN = _os.environ.get('PINTEREST_REFRESH_ACCESS_TOKEN')
 PINTEREST_API_URI = _os.environ.get('PINTEREST_API_URI', 'https://api.pinterest.com/v5')
 PINTEREST_LOG_FILE = _os.environ.get('PINTEREST_LOG_FILE', None)
-PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS = _os.environ.get('PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS', None)
+DEFAULT_DISABLE_VALIDATIONS = ",".join([
+    'multipleOf', 'maximum', 'exclusiveMaximum',
+    'minimum', 'exclusiveMinimum', 'maxLength',
+    'minLength', 'pattern', 'maxItems', 'minItems',
+])
+PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS = _os.environ.get(
+    'PINTEREST_DISABLED_CLIENT_SIDE_VALIDATIONS',
+    DEFAULT_DISABLE_VALIDATIONS
+)
 PINTEREST_LOGGER_FORMAT = _os.environ.get('PINTEREST_LOGGER_FORMAT', '%(asctime)s %(levelname)s %(message)s')
 PINTEREST_SDK_VERSION = __version__
 PINTEREST_USER_AGENT = f'pins-sdk/python/v{PINTEREST_SDK_VERSION}'
