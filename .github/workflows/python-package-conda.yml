@@ -1,0 +1,59 @@
+            - name: Setup Node.js environment
+  uses: actions/setup-node@v4.0.3
+  with:
+    # Set always-auth in npmrc.
+    always-auth: # optional, default is false
+    # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+    node-version: # optional
+    # File containing the version Spec of the version to use.  Examples: package.json, .nvmrc, .node-version, .tool-versions.
+    node-version-file: # optional
+    # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
+    architecture: # optional
+    # Set this option if you want the action to check for the latest available version that satisfies the version spec.
+    check-latest: # optional
+    # Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file, and set up auth to read in from env.NODE_AUTH_TOKEN.
+    registry-url: # optional
+    # Optional scope for authenticating against scoped registries. Will fall back to the repository owner when using the GitHub Packages registry (https://npm.pkg.github.com/).
+    scope: # optional
+    # Used to pull node distributions from node-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
+    token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+    cache: # optional
+    # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
+    cache-dependency-path: # optional
+          
+
+name: Python Package using Conda
+
+on: [push]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+    - name: Install dependencies
+      run: |
+        conda env update --file environment.yml --name base
+    - name: Lint with flake8
+      run: |
+        conda install flake8
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        conda install pytest
+        pytest
