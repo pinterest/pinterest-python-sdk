@@ -376,11 +376,11 @@ class Campaign(PinterestBaseModel):
         """
         api_response = self._generated_api.campaigns_update(
             ad_account_id=self._ad_account_id,
-            campaign_update_request=CampaignUpdateRequest(
+            campaign_update_request=[CampaignUpdateRequest(
                 id=self._id,
                 ad_account_id=self._ad_account_id,
                 lifetime_spend_cap=new_spend_cap
-                )
+                )]
             )
         verify_api_response(api_response)
 
