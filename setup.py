@@ -21,7 +21,7 @@ def _get_prod_version():
 _IS_TEST_BUILD = os.environ.get("IS_TEST_BUILD", 0)
 
 REQUIRES = [
-  "urllib3==1.26.12",
+  "urllib3>=1.26.12",
   "python-dateutil",
   "python-dotenv==0.20.0",
   "six==1.16.0",
