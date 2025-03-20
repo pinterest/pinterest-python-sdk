@@ -186,6 +186,10 @@ class TestGetAllCampaigns(BaseTestCase):
                     name="SDK_INTEGRATION_TEST_ADGROUP",
                     auto_targeting_enabled=False,
                     bid_in_micro_currency=10000000,
+                    targeting_spec=dict(
+                        age_bucket=["35-44"],
+                        location=["US"],
+                    )
                 )
             )
 

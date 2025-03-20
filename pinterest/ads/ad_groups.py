@@ -317,6 +317,9 @@ class AdGroup(PinterestBaseModel):
         Returns:
             AdGroup: AdGroup Object
         """
+        if "targeting_spec" in kwargs:
+            kwargs["targeting_spec"] = TargetingSpec(**kwargs["targeting_spec"])
+
         response = cls._create(
             params={
                 "ad_account_id": str(ad_account_id),

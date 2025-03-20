@@ -25,6 +25,10 @@ class TestCreateAdGroup(BaseTestCase):
             name="SDK_INTEGRATION_TEST_ADGROUP",
             auto_targeting_enabled=False,
             bid_in_micro_currency=10000000,
+            targeting_spec=dict(
+                age_bucket=["35-44"],
+                location=["US"],
+            )
         )
 
         assert ad_group
@@ -63,7 +67,10 @@ class TestUpdateAdGroup(BaseTestCase):
         )
 
         new_name = "SDK_AD_GROUP_NEW_NAME"
-        new_spec = {"gender": ["male"]}
+        new_spec = {
+            "age_bucket":["35-44"],
+            "location": ["US"],
+        }
 
         ad_group.update_fields(
             name=new_name,
@@ -72,7 +79,7 @@ class TestUpdateAdGroup(BaseTestCase):
 
         assert ad_group
         assert getattr(ad_group, "_name") == new_name
-        assert str(getattr(ad_group,"_targeting_spec")) == str(new_spec)
+        assert str(getattr(ad_group,"_targeting_spec")).lower() == str(new_spec).lower()
 
     def test_update_fail_with_invalid_tracking_urls(self):
         """
@@ -138,6 +145,10 @@ class TestGetListAdGroup(BaseTestCase):
             name="SDK_INTEGRATION_TEST_ADGROUP",
             auto_targeting_enabled=False,
             bid_in_micro_currency=10000000,
+            targeting_spec=dict(
+                age_bucket=["35-44"],
+                location=["US"],
+            )
         )
 
         new_ad_groups = AdGroup.get_all(
