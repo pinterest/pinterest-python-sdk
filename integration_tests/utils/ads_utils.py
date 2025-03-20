@@ -144,6 +144,10 @@ class AdGroupUtils:
             name="SDK_INTEGRATION_TEST_ADGROUP",
             auto_targeting_enabled=False,
             bid_in_micro_currency=10000000,
+            targeting_spec=dict(
+                age_bucket=["35-44"],
+                location=["US"],
+            )
         )
         self.ad_group_id = self.ad_group._id
 
@@ -162,6 +166,10 @@ class AdGroupUtils:
             name="SDK_INTEGRATION_TEST_ADGROUP",
             auto_targeting_enabled=False,
             bid_in_micro_currency=10000000,
+            targeting_spec=dict(
+                age_bucket=["35-44"],
+                location=["US"],
+            )
         )
 
     def create_new_ad_group(self, **kwargs):

@@ -11,6 +11,7 @@ from openapi_generated.pinterest_client.model.ad_group_response import AdGroupRe
 from openapi_generated.pinterest_client.model.ad_group_create_request import AdGroupCreateRequest
 from openapi_generated.pinterest_client.model.ad_group_update_request import AdGroupUpdateRequest
 from openapi_generated.pinterest_client.model.targeting_spec import TargetingSpec
+from openapi_generated.pinterest_client.model.targeting_spec_shoppingretargeting import TargetingSpecSHOPPINGRETARGETING
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
@@ -317,6 +318,9 @@ class AdGroup(PinterestBaseModel):
         Returns:
             AdGroup: AdGroup Object
         """
+        if "targeting_spec" in kwargs:
+            kwargs["targeting_spec"] = TargetingSpec(**kwargs["targeting_spec"])
+
         response = cls._create(
             params={
                 "ad_account_id": str(ad_account_id),
