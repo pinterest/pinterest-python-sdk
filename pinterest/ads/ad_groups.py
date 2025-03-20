@@ -11,7 +11,6 @@ from openapi_generated.pinterest_client.model.ad_group_response import AdGroupRe
 from openapi_generated.pinterest_client.model.ad_group_create_request import AdGroupCreateRequest
 from openapi_generated.pinterest_client.model.ad_group_update_request import AdGroupUpdateRequest
 from openapi_generated.pinterest_client.model.targeting_spec import TargetingSpec
-from openapi_generated.pinterest_client.model.targeting_spec_shoppingretargeting import TargetingSpecSHOPPINGRETARGETING
 
 from pinterest.client import PinterestSDKClient
 from pinterest.utils.base_model import PinterestBaseModel
