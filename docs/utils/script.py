@@ -186,7 +186,7 @@ def append_doc_to_spec_file(index: dict):
 
     # Get skeleton spec
     spec_path = PROJECT_PATH + '/docs/utils/skeleton-spec.yaml'
-    spec = yaml.load(open(spec_path, 'r'), Loader=yaml.FullLoader)
+    spec = yaml.safe_load(open(spec_path, 'r'))
 
     # Update version
     from pinterest.version import __version__
