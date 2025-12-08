@@ -1,4 +1,4 @@
-Pinterest-Generated-Client>=0.1.10
+Pinterest-Generated-Client@git+https://github.com/pinterest/pinterest-python-generated-api-client.git@f8ee0afb232532f259b7bf8e4f7f5b1b52fe305a
 python-dateutil==2.8.2
 six==1.16.0
 urllib3>=1.26.12
