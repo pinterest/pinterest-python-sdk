@@ -21,11 +21,11 @@ def _get_prod_version():
 _IS_TEST_BUILD = os.environ.get("IS_TEST_BUILD", 0)
 
 REQUIRES = [
-  "urllib3>=1.26.12",
-  "python-dateutil",
-  "python-dotenv>=0.20.0",
-  "six==1.16.0",
-  "Pinterest-Generated-Client==0.1.10"
+    "Pinterest-Generated-Client@git+https://github.com/pinterest/pinterest-python-generated-api-client.git@f8ee0afb232532f259b7bf8e4f7f5b1b52fe305a",
+    "python-dateutil==2.8.2",
+    "six==1.16.0",
+    "urllib3>=1.26.12",
+    "python-dotenv>=0.20.0"
 ]
 
 long_description = (Path(__file__).parent / "README.md").read_text()
