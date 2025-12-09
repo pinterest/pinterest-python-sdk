@@ -22,10 +22,10 @@ _IS_TEST_BUILD = os.environ.get("IS_TEST_BUILD", 0)
 
 REQUIRES = [
     "Pinterest-Generated-Client@git+https://github.com/pinterest/pinterest-python-generated-api-client.git@f8ee0afb232532f259b7bf8e4f7f5b1b52fe305a",
-    "python-dateutil>=2.8.2",
-    "six>=1.16.0",
-    "urllib3>=1.26.12",
-    "python-dotenv>=0.20.0"
+    "python-dateutil",
+    "six",
+    "urllib3",
+    "python-dotenv"
 ]
 
 long_description = (Path(__file__).parent / "README.md").read_text()
