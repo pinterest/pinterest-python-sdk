@@ -4,6 +4,8 @@ Test Error Handling
 
 from unittest import TestCase
 
+from openapi_generated.pinterest_client.model.ad_array_response import AdArrayResponse
+from openapi_generated.pinterest_client.model.ad_array_response_element import AdArrayResponseElement
 from openapi_generated.pinterest_client.model.campaign_create_response import CampaignCreateResponse
 from openapi_generated.pinterest_client.model.campaign_create_response_item import CampaignCreateResponseItem
 from openapi_generated.pinterest_client.model.campaign_create_response_data import CampaignCreateResponseData
@@ -52,4 +54,30 @@ class TestErrorHandling(TestCase):
                 )
             ],
             )
+        self.assertRaises(SdkException, verify_api_response, response=test_api_response)
+
+    def test_verify_api_response_with_single_exception_object(self):
+        """
+        Verify if the function throws `SdkException` when the api reports a single exception
+        object instead of a list of exceptions, as the ads endpoints do
+        """
+        test_api_response = AdArrayResponse(
+            items=[
+                AdArrayResponseElement(
+                    exceptions=GeneratedException(
+                        code=1025,
+                        message="Ad has invalid creative type.",
+                    )
+                )
+            ],
+        )
+        self.assertRaises(SdkException, verify_api_response, response=test_api_response)
+
+    def test_verify_api_response_with_dict_response(self):
+        """
+        Verify if the function throws `SdkException` for exceptions in a raw dict response
+        """
+        test_api_response = {
+            "items": [{"exceptions": {"code": 1025, "message": "Ad has invalid creative type."}}]
+        }
         self.assertRaises(SdkException, verify_api_response, response=test_api_response)
