@@ -31,6 +31,7 @@ class TestCreateCampaign(BaseTestCase):
             name="SDK Test Campaign",
             objective_type="AWARENESS",
             daily_spend_cap=10000000,
+            is_campaign_budget_optimization=True,
         )
 
         assert campaign
@@ -48,6 +49,7 @@ class TestCreateCampaign(BaseTestCase):
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
             name="SDK Test Campaign",
             objective_type="AWARENESS",
+            is_campaign_budget_optimization=True,
         )
 
         self.assertRaisesRegex(

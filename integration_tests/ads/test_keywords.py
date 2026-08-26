@@ -10,6 +10,7 @@ from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 from pinterest.ads.keywords import Keyword
 from pinterest.utils.sdk_exceptions import SdkException
 
+from openapi_generated.pinterest_client.exceptions import ApiException
 from openapi_generated.pinterest_client.model.match_type_response import MatchTypeResponse
 
 
@@ -37,6 +38,10 @@ class TestCreateKeyword(BaseTestCase):
     def test_create_fail_without_matchtype(self):
         """
         Test creating a new keyword
+
+        Note: the API validates the missing match_type before evaluating
+        keyword-creation business logic, so it raises a raw ApiException
+        (HTTP 400) rather than the wrapped SdkException.
         """
         keyword_arguments = dict(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
@@ -44,7 +49,7 @@ class TestCreateKeyword(BaseTestCase):
             value="string",
         )
 
-        with self.assertRaises(SdkException):
+        with self.assertRaises((SdkException, ApiException)):
             Keyword.create(**keyword_arguments)
 
 
