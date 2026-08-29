@@ -37,6 +37,10 @@ class TestCreateKeyword(BaseTestCase):
     def test_create_fail_without_matchtype(self):
         """
         Test creating a new keyword
+
+        Note: the API validates the missing match_type before evaluating
+        keyword-creation business logic, so it raises a raw ApiException
+        (HTTP 400) rather than the wrapped SdkException.
         """
         keyword_arguments = dict(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
@@ -44,8 +48,6 @@ class TestCreateKeyword(BaseTestCase):
             value="string",
         )
 
-        # Without a match_type the API rejects the request outright with HTTP 400
-        # (match_type is not nullable), which the generated client raises as ApiException.
         with self.assertRaises(ApiException):
             Keyword.create(**keyword_arguments)
 

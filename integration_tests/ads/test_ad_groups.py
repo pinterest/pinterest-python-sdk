@@ -5,9 +5,9 @@ Test AdGroup Model
 from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 
-from pinterest.ads.ad_groups import AdGroup
-
 from openapi_generated.pinterest_client.exceptions import ApiException
+
+from pinterest.ads.ad_groups import AdGroup
 
 
 class TestCreateAdGroup(BaseTestCase):
@@ -86,6 +86,11 @@ class TestUpdateAdGroup(BaseTestCase):
     def test_update_fail_with_invalid_tracking_urls(self):
         """
         Test update with invalid tracking url
+
+        Note: the API now validates the tracking URL format up front and
+        raises a raw ApiException (HTTP 400) rather than accepting the
+        malformed URLs and failing the SDK's own post-update value check
+        (AssertionError).
         """
         ad_group = AdGroup(
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,
@@ -105,8 +110,6 @@ class TestUpdateAdGroup(BaseTestCase):
             tracking_urls=new_tracking_url
         )
 
-        # The API now rejects unsupported tracking-URL event types with HTTP 400,
-        # which the generated client raises as ApiException.
         with self.assertRaises(ApiException):
             ad_group.update_fields(**update_argument)
 
