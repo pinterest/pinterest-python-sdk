@@ -7,6 +7,8 @@ from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 
 from pinterest.ads.ad_groups import AdGroup
 
+from openapi_generated.pinterest_client.exceptions import ApiException
+
 
 class TestCreateAdGroup(BaseTestCase):
     '''
@@ -103,7 +105,9 @@ class TestUpdateAdGroup(BaseTestCase):
             tracking_urls=new_tracking_url
         )
 
-        with self.assertRaises(AssertionError):
+        # The API now rejects unsupported tracking-URL event types with HTTP 400,
+        # which the generated client raises as ApiException.
+        with self.assertRaises(ApiException):
             ad_group.update_fields(**update_argument)
 
 

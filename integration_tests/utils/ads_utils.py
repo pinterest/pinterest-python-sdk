@@ -109,6 +109,9 @@ class CampaignUtils:
             name="SDK Test Campaign",
             objective_type="AWARENESS",
             daily_spend_cap=10000000,
+            # This ad account requires Campaign Budget Optimization (ad-group level
+            # budgets are not allowed), so budgets must be set at the campaign level.
+            is_campaign_budget_optimization=True,
         )
         self.campaign_id = self.campaign._id
 
@@ -125,6 +128,9 @@ class CampaignUtils:
             name="SDK Test Campaign",
             objective_type="AWARENESS",
             daily_spend_cap=10000000,
+            # This ad account requires Campaign Budget Optimization (ad-group level
+            # budgets are not allowed), so budgets must be set at the campaign level.
+            is_campaign_budget_optimization=True,
         )
 
     def create_new_campaign(self, **kwargs):
