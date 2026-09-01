@@ -110,7 +110,7 @@ class TestUpdateAdGroup(BaseTestCase):
             tracking_urls=new_tracking_url
         )
 
-        with self.assertRaises((AssertionError, ApiException)):
+        with self.assertRaises(ApiException):
             ad_group.update_fields(**update_argument)
 
 

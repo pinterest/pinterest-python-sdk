@@ -44,6 +44,9 @@ class TestCreateCampaign(BaseTestCase):
         """
         Verify a new Campaign response failure and catching exceptions
         """
+        # This ad account requires Campaign Budget Optimization, so CBO must be on;
+        # with CBO on and no spend cap the API reports the missing-budget error 2384
+        # (CBO campaigns need [lifetime_spend_cap and end_time] or daily_spend_cap).
         campaign_arguments = dict(
             client=self.test_client,
             ad_account_id=DEFAULT_AD_ACCOUNT_ID,

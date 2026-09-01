@@ -8,7 +8,6 @@ from integration_tests.base_test import BaseTestCase
 from integration_tests.config import DEFAULT_AD_ACCOUNT_ID
 
 from pinterest.ads.keywords import Keyword
-from pinterest.utils.sdk_exceptions import SdkException
 
 from openapi_generated.pinterest_client.exceptions import ApiException
 from openapi_generated.pinterest_client.model.match_type_response import MatchTypeResponse
@@ -49,7 +48,7 @@ class TestCreateKeyword(BaseTestCase):
             value="string",
         )
 
-        with self.assertRaises((SdkException, ApiException)):
+        with self.assertRaises(ApiException):
             Keyword.create(**keyword_arguments)
 
 
